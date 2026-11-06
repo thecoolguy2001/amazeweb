@@ -287,6 +287,7 @@ def main():
     write("404.html", page_404())
     write("_redirects", "/themes  /templates/  301\n")
     write("CNAME", "amazeweb.shop\n")
+    write(".nojekyll", "")
     write("themes/index.html",
           '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
           '<title>Templates | Amaz\u00e9 Web</title>\n'
