@@ -513,16 +513,18 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   .shell.theme{padding:var(--pad-top) 16px var(--pad-bottom);gap:var(--sec-gap)}
   .shell.theme .wrap{max-width:none}
 
-  /* Phone type scale, measured off the published site at 390px. The hero is
-     33px here, not 42 — 42 is the tablet size, and using it on phones was what
-     made everything below it sit too low. */
-  .t-hero{font-size:33px;line-height:39.6px}
-  .t-page{font-size:40px}
-  .t-section{font-size:36px}
+  /* Phone type scale. Body sizes (statement, FAQ, stat, label, copyright) are
+     measured off the published site at 390px and match it. The HEADINGS are
+     deliberately larger than Framer's: its phone hero is 33px, which left it
+     smaller than every heading under it (.t-stmt 36, .t-section 36, .t-page
+     40-42) — an inverted hierarchy. The hero now leads the scale again. */
+  .t-hero{font-size:46px;line-height:53px}
+  .t-page{font-size:48px;line-height:52px}   /* theme title, above the 42px section h2s */
+  .t-section{font-size:40px;line-height:44px}
   .t-stmt{font-size:36px;line-height:43.2px;letter-spacing:-.8px}
-  .t-card-h{font-size:30px;line-height:42px;font-weight:600}
+  .t-card-h{font-size:32px;line-height:42px;font-weight:600}
   .t-stat{font-size:32px;line-height:38px}
-  .t-faq-h{font-size:30px;line-height:38px}
+  .t-faq-h{font-size:32px;line-height:40px}
   .t-label{font-size:20px;line-height:20px}
   .footer-bar{font-size:20px;line-height:30px}
 
