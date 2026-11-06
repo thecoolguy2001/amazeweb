@@ -143,6 +143,36 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
    placeholder stripes). These MUST stay above the media queries below -
    appended at the end of the file they outranked every phone override.
    ========================================================================== */
+/* --- entrance motion ----------------------------------------------------
+   Curve taken off the published hero, sampled frame by frame: it covers 24%
+   of the distance in the first 22ms, 58% by 111ms and 97% by 411ms, i.e. a
+   hard ease-out over roughly 0.7s. cubic-bezier(.22,1,.36,1) tracks it, and
+   it is the same curve the scroll reveals already use.
+
+   The nav: the published site does NOT animate its nav (0 appear-animations
+   across all 21 pages), so this is an addition, built from the site's own
+   motion vocabulary rather than copied from it.
+   The hero: this one IS in the source and was missing here — Framer sets the
+   heading container to opacity:0 / perspective(1200px) translateX(30px) and
+   the glyphs to translateX(50px), all moving together with no stagger. */
+@keyframes nav-in{
+  from{opacity:0;transform:translateY(-18px)}
+  to  {opacity:1;transform:none}
+}
+@keyframes hero-in{
+  from{opacity:0;transform:perspective(1200px) translateX(30px)}
+  to  {opacity:1;transform:perspective(1200px) translateX(0)}
+}
+.nav{animation:nav-in .7s cubic-bezier(.22,1,.36,1) .08s both}
+.hero .t-hero,.theme-head>*{animation:hero-in .8s cubic-bezier(.22,1,.36,1) .20s both}
+.hero .btn-hero{animation:hero-in .8s cubic-bezier(.22,1,.36,1) .30s both}
+.theme-head>*:nth-child(2){animation-delay:.26s}
+.theme-head>*:nth-child(3){animation-delay:.32s}
+.theme-head>*:nth-child(4){animation-delay:.38s}
+@media (prefers-reduced-motion:reduce){
+  .nav,.hero .t-hero,.hero .btn-hero,.theme-head>*{animation:none}
+}
+
 /* --- empty-media placeholder: Framer's diagonal stripe tile -------------
    126x126 SVG tile drawn at 64px, fill rgba(136,136,136,.2). The published
    site uses it everywhere a template screenshot has not been supplied. */
