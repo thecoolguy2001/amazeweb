@@ -30,10 +30,19 @@ SOCIAL_SVG = {
 # ---------------------------------------------------------------- partials
 def nav(prefix=""):
     links = "".join(f'<a href="{h}">{E(t)}</a>' for t, h in NAV)
+    # .nav-row and .nav-links are display:contents on desktop, so the logo and the
+    # three links are direct flex children of the pill. Under 810px the pill turns
+    # into a column: the row keeps the logo + burger, the links stack below it and
+    # the pill's height animates 51px -> 267px with overflow:hidden.
     return (f'<header class="nav"><nav class="nav-pill" aria-label="Main">'
+            f'<div class="nav-row">'
             f'<a href="/" aria-label="Amazé Web — home">'
             f'<img class="nav-logo" src="{LOGO}" alt="Amazé Web" width="158" height="49"></a>'
-            f'<div class="nav-links">{links}</div></nav></header>')
+            f'<button class="nav-toggle" type="button" aria-label="Menu" '
+            f'aria-expanded="false" aria-controls="nav-menu">'
+            f'<span class="bar b1"></span><span class="bar b2"></span></button>'
+            f'</div>'
+            f'<div class="nav-links" id="nav-menu">{links}</div></nav></header>')
 
 def footer():
     cols = ""
