@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A shop on Vine Street — Holt &amp; Vine</title>
+<meta name="description" content="Holt & Vine: a boutique of about four hundred things. Have it delivered, or reserve it and try it in the shop.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&family=Prata&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ann">
+  <div class="wrap">
+    <span class="dot" aria-hidden="true"></span>
+    <span>Open today until 6</span>
+    <span class="right">14 Vine Street · <a href="visit.html">Find the shop</a></span>
+  </div>
+</div>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">Holt <em>&amp;</em> Vine</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="shop.html"$3>Shop</a>
+      <a href="visit.html"$4>Visit</a>
+      <a href="index.html#makers">Makers</a>
+    </nav>
+    <span class="util">
+      <a href="visit.html">Contact</a>
+      <a class="bag" href="cart.html">Basket (<span id="bagcount">3</span>)</a>
+    </span>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <h1 class="prata">Everything here is also on a shelf you can walk to.</h1>
+        <p class="sub">A shop of about four hundred things on Vine Street, open since 2016. Most of it is made within two hundred miles and we have met nearly everyone who makes it.</p>
+        <div class="actions">
+          <a class="btn solid" href="shop.html">Browse the shop</a>
+          <a class="btn" href="visit.html">Opening hours</a>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem">
+        <span class="plate o1" aria-hidden="true"></span>
+        <span class="plate o2" aria-hidden="true"></span>
+        <span class="plate o6" aria-hidden="true"></span>
+        <span class="plate o4" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>This week on the table</h2>
+        <p>Switch between having it sent and reserving it to try — the stock figures are different, because they genuinely are.</p>
+      </div>
+      <div>
+        <div class="mode" role="group" aria-label="How would you like it">
+          <button data-mode="deliver" aria-pressed="true">Deliver it</button>
+          <button data-mode="reserve" aria-pressed="false">Reserve to try</button>
+        </div>
+      </div>
+    </div>
+    <p class="mode-note" data-mode-note style="margin-bottom:1.5rem"></p>
+
+    <div class="grid">
+      <article class="card" data-cat="ceramics" data-online="7" data-shop="2">
+        <a class="shot" href="product.html"><span class="plate o1" aria-hidden="true"></span></a>
+        <p class="maker">Mira Lund, Suffolk</p>
+        <a href="product.html"><h3>Stoneware Carafe</h3></a>
+        <p class="pr">£68</p>
+        <p class="avail"></p>
+      </article>
+      <article class="card" data-cat="lighting" data-online="0" data-shop="1">
+        <a class="shot" href="product.html"><span class="plate o2" aria-hidden="true"></span></a>
+        <p class="maker">Atelier Roux, Lyon</p>
+        <a href="product.html"><h3>Brass Table Lamp</h3></a>
+        <p class="pr">£245</p>
+        <p class="avail"></p>
+      </article>
+      <article class="card" data-cat="ceramics" data-online="3" data-shop="0">
+        <a class="shot" href="product.html"><span class="plate o3" aria-hidden="true"></span></a>
+        <p class="maker">Kettle & Kiln</p>
+        <a href="product.html"><h3>Tall Vase, Plum</h3></a>
+        <p class="pr">£94</p>
+        <p class="avail"></p>
+      </article>
+      <article class="card" data-cat="paper" data-online="9" data-shop="6">
+        <a class="shot" href="product.html"><span class="plate o6" aria-hidden="true"></span></a>
+        <p class="maker">Dove Press</p>
+        <a href="product.html"><h3>Linen-Bound Notebook</h3></a>
+        <p class="pr">£26</p>
+        <p class="avail"></p>
+      </article>
+    </div>
+    <p style="margin-top:1.75rem"><a class="btn" href="shop.html">All of it →</a></p>
+  </section>
+
+  <section class="wrap" id="makers" style="padding-top:0">
+    <div class="sec-head"><div><h2>Who makes it</h2><p>Nearly everything in the shop comes from someone we have met, and quite a lot of it from someone we have had lunch with.</p></div></div>
+    <div class="makers">
+      <article class="maker-card">
+        <span class="plate o5 wide" aria-hidden="true"></span>
+        <p class="where">Suffolk · since 2019</p>
+        <h3>Mira Lund</h3>
+        <p>Throws about sixty pieces a month in a converted dairy, all in the same three glazes. We take whatever she has, which is why the carafe is sometimes here and sometimes not.</p>
+      </article>
+      <article class="maker-card">
+        <span class="plate o4 wide" aria-hidden="true"></span>
+        <p class="where">Lyon · since 1948</p>
+        <h3>Atelier Roux</h3>
+        <p>Three generations of spun brass. The table lamp has been in production, unchanged, since 1961 and the only thing that has altered is the flex.</p>
+      </article>
+      <article class="maker-card">
+        <span class="plate o6 wide" aria-hidden="true"></span>
+        <p class="where">Yorkshire · since 2012</p>
+        <h3>Dove Press</h3>
+        <p>Letterpress and bookbinding above a bike shop in Hebden Bridge. They will put initials on anything if you give them a fortnight.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="visit">
+      <div>
+        <div class="sec-head"><div><h2>Come in</h2></div></div>
+        <table class="hours">
+          <tbody>
+            <tr><th scope="row">Monday</th><td>Closed</td></tr>
+            <tr><th scope="row">Tuesday</th><td>10:00 – 18:00</td></tr>
+            <tr><th scope="row">Wednesday</th><td>10:00 – 18:00</td></tr>
+            <tr class="today"><th scope="row">Thursday</th><td>10:00 – 18:00 · open now</td></tr>
+            <tr><th scope="row">Friday</th><td>10:00 – 18:00</td></tr>
+            <tr><th scope="row">Saturday</th><td>09:30 – 18:00</td></tr>
+            <tr><th scope="row">Sunday</th><td>11:00 – 16:00</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:1.25rem;font-size:var(--t-s);color:var(--mid);max-width:44ch">14 Vine Street, between the framer and the greengrocer. Step-free through the side door on Pullman Lane — ring the bell and someone will come round.</p>
+      </div>
+      <div class="panel">
+        <h3>Reserving, explained</h3>
+        <p>Anything in the shop can be put aside for 48 hours with nothing to pay. You get a text when it is on the counter with your name on it, and another the morning it is about to go back out.</p>
+        <dl>
+          <dt>Costs</dt><dd>Nothing, and no card needed</dd>
+          <dt>Held for</dt><dd>48 hours from the text</dd>
+          <dt>Limit</dt><dd>Three things at a time</dd>
+          <dt>If you cannot come</dt><dd>Reply to the text and we will hold it another day</dd>
+        </dl>
+        <p style="margin-top:1.25rem"><a class="btn solid" href="shop.html">Reserve something</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="logo">Holt <em>&amp;</em> Vine</p>
+      <p style="margin-top:.7rem;max-width:32ch">A shop of about four hundred things, on Vine Street since 2016. Everything here is also on a shelf you can walk to.</p>
+      <form class="news" action="#" method="post">
+        <input type="email" name="email" placeholder="Email address" aria-label="Email address" required>
+        <button type="submit">Join</button>
+      </form>
+    </div>
+    <div><h4>Shop</h4><ul>
+      <li><a href="shop.html">Everything</a></li>
+      <li><a href="shop.html">Ceramics</a></li>
+      <li><a href="shop.html">Lighting</a></li>
+      <li><a href="cart.html">Basket</a></li>
+    </ul></div>
+    <div><h4>The shop</h4><ul>
+      <li><a href="visit.html">Opening hours</a></li>
+      <li><a href="visit.html">Finding us</a></li>
+      <li><a href="index.html#makers">Our makers</a></li>
+      <li><a href="visit.html#reserve">How reserving works</a></li>
+    </ul></div>
+    <div><h4>Help</h4><ul>
+      <li><a href="cart.html">Delivery</a></li>
+      <li><a href="cart.html">Returns</a></li>
+      <li><a href="visit.html">Gift wrapping</a></li>
+      <li><a href="visit.html">Contact</a></li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Holt &amp; Vine. 14 Vine Street.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

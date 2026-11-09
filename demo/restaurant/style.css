@@ -107,7 +107,7 @@ section.wrap{padding-block:clamp(2.5rem,6vw,5rem)}
 /* ---------- section head ---------- */
 .sec-head{text-align:center;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
 .sec-head .sc{color:var(--claret)}
-.sec-head h2{font-family:"Bodoni Moda",Didot,serif;font-size:var(--t-xl);margin-top:.7rem;line-height:1.08}
+.sec-head h1,.sec-head h2{font-family:"Bodoni Moda",Didot,serif;font-size:var(--t-xl);margin-top:.7rem;line-height:1.08}
 .sec-head p{margin-top:.8rem;color:var(--mid);max-width:52ch;margin-inline:auto}
 .sec-head.left{text-align:left}
 .sec-head.left p{margin-inline:0}

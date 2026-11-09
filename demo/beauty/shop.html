@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shop — ORIEL</title>
+<meta name="description" content="All ten products, with the active percentage on every label.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ann"><p>Free delivery over £50 · two samples with every order</p></div>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">Oriel</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="shop.html"$3>Shop</a>
+      <a href="routines.html"$4>Routines</a>
+      <a href="product.html">Ingredients</a>
+    </nav>
+    <span class="util">
+      <a href="routines.html">Help me choose</a>
+      <a class="bag" href="cart.html">Bag (<span id="bagcount">3</span>)</a>
+    </span>
+  </div>
+</header>
+
+<main>
+  <section class="wrap" style="padding-block:clamp(1.5rem,3vw,2.5rem) 0">
+    <h1 class="serif" style="font-size:var(--t-xl)">Ten products</h1>
+    <p style="margin-top:.7rem;max-width:50ch;color:var(--mid)">Filter by where it sits in a routine. If you would rather be told what to use, the <a href="routines.html" style="text-decoration:underline">routine builder</a> does that in two clicks.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:clamp(1.25rem,2.5vw,2rem)">
+    <div class="bar">
+      <button class="chip" data-step-filter="all" aria-pressed="true">Everything</button>
+      <button class="chip" data-step-filter="cleanse" aria-pressed="false">Cleanse</button>
+      <button class="chip" data-step-filter="prep" aria-pressed="false">Prep</button>
+      <button class="chip" data-step-filter="treat" aria-pressed="false">Treat</button>
+      <button class="chip" data-step-filter="seal" aria-pressed="false">Seal</button>
+      <button class="chip" data-step-filter="protect" aria-pressed="false">Protect</button>
+      <span class="right" id="count">10 products</span>
+    </div>
+
+    <div class="grid" id="grid">
+      <article class="card" data-step="cleanse">
+        <span class="plate b2" aria-hidden="true"></span>
+        <div class="body"><p class="for">Cleanse</p><h3>Quiet Milk Cleanser</h3>
+          <p>A non-foaming milk for skin that feels tight after washing. Takes off SPF without a second cleanse.</p>
+          <div class="buy"><span class="pr">£24</span><span class="size">150ml</span></div></div>
+      </article>
+      <article class="card" data-step="cleanse">
+        <span class="plate b4" aria-hidden="true"></span>
+        <div class="body"><p class="for">Cleanse</p><h3>Clear Gel Cleanser</h3>
+          <p>A low-foam gel with 2% salicylic acid for skin that gets oily by midday. Not for use twice a day at first.</p>
+          <div class="buy"><span class="pr">£22</span><span class="size">150ml</span></div></div>
+      </article>
+      <article class="card" data-step="prep">
+        <span class="plate b3" aria-hidden="true"></span>
+        <div class="body"><p class="for">Prep</p><h3>Barrier Mist</h3>
+          <p>Glycerin and panthenol in water. Goes on damp skin before anything else and makes the next step spread further.</p>
+          <div class="buy"><span class="pr">£19</span><span class="size">100ml</span></div></div>
+      </article>
+      <article class="card" data-step="treat">
+        <span class="plate b5" aria-hidden="true"></span>
+        <div class="body"><p class="for">Treat</p><h3>Bright Serum 10%</h3>
+          <p>Ten per cent ascorbic acid at pH 3.2, in an opaque bottle. Morning only, under SPF.</p>
+          <div class="buy"><span class="pr">£38</span><span class="size">30ml</span></div></div>
+      </article>
+      <article class="card" data-step="treat">
+        <span class="plate b6" aria-hidden="true"></span>
+        <div class="body"><p class="for">Treat</p><h3>Calm Serum</h3>
+          <p>Four per cent niacinamide with ceramides. The one to reach for when your skin is objecting to something else.</p>
+          <div class="buy"><span class="pr">£34</span><span class="size">30ml</span></div></div>
+      </article>
+      <article class="card" data-step="treat">
+        <span class="plate b1" aria-hidden="true"></span>
+        <div class="body"><p class="for">Treat</p><h3>Renew Serum 0.3%</h3>
+          <p>Retinaldehyde at the strength most people should start on. Twice a week to begin with, at night.</p>
+          <div class="buy"><span class="pr">£42</span><span class="size">30ml</span></div></div>
+      </article>
+      <article class="card" data-step="seal">
+        <span class="plate b1" aria-hidden="true"></span>
+        <div class="body"><p class="for">Seal</p><h3>Rich Night Cream</h3>
+          <p>Heavy, occlusive, slightly greasy by design. Goes on last and stays put until morning.</p>
+          <div class="buy"><span class="pr">£36</span><span class="size">50ml</span></div></div>
+      </article>
+      <article class="card" data-step="seal">
+        <span class="plate b2" aria-hidden="true"></span>
+        <div class="body"><p class="for">Seal</p><h3>Light Day Cream</h3>
+          <p>A lotion rather than a cream, for under SPF and makeup. Sinks in within a minute.</p>
+          <div class="buy"><span class="pr">£32</span><span class="size">50ml</span></div></div>
+      </article>
+      <article class="card" data-step="seal">
+        <span class="plate b5" aria-hidden="true"></span>
+        <div class="body"><p class="for">Seal</p><h3>Repair Balm</h3>
+          <p>An anhydrous balm with no emulsifiers, for patches that have gone past dry. Also fine on lips and knuckles.</p>
+          <div class="buy"><span class="pr">£26</span><span class="size">30ml</span></div></div>
+      </article>
+      <article class="card" data-step="protect">
+        <span class="plate b4" aria-hidden="true"></span>
+        <div class="body"><p class="for">Protect</p><h3>Daily SPF 50</h3>
+          <p>Mineral and chemical filters together. No white cast, no scent, and it does not pill under makeup.</p>
+          <div class="buy"><span class="pr">£28</span><span class="size">50ml</span></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="ing">
+      <div><h3>Why only ten</h3><p class="pct">The short version</p><p>Because eleven would mean two things doing the same job, and then we would have to write marketing copy explaining the difference rather than admitting there is not one.</p></div>
+      <div><h3>Samples</h3><p class="pct">Two with every order</p><p>Choose any two at checkout, including the serums. If a full-size product then disagrees with your skin, return it opened within sixty days.</p></div>
+      <div><h3>Refills</h3><p class="pct">From spring 2027</p><p>The serum bottles are already designed for it. We are not launching refills until the pouches are genuinely recyclable kerbside, which they are not yet.</p></div>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="logo">Oriel</p>
+      <p style="margin-top:.7rem;max-width:32ch">Ten products. Every ingredient listed at its actual percentage. Made in Hampshire.</p>
+      <form class="news" action="#" method="post">
+        <input type="email" name="email" placeholder="Email address" aria-label="Email address" required>
+        <button type="submit">Sign up</button>
+      </form>
+    </div>
+    <div><h4>Shop</h4><ul>
+      <li><a href="shop.html">Everything</a></li>
+      <li><a href="shop.html">Cleansers</a></li>
+      <li><a href="shop.html">Serums</a></li>
+      <li><a href="cart.html">Bag</a></li>
+    </ul></div>
+    <div><h4>Learn</h4><ul>
+      <li><a href="routines.html">Build a routine</a></li>
+      <li><a href="product.html">Ingredients</a></li>
+      <li><a href="routines.html#order">What order</a></li>
+      <li><a href="routines.html#start">Starting actives</a></li>
+    </ul></div>
+    <div><h4>Help</h4><ul>
+      <li><a href="cart.html">Delivery</a></li>
+      <li><a href="cart.html">Returns</a></li>
+      <li><a href="index.html">Contact</a></li>
+      <li><a href="routines.html">Samples</a></li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Oriel Skin Ltd. Cruelty free. Never tested on animals.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

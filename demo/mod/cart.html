@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bag — ORRIN</title>
+<meta name="description" content="Your bag. Free UK delivery over £120 and ninety days to return anything.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700;800&family=Hanken+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ann"><p>Capsule 04 is out — free UK delivery over £120</p></div>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">ORRIN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="shop.html"$3>Shop</a>
+      <a href="sizing.html"$4>Sizing</a>
+      <a href="index.html#story">Story</a>
+    </nav>
+    <span class="util">
+      <a href="sizing.html">Help</a>
+      <a class="bag" href="cart.html">Bag (<span id="bagcount">3</span>)</a>
+    </span>
+  </div>
+</header>
+
+<main>
+  <section class="wrap" style="padding-block:clamp(1.5rem,3vw,2.5rem) 0">
+    <h1 class="dg" style="font-size:var(--t-xl);text-transform:uppercase">Your bag</h1>
+    <p style="margin-top:.5rem;color:var(--mid)" id="units">4 items</p>
+  </section>
+
+  <section class="wrap" id="cart" style="padding-top:clamp(1.25rem,2.5vw,2rem)">
+    <div class="cart">
+      <div>
+        <div class="line" data-price="14500">
+          <span class="plate m1 c-espresso" aria-hidden="true"></span>
+          <div><h3>The Overshirt</h3><p class="vr">Espresso · M</p><button class="rm" data-remove>Remove</button></div>
+          <div class="right">
+            <span class="qty"><button data-step="-1" aria-label="One fewer">–</button><span class="n">1</span><button data-step="1" aria-label="One more">+</button></span>
+            <span class="lt">£145.00</span>
+          </div>
+        </div>
+        <div class="line" data-price="12000">
+          <span class="plate m3 c-sage" aria-hidden="true"></span>
+          <div><h3>Lambswool Crew</h3><p class="vr">Sage · M</p><button class="rm" data-remove>Remove</button></div>
+          <div class="right">
+            <span class="qty"><button data-step="-1" aria-label="One fewer">–</button><span class="n">1</span><button data-step="1" aria-label="One more">+</button></span>
+            <span class="lt">£120.00</span>
+          </div>
+        </div>
+        <div class="line" data-price="4800">
+          <span class="plate m5 c-bone" aria-hidden="true"></span>
+          <div><h3>Heavy Tee</h3><p class="vr">Bone · M</p><button class="rm" data-remove>Remove</button></div>
+          <div class="right">
+            <span class="qty"><button data-step="-1" aria-label="One fewer">–</button><span class="n">2</span><button data-step="1" aria-label="One more">+</button></span>
+            <span class="lt">£96.00</span>
+          </div>
+        </div>
+
+        <p id="empty" hidden style="padding-block:2.5rem;color:var(--mid)">Your bag is empty. <a href="shop.html" style="text-decoration:underline">Back to the capsule</a>.</p>
+
+        <p style="margin-top:1.4rem;font-size:var(--t-s);color:var(--mid);max-width:54ch">Trousers can be hemmed free before dispatch — add the length you want in the notes at checkout. Hemmed trousers can still be returned.</p>
+      </div>
+
+      <aside class="totals">
+        <h2>Order summary</h2>
+        <dl>
+          <dt>Subtotal</dt><dd id="sub">£361.00</dd>
+          <dt>UK delivery</dt><dd id="ship">Free</dd>
+          <dt>VAT</dt><dd>Included</dd>
+        </dl>
+        <div class="sum"><span>Total</span><span id="total">£361.00</span></div>
+        <div class="progress"><span id="bar" style="width:100%"></span></div>
+        <p class="fine" id="ship-note">Free UK delivery unlocked.</p>
+        <a class="btn solid block" href="#" style="margin-top:1rem">Checkout</a>
+        <p class="fine">Ninety days to return anything unworn, free, sale included. We refund to the original card within three working days of it arriving back.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="rail-note"><span class="caps">Completes the fit</span><a class="caps" href="shop.html">All eleven →</a></div>
+    <div class="grid">
+      <article class="card"><a class="shot" href="product.html"><span class="plate m2 c-espresso" aria-hidden="true"></span></a>
+        <a href="product.html"><div class="meta"><h3>Wide Trouser</h3><span class="pr num">£135</span></div></a><p class="cname">Espresso</p></article>
+      <article class="card"><a class="shot" href="product.html"><span class="plate m6 c-tan" aria-hidden="true"></span></a>
+        <a href="product.html"><div class="meta"><h3>Ribbed Beanie</h3><span class="pr num">£38</span></div></a><p class="cname">Tan</p></article>
+      <article class="card"><a class="shot" href="product.html"><span class="plate m4 c-sage" aria-hidden="true"></span></a>
+        <a href="product.html"><div class="meta"><h3>Chore Jacket</h3><span class="pr num">£165</span></div></a><p class="cname">Sage</p></article>
+      <article class="card"><a class="shot" href="product.html"><span class="plate m6 c-bone" aria-hidden="true"></span></a>
+        <a href="product.html"><div class="meta"><h3>Wool Scarf</h3><span class="pr num">£62</span></div></a><p class="cname">Bone</p></article>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="logo">ORRIN</p>
+      <p style="margin-top:.7rem;max-width:30ch">A capsule of eleven pieces, made in Leicester, restocked rather than replaced.</p>
+      <form class="news" action="#" method="post">
+        <input type="email" name="email" placeholder="Email address" aria-label="Email address" required>
+        <button type="submit">Sign up</button>
+      </form>
+    </div>
+    <div><h4>Shop</h4><ul>
+      <li><a href="shop.html">All eleven</a></li>
+      <li><a href="shop.html">Knitwear</a></li>
+      <li><a href="shop.html">Trousers</a></li>
+      <li><a href="cart.html">Bag</a></li>
+    </ul></div>
+    <div><h4>Help</h4><ul>
+      <li><a href="sizing.html">Size guide</a></li>
+      <li><a href="sizing.html#fit">How it fits</a></li>
+      <li><a href="cart.html">Delivery</a></li>
+      <li><a href="cart.html">Returns</a></li>
+    </ul></div>
+    <div><h4>About</h4><ul>
+      <li><a href="index.html#story">The capsule</a></li>
+      <li><a href="index.html#story">Where it is made</a></li>
+      <li><a href="index.html">Contact</a></li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Orrin Studio Ltd.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

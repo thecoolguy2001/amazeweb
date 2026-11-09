@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Routines — ORIEL</title>
+<meta name="description" content="Build a three-step routine from a concern and a time of day, with the reasoning shown.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ann"><p>Free delivery over £50 · two samples with every order</p></div>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">Oriel</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="shop.html"$3>Shop</a>
+      <a href="routines.html"$4>Routines</a>
+      <a href="product.html">Ingredients</a>
+    </nav>
+    <span class="util">
+      <a href="routines.html">Help me choose</a>
+      <a class="bag" href="cart.html">Bag (<span id="bagcount">3</span>)</a>
+    </span>
+  </div>
+</header>
+
+<main>
+  <section class="wrap" style="padding-block:clamp(1.5rem,3vw,2.5rem) 0">
+    <h1 class="serif" style="font-size:var(--t-xl);max-width:20ch">What should I actually use?</h1>
+    <p style="margin-top:.7rem;max-width:52ch;color:var(--mid)">Pick a concern and a time of day. You get three products, in order, and the reason they are in that order — which is the part most of the industry leaves out.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:clamp(1.25rem,2.5vw,2rem)">
+    <div class="builder" id="builder">
+      <div class="inner">
+        <div>
+          <h2>Tell us two things and we will write the routine.</h2>
+          <p class="lede">Three steps, in order, with the reason for each. No quiz, no email gate, and we will happily tell you that you need fewer products rather than more.</p>
+          <fieldset>
+            <legend>What is bothering you</legend>
+            <div class="opts">
+              <button type="button" class="opt" data-concern="dry" aria-pressed="true">Dryness</button>
+              <button type="button" class="opt" data-concern="breakouts" aria-pressed="false">Breakouts</button>
+              <button type="button" class="opt" data-concern="dull" aria-pressed="false">Dullness</button>
+              <button type="button" class="opt" data-concern="sensitive" aria-pressed="false">Sensitivity</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Which routine</legend>
+            <div class="opts">
+              <button type="button" class="opt" data-time="am" aria-pressed="true">Morning</button>
+              <button type="button" class="opt" data-time="pm" aria-pressed="false">Evening</button>
+            </div>
+          </fieldset>
+        </div>
+        <div class="routine">
+          <div class="head">
+            <h3 id="routine-title">Morning — dryness</h3>
+            <span class="tot" id="routine-total">—</span>
+          </div>
+          <div id="routine-steps"></div>
+          <p class="why" id="routine-why"></p>
+          <div class="foot">
+            <a class="btn solid" href="cart.html">Add all three</a>
+            <a class="btn" href="shop.html">Browse instead</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="order" style="padding-top:0">
+    <div class="sec-head"><p class="k">The rule</p><h2>Thinnest to thickest, and SPF last</h2></div>
+    <div class="ing">
+      <div><h3>1 — Cleanse</h3><p class="pct">Morning and evening</p><p>Once at night is enough unless you wear heavy SPF or makeup, in which case the milk first and the gel second. In the morning, plenty of people are fine with water alone and we are not going to pretend otherwise.</p></div>
+      <div><h3>2 — Treat</h3><p class="pct">One active at a time</p><p>On damp skin, thinnest first. Never two new actives in the same week — if something stings you need to know which thing it was.</p></div>
+      <div><h3>3 — Seal and protect</h3><p class="pct">Every morning, no exceptions</p><p>Moisturiser, then SPF over the top in the morning. SPF is the last step always; putting anything over it dilutes the film and the number on the bottle stops being true.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="start" style="padding-top:0">
+    <div class="sec-head"><p class="k">Starting actives</p><h2>Go slower than you want to</h2></div>
+    <table style="max-width:760px">
+      <thead><tr>
+        <th style="text-align:left;padding:.7rem .5rem;border-bottom:1px solid var(--forest);font-weight:500">Week</th>
+        <th style="text-align:left;padding:.7rem .5rem;border-bottom:1px solid var(--forest);font-weight:500">Renew Serum</th>
+        <th style="text-align:left;padding:.7rem .5rem;border-bottom:1px solid var(--forest);font-weight:500">What to expect</th>
+      </tr></thead>
+      <tbody style="font-size:var(--t-s);color:var(--mid)">
+        <tr><td style="padding:.65rem .5rem;border-bottom:1px solid var(--line)">1 – 2</td><td style="padding:.65rem .5rem;border-bottom:1px solid var(--line)">Twice a week</td><td style="padding:.65rem .5rem;border-bottom:1px solid var(--line)">Mild tightness the next morning. Nothing visible.</td></tr>
+        <tr><td style="padding:.65rem .5rem;border-bottom:1px solid var(--line)">3 – 4</td><td style="padding:.65rem .5rem;border-bottom:1px solid var(--line)">Three times a week</td><td style="padding:.65rem .5rem;border-bottom:1px solid var(--line)">Some flaking around the nose and chin. Normal. Moisturise, do not stop.</td></tr>
+        <tr><td style="padding:.65rem .5rem;border-bottom:1px solid var(--line)">5 – 8</td><td style="padding:.65rem .5rem;border-bottom:1px solid var(--line)">Every other night</td><td style="padding:.65rem .5rem;border-bottom:1px solid var(--line)">Texture starts to settle. Most people stop here and that is fine.</td></tr>
+        <tr><td style="padding:.65rem .5rem;border-bottom:1px solid var(--line)">9+</td><td style="padding:.65rem .5rem;border-bottom:1px solid var(--line)">Nightly, if you want</td><td style="padding:.65rem .5rem;border-bottom:1px solid var(--line)">Only if the previous step caused no irritation for a fortnight.</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:1.25rem;max-width:58ch;font-size:var(--t-s);color:var(--mid)">If your skin is red, sore, or stinging with water on it, you have gone too fast. Stop everything but cleanser and moisturiser for a week. This is extremely common and is not a reaction to the product so much as to the pace.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head"><p class="k">Still unsure</p><h2>Ask a person</h2>
+    <p>Two of us answer these and neither is on commission. Send a photo if you like; we will tell you honestly if the answer is a dermatologist rather than a serum.</p></div>
+    <p><a class="btn solid" href="index.html">Email us</a> <a class="btn" href="shop.html">Shop all ten</a></p>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="logo">Oriel</p>
+      <p style="margin-top:.7rem;max-width:32ch">Ten products. Every ingredient listed at its actual percentage. Made in Hampshire.</p>
+      <form class="news" action="#" method="post">
+        <input type="email" name="email" placeholder="Email address" aria-label="Email address" required>
+        <button type="submit">Sign up</button>
+      </form>
+    </div>
+    <div><h4>Shop</h4><ul>
+      <li><a href="shop.html">Everything</a></li>
+      <li><a href="shop.html">Cleansers</a></li>
+      <li><a href="shop.html">Serums</a></li>
+      <li><a href="cart.html">Bag</a></li>
+    </ul></div>
+    <div><h4>Learn</h4><ul>
+      <li><a href="routines.html">Build a routine</a></li>
+      <li><a href="product.html">Ingredients</a></li>
+      <li><a href="routines.html#order">What order</a></li>
+      <li><a href="routines.html#start">Starting actives</a></li>
+    </ul></div>
+    <div><h4>Help</h4><ul>
+      <li><a href="cart.html">Delivery</a></li>
+      <li><a href="cart.html">Returns</a></li>
+      <li><a href="index.html">Contact</a></li>
+      <li><a href="routines.html">Samples</a></li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Oriel Skin Ltd. Cruelty free. Never tested on animals.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

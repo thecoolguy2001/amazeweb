@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Basket — Holt &amp; Vine</title>
+<meta name="description" content="Your basket. Reserved items are held at the shop and not charged until you collect.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&family=Prata&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ann">
+  <div class="wrap">
+    <span class="dot" aria-hidden="true"></span>
+    <span>Open today until 6</span>
+    <span class="right">14 Vine Street · <a href="visit.html">Find the shop</a></span>
+  </div>
+</div>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">Holt <em>&amp;</em> Vine</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="shop.html"$3>Shop</a>
+      <a href="visit.html"$4>Visit</a>
+      <a href="index.html#makers">Makers</a>
+    </nav>
+    <span class="util">
+      <a href="visit.html">Contact</a>
+      <a class="bag" href="cart.html">Basket (<span id="bagcount">3</span>)</a>
+    </span>
+  </div>
+</header>
+
+<main>
+  <section class="wrap" style="padding-block:clamp(1.5rem,3vw,2.5rem) 0">
+    <h1 class="prata" style="font-size:var(--t-xl)">Your basket</h1>
+    <p style="margin-top:.4rem;color:var(--mid)" id="units">3 items</p>
+  </section>
+
+  <section class="wrap" id="cart" style="padding-top:clamp(1.25rem,2.5vw,2rem)">
+    <div class="cart">
+      <div>
+        <div class="line" data-price="6800" data-fulfil="deliver">
+          <span class="plate o1" aria-hidden="true"></span>
+          <div><h3>Stoneware Carafe</h3><p class="vr">Mira Lund · Suffolk</p>
+            <p class="how">Delivered</p>
+            <button class="rm" data-swap>Reserve it in the shop instead</button><br>
+            <button class="rm" data-remove>Remove</button></div>
+          <div class="right">
+            <span class="qty"><button data-step="-1" aria-label="One fewer">–</button><span class="n">1</span><button data-step="1" aria-label="One more">+</button></span>
+            <span class="lt">£68.00</span>
+          </div>
+        </div>
+
+        <div class="line" data-price="24500" data-fulfil="reserve">
+          <span class="plate o2" aria-hidden="true"></span>
+          <div><h3>Brass Table Lamp</h3><p class="vr">Atelier Roux · Lyon</p>
+            <p class="how">Reserved to try in the shop</p>
+            <button class="rm" data-swap>Have it delivered instead</button><br>
+            <button class="rm" data-remove>Remove</button></div>
+          <div class="right">
+            <span class="qty"><button data-step="-1" aria-label="One fewer">–</button><span class="n">1</span><button data-step="1" aria-label="One more">+</button></span>
+            <span class="lt">£245.00</span>
+          </div>
+        </div>
+
+        <div class="line" data-price="2200" data-fulfil="deliver">
+          <span class="plate o5" aria-hidden="true"></span>
+          <div><h3>Hand-Blown Tumbler</h3><p class="vr">Hallam Glass</p>
+            <p class="how">Delivered</p>
+            <button class="rm" data-swap>Reserve it in the shop instead</button><br>
+            <button class="rm" data-remove>Remove</button></div>
+          <div class="right">
+            <span class="qty"><button data-step="-1" aria-label="One fewer">–</button><span class="n">1</span><button data-step="1" aria-label="One more">+</button></span>
+            <span class="lt">£22.00</span>
+          </div>
+        </div>
+
+        <p id="empty" hidden style="padding-block:2.5rem;color:var(--mid)">Your basket is empty. <a href="shop.html" style="text-decoration:underline">Back to the shop</a>.</p>
+
+        <p style="margin-top:1.4rem;font-size:var(--t-s);color:var(--mid);max-width:54ch">Reserved things are held on the counter for 48 hours and are not charged until you are standing in front of them. You can mix the two in one order — we will send what needs sending and keep the rest here.</p>
+      </div>
+
+      <aside class="totals">
+        <h2>Summary</h2>
+        <dl>
+          <dt>To pay now</dt><dd id="sub">£90.00</dd>
+          <dt>Delivery</dt><dd id="ship">Free</dd>
+          <dt>Reserved</dt><dd id="held">£245.00 on collection</dd>
+        </dl>
+        <div class="sum"><span>Due today</span><span id="total">£90.00</span></div>
+        <p class="fine" id="ship-note"></p>
+        <a class="btn solid block" href="#" style="margin-top:1rem">Checkout</a>
+        <p class="fine">Free gift wrapping on anything in this basket — ask at the next step. Fourteen days to return anything delivered.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head"><div><h2>Also on the table this week</h2></div><a href="shop.html">All of it →</a></div>
+    <div class="grid">
+      <article class="card" data-online="3" data-shop="0">
+        <a class="shot" href="product.html"><span class="plate o3" aria-hidden="true"></span></a>
+        <p class="maker">Kettle &amp; Kiln</p><a href="product.html"><h3>Tall Vase, Plum</h3></a>
+        <p class="pr">£94</p><p class="avail"></p></article>
+      <article class="card" data-online="9" data-shop="6">
+        <a class="shot" href="product.html"><span class="plate o6" aria-hidden="true"></span></a>
+        <p class="maker">Dove Press</p><a href="product.html"><h3>Linen-Bound Notebook</h3></a>
+        <p class="pr">£26</p><p class="avail"></p></article>
+      <article class="card" data-online="4" data-shop="1">
+        <a class="shot" href="product.html"><span class="plate o4" aria-hidden="true"></span></a>
+        <p class="maker">Fen Weaving</p><a href="product.html"><h3>Linen Throw</h3></a>
+        <p class="pr">£145</p><p class="avail"></p></article>
+      <article class="card" data-online="5" data-shop="4">
+        <a class="shot" href="product.html"><span class="plate o1" aria-hidden="true"></span></a>
+        <p class="maker">Mira Lund, Suffolk</p><a href="product.html"><h3>Breakfast Bowl, Set of 2</h3></a>
+        <p class="pr">£54</p><p class="avail"></p></article>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="logo">Holt <em>&amp;</em> Vine</p>
+      <p style="margin-top:.7rem;max-width:32ch">A shop of about four hundred things, on Vine Street since 2016. Everything here is also on a shelf you can walk to.</p>
+      <form class="news" action="#" method="post">
+        <input type="email" name="email" placeholder="Email address" aria-label="Email address" required>
+        <button type="submit">Join</button>
+      </form>
+    </div>
+    <div><h4>Shop</h4><ul>
+      <li><a href="shop.html">Everything</a></li>
+      <li><a href="shop.html">Ceramics</a></li>
+      <li><a href="shop.html">Lighting</a></li>
+      <li><a href="cart.html">Basket</a></li>
+    </ul></div>
+    <div><h4>The shop</h4><ul>
+      <li><a href="visit.html">Opening hours</a></li>
+      <li><a href="visit.html">Finding us</a></li>
+      <li><a href="index.html#makers">Our makers</a></li>
+      <li><a href="visit.html#reserve">How reserving works</a></li>
+    </ul></div>
+    <div><h4>Help</h4><ul>
+      <li><a href="cart.html">Delivery</a></li>
+      <li><a href="cart.html">Returns</a></li>
+      <li><a href="visit.html">Gift wrapping</a></li>
+      <li><a href="visit.html">Contact</a></li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Holt &amp; Vine. 14 Vine Street.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

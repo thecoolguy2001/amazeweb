@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Skincare that explains itself — ORIEL</title>
+<meta name="description" content="ORIEL: ten products, every percentage published, and a routine builder that tells you what to use and why.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ann"><p>Free delivery over £50 · two samples with every order</p></div>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">Oriel</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="shop.html"$3>Shop</a>
+      <a href="routines.html"$4>Routines</a>
+      <a href="product.html">Ingredients</a>
+    </nav>
+    <span class="util">
+      <a href="routines.html">Help me choose</a>
+      <a class="bag" href="cart.html">Bag (<span id="bagcount">3</span>)</a>
+    </span>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <h1 class="serif">Ten products. <em>Every</em> percentage on the label.</h1>
+          <p class="sub">Most skincare hides the one number that matters. Ours is on the front of the bottle, because a 0.3% retinal and a 1% retinal are not the same product at the same price.</p>
+          <div class="actions">
+            <a class="btn solid" href="routines.html">Build my routine</a>
+            <a class="btn" href="shop.html">Shop all ten</a>
+          </div>
+          <div class="proof">
+            <span>Made in Hampshire</span><span>Cruelty free</span><span>Refillable from 2027</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem">
+          <span class="plate b1" aria-hidden="true"></span>
+          <span class="plate b3" aria-hidden="true"></span>
+          <span class="plate b5" aria-hidden="true"></span>
+          <span class="plate b2" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="builder" id="builder">
+      <div class="inner">
+        <div>
+          <h2>Tell us two things and we will write the routine.</h2>
+          <p class="lede">Three steps, in order, with the reason for each. No quiz, no email gate, and we will happily tell you that you need fewer products rather than more.</p>
+
+          <fieldset>
+            <legend>What is bothering you</legend>
+            <div class="opts">
+              <button type="button" class="opt" data-concern="dry" aria-pressed="true">Dryness</button>
+              <button type="button" class="opt" data-concern="breakouts" aria-pressed="false">Breakouts</button>
+              <button type="button" class="opt" data-concern="dull" aria-pressed="false">Dullness</button>
+              <button type="button" class="opt" data-concern="sensitive" aria-pressed="false">Sensitivity</button>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Which routine</legend>
+            <div class="opts">
+              <button type="button" class="opt" data-time="am" aria-pressed="true">Morning</button>
+              <button type="button" class="opt" data-time="pm" aria-pressed="false">Evening</button>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="routine">
+          <div class="head">
+            <h3 id="routine-title">Morning — dryness</h3>
+            <span class="tot" id="routine-total">—</span>
+          </div>
+          <div id="routine-steps"></div>
+          <p class="why" id="routine-why"></p>
+          <div class="foot">
+            <a class="btn solid" href="cart.html">Add all three</a>
+            <a class="btn" href="shop.html">Browse instead</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head mid">
+      <p class="k">The range</p>
+      <h2>Ten products, and that is on purpose</h2>
+      <p>Every one earns its place. If two things did the same job we stopped making one of them.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <span class="plate b2" aria-hidden="true"></span>
+        <div class="body"><p class="for">Cleanse</p><h3>Quiet Milk Cleanser</h3>
+          <p>A non-foaming milk for skin that feels tight after washing. Takes off SPF without a second cleanse.</p>
+          <div class="buy"><span class="pr">£24</span><span class="size">150ml</span></div></div>
+      </article>
+      <article class="card">
+        <span class="plate b5" aria-hidden="true"></span>
+        <div class="body"><p class="for">Treat</p><h3>Bright Serum 10%</h3>
+          <p>Ten per cent ascorbic acid at pH 3.2, in a bottle that keeps light out. Morning only, under SPF.</p>
+          <div class="buy"><span class="pr">£38</span><span class="size">30ml</span></div></div>
+      </article>
+      <article class="card">
+        <span class="plate b1" aria-hidden="true"></span>
+        <div class="body"><p class="for">Treat</p><h3>Renew Serum 0.3%</h3>
+          <p>Retinaldehyde at the strength most people should actually start on. Twice a week to begin with.</p>
+          <div class="buy"><span class="pr">£42</span><span class="size">30ml</span></div></div>
+      </article>
+      <article class="card">
+        <span class="plate b4" aria-hidden="true"></span>
+        <div class="body"><p class="for">Protect</p><h3>Daily SPF 50</h3>
+          <p>Mineral and chemical filters together, no white cast, no scent. The single highest-value thing here.</p>
+          <div class="buy"><span class="pr">£28</span><span class="size">50ml</span></div></div>
+      </article>
+    </div>
+    <p style="margin-top:1.75rem;text-align:center"><a class="btn" href="shop.html">All ten products →</a></p>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head mid"><p class="k">What is in it</p><h2>The four that do the work</h2>
+    <p>Everything else in the bottle is there to carry these, keep them stable, or stop them stinging.</p></div>
+    <div class="ing">
+      <div><h3>Ascorbic acid</h3><p class="pct">10% · Bright Serum</p><p>The best-evidenced brightening ingredient there is, and the most temperamental. Ours is at pH 3.2 in an opaque bottle and it will still go amber in about six months, which is normal and not a fault.</p></div>
+      <div><h3>Retinaldehyde</h3><p class="pct">0.3% · Renew Serum</p><p>A step closer to retinoic acid than retinol, so it works at lower strength with less irritation. Start twice a week. Anyone promising no adjustment period is selling you something weak.</p></div>
+      <div><h3>Niacinamide</h3><p class="pct">4% · Calm Serum</p><p>Four per cent, not ten. Above about five the evidence stops improving and the chance of flushing goes up, so we stopped where the research did.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head mid"><p class="k">Reviews</p><h2>Including the critical ones</h2></div>
+    <div class="revs">
+      <article class="rev"><p class="stars" aria-label="5 out of 5">★★★★★</p>
+        <p>“The routine builder told me to use fewer things than I was already using and my skin got better. I am slightly annoyed about how simple it turned out to be.”</p>
+        <p class="who">Rosa K.<span>Dryness · eight months</span></p></article>
+      <article class="rev"><p class="stars" aria-label="4 out of 5">★★★★☆</p>
+        <p>“The SPF is the best I have used and I have used a lot of them. Marked down one because the pump on the cleanser gave up after two months and I had to ask for a new one.”</p>
+        <p class="who">Dominic A.<span>Breakouts · one year</span></p></article>
+      <article class="rev"><p class="stars" aria-label="3 out of 5">★★★☆☆</p>
+        <p>“Good products, genuinely honest labelling, but ten products is not actually a lot of choice if your skin is difficult. I wanted something richer than the night cream and it does not exist.”</p>
+        <p class="who">Neve T.<span>Sensitivity · four months</span></p></article>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="logo">Oriel</p>
+      <p style="margin-top:.7rem;max-width:32ch">Ten products. Every ingredient listed at its actual percentage. Made in Hampshire.</p>
+      <form class="news" action="#" method="post">
+        <input type="email" name="email" placeholder="Email address" aria-label="Email address" required>
+        <button type="submit">Sign up</button>
+      </form>
+    </div>
+    <div><h4>Shop</h4><ul>
+      <li><a href="shop.html">Everything</a></li>
+      <li><a href="shop.html">Cleansers</a></li>
+      <li><a href="shop.html">Serums</a></li>
+      <li><a href="cart.html">Bag</a></li>
+    </ul></div>
+    <div><h4>Learn</h4><ul>
+      <li><a href="routines.html">Build a routine</a></li>
+      <li><a href="product.html">Ingredients</a></li>
+      <li><a href="routines.html#order">What order</a></li>
+      <li><a href="routines.html#start">Starting actives</a></li>
+    </ul></div>
+    <div><h4>Help</h4><ul>
+      <li><a href="cart.html">Delivery</a></li>
+      <li><a href="cart.html">Returns</a></li>
+      <li><a href="index.html">Contact</a></li>
+      <li><a href="routines.html">Samples</a></li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Oriel Skin Ltd. Cruelty free. Never tested on animals.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

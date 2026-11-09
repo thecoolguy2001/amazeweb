@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bag — ORIEL</title>
+<meta name="description" content="Your bag. Free delivery over £50 and two samples with every order.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ann"><p>Free delivery over £50 · two samples with every order</p></div>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">Oriel</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="shop.html"$3>Shop</a>
+      <a href="routines.html"$4>Routines</a>
+      <a href="product.html">Ingredients</a>
+    </nav>
+    <span class="util">
+      <a href="routines.html">Help me choose</a>
+      <a class="bag" href="cart.html">Bag (<span id="bagcount">3</span>)</a>
+    </span>
+  </div>
+</header>
+
+<main>
+  <section class="wrap" style="padding-block:clamp(1.5rem,3vw,2.5rem) 0">
+    <h1 class="serif" style="font-size:var(--t-xl)">Your bag</h1>
+    <p style="margin-top:.4rem;color:var(--mid)" id="units">3 items</p>
+  </section>
+
+  <section class="wrap" id="cart" style="padding-top:clamp(1.25rem,2.5vw,2rem)">
+    <div class="cart">
+      <div>
+        <div class="line" data-price="4200">
+          <span class="plate b1" aria-hidden="true"></span>
+          <div><h3>Renew Serum 0.3%</h3><p class="vr">30ml · evening</p><button class="rm" data-remove>Remove</button></div>
+          <div class="right">
+            <span class="qty"><button data-step="-1" aria-label="One fewer">–</button><span class="n">1</span><button data-step="1" aria-label="One more">+</button></span>
+            <span class="lt">£42.00</span>
+          </div>
+        </div>
+        <div class="line" data-price="2800">
+          <span class="plate b4" aria-hidden="true"></span>
+          <div><h3>Daily SPF 50</h3><p class="vr">50ml · morning</p><button class="rm" data-remove>Remove</button></div>
+          <div class="right">
+            <span class="qty"><button data-step="-1" aria-label="One fewer">–</button><span class="n">1</span><button data-step="1" aria-label="One more">+</button></span>
+            <span class="lt">£28.00</span>
+          </div>
+        </div>
+        <div class="line" data-price="2400">
+          <span class="plate b2" aria-hidden="true"></span>
+          <div><h3>Quiet Milk Cleanser</h3><p class="vr">150ml</p><button class="rm" data-remove>Remove</button></div>
+          <div class="right">
+            <span class="qty"><button data-step="-1" aria-label="One fewer">–</button><span class="n">1</span><button data-step="1" aria-label="One more">+</button></span>
+            <span class="lt">£24.00</span>
+          </div>
+        </div>
+
+        <p id="empty" hidden style="padding-block:2.5rem;color:var(--mid)">Your bag is empty. <a href="shop.html" style="text-decoration:underline">Back to the shop</a>.</p>
+
+        <div class="gift">
+          <span>Two free samples come with every order — choose them at checkout, including the serums.</span>
+        </div>
+      </div>
+
+      <aside class="totals">
+        <h2>Summary</h2>
+        <dl>
+          <dt>Subtotal</dt><dd id="sub">£94.00</dd>
+          <dt>Delivery</dt><dd id="ship">Free</dd>
+          <dt>Samples</dt><dd>2 included</dd>
+        </dl>
+        <div class="sum"><span>Total</span><span id="total">£94.00</span></div>
+        <p class="fine" id="ship-note">Free delivery and two samples of your choice are included.</p>
+        <a class="btn solid block" href="#" style="margin-top:1rem">Checkout</a>
+        <p class="fine">Sixty days to return anything, opened or not. If your skin disagreed with it we would rather have it back than have you keep it in a drawer.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head"><p class="k">Often added</p><h2>Completes the routine</h2></div>
+    <div class="grid">
+      <article class="card"><span class="plate b1" aria-hidden="true"></span>
+        <div class="body"><p class="for">Seal</p><h3>Rich Night Cream</h3><p>Goes over the serum. Skipping it is what makes actives hurt.</p>
+        <div class="buy"><span class="pr">£36</span><span class="size">50ml</span></div></div></article>
+      <article class="card"><span class="plate b3" aria-hidden="true"></span>
+        <div class="body"><p class="for">Prep</p><h3>Barrier Mist</h3><p>On damp skin first. Makes everything after it spread further.</p>
+        <div class="buy"><span class="pr">£19</span><span class="size">100ml</span></div></div></article>
+      <article class="card"><span class="plate b6" aria-hidden="true"></span>
+        <div class="body"><p class="for">Treat</p><h3>Calm Serum</h3><p>For the nights in between, and the week you overdid it.</p>
+        <div class="buy"><span class="pr">£34</span><span class="size">30ml</span></div></div></article>
+      <article class="card"><span class="plate b5" aria-hidden="true"></span>
+        <div class="body"><p class="for">Seal</p><h3>Repair Balm</h3><p>No emulsifiers, for patches that have gone past dry.</p>
+        <div class="buy"><span class="pr">£26</span><span class="size">30ml</span></div></div></article>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="logo">Oriel</p>
+      <p style="margin-top:.7rem;max-width:32ch">Ten products. Every ingredient listed at its actual percentage. Made in Hampshire.</p>
+      <form class="news" action="#" method="post">
+        <input type="email" name="email" placeholder="Email address" aria-label="Email address" required>
+        <button type="submit">Sign up</button>
+      </form>
+    </div>
+    <div><h4>Shop</h4><ul>
+      <li><a href="shop.html">Everything</a></li>
+      <li><a href="shop.html">Cleansers</a></li>
+      <li><a href="shop.html">Serums</a></li>
+      <li><a href="cart.html">Bag</a></li>
+    </ul></div>
+    <div><h4>Learn</h4><ul>
+      <li><a href="routines.html">Build a routine</a></li>
+      <li><a href="product.html">Ingredients</a></li>
+      <li><a href="routines.html#order">What order</a></li>
+      <li><a href="routines.html#start">Starting actives</a></li>
+    </ul></div>
+    <div><h4>Help</h4><ul>
+      <li><a href="cart.html">Delivery</a></li>
+      <li><a href="cart.html">Returns</a></li>
+      <li><a href="index.html">Contact</a></li>
+      <li><a href="routines.html">Samples</a></li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Oriel Skin Ltd. Cruelty free. Never tested on animals.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

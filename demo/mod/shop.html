@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shop — ORRIN</title>
+<meta name="description" content="All eleven pieces in the capsule, in five colourways. Change the colour from the grid.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700;800&family=Hanken+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ann"><p>Capsule 04 is out — free UK delivery over £120</p></div>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">ORRIN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="shop.html"$3>Shop</a>
+      <a href="sizing.html"$4>Sizing</a>
+      <a href="index.html#story">Story</a>
+    </nav>
+    <span class="util">
+      <a href="sizing.html">Help</a>
+      <a class="bag" href="cart.html">Bag (<span id="bagcount">3</span>)</a>
+    </span>
+  </div>
+</header>
+
+<main>
+  <section class="wrap" style="padding-block:clamp(1.5rem,3vw,2.5rem) 0">
+    <h1 class="dg" style="font-size:var(--t-xl);text-transform:uppercase">The capsule</h1>
+    <p style="margin-top:.7rem;max-width:48ch;color:var(--mid)">Eleven pieces, five colours. Tap a swatch on any card to see it in that colour — sizes that have gone in that colour are struck through straight away.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:clamp(1.25rem,2.5vw,2rem)">
+    <div class="bar">
+      <button class="chip" data-cat="all" aria-pressed="true">Everything</button>
+      <button class="chip" data-cat="outer" aria-pressed="false">Outerwear</button>
+      <button class="chip" data-cat="knit" aria-pressed="false">Knitwear</button>
+      <button class="chip" data-cat="trouser" aria-pressed="false">Trousers</button>
+      <button class="chip" data-cat="tee" aria-pressed="false">Jersey</button>
+      <span class="right">
+        <span id="count">11 styles</span>
+        <label for="sort" class="caps">Sort</label>
+        <select id="sort">
+          <option value="new">Newest</option>
+          <option value="price-asc">Price, low to high</option>
+          <option value="price-desc">Price, high to low</option>
+        </select>
+      </span>
+    </div>
+
+    <div class="grid" id="grid">
+      <article class="card" data-cat="outer" data-price="145" data-rank="1">
+        <a class="shot" href="product.html"><span class="plate m1 c-espresso" aria-hidden="true"></span></a>
+        <a href="product.html"><div class="meta"><h3>The Overshirt</h3><span class="pr num">£145</span></div></a>
+        <p class="cname">Espresso</p>
+        <div class="sw-row">
+          <button class="sw" data-swatch="c-espresso" data-name="Espresso" data-gone="XS" aria-pressed="true" aria-label="Espresso" style="background:#3B2B22"></button>
+          <button class="sw" data-swatch="c-tan" data-name="Tan" data-gone="S,XL" aria-pressed="false" aria-label="Tan" style="background:#A8714A"></button>
+          <button class="sw" data-swatch="c-sage" data-name="Sage" data-gone="" aria-pressed="false" aria-label="Sage" style="background:#7A8471"></button>
+          <button class="sw" data-swatch="c-bone" data-name="Bone" data-gone="M" aria-pressed="false" aria-label="Bone" style="background:#E8DFD2"></button>
+        </div>
+        <div class="sizes-avail"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+      </article>
+      <article class="card" data-cat="knit" data-price="120" data-rank="2">
+        <a class="shot" href="product.html"><span class="plate m3 c-espresso" aria-hidden="true"></span><span class="flag low">Low stock</span></a>
+        <a href="product.html"><div class="meta"><h3>Lambswool Crew</h3><span class="pr num">£120</span></div></a>
+        <p class="cname">Espresso</p>
+        <div class="sw-row">
+          <button class="sw" data-swatch="c-espresso" data-name="Espresso" data-gone="XS" aria-pressed="true" aria-label="Espresso" style="background:#3B2B22"></button>
+          <button class="sw" data-swatch="c-tan" data-name="Tan" data-gone="S,XL" aria-pressed="false" aria-label="Tan" style="background:#A8714A"></button>
+          <button class="sw" data-swatch="c-sage" data-name="Sage" data-gone="" aria-pressed="false" aria-label="Sage" style="background:#7A8471"></button>
+          <button class="sw" data-swatch="c-bone" data-name="Bone" data-gone="M" aria-pressed="false" aria-label="Bone" style="background:#E8DFD2"></button>
+        </div>
+        <div class="sizes-avail"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+      </article>
+      <article class="card" data-cat="trouser" data-price="135" data-rank="3">
+        <a class="shot" href="product.html"><span class="plate m2 c-espresso" aria-hidden="true"></span></a>
+        <a href="product.html"><div class="meta"><h3>Wide Trouser</h3><span class="pr num">£135</span></div></a>
+        <p class="cname">Espresso</p>
+        <div class="sw-row">
+          <button class="sw" data-swatch="c-espresso" data-name="Espresso" data-gone="XS" aria-pressed="true" aria-label="Espresso" style="background:#3B2B22"></button>
+          <button class="sw" data-swatch="c-tan" data-name="Tan" data-gone="S,XL" aria-pressed="false" aria-label="Tan" style="background:#A8714A"></button>
+          <button class="sw" data-swatch="c-sage" data-name="Sage" data-gone="" aria-pressed="false" aria-label="Sage" style="background:#7A8471"></button>
+          <button class="sw" data-swatch="c-bone" data-name="Bone" data-gone="M" aria-pressed="false" aria-label="Bone" style="background:#E8DFD2"></button>
+        </div>
+        <div class="sizes-avail"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+      </article>
+      <article class="card" data-cat="tee" data-price="48" data-rank="4">
+        <a class="shot" href="product.html"><span class="plate m5 c-espresso" aria-hidden="true"></span></a>
+        <a href="product.html"><div class="meta"><h3>Heavy Tee</h3><span class="pr num">£48</span></div></a>
+        <p class="cname">Espresso</p>
+        <div class="sw-row">
+          <button class="sw" data-swatch="c-espresso" data-name="Espresso" data-gone="XS" aria-pressed="true" aria-label="Espresso" style="background:#3B2B22"></button>
+          <button class="sw" data-swatch="c-tan" data-name="Tan" data-gone="S,XL" aria-pressed="false" aria-label="Tan" style="background:#A8714A"></button>
+          <button class="sw" data-swatch="c-sage" data-name="Sage" data-gone="" aria-pressed="false" aria-label="Sage" style="background:#7A8471"></button>
+          <button class="sw" data-swatch="c-bone" data-name="Bone" data-gone="M" aria-pressed="false" aria-label="Bone" style="background:#E8DFD2"></button>
+        </div>
+        <div class="sizes-avail"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+      </article>
+      <article class="card" data-cat="outer" data-price="165" data-rank="5">
+        <a class="shot" href="product.html"><span class="plate m4 c-espresso" aria-hidden="true"></span></a>
+        <a href="product.html"><div class="meta"><h3>Chore Jacket</h3><span class="pr num">£165</span></div></a>
+        <p class="cname">Espresso</p>
+        <div class="sw-row">
+          <button class="sw" data-swatch="c-espresso" data-name="Espresso" data-gone="XS" aria-pressed="true" aria-label="Espresso" style="background:#3B2B22"></button>
+          <button class="sw" data-swatch="c-tan" data-name="Tan" data-gone="S,XL" aria-pressed="false" aria-label="Tan" style="background:#A8714A"></button>
+          <button class="sw" data-swatch="c-sage" data-name="Sage" data-gone="" aria-pressed="false" aria-label="Sage" style="background:#7A8471"></button>
+          <button class="sw" data-swatch="c-bone" data-name="Bone" data-gone="M" aria-pressed="false" aria-label="Bone" style="background:#E8DFD2"></button>
+        </div>
+        <div class="sizes-avail"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+      </article>
+      <article class="card" data-cat="knit" data-price="38" data-rank="6">
+        <a class="shot" href="product.html"><span class="plate m6 c-espresso" aria-hidden="true"></span></a>
+        <a href="product.html"><div class="meta"><h3>Ribbed Beanie</h3><span class="pr num">£38</span></div></a>
+        <p class="cname">Espresso</p>
+        <div class="sw-row">
+          <button class="sw" data-swatch="c-espresso" data-name="Espresso" data-gone="XS" aria-pressed="true" aria-label="Espresso" style="background:#3B2B22"></button>
+          <button class="sw" data-swatch="c-tan" data-name="Tan" data-gone="S,XL" aria-pressed="false" aria-label="Tan" style="background:#A8714A"></button>
+          <button class="sw" data-swatch="c-sage" data-name="Sage" data-gone="" aria-pressed="false" aria-label="Sage" style="background:#7A8471"></button>
+          <button class="sw" data-swatch="c-bone" data-name="Bone" data-gone="M" aria-pressed="false" aria-label="Bone" style="background:#E8DFD2"></button>
+        </div>
+        <div class="sizes-avail"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+      </article>
+      <article class="card" data-cat="knit" data-price="138" data-rank="7">
+        <a class="shot" href="product.html"><span class="plate m3 c-espresso" aria-hidden="true"></span></a>
+        <a href="product.html"><div class="meta"><h3>Half-Zip Knit</h3><span class="pr num">£138</span></div></a>
+        <p class="cname">Espresso</p>
+        <div class="sw-row">
+          <button class="sw" data-swatch="c-espresso" data-name="Espresso" data-gone="XS" aria-pressed="true" aria-label="Espresso" style="background:#3B2B22"></button>
+          <button class="sw" data-swatch="c-tan" data-name="Tan" data-gone="S,XL" aria-pressed="false" aria-label="Tan" style="background:#A8714A"></button>
+          <button class="sw" data-swatch="c-sage" data-name="Sage" data-gone="" aria-pressed="false" aria-label="Sage" style="background:#7A8471"></button>
+          <button class="sw" data-swatch="c-bone" data-name="Bone" data-gone="M" aria-pressed="false" aria-label="Bone" style="background:#E8DFD2"></button>
+        </div>
+        <div class="sizes-avail"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+      </article>
+      <article class="card" data-cat="trouser" data-price="142" data-rank="8">
+        <a class="shot" href="product.html"><span class="plate m2 c-espresso" aria-hidden="true"></span></a>
+        <a href="product.html"><div class="meta"><h3>Pleated Trouser</h3><span class="pr num">£142</span></div></a>
+        <p class="cname">Espresso</p>
+        <div class="sw-row">
+          <button class="sw" data-swatch="c-espresso" data-name="Espresso" data-gone="XS" aria-pressed="true" aria-label="Espresso" style="background:#3B2B22"></button>
+          <button class="sw" data-swatch="c-tan" data-name="Tan" data-gone="S,XL" aria-pressed="false" aria-label="Tan" style="background:#A8714A"></button>
+          <button class="sw" data-swatch="c-sage" data-name="Sage" data-gone="" aria-pressed="false" aria-label="Sage" style="background:#7A8471"></button>
+          <button class="sw" data-swatch="c-bone" data-name="Bone" data-gone="M" aria-pressed="false" aria-label="Bone" style="background:#E8DFD2"></button>
+        </div>
+        <div class="sizes-avail"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+      </article>
+      <article class="card" data-cat="tee" data-price="58" data-rank="9">
+        <a class="shot" href="product.html"><span class="plate m5 c-espresso" aria-hidden="true"></span></a>
+        <a href="product.html"><div class="meta"><h3>Long-Sleeve Tee</h3><span class="pr num">£58</span></div></a>
+        <p class="cname">Espresso</p>
+        <div class="sw-row">
+          <button class="sw" data-swatch="c-espresso" data-name="Espresso" data-gone="XS" aria-pressed="true" aria-label="Espresso" style="background:#3B2B22"></button>
+          <button class="sw" data-swatch="c-tan" data-name="Tan" data-gone="S,XL" aria-pressed="false" aria-label="Tan" style="background:#A8714A"></button>
+          <button class="sw" data-swatch="c-sage" data-name="Sage" data-gone="" aria-pressed="false" aria-label="Sage" style="background:#7A8471"></button>
+          <button class="sw" data-swatch="c-bone" data-name="Bone" data-gone="M" aria-pressed="false" aria-label="Bone" style="background:#E8DFD2"></button>
+        </div>
+        <div class="sizes-avail"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+      </article>
+      <article class="card" data-cat="outer" data-price="185" data-rank="10">
+        <a class="shot" href="product.html"><span class="plate m1 c-espresso" aria-hidden="true"></span><span class="flag low">Low stock</span></a>
+        <a href="product.html"><div class="meta"><h3>Quilted Liner</h3><span class="pr num">£185</span></div></a>
+        <p class="cname">Espresso</p>
+        <div class="sw-row">
+          <button class="sw" data-swatch="c-espresso" data-name="Espresso" data-gone="XS" aria-pressed="true" aria-label="Espresso" style="background:#3B2B22"></button>
+          <button class="sw" data-swatch="c-tan" data-name="Tan" data-gone="S,XL" aria-pressed="false" aria-label="Tan" style="background:#A8714A"></button>
+          <button class="sw" data-swatch="c-sage" data-name="Sage" data-gone="" aria-pressed="false" aria-label="Sage" style="background:#7A8471"></button>
+          <button class="sw" data-swatch="c-bone" data-name="Bone" data-gone="M" aria-pressed="false" aria-label="Bone" style="background:#E8DFD2"></button>
+        </div>
+        <div class="sizes-avail"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+      </article>
+      <article class="card" data-cat="knit" data-price="62" data-rank="11">
+        <a class="shot" href="product.html"><span class="plate m6 c-espresso" aria-hidden="true"></span></a>
+        <a href="product.html"><div class="meta"><h3>Wool Scarf</h3><span class="pr num">£62</span></div></a>
+        <p class="cname">Espresso</p>
+        <div class="sw-row">
+          <button class="sw" data-swatch="c-espresso" data-name="Espresso" data-gone="XS" aria-pressed="true" aria-label="Espresso" style="background:#3B2B22"></button>
+          <button class="sw" data-swatch="c-tan" data-name="Tan" data-gone="S,XL" aria-pressed="false" aria-label="Tan" style="background:#A8714A"></button>
+          <button class="sw" data-swatch="c-sage" data-name="Sage" data-gone="" aria-pressed="false" aria-label="Sage" style="background:#7A8471"></button>
+          <button class="sw" data-swatch="c-bone" data-name="Bone" data-gone="M" aria-pressed="false" aria-label="Bone" style="background:#E8DFD2"></button>
+        </div>
+        <div class="sizes-avail"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="fitnote">
+      <div><h3>Not sure on size?</h3><p>Every product page carries flat measurements in centimetres and a line about how that piece actually fits. The size guide compares all eleven.</p></div>
+      <div><h3>Colour gone in your size?</h3><p>It will come back. Nothing is discontinued — tell us which and we will email you the day it lands.</p></div>
+      <div><h3>Ninety days</h3><p>Free returns on everything unworn, sale included, in the bag it arrived in.</p></div>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="logo">ORRIN</p>
+      <p style="margin-top:.7rem;max-width:30ch">A capsule of eleven pieces, made in Leicester, restocked rather than replaced.</p>
+      <form class="news" action="#" method="post">
+        <input type="email" name="email" placeholder="Email address" aria-label="Email address" required>
+        <button type="submit">Sign up</button>
+      </form>
+    </div>
+    <div><h4>Shop</h4><ul>
+      <li><a href="shop.html">All eleven</a></li>
+      <li><a href="shop.html">Knitwear</a></li>
+      <li><a href="shop.html">Trousers</a></li>
+      <li><a href="cart.html">Bag</a></li>
+    </ul></div>
+    <div><h4>Help</h4><ul>
+      <li><a href="sizing.html">Size guide</a></li>
+      <li><a href="sizing.html#fit">How it fits</a></li>
+      <li><a href="cart.html">Delivery</a></li>
+      <li><a href="cart.html">Returns</a></li>
+    </ul></div>
+    <div><h4>About</h4><ul>
+      <li><a href="index.html#story">The capsule</a></li>
+      <li><a href="index.html#story">Where it is made</a></li>
+      <li><a href="index.html">Contact</a></li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Orrin Studio Ltd.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

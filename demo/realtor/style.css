@@ -181,7 +181,7 @@ section.wrap{padding-block:clamp(2.5rem,6vw,5rem)}
 
 /* ---------- prose + spec table ---------- */
 .prose{display:grid;gap:1rem;max-width:62ch;margin-top:2rem}
-.prose h2{font-family:"Fraunces",Georgia,serif;font-size:var(--t-xl);margin-bottom:.3rem}
+.prose h1,.prose h2{font-family:"Fraunces",Georgia,serif;font-size:var(--t-xl);margin-bottom:.3rem}
 .prose p{color:#33382F}
 .spec{margin-top:2rem}
 .spec th,.spec td{text-align:left;padding:.65rem 0;border-bottom:1px solid var(--line);font-size:var(--t-s);vertical-align:top}
