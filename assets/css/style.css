@@ -233,9 +233,9 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
    body length. These two rules reproduce that; they are measured, not derived.
    Residual on the three sub-pages is +-40px because the live values disagree
    with each other. */
-.svcx-page .s-faq{margin-top:456px}
+.svcx-page .s-faq{margin-top:371px}   /* = .svcx-page .s-vision above it */
 .svc-stack .s-vision{margin-top:286px}
-.svc-stack .s-faq{margin-top:354px}
+.svc-stack .s-faq{margin-top:286px}   /* = .svc-stack .s-vision above it */
 
 
 
@@ -388,7 +388,14 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .faq-group{border-bottom:1px solid var(--line)}
 
 .s-vision{margin-top:194px}
-.s-faq{margin-top:259px}
+/* The FAQ used to sit 259px below whatever preceded it at every width, which
+   left the Our Vision block noticeably bottom-heavy: 194px above it, 259px
+   below. The gap below now equals the gap above on each page that has the
+   block. (259px was the published site's own value here -- this is a
+   deliberate departure.) The support page has no vision block and is measured:
+   160/161/105 against the published 160/161/105. */
+.s-faq{margin-top:194px}
+.s-form+.s-faq{margin-top:160px}
 /* live footer: 419px tall — 48px top padding, a 189px top band, 124px to the
    copyright line, then 28px bottom padding. */
 .footer{margin-top:102px;padding:48px 0 28px}
@@ -530,7 +537,8 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   .scard-right{width:min(428px,46%)}
   .svc-grid{max-width:none;margin-top:74px}
   .s-form{margin-top:176px}
-  .s-faq{margin-top:221px}
+  .s-faq{margin-top:194px}
+  .s-form+.s-faq{margin-top:161px}
   .tpl-grid{gap:40px}
 }
 
@@ -584,6 +592,7 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
      layout for /services/setup and /services/tools overlaps (it reports a
      NEGATIVE gap), so those follow /services rather than a broken target. */
   .s-faq{margin-top:113px}
+  .s-form+.s-faq{margin-top:105px}
   .svc-stack .s-faq,.svcx-page .s-faq{margin-top:201px}
   .svc.drop{margin-top:0}
 
