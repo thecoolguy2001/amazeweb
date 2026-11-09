@@ -203,18 +203,18 @@ def tpl_card(t):
     a surface-coloured shell with a rounded inner panel for the artwork and a
     second inner panel for the name, the category pill and the status."""
     return (f'<a class="tpl-card" href="/themes/{t["slug"]}/">'
-            f'<div class="tpl-thumb ph-stripes"></div>'
+            f'<div class="tpl-media"><div class="tpl-thumb ph-stripes"></div>'
+            f'<span class="tpl-soon">Coming Soon</span></div>'
             f'<div class="tpl-body">'
             f'<p class="tpl-name">{E(t["name"])}</p>'
-            f'<div class="tpl-tags"><span class="cat">{E(t["kicker"])}</span>'
-            f'<span class="soon">Coming Soon</span></div>'
+            f'<span class="tpl-cat">{E(t["kicker"])}</span>'
             f'</div></a>')
 
 def page_templates():
     cards = "".join(tpl_card(t) for t in THEMES)
     body = (hero("Find the perfect website template for your business.",
                  "Designed for conversions, easy to customize, and ready to launch.") + '</section>'
-            + f'<section class="wrap tpl-sec"><p class="t-label tag">Templates</p>'
+            + f'<section class="wrap tpl-sec">'
               f'<h2 class="t-section tpl-head">Latest Templates</h2>'
               f'<div class="tpl-grid">{cards}</div></section>'
             + vision_and_services(SERVICES_SVC) + faq_block())

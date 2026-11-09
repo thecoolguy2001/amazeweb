@@ -430,7 +430,6 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
    tags. The old version was a bare 4px-radius grey rectangle with three lines
    of loose text under it, which belonged to no part of the system. */
 .tpl-sec{margin-top:77px}   /* the gap the old .tpl-head margin used to give */
-.tpl-sec .tag{margin-bottom:18px}
 .tpl-head{margin-top:0}
 .tpl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
 .tpl-card{
@@ -439,22 +438,30 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   transition:box-shadow .22s ease,transform .22s ease;
 }
 .tpl-card:hover{box-shadow:var(--shadow-card);transform:translateY(-3px)}
+.tpl-media{position:relative}
 .tpl-thumb{
   width:100%;aspect-ratio:313/240;border-radius:var(--r-inner);
-  background-color:var(--surface-2);object-fit:cover;
+  background-color:var(--surface-2);object-fit:cover;display:block;
+}
+/* The status rides on the artwork. Side by side with the category pill it had
+   to wrap on the longest one ("Production Studio Site"), which made that card
+   -- and its whole grid row -- taller than the rest. */
+.tpl-soon{
+  position:absolute;top:12px;right:12px;
+  padding:5px 11px;border-radius:var(--r-pill);
+  background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
+  font-size:13px;line-height:18px;font-weight:500;letter-spacing:-.2px;color:#0384C4;
 }
 .tpl-body{
   background:var(--white);border-radius:var(--r-inner);
-  padding:16px 16px 14px;display:flex;flex-direction:column;gap:12px;
+  padding:16px;display:flex;flex-direction:column;gap:10px;align-items:flex-start;
 }
 .tpl-name{font-size:20px;line-height:26px;font-weight:500;letter-spacing:-.6px;color:var(--ink-2)}
-.tpl-tags{display:flex;flex-wrap:wrap;gap:8px}
-.tpl-tags span{
+.tpl-cat{
   padding:6px 12px;border-radius:var(--r-pill);
   font-size:14px;line-height:20px;letter-spacing:-.4px;
+  background:var(--surface);color:var(--grey-2);
 }
-.tpl-tags .cat{background:var(--surface);color:var(--grey-2)}
-.tpl-tags .soon{background:#EAF7FF;color:#0384C4;font-weight:500}
 
 /* ---------- horizontal rail (More themes to explore) ---------- */
 .rail-wrap{position:relative}
@@ -590,7 +597,12 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
      480px columns). The published site stacks the vision block here and drops
      the template grid to two columns, so this follows it. */
   .vision{grid-template-columns:1fr;gap:24px;margin-left:0;max-width:none}
-  .tpl-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;justify-items:center}
+  /* Tracks stay equal and the card is capped and centred inside its track.
+     `justify-items:center` was doing the centring before, but that also sizes
+     each item to its own content -- the category pills differ in length, so
+     every card came out a different width. */
+  .tpl-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+  .tpl-grid .tpl-card{width:313px;max-width:100%;justify-self:center}
   .theme-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
 }
 
@@ -656,6 +668,7 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   .faq-a,.faq-q{font-size:20px;line-height:28px}
 
   .tpl-grid{grid-template-columns:minmax(0,1fr);gap:32px;max-width:420px}
+  .tpl-grid .tpl-card{width:auto;max-width:none;justify-self:stretch}
   .theme-split{grid-template-columns:1fr}
   .theme-row{grid-template-columns:1fr;gap:20px}
   .theme-resp .row{grid-template-columns:1fr}
