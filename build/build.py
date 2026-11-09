@@ -19,7 +19,7 @@ CARET = ('<svg class="caret" viewBox="0 0 24 24" fill="none" aria-hidden="true">
          'stroke-linecap="round" stroke-linejoin="round"/></svg>')
 SVC_ICONS = {
  "scan": '<svg viewBox="0 0 24 24" fill="none" stroke="#17A34A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V5a2 2 0 0 1 2-2h3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/><circle cx="12" cy="12" r="3.2"/></svg>',
- "framer": '<svg viewBox="0 0 24 24" fill="#17A34A"><path d="M6 2h12v6H12L6 2zm0 6h12l-6 6H6V8zm0 6h6v6l-6-6z"/></svg>',
+ "code": '<svg viewBox="0 0 24 24" fill="none" stroke="#17A34A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8.5 8.5-4 3.5 4 3.5M15.5 8.5l4 3.5-4 3.5M13.5 5.5l-3 13"/></svg>',
  "monitor": '<svg viewBox="0 0 24 24" fill="none" stroke="#17A34A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8.5 21h7M12 17v4"/></svg>',
 }
 SOCIAL_SVG = {

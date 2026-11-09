@@ -539,7 +539,15 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   .s-form{margin-top:176px}
   .s-faq{margin-top:194px}
   .s-form+.s-faq{margin-top:161px}
-  .tpl-grid{gap:40px}
+
+  /* Tablet overflow. Three blocks kept their desktop fixed widths all the way
+     down to 810px and pushed the page sideways: .vision (a 456+684 grid plus a
+     30px indent = 1200px), .tpl-grid (three 313px cards) and .theme-row (two
+     480px columns). The published site stacks the vision block here and drops
+     the template grid to two columns, so this follows it. */
+  .vision{grid-template-columns:1fr;gap:24px;margin-left:0;max-width:none}
+  .tpl-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;justify-items:center}
+  .theme-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
 }
 
 /* ==========================================================================
@@ -591,6 +599,10 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
      published site runs 113px on home and 201px on /services; its own phone
      layout for /services/setup and /services/tools overlaps (it reports a
      NEGATIVE gap), so those follow /services rather than a broken target. */
+  /* .s-vision carried a flat 194px top margin at every width. The published
+     site drops to 94px of clearance above the block on a phone (194 desktop,
+     183 tablet), which also evens it up against the 113px below it. */
+  .s-vision{margin-top:112px}
   .s-faq{margin-top:113px}
   .s-form+.s-faq{margin-top:105px}
   .svc-stack .s-faq,.svcx-page .s-faq{margin-top:201px}
