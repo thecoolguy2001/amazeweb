@@ -633,12 +633,16 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 
   .hero{gap:36px}
   .stack{gap:24px}
-  .stack-item{position:static}
+  /* The cards pin and stack here as they do at desktop. `position:static` used
+     to switch the effect off below 810px. The offset clears the 51px nav pill
+     and its 13px of top padding. */
+  .stack-item{position:sticky;top:76px}
   /* Phone sticky cards: the published site drops the screenshot entirely here
      (15 images in the DOM at 390px vs 18 at desktop) and runs a 315x514 card
      with 48px/24px padding and a 24px radius. Keeping the image was adding
-     ~250px to every card. The stat pair is dropped too: at 390px the published
-     cards render heading + body + button only. */
+     ~250px to every card, which also stops the card fitting the scrollport and
+     breaks the pinning below. The stat pair is dropped too: at 390px the
+     published cards render heading + body + button only. */
   .scard{flex-direction:column;padding:48px 24px;gap:48px;height:auto;
          min-height:0;border-radius:24px}
   .scard::after{width:360px;height:360px;right:-40px;top:-60px}
@@ -702,6 +706,13 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 @media (max-width:359px){
   .t-hero{font-size:38px;line-height:45px}
 }
+
+/* A sticky card taller than the scrollport pins its top and parks its bottom
+   permanently below the fold -- you can never scroll to see the rest of it. So
+   the pinning switches off on short viewports: the card runs ~512px at 360px
+   and wider (needs 588 with the 76px offset) and ~654px below that (needs 730). */
+@media (max-width:809px) and (max-height:619px){ .stack-item{position:static} }
+@media (max-width:359px) and (max-height:744px){ .stack-item{position:static} }
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
