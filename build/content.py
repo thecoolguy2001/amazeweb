@@ -225,6 +225,13 @@ THEMES = [
          includes="Owner review: confirm programs, age groups, schedule, safety details, and contact."),
 ]
 
+# Which templates ship as Shopify themes. The rest are not storefronts, so they
+# carry no platform tag at all rather than a second label that says "not Shopify".
+SHOPIFY_THEMES = {"styler", "clothing-site", "cosmetics-site", "icon", "drop"}
+for _t in THEMES:
+    if _t["slug"] in SHOPIFY_THEMES:
+        _t["platform"] = "Shopify"
+
 THEME_SLUG_TO_CARD = {t["slug"]: t for t in THEMES}
 
 MAKE_IT_YOURS = ("Customize colors, fonts, imagery, copy, sections, and buttons to fit your brand. "

@@ -203,9 +203,11 @@ def tpl_card(t):
     """One template card, in the same language as the home-page service cards:
     a surface-coloured shell with a rounded inner panel for the artwork and a
     second inner panel for the name, the category pill and the status."""
+    plat = (f'<span class="tpl-plat">{E(t["platform"])}</span>'
+            if t.get("platform") else "")
     return (f'<a class="tpl-card" href="/themes/{t["slug"]}/">'
             f'<div class="tpl-media"><div class="tpl-thumb ph-stripes"></div>'
-            f'<span class="tpl-soon">Coming Soon</span></div>'
+            f'{plat}<span class="tpl-soon">Coming Soon</span></div>'
             f'<div class="tpl-body">'
             f'<p class="tpl-name">{E(t["name"])}</p>'
             f'<span class="tpl-cat">{E(t["kicker"])}</span>'
