@@ -74,13 +74,28 @@ section.wrap{padding-block:clamp(2.5rem,6vw,4.5rem)}
 .btn.block{width:100%}
 .btn[disabled]{border-color:var(--line);color:var(--mid);background:transparent;pointer-events:none}
 
-/* ---------- hero ---------- */
-.hero{padding-block:clamp(1.5rem,4vw,3rem) 0}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.25rem,3vw,2.5rem);align-items:end}
-.hero h1{font-size:var(--t-hero);text-transform:uppercase}
-.hero h1 em{font-style:normal;color:var(--tan)}
-.hero .sub{margin-top:1.1rem;max-width:40ch;color:var(--mid)}
-.hero .actions{margin-top:1.6rem;display:flex;gap:.7rem;flex-wrap:wrap}
+/* ---------- hero: the rail --------------------------------------------
+   Five garments hung in a row and the line of the season laid straight
+   across them on a solid band. The clothes carry the fold; the words sit
+   on top of them rather than in a column beside a picture. */
+.hero{padding-block:clamp(1rem,2.5vw,1.75rem) 0}
+.rail-hero{position:relative}
+.rail-hero .strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
+.rail-hero .strip .plate{aspect-ratio:2/3;border-radius:0}
+.rail-hero .band{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);
+  background:var(--bone);padding-block:clamp(.7rem,1.8vw,1.4rem);text-align:center}
+.rail-hero h1{font-size:clamp(1.6rem,6.4vw,5rem);text-transform:uppercase;line-height:.9}
+.rail-hero h1 em{font-style:normal;color:var(--tan)}
+.hero .underrail{display:grid;grid-template-columns:minmax(0,1.3fr) auto;gap:1.5rem;
+  align-items:end;margin-top:1.1rem}
+.hero .sub{max-width:52ch;color:var(--mid)}
+.hero .actions{display:flex;gap:.7rem;flex-wrap:wrap}
+/* Below 760 a five-up filmstrip is five slivers, so it drops to three. */
+@media (max-width:760px){
+  .rail-hero .strip{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .rail-hero .strip .plate:nth-child(n+4){display:none}
+  .hero .underrail{grid-template-columns:1fr}
+}
 
 /* ---------- plates: garments recoloured by custom property ----------------
    Every shape paints with var(--f) on var(--b), so one class on the plate

@@ -90,12 +90,36 @@ section.wrap{padding-block:clamp(2.5rem,6vw,4.5rem)}
 .mode-note{font-size:var(--t-s);color:var(--mid);margin-top:.6rem;max-width:46ch}
 .mode-note b{color:var(--ink)}
 
-/* ---------- hero ---------- */
-.hero{padding-block:clamp(2rem,5vw,4rem) 0}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,3rem);align-items:center}
-.hero h1{font-size:var(--t-hero)}
-.hero .sub{margin-top:1rem;max-width:42ch;color:var(--mid);font-size:var(--t-l);line-height:1.55}
-.hero .actions{margin-top:1.6rem;display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
+/* ---------- hero: the archive -----------------------------------------
+   The shop holds about four hundred things, so the fold is a contact
+   sheet of them with the headline taking one cell instead of sitting in
+   a column beside a picture. The grid is the argument. */
+.hero{padding-block:clamp(1.25rem,3vw,2.25rem) 0}
+.archive{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px}
+.archive .cell{position:relative;overflow:hidden;border-radius:5px}
+.archive .cell .plate{border-radius:0;aspect-ratio:1;height:100%}
+.archive .big{grid-column:span 2;grid-row:span 2}
+.archive .big .plate{aspect-ratio:auto;height:100%}
+.archive .say{grid-column:span 4;grid-row:span 2;background:var(--plum);color:var(--stone);
+  border-radius:5px;padding:clamp(1.1rem,2.2vw,2rem);display:flex;flex-direction:column;
+  justify-content:space-between;gap:1rem;min-width:0}
+.archive .say h1{font-size:clamp(1.25rem,2.3vw,2.05rem);line-height:1.15}
+.archive .say .sub{color:#C9BCCE;font-size:var(--t-s);max-width:36ch}
+.archive .say .actions{display:flex;gap:.6rem;flex-wrap:wrap}
+.archive .say .btn{border-color:var(--stone);color:var(--stone)}
+.archive .say .btn:hover{background:var(--stone);color:var(--plum)}
+.archive .say .btn.gold{border-color:var(--gold);background:var(--gold);color:var(--ink)}
+.hero .undergrid{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  margin-top:.9rem;font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+@media (max-width:900px){
+  .archive{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .archive .say{grid-column:span 4}
+}
+@media (max-width:520px){
+  .archive{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .archive .say{grid-column:span 3}
+  .archive .big{grid-column:span 2;grid-row:span 2}
+}
 
 /* ---------- plates: shop objects ---------- */
 .plate{display:block;position:relative;overflow:hidden;aspect-ratio:1;border-radius:var(--r);background:var(--stone)}
