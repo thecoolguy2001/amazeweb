@@ -125,6 +125,7 @@ def shell(title, desc, body, extra_head="", cls=""):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js')</script>
 <title>{E(title)}</title>
 <meta name="description" content="{E(desc)}">
 <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">

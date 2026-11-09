@@ -245,6 +245,7 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
     width:100%;max-width:none;
     flex-direction:column;align-items:stretch;justify-content:flex-start;
     gap:0;height:51px;padding:0 18px;overflow:hidden;
+    contain:layout paint;
     transition:height .42s cubic-bezier(.22,.61,.36,1);
   }
   .nav-pill.open{height:267px}
@@ -318,6 +319,7 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   width:590px;height:590px;border-radius:1000px;
   background:var(--lime);filter:blur(100px);opacity:.15;
   right:-1px;top:-45px;
+  will-change:transform;   /* rasterise the blur once instead of per scroll frame */
 }
 .scard > *{position:relative;z-index:1}
 .scard-left{flex:1;display:flex;flex-direction:column}
@@ -415,7 +417,8 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .faq-panel{display:flex;flex-direction:column;gap:28px}
 .faq-panel>:first-child{margin-top:4px}
 .faq-panel>:last-child{margin-bottom:36px}
-.faq-group.anim .faq-panel{overflow:hidden;transition:height .38s cubic-bezier(.22,.61,.36,1)}
+.faq-group.anim .faq-panel{overflow:hidden;contain:layout paint;
+  transition:height .38s cubic-bezier(.22,.61,.36,1)}
 .faq-group.anim .faq-panel>*{opacity:0;transition:opacity .3s ease .05s}
 .faq-group.anim[open]:not(.closing) .faq-panel>*{opacity:1}
 .faq-q{font-size:20px;line-height:28px;font-weight:700;margin-bottom:6px}
@@ -437,7 +440,9 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   background:var(--surface);border-radius:var(--r-panel);
   transition:box-shadow .22s ease,transform .22s ease;
 }
-.tpl-card:hover{box-shadow:var(--shadow-card);transform:translateY(-3px)}
+@media (hover:hover){
+  .tpl-card:hover{box-shadow:var(--shadow-card);transform:translateY(-3px)}
+}
 .tpl-media{position:relative}
 .tpl-thumb{
   width:100%;aspect-ratio:313/240;border-radius:var(--r-inner);
@@ -449,7 +454,9 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .tpl-soon{
   position:absolute;top:12px;right:12px;
   padding:5px 11px;border-radius:var(--r-pill);
-  background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
+  background:rgba(255,255,255,.95);   /* no backdrop-filter: at 95% white the
+     blur behind it is invisible, and 14 of them on /templates each force the
+     compositor to re-sample the backdrop on every scroll frame. */
   font-size:13px;line-height:18px;font-weight:500;letter-spacing:-.2px;color:#0384C4;
 }
 .tpl-body{
@@ -724,6 +731,21 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .faq-head::-webkit-details-marker{display:none}
 .faq-head::marker{content:""}
 
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
-.reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+/* Scroll reveal.
+   The hidden state is set in CSS off the `js` class, which an inline script in
+   <head> adds before anything paints. It used to be applied by app.js, which
+   is deferred and therefore runs AFTER first paint: every card rendered fully
+   visible, then faded OUT over 600ms when the class landed, then faded back
+   in. On a throttled phone that was plainly visible (measured: opacity 1.00 at
+   49ms, class added at 275ms, down to 0.13 by 497ms).
+   Keep this element list and the one in app.js in step. */
+html.js :is(.scard,.svc,.tpl-card,.faq-group,.theme-note,.form-card):not(.rail *){
+  opacity:0;transform:translateY(18px);
+  transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);
+}
+html.js :is(.scard,.svc,.tpl-card,.faq-group,.theme-note,.form-card).in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html.js :is(.scard,.svc,.tpl-card,.faq-group,.theme-note,.form-card):not(.rail *){
+    opacity:1;transform:none;transition:none;
+  }
+}

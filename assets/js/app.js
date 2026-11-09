@@ -142,11 +142,20 @@
   });
 
   /* Reveal-on-scroll, mirroring the entrance fades on the published site */
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-    /* Cards inside a horizontal rail are skipped: the ones off to the right
-       never intersect the viewport, so they would sit at opacity 0 until you
-       scrolled the rail sideways and then fade UP into place, which reads as a
-       glitch. The rail gets no entrance of its own. */
+  var revealSel = '.scard, .svc, .tpl-card, .faq-group, .theme-note, .form-card';
+  if (!('IntersectionObserver' in window)) {
+    /* The hidden state is in CSS now, so without an observer to clear it the
+       page would stay blank. Show everything at once instead. */
+    Array.prototype.forEach.call(document.querySelectorAll(revealSel),
+      function (el) { el.classList.add('in'); });
+  } else if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    /* The hidden state already comes from CSS (html.js ...), so nothing is
+       added here -- adding it from this deferred script is what made the page
+       fade out after first paint. We only mark elements as they come into
+       view. Cards inside a horizontal rail are skipped: the ones off to the
+       right never intersect the viewport, so they would sit at opacity 0 until
+       you scrolled the rail sideways and then fade UP into place. The CSS
+       selector excludes them too -- keep the two lists in step. */
     var targets = Array.prototype.filter.call(
       document.querySelectorAll('.scard, .svc, .tpl-card, .faq-group, .theme-note, .form-card'),
       function (el) { return !el.closest('.rail'); });
@@ -155,6 +164,6 @@
         if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-    targets.forEach(function (t) { t.classList.add('reveal'); io.observe(t); });
+    targets.forEach(function (t) { io.observe(t); });
   }
 })();
