@@ -17,6 +17,12 @@ CHEV = ('<svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">'
 CARET = ('<svg class="caret" viewBox="0 0 24 24" fill="none" aria-hidden="true">'
          '<path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" '
          'stroke-linecap="round" stroke-linejoin="round"/></svg>')
+CARET_L = ('<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">'
+           '<path d="m15 5-7 7 7 7" stroke="currentColor" stroke-width="1.8" '
+           'stroke-linecap="round" stroke-linejoin="round"/></svg>')
+CARET_R = ('<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">'
+           '<path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="1.8" '
+           'stroke-linecap="round" stroke-linejoin="round"/></svg>')
 SVC_ICONS = {
  "scan": '<svg viewBox="0 0 24 24" fill="none" stroke="#17A34A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V5a2 2 0 0 1 2-2h3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/><circle cx="12" cy="12" r="3.2"/></svg>',
  "code": '<svg viewBox="0 0 24 24" fill="none" stroke="#17A34A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8.5 8.5-4 3.5 4 3.5M15.5 8.5l4 3.5-4 3.5M13.5 5.5l-3 13"/></svg>',
@@ -192,17 +198,24 @@ def page_service_sub(key):
             + vision_and_services(SERVICES_SVC) + faq_block())
     return shell(d["title"], d["desc"], body, cls="svcx-page")
 
+def tpl_card(t):
+    """One template card, in the same language as the home-page service cards:
+    a surface-coloured shell with a rounded inner panel for the artwork and a
+    second inner panel for the name, the category pill and the status."""
+    return (f'<a class="tpl-card" href="/themes/{t["slug"]}/">'
+            f'<div class="tpl-thumb ph-stripes"></div>'
+            f'<div class="tpl-body">'
+            f'<p class="tpl-name">{E(t["name"])}</p>'
+            f'<div class="tpl-tags"><span class="cat">{E(t["kicker"])}</span>'
+            f'<span class="soon">Coming Soon</span></div>'
+            f'</div></a>')
+
 def page_templates():
-    cards = ""
-    for t in THEMES:
-        cards += (f'<a class="tpl-card" href="/themes/{t["slug"]}/">'
-                  f'<div class="tpl-thumb ph-stripes"></div>'
-                  f'<p class="tpl-name">{E(t["name"])}</p>'
-                  f'<p class="tpl-meta">{E(t["kicker"])}</p>'
-                  f'<p class="tpl-meta">Coming Soon</p></a>')
+    cards = "".join(tpl_card(t) for t in THEMES)
     body = (hero("Find the perfect website template for your business.",
                  "Designed for conversions, easy to customize, and ready to launch.") + '</section>'
-            + f'<section class="wrap"><h2 class="t-section tpl-head" style="margin-bottom:52px">Latest Templates</h2>'
+            + f'<section class="wrap tpl-sec"><p class="t-label tag">Templates</p>'
+              f'<h2 class="t-section tpl-head">Latest Templates</h2>'
               f'<div class="tpl-grid">{cards}</div></section>'
             + vision_and_services(SERVICES_SVC) + faq_block())
     return shell("Templates | Amazé Web",
@@ -236,10 +249,8 @@ def page_support():
         "Get help with AmazeWeb templates, setup, and launch support. Check the FAQs or send a message.", body)
 
 def page_theme(t):
-    others = ""
-    for o in THEMES:
-        others += (f'<a href="/themes/{o["slug"]}/"><span class="k">{E(o["kicker"])}</span>'
-                   f'<span class="n">{E(o["name"])}</span><span class="s">Coming Soon</span></a>')
+    # The rail skips the theme you are already on -- the old grid listed it.
+    others = "".join(tpl_card(o) for o in THEMES if o["slug"] != t["slug"])
     body = f"""<section class="wrap theme-head">
 <p class="theme-kicker">{E(t["kicker"])}</p>
 <h1 class="t-page">{E(t["name"])}</h1>
@@ -267,7 +278,7 @@ def page_theme(t):
 <h2>Make it yours.</h2><p class="lead">{E(MAKE_IT_YOURS)}</p>
 </div></div></section>
 <section class="wrap"><h2 class="t-page" style="font-size:42px;margin-bottom:32px">More themes to explore</h2>
-<div class="theme-more">{others}</div></section>
+<div class="rail-wrap"><button class="rail-btn prev" type="button" aria-label="Scroll left" hidden>{CARET_L}</button><div class="rail theme-more" tabindex="0" role="group" aria-label="More themes">{others}</div><button class="rail-btn next" type="button" aria-label="Scroll right" hidden>{CARET_R}</button></div></section>
 <section class="theme-cta wrap">
 <h2>Need a hand getting this theme ready to launch?</h2>
 <a class="btn btn-light" href="/services/setup/">Explore setup support</a>

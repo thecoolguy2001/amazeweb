@@ -424,17 +424,66 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 /* ---------- templates grid ---------- */
 /* live grid: 1200px / 3 columns of 379.33px, 31px gap both axes; the card
    content sits left-aligned at 313px inside its column, thumb 313x287. */
-.tpl-head{margin-top:77px}
-.tpl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:31px}
-.tpl-card{width:313px;max-width:100%;display:flex;flex-direction:column;gap:0}
-.tpl-name{margin-top:12px}   /* only the thumb->text gap is 12px; the three text lines stack flush */
-.tpl-thumb{
-  width:100%;aspect-ratio:313/287;border-radius:4px;background:var(--surface-2);
-  object-fit:cover;
+/* ---------- template cards ----------
+   Built from the same parts as the home-page service cards: a surface shell at
+   --r-panel with 6px of padding, rounded inner panels at --r-inner, and pill
+   tags. The old version was a bare 4px-radius grey rectangle with three lines
+   of loose text under it, which belonged to no part of the system. */
+.tpl-sec{margin-top:77px}   /* the gap the old .tpl-head margin used to give */
+.tpl-sec .tag{margin-bottom:18px}
+.tpl-head{margin-top:0}
+.tpl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.tpl-card{
+  display:flex;flex-direction:column;gap:6px;padding:6px;
+  background:var(--surface);border-radius:var(--r-panel);
+  transition:box-shadow .22s ease,transform .22s ease;
 }
-.tpl-name{font-size:20px;line-height:28px;font-weight:400}
-.tpl-meta{font-size:14px;line-height:22px;font-weight:400;color:var(--ink)}
-.tpl-card:hover .tpl-thumb{filter:brightness(.97)}
+.tpl-card:hover{box-shadow:var(--shadow-card);transform:translateY(-3px)}
+.tpl-thumb{
+  width:100%;aspect-ratio:313/240;border-radius:var(--r-inner);
+  background-color:var(--surface-2);object-fit:cover;
+}
+.tpl-body{
+  background:var(--white);border-radius:var(--r-inner);
+  padding:16px 16px 14px;display:flex;flex-direction:column;gap:12px;
+}
+.tpl-name{font-size:20px;line-height:26px;font-weight:500;letter-spacing:-.6px;color:var(--ink-2)}
+.tpl-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tpl-tags span{
+  padding:6px 12px;border-radius:var(--r-pill);
+  font-size:14px;line-height:20px;letter-spacing:-.4px;
+}
+.tpl-tags .cat{background:var(--surface);color:var(--grey-2)}
+.tpl-tags .soon{background:#EAF7FF;color:#0384C4;font-weight:500}
+
+/* ---------- horizontal rail (More themes to explore) ---------- */
+.rail-wrap{position:relative}
+.rail{
+  display:flex;gap:24px;overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x proximity;scroll-behavior:smooth;
+  padding:4px 0 16px;
+  /* bleed past the column so the row reads as something that keeps going */
+  margin-inline:-6px;padding-inline:6px;scroll-padding-inline:6px;
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+.rail::-webkit-scrollbar{display:none}
+.rail>*{flex:0 0 313px;scroll-snap-align:start}
+.rail:focus-visible{outline:2px solid var(--blue);outline-offset:6px;border-radius:8px}
+.rail-btn{
+  position:absolute;top:calc(50% - 30px);z-index:2;
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--line);
+  background:var(--white);color:var(--ink-2);cursor:pointer;
+  display:grid;place-items:center;padding:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.10);
+  transition:opacity .18s ease,background .18s ease;
+}
+.rail-btn svg{width:22px;height:22px}
+.rail-btn:hover{background:var(--surface)}
+.rail-btn[hidden]{display:none}
+.rail-btn.prev{left:-22px}
+.rail-btn.next{right:-22px}
+@media (hover:none){.rail-btn{display:none}}
+@media (prefers-reduced-motion:reduce){.rail{scroll-behavior:auto}}
 
 /* ---------- theme detail ---------- */
 .theme-head{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
@@ -460,12 +509,7 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .theme-note{background:var(--surface-2);border-radius:var(--r-panel);padding:24px}
 .theme-note h3{font-size:28px;line-height:1.2;font-weight:700;margin-bottom:10px}
 .theme-note p{font-size:16px;line-height:1.5;color:var(--grey)}
-.theme-more{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.theme-more a{display:flex;flex-direction:column;gap:6px;padding:20px;border-radius:var(--r-inner);background:var(--surface);transition:background .18s ease}
-.theme-more a:hover{background:var(--surface-2)}
-.theme-more .k{font-size:13px;line-height:18px;font-weight:600;color:var(--blue)}
-.theme-more .n{font-size:24px;line-height:1.2;font-weight:700}
-.theme-more .s{font-size:14px;line-height:20px;font-weight:500;color:var(--grey)}
+
 .theme-cta{
   background:var(--blue);border-radius:var(--r-card);padding:40px;
   display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:nowrap;
@@ -619,7 +663,8 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   .svcx-sec{grid-template-columns:1fr;gap:0}
   .svcx-panel{grid-template-columns:1fr;padding:32px 22px}
   .svcx-panel .stats{margin-left:0}
-  .theme-more{grid-template-columns:1fr}
+  .rail>*{flex-basis:270px}
+  .rail{margin-inline:-16px;padding-inline:16px}
   .theme-cta{padding:32px 22px;flex-wrap:wrap}
   .theme-cta h2{font-size:26px}
   .theme-buy{padding:20px}

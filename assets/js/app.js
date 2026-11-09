@@ -111,9 +111,45 @@
       function (e) { if (e.matches) setOpen(false); });
   }
 
+  /* Horizontal rails ("More themes to explore"). The row scrolls and snaps on
+     its own; these buttons just give a pointer user something to click. They
+     stay hidden until we know the row actually overflows, and each one hides
+     again at its end of the track. */
+  Array.prototype.forEach.call(document.querySelectorAll('.rail-wrap'), function (wrap) {
+    var rail = wrap.querySelector('.rail');
+    var prev = wrap.querySelector('.rail-btn.prev');
+    var next = wrap.querySelector('.rail-btn.next');
+    if (!rail || !prev || !next) return;
+
+    function step() {
+      var card = rail.firstElementChild;
+      var gap = parseFloat(getComputedStyle(rail).columnGap) || 24;
+      return card ? card.getBoundingClientRect().width + gap : 300;
+    }
+    function sync() {
+      /* 8px of slack: the rail is inset 6px so snapping parks scrollLeft at 6,
+         not 0, and the far end lands just short of max. */
+      var max = rail.scrollWidth - rail.clientWidth;
+      if (max <= 8) { prev.hidden = true; next.hidden = true; return; }
+      prev.hidden = rail.scrollLeft <= 8;
+      next.hidden = rail.scrollLeft >= max - 8;
+    }
+    prev.addEventListener('click', function () { rail.scrollLeft -= step(); });
+    next.addEventListener('click', function () { rail.scrollLeft += step(); });
+    rail.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  });
+
   /* Reveal-on-scroll, mirroring the entrance fades on the published site */
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-    var targets = document.querySelectorAll('.scard, .svc, .tpl-card, .faq-group, .theme-note, .theme-more a, .form-card');
+    /* Cards inside a horizontal rail are skipped: the ones off to the right
+       never intersect the viewport, so they would sit at opacity 0 until you
+       scrolled the rail sideways and then fade UP into place, which reads as a
+       glitch. The rail gets no entrance of its own. */
+    var targets = Array.prototype.filter.call(
+      document.querySelectorAll('.scard, .svc, .tpl-card, .faq-group, .theme-note, .form-card'),
+      function (el) { return !el.closest('.rail'); });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
