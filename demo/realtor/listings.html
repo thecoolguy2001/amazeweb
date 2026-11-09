@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Listings — Vale &amp; Co.</title>
+<meta name="description" content="All fourteen properties, filterable and sortable, each with price per square foot and days on market.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">Vale <em>&amp;</em> Co.</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="listings.html" aria-current="page">Listings</a>
+      <a href="neighborhoods.html">Neighborhoods</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="tel" href="tel:+15550182200">(555) 018-2200</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap" style="padding-bottom:1.5rem">
+    <h1 class="disp" style="font-size:var(--t-xl)">Fourteen properties, east side only.</h1>
+    <p class="lede" style="font-size:var(--t-m)">Sorted however you like. Price per square foot and days on market are on every card — a listing that has sat for ninety days is telling you something and we are not going to hide it.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="filters">
+      <button class="chip" data-type="all" aria-pressed="true">All</button>
+      <button class="chip" data-type="house" aria-pressed="false">Houses</button>
+      <button class="chip" data-type="condo" aria-pressed="false">Condos</button>
+      <button class="chip" data-type="town" aria-pressed="false">Townhouses</button>
+      <span class="count" id="count">14 properties</span>
+      <span class="right">
+        <label for="sort">Sort</label>
+        <select id="sort">
+          <option value="newest">Newest first</option>
+          <option value="price-asc">Price, low to high</option>
+          <option value="price-desc">Price, high to low</option>
+          <option value="ppsf">Price per sq ft</option>
+        </select>
+      </span>
+    </div>
+
+    <div class="grid" id="grid">
+      <a class="lst" href="listing.html" data-type="house" data-price="624000" data-ppsf="359" data-days="3">
+        <span class="shot"><span class="plate h1x" aria-hidden="true"></span><span class="flag new">New</span></span>
+        <span class="body"><span class="price disp num">$624,000</span><span class="addr">18 Calder Street</span>
+        <span class="hood">Mill Quarter · 1912</span>
+        <span class="facts"><span><b>3</b> bed</span><span><b>2</b> bath</span><span><b>1,740</b> sq ft</span><span><b>$359</b>/sq ft</span></span>
+        <span class="dom">Listed 3 days ago</span></span>
+      </a>
+      <a class="lst" href="listing.html" data-type="condo" data-price="489000" data-ppsf="414" data-days="61">
+        <span class="shot"><span class="plate h2x" aria-hidden="true"></span><span class="flag cut">Price cut</span></span>
+        <span class="body"><span class="price disp num">$489,000</span><span class="addr">7 Ferry Point Row, Apt 4</span>
+        <span class="hood">Ferry Point · 2006</span>
+        <span class="facts"><span><b>2</b> bed</span><span><b>2</b> bath</span><span><b>1,180</b> sq ft</span><span><b>$414</b>/sq ft</span></span>
+        <span class="dom">61 days · down from $515,000</span></span>
+      </a>
+      <a class="lst" href="listing.html" data-type="house" data-price="1150000" data-ppsf="395" data-days="1">
+        <span class="shot"><span class="plate h3x" aria-hidden="true"></span><span class="flag soon">Coming Saturday</span></span>
+        <span class="body"><span class="price disp num">$1,150,000</span><span class="addr">2 Alder Hill Crescent</span>
+        <span class="hood">Alder Hill · 1968, renovated 2021</span>
+        <span class="facts"><span><b>4</b> bed</span><span><b>3</b> bath</span><span><b>2,910</b> sq ft</span><span><b>$395</b>/sq ft</span></span>
+        <span class="dom">Open house 14 Nov, 11–1</span></span>
+      </a>
+      <a class="lst" href="listing.html" data-type="town" data-price="712000" data-ppsf="372" data-days="12">
+        <span class="shot"><span class="plate h4x" aria-hidden="true"></span></span>
+        <span class="body"><span class="price disp num">$712,000</span><span class="addr">31 Wharf Road</span>
+        <span class="hood">Eastbank · 1998</span>
+        <span class="facts"><span><b>3</b> bed</span><span><b>2.5</b> bath</span><span><b>1,915</b> sq ft</span><span><b>$372</b>/sq ft</span></span>
+        <span class="dom">12 days on market</span></span>
+      </a>
+      <a class="lst" href="listing.html" data-type="condo" data-price="338000" data-ppsf="449" data-days="8">
+        <span class="shot"><span class="plate h5x" aria-hidden="true"></span><span class="flag new">New</span></span>
+        <span class="body"><span class="price disp num">$338,000</span><span class="addr">12 Water Lane, Apt 9</span>
+        <span class="hood">Ferry Point · 2014</span>
+        <span class="facts"><span><b>1</b> bed</span><span><b>1</b> bath</span><span><b>753</b> sq ft</span><span><b>$449</b>/sq ft</span></span>
+        <span class="dom">8 days · lift and parking</span></span>
+      </a>
+      <a class="lst" href="listing.html" data-type="house" data-price="845000" data-ppsf="341" data-days="34">
+        <span class="shot"><span class="plate h6x" aria-hidden="true"></span></span>
+        <span class="body"><span class="price disp num">$845,000</span><span class="addr">6 Alder Hill Road</span>
+        <span class="hood">Alder Hill · 1931</span>
+        <span class="facts"><span><b>4</b> bed</span><span><b>2</b> bath</span><span><b>2,478</b> sq ft</span><span><b>$341</b>/sq ft</span></span>
+        <span class="dom">34 days on market</span></span>
+      </a>
+      <a class="lst" href="listing.html" data-type="town" data-price="566000" data-ppsf="388" data-days="21">
+        <span class="shot"><span class="plate h7x" aria-hidden="true"></span></span>
+        <span class="body"><span class="price disp num">$566,000</span><span class="addr">4 Mill Lane</span>
+        <span class="hood">Mill Quarter · 2003</span>
+        <span class="facts"><span><b>2</b> bed</span><span><b>2</b> bath</span><span><b>1,459</b> sq ft</span><span><b>$388</b>/sq ft</span></span>
+        <span class="dom">21 days on market</span></span>
+      </a>
+      <a class="lst" href="listing.html" data-type="house" data-price="438000" data-ppsf="298" data-days="92">
+        <span class="shot"><span class="plate h8x" aria-hidden="true"></span><span class="flag cut">Price cut</span></span>
+        <span class="body"><span class="price disp num">$438,000</span><span class="addr">22 Lower Calder Street</span>
+        <span class="hood">Mill Quarter · 1908 · needs work</span>
+        <span class="facts"><span><b>3</b> bed</span><span><b>1</b> bath</span><span><b>1,470</b> sq ft</span><span><b>$298</b>/sq ft</span></span>
+        <span class="dom">92 days · down from $489,000</span></span>
+      </a>
+      <a class="lst" href="listing.html" data-type="condo" data-price="402000" data-ppsf="431" data-days="45">
+        <span class="shot"><span class="plate h2x" aria-hidden="true"></span></span>
+        <span class="body"><span class="price disp num">$402,000</span><span class="addr">7 Ferry Point Row, Apt 11</span>
+        <span class="hood">Ferry Point · 2006</span>
+        <span class="facts"><span><b>1</b> bed</span><span><b>1</b> bath</span><span><b>933</b> sq ft</span><span><b>$431</b>/sq ft</span></span>
+        <span class="dom">45 days on market</span></span>
+      </a>
+      <a class="lst" href="listing.html" data-type="house" data-price="979000" data-ppsf="368" data-days="6">
+        <span class="shot"><span class="plate h1x" aria-hidden="true"></span><span class="flag new">New</span></span>
+        <span class="body"><span class="price disp num">$979,000</span><span class="addr">9 Crescent Gardens</span>
+        <span class="hood">Alder Hill · 1952</span>
+        <span class="facts"><span><b>4</b> bed</span><span><b>3</b> bath</span><span><b>2,660</b> sq ft</span><span><b>$368</b>/sq ft</span></span>
+        <span class="dom">6 days · garden backs the park</span></span>
+      </a>
+      <a class="lst" href="listing.html" data-type="town" data-price="651000" data-ppsf="381" data-days="17">
+        <span class="shot"><span class="plate h4x" aria-hidden="true"></span></span>
+        <span class="body"><span class="price disp num">$651,000</span><span class="addr">17 Wharf Road</span>
+        <span class="hood">Eastbank · 1998</span>
+        <span class="facts"><span><b>3</b> bed</span><span><b>2</b> bath</span><span><b>1,708</b> sq ft</span><span><b>$381</b>/sq ft</span></span>
+        <span class="dom">17 days on market</span></span>
+      </a>
+      <a class="lst" href="listing.html" data-type="condo" data-price="295000" data-ppsf="462" data-days="29">
+        <span class="shot"><span class="plate h5x" aria-hidden="true"></span></span>
+        <span class="body"><span class="price disp num">$295,000</span><span class="addr">12 Water Lane, Apt 2</span>
+        <span class="hood">Ferry Point · 2014 · ground floor</span>
+        <span class="facts"><span><b>1</b> bed</span><span><b>1</b> bath</span><span><b>639</b> sq ft</span><span><b>$462</b>/sq ft</span></span>
+        <span class="dom">29 days on market</span></span>
+      </a>
+      <a class="lst" href="listing.html" data-type="house" data-price="1395000" data-ppsf="412" data-days="54">
+        <span class="shot"><span class="plate h3x" aria-hidden="true"></span></span>
+        <span class="body"><span class="price disp num">$1,395,000</span><span class="addr">1 Alder Hill Crescent</span>
+        <span class="hood">Alder Hill · 1968, architect-extended</span>
+        <span class="facts"><span><b>5</b> bed</span><span><b>4</b> bath</span><span><b>3,385</b> sq ft</span><span><b>$412</b>/sq ft</span></span>
+        <span class="dom">54 days on market</span></span>
+      </a>
+      <a class="lst" href="listing.html" data-type="house" data-price="529000" data-ppsf="326" data-days="38">
+        <span class="shot"><span class="plate h8x" aria-hidden="true"></span></span>
+        <span class="body"><span class="price disp num">$529,000</span><span class="addr">40 Lower Calder Street</span>
+        <span class="hood">Mill Quarter · 1908</span>
+        <span class="facts"><span><b>3</b> bed</span><span><b>1.5</b> bath</span><span><b>1,622</b> sq ft</span><span><b>$326</b>/sq ft</span></span>
+        <span class="dom">38 days on market</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head"><div><h2>Not listed yet</h2><p>Four more coming before the end of the month.</p></div></div>
+    <p style="max-width:58ch;color:#33382F">Two houses on Alder Hill, a maisonette in the Mill Quarter, and one more at Ferry Point. If you tell us what you are looking for we will send them to you the day they are photographed, before they go on the portals.</p>
+    <p style="margin-top:1.25rem"><a class="btn solid" href="contact.html">Get them early</a></p>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html" style="color:var(--bone)">Vale <em>&amp;</em> Co.</a>
+      <p style="margin-top:.8rem;max-width:32ch">A two-agent practice working the east side of the river. Licensed since 2009.</p>
+    </div>
+    <div><h4>Buying</h4><ul>
+      <li><a href="listings.html">All listings</a></li>
+      <li><a href="neighborhoods.html">Neighborhood guides</a></li>
+      <li><a href="listing.html">Example brief</a></li>
+      <li><a href="contact.html">Buyer consultation</a></li>
+    </ul></div>
+    <div><h4>Selling</h4><ul>
+      <li><a href="contact.html">Request a valuation</a></li>
+      <li><a href="contact.html">Our fee</a></li>
+      <li><a href="neighborhoods.html">What sold nearby</a></li>
+    </ul></div>
+    <div><h4>Office</h4><ul>
+      <li>44 Wharf Road, Eastbank</li>
+      <li><a href="tel:+15550182200">(555) 018-2200</a></li>
+      <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+      <li>Mon – Sat, 9 to 6</li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Vale &amp; Co. Real Estate. Licence #RE-884102. Equal Housing Opportunity.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

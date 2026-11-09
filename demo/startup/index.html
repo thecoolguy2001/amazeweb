@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nettle — incident response for teams without an on-call team</title>
+<meta name="description" content="Startup: a launch template that argues with evidence. Nettle pages the right person, writes the timeline for you, and publishes the postmortem.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="status-strip">
+  <div class="wrap mono">
+    <span class="dot" aria-hidden="true"></span>
+    <span>All systems operational</span>
+    <span class="sep">·</span>
+    <span>99.98% uptime, last 90 days</span>
+    <span class="right"><a href="changelog.html">v2.9 shipped 4 days ago →</a></span>
+  </div>
+</div>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="glyph" aria-hidden="true"></span>Nettle</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="product.html">Product</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="cta">
+      <a class="btn" href="contact.html">Sign in</a>
+      <a class="btn primary" href="pricing.html">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Now in public beta</p>
+        <h1 class="hero-h">Something broke at 3am. Nobody was on call.</h1>
+        <p class="sub">Nettle watches your services, wakes exactly one person, and writes the timeline while it happens — so the morning after is a document, not an archaeology project.</p>
+        <div class="actions">
+          <a class="btn primary big" href="pricing.html">Start free for 30 days</a>
+          <a class="btn big" href="product.html">See how it works</a>
+        </div>
+        <p class="fineprint">No card. Five minutes to first alert. Works with what you already run.</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-bar">
+          <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
+          <span class="nm mono">incident-204 · checkout-api</span>
+          <span class="live mono">LIVE</span>
+        </div>
+        <div class="panel-body mono">
+          <div class="inc"><span class="t">03:04</span><span class="msg"><span class="who dim">nettle</span> p95 latency over 2s for 3 min — <b>opened incident</b></span></div>
+          <div class="inc"><span class="t">03:04</span><span class="msg"><span class="who amber">page</span> on-call rota is empty → nearest owner of <b>checkout-api</b></span></div>
+          <div class="inc"><span class="t">03:06</span><span class="msg"><span class="who">priya</span> acknowledged, from phone</span></div>
+          <div class="inc"><span class="t">03:09</span><span class="msg"><span class="who dim">nettle</span> deploy <b>#1841</b> 22 min before — likely cause</span></div>
+          <div class="inc"><span class="t">03:12</span><span class="msg"><span class="who">priya</span> rolled back to <b>#1840</b></span></div>
+          <div class="inc"><span class="t">03:18</span><span class="msg"><span class="who dim">nettle</span> latency normal for 5 min — <b>resolved</b>, draft written</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust">
+    <div class="wrap">
+      <p class="lede">Running in production at</p>
+      <div class="marks">
+        <span>Halden</span><span>Meridian</span><span>Tacit</span><span>Brightharbour</span><span>Ninth Floor</span><span>Casa Risco</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">What it does</p>
+      <h2>Three jobs, done properly, instead of thirty done badly.</h2>
+      <p>Most incident tools are built for companies with a rota, a runbook, and someone whose job this is. This one is built for the eight-person team where that person is also shipping features.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <span class="ico i1" aria-hidden="true"></span>
+        <h3>Wakes one person</h3>
+        <p>No rota to maintain. Nettle reads your repository ownership and pages whoever last touched the service that is failing — then escalates on a timer if they do not answer.</p>
+        <p class="meta">Median time to acknowledge: 94 seconds</p>
+      </article>
+      <article class="card">
+        <span class="ico i2" aria-hidden="true"></span>
+        <h3>Writes the timeline</h3>
+        <p>Every alert, deploy, rollback, and message lands in one ordered record as it happens. Nobody has to reconstruct the night from six Slack threads and a terminal history.</p>
+        <p class="meta">Exports to Markdown, Notion, Linear</p>
+      </article>
+      <article class="card">
+        <span class="ico i3" aria-hidden="true"></span>
+        <h3>Drafts the postmortem</h3>
+        <p>You get a document with the timeline filled in, the probable cause flagged, and the blanks that actually need a human — impact, decision, follow-up — left empty.</p>
+        <p class="meta">Published in 11 minutes, on average</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="metrics">
+      <div class="metric"><p class="n mono">94<span class="u">s</span></p><p class="k">Median acknowledge</p></div>
+      <div class="metric"><p class="n mono">31<span class="u">%</span></p><p class="k">Fewer pages per week</p></div>
+      <div class="metric"><p class="n mono">11<span class="u">min</span></p><p class="k">To a published postmortem</p></div>
+      <div class="metric"><p class="n mono">420<span class="u">+</span></p><p class="k">Teams in the beta</p></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">Shipping in public</p>
+      <h2>We publish every change, including the ones we took back.</h2>
+      <p>The fastest way to judge a young product is to see how it moves. Here is the last fortnight, unedited.</p>
+    </div>
+    <div class="log" id="log">
+      <div class="entry" data-kind="shipped">
+        <span class="date mono">5 Nov 2026</span>
+        <span class="kind shipped">Shipped</span>
+        <div class="what"><b>Ownership from CODEOWNERS</b><p>Nettle now reads CODEOWNERS directly, so paging follows the file you already maintain instead of a second list that drifts.</p></div>
+      </div>
+      <div class="entry" data-kind="fixed">
+        <span class="date mono">3 Nov 2026</span>
+        <span class="kind fixed">Fixed</span>
+        <div class="what"><b>Duplicate pages on flapping checks</b><p>A check crossing its threshold repeatedly could page twice in ninety seconds. It now holds for one full interval before escalating.</p></div>
+      </div>
+      <div class="entry" data-kind="shipped">
+        <span class="date mono">29 Oct 2026</span>
+        <span class="kind shipped">Shipped</span>
+        <div class="what"><b>Deploy correlation</b><p>If a deploy landed within forty minutes of an incident opening, it is surfaced in the timeline as a likely cause.</p></div>
+      </div>
+      <div class="entry" data-kind="removed">
+        <span class="date mono">24 Oct 2026</span>
+        <span class="kind removed">Removed</span>
+        <div class="what"><b>Severity levels 4 and 5</b><p>Nobody used them. Two teams told us the picker itself slowed down the first minute of an incident, so there are now three.</p></div>
+      </div>
+      <div class="entry" data-kind="shipped">
+        <span class="date mono">21 Oct 2026</span>
+        <span class="kind shipped">Shipped</span>
+        <div class="what"><b>Phone acknowledgement without the app</b><p>Reply to the SMS and the incident is acknowledged. Installing anything at 3am is a bad plan.</p></div>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem"><a class="btn" href="changelog.html">Read the full changelog →</a></p>
+  </section>
+
+  <section class="wrap">
+    <div class="quote">
+      <blockquote>“We had a spreadsheet called <em>who to call</em>. It was eleven months out of date. We found that out at 3am.”</blockquote>
+      <div class="by"><span class="av" aria-hidden="true"></span>
+        <span><b style="color:var(--fg)">Priya Raman</b> · Engineering lead, Meridian Health · 9 engineers, no SRE</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Set it up before you need it.</h2>
+    <p>Thirty days free, the whole product, no card. Most teams have their first alert wired in under five minutes.</p>
+    <div class="actions">
+      <a class="btn primary big" href="pricing.html">Start free</a>
+      <a class="btn big" href="contact.html">Talk to us first</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html" style="color:var(--fg)"><span class="glyph" aria-hidden="true"></span>Nettle</a>
+      <p style="margin-top:.8rem;max-width:30ch">Incident response for teams who do not have an on-call team.</p>
+    </div>
+    <div><h4>Product</h4><ul>
+      <li><a href="product.html">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="changelog.html">Changelog</a></li>
+      <li><a href="product.html#integrations">Integrations</a></li>
+    </ul></div>
+    <div><h4>Company</h4><ul>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html">Careers</a></li>
+      <li><a href="changelog.html">Status</a></li>
+    </ul></div>
+    <div><h4>Legal</h4><ul>
+      <li><a href="contact.html">Privacy</a></li>
+      <li><a href="contact.html">Terms</a></li>
+      <li><a href="contact.html">Security</a></li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Nettle Software Ltd.</span>
+      <span class="mono">Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — Vale &amp; Co.</title>
+<meta name="description" content="Book a viewing, request a valuation, or ask a question. Two agents, and you get one of them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">Vale <em>&amp;</em> Co.</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="listings.html">Listings</a>
+      <a href="neighborhoods.html">Neighborhoods</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+    <a class="tel" href="tel:+15550182200">(555) 018-2200</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="detail">
+      <div>
+        <h1 class="disp" style="font-size:var(--t-xl)">Two of us, and you will get one of us.</h1>
+        <p class="lede" style="font-size:var(--t-m)">No call centre, no weekend assistant, nobody who has not seen the house. Messages sent before six are answered the same day.</p>
+
+        <form class="form" action="#" method="post" style="margin-top:2rem;max-width:36rem">
+          <div class="two">
+            <label>Name <input type="text" name="name" autocomplete="name" required></label>
+            <label>Phone <input type="tel" name="phone" autocomplete="tel"></label>
+          </div>
+          <label>Email <input type="email" name="email" autocomplete="email" required></label>
+          <div class="two">
+            <label>What is this about
+              <select name="reason" required>
+                <option value="">Choose</option>
+                <option>Book a viewing</option><option>Request a valuation</option>
+                <option>Buying, general question</option><option>Selling, general question</option>
+                <option>Something else</option>
+              </select>
+            </label>
+            <label>Neighborhood
+              <select name="hood">
+                <option>Not sure yet</option><option>Mill Quarter</option><option>Ferry Point</option>
+                <option>Alder Hill</option><option>Eastbank</option>
+              </select>
+            </label>
+          </div>
+          <label>Message <textarea name="message" rows="5" placeholder="If it is a viewing, tell us which property and which days work."></textarea></label>
+          <button class="btn solid" type="submit" style="justify-self:start">Send</button>
+          <p style="font-size:var(--t-xs);color:var(--mid);margin:0">We use this to reply to you and nothing else. You will not be added to a mailing list.</p>
+        </form>
+      </div>
+
+      <aside class="keyfacts">
+        <h2 class="disp" style="font-size:1.4rem">The office</h2>
+        <dl>
+          <dt>Address</dt><dd>44 Wharf Road, Eastbank</dd>
+          <dt>Phone</dt><dd><a href="tel:+15550182200">(555) 018-2200</a></dd>
+          <dt>Email</dt><dd><a href="mailto:hello@example.com">hello@example.com</a></dd>
+          <dt>Mon – Fri</dt><dd class="num">9:00 – 18:00</dd>
+          <dt>Saturday</dt><dd class="num">9:00 – 18:00</dd>
+          <dt>Sunday</dt><dd>Viewings only</dd>
+        </dl>
+        <p style="font-size:var(--t-s);color:var(--mid)">There is parking behind the office on Wharf Road and the bus stops outside. The door is the green one between the bakery and the bike shop.</p>
+        <p style="margin-top:1.25rem"><a class="btn ghost" href="neighborhoods.html" style="width:100%;justify-content:center">Read the neighborhood guides</a></p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head"><div><h2>What a valuation involves</h2><p>About forty minutes, and you get a document at the end of it.</p></div></div>
+    <div class="hoods">
+      <article class="hood"><div class="body">
+        <h3 class="disp">1 · We walk round</h3>
+        <p>Forty minutes, room by room, measuring. We will ask about the boiler, the roof, and anything that has been done without permission — not to catch you out, but because a buyer's surveyor will find it anyway and it is cheaper to know now.</p>
+      </div></article>
+      <article class="hood"><div class="body">
+        <h3 class="disp">2 · You get it in writing</h3>
+        <p>Within two working days: three genuinely comparable sales, what we would list at, what we think it closes at, and the two or three things worth fixing first. If the honest answer is that now is a bad time to sell, that is what it will say.</p>
+      </div></article>
+    </div>
+    <p style="margin-top:1.5rem;color:#33382F;max-width:60ch">Our fee is 2.1% plus tax, the same for every property, with no tiering and no sliding scale. It covers photography, floor plans, the portals, viewings conducted by us, and negotiation. There is no charge if it does not sell.</p>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html" style="color:var(--bone)">Vale <em>&amp;</em> Co.</a>
+      <p style="margin-top:.8rem;max-width:32ch">A two-agent practice working the east side of the river. Licensed since 2009.</p>
+    </div>
+    <div><h4>Buying</h4><ul>
+      <li><a href="listings.html">All listings</a></li>
+      <li><a href="neighborhoods.html">Neighborhood guides</a></li>
+      <li><a href="listing.html">Example brief</a></li>
+      <li><a href="contact.html">Buyer consultation</a></li>
+    </ul></div>
+    <div><h4>Selling</h4><ul>
+      <li><a href="contact.html">Request a valuation</a></li>
+      <li><a href="contact.html">Our fee</a></li>
+      <li><a href="neighborhoods.html">What sold nearby</a></li>
+    </ul></div>
+    <div><h4>Office</h4><ul>
+      <li>44 Wharf Road, Eastbank</li>
+      <li><a href="tel:+15550182200">(555) 018-2200</a></li>
+      <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+      <li>Mon – Sat, 9 to 6</li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Vale &amp; Co. Real Estate. Licence #RE-884102. Equal Housing Opportunity.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

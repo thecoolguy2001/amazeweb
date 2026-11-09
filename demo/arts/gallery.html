@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gallery — Ines Varela</title>
+<meta name="description" content="Every painting and work on paper, filterable by series, in salon or grid hang.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="wordmark serif" href="index.html">Ines Varela</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Work</a>
+      <a href="gallery.html" aria-current="page">Gallery</a>
+      <a href="exhibitions.html">Exhibitions</a>
+      <a href="shop.html">Editions</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="opening wrap" style="padding-bottom:0">
+    <h1 class="serif" style="font-size:var(--t-xl);max-width:24ch">Everything in the studio, with its label.</h1>
+    <div class="lede"><p style="font-size:var(--t-m);color:var(--mid)">Sizes are stretcher sizes. Where a work has left the studio the label says where it went.</p></div>
+  </section>
+
+  <section class="wrap">
+    <h2 class="sec-label">The hang <span>Twelve works</span></h2>
+    <div class="hang-bar">
+      <button class="chip" data-filter="all" aria-pressed="true">All series</button>
+      <button class="chip" data-filter="low" aria-pressed="false">Low Country</button>
+      <button class="chip" data-filter="tide" aria-pressed="false">Tide Tables</button>
+      <button class="chip" data-filter="kiln" aria-pressed="false">Kiln Studies</button>
+      <button class="chip" data-filter="paper" aria-pressed="false">Works on Paper</button>
+      <span class="spacer" id="count">12 works</span>
+      <button class="chip" data-sethang="salon" aria-pressed="true">Salon hang</button>
+      <button class="chip" data-sethang="grid" aria-pressed="false">Grid</button>
+    </div>
+
+    <div class="hang" id="hang" data-hang="salon">
+      <figure class="work wide" data-series="low">
+        <span class="plate a1 land" aria-hidden="true"></span>
+        <figcaption class="label"><span class="ttl serif">Low Country (Sluice)</span><span class="yr">2026</span>
+        <div class="meta">Oil and distemper on linen · 180 × 240 cm</div><div class="status avail">Available</div></figcaption>
+      </figure>
+      <figure class="work" data-series="low">
+        <span class="plate a2" aria-hidden="true"></span>
+        <figcaption class="label"><span class="ttl serif">Low Country (Reed Bed)</span><span class="yr">2026</span>
+        <div class="meta">Oil on linen · 150 × 120 cm</div><div class="status">Private collection, Porto</div></figcaption>
+      </figure>
+      <figure class="work narrow" data-series="tide">
+        <span class="plate a3 tall" aria-hidden="true"></span>
+        <figcaption class="label"><span class="ttl serif">Tide Table VII</span><span class="yr">2025</span>
+        <div class="meta">Distemper on linen · 210 × 95 cm</div><div class="status avail">Available</div></figcaption>
+      </figure>
+      <figure class="work" data-series="kiln">
+        <span class="plate a4 sq" aria-hidden="true"></span>
+        <figcaption class="label"><span class="ttl serif">Kiln Study (Second Firing)</span><span class="yr">2025</span>
+        <div class="meta">Oil and ash on board · 90 × 90 cm</div><div class="status">Museu de Setúbal</div></figcaption>
+      </figure>
+      <figure class="work full" data-series="low">
+        <span class="plate a5 land" aria-hidden="true"></span>
+        <figcaption class="label"><span class="ttl serif">Low Country (Night Pumping)</span><span class="yr">2025</span>
+        <div class="meta">Oil on linen · 200 × 300 cm</div><div class="status">Gulbenkian, Lisbon</div></figcaption>
+      </figure>
+      <figure class="work" data-series="tide">
+        <span class="plate a6" aria-hidden="true"></span>
+        <figcaption class="label"><span class="ttl serif">Tide Table IV</span><span class="yr">2024</span>
+        <div class="meta">Distemper and pigment on linen · 160 × 130 cm</div><div class="status">Private collection, Vienna</div></figcaption>
+      </figure>
+      <figure class="work narrow" data-series="kiln">
+        <span class="plate a7 tall" aria-hidden="true"></span>
+        <figcaption class="label"><span class="ttl serif">Kiln Study (Flue)</span><span class="yr">2023</span>
+        <div class="meta">Oil on board · 120 × 60 cm</div><div class="status avail">Available</div></figcaption>
+      </figure>
+      <figure class="work" data-series="tide">
+        <span class="plate a8" aria-hidden="true"></span>
+        <figcaption class="label"><span class="ttl serif">Tide Table I</span><span class="yr">2021</span>
+        <div class="meta">Oil on linen · 140 × 110 cm</div><div class="status">Artist's collection</div></figcaption>
+      </figure>
+      <figure class="work narrow" data-series="paper">
+        <span class="plate a6 tall" aria-hidden="true"></span>
+        <figcaption class="label"><span class="ttl serif">Marsh, First Light</span><span class="yr">2026</span>
+        <div class="meta">Gouache on Arches paper · 56 × 38 cm</div><div class="status avail">Available</div></figcaption>
+      </figure>
+      <figure class="work narrow" data-series="paper">
+        <span class="plate a2 tall" aria-hidden="true"></span>
+        <figcaption class="label"><span class="ttl serif">Marsh, Rain Coming</span><span class="yr">2026</span>
+        <div class="meta">Gouache and graphite on paper · 56 × 38 cm</div><div class="status avail">Available</div></figcaption>
+      </figure>
+      <figure class="work" data-series="paper">
+        <span class="plate a8 sq" aria-hidden="true"></span>
+        <figcaption class="label"><span class="ttl serif">Pump House (Study)</span><span class="yr">2025</span>
+        <div class="meta">Graphite on paper · 42 × 42 cm</div><div class="status">Private collection, Lisbon</div></figcaption>
+      </figure>
+      <figure class="work" data-series="kiln">
+        <span class="plate a3 sq" aria-hidden="true"></span>
+        <figcaption class="label"><span class="ttl serif">Kiln Study (Ash Door)</span><span class="yr">2022</span>
+        <div class="meta">Oil and ash on board · 70 × 70 cm</div><div class="status avail">Available</div></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2 class="sec-label">Not shown here</h2>
+    <div class="pair">
+      <p class="note">Roughly forty works are with the galleries or in storage. A full list with condition notes
+      and provenance is available to curators and collectors on request.
+      <small>Image files at 300dpi, installation shots, and the studio inventory PDF are sent the same day.</small></p>
+      <p><a class="btn" href="index.html#enquire">Request the full list</a></p>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <span>Ines Varela · Studio Setúbal · <a href="mailto:studio@example.com">studio@example.com</a></span>
+    <span>Represented by <a href="exhibitions.html">Galeria Brun</a> and Mahler &amp; Sohn</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Studio — Northfall</title>
+<meta name="description" content="Eleven people, one building in Glasgow, and the form that starts a project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">North<span>fall</span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Reel</a>
+      <a href="work.html">Work</a>
+      <a href="services.html">Services</a>
+      <a href="studio.html" aria-current="page">Studio</a>
+    </nav>
+    <a class="reel-link" href="studio.html#brief">Start a project</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap" style="padding-bottom:1.5rem">
+    <h1 class="anton" style="font-size:var(--t-xl)">Eleven people.<br>One building.</h1>
+    <div class="meta">
+      <p>Northfall started in 2019 in a room above a garage with two people and a borrowed camera. The camera is still here.</p>
+      <p>We kept post in house as the company grew, which is unusual at this size and the single reason our schedules are what they are.</p>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="crew">
+      <article class="person a"><span class="shot" aria-hidden="true"></span><h3>Mhairi Kerr</h3><p>Director, founder</p></article>
+      <article class="person b"><span class="shot" aria-hidden="true"></span><h3>Ewan Vaughn</h3><p>Executive producer, founder</p></article>
+      <article class="person c"><span class="shot" aria-hidden="true"></span><h3>Sofia Lindqvist</h3><p>Director of photography</p></article>
+      <article class="person"><span class="shot" aria-hidden="true"></span><h3>Ray Mensah</h3><p>Editor, post supervisor</p></article>
+      <article class="person b"><span class="shot" aria-hidden="true"></span><h3>Nina Abiodun</h3><p>Producer</p></article>
+      <article class="person c"><span class="shot" aria-hidden="true"></span><h3>Tom Gallacher</h3><p>Colourist</p></article>
+      <article class="person a"><span class="shot" aria-hidden="true"></span><h3>Jess Oyelaran</h3><p>Sound designer</p></article>
+      <article class="person"><span class="shot" aria-hidden="true"></span><h3>Callum Reid</h3><p>Production manager</p></article>
+    </div>
+    <p style="margin-top:1.5rem;font-size:var(--t-s);color:var(--dim);max-width:52ch">Plus three more in production and a freelance pool of about twenty we work with often enough to know how they take their tea.</p>
+  </section>
+
+  <section class="band-nums">
+    <div class="wrap">
+      <div><p class="n anton">2019</p><p class="k">Founded, above a garage</p></div>
+      <div><p class="n anton">62</p><p class="k">Films delivered</p></div>
+      <div><p class="n anton">14</p><p class="k">Days, average turnaround on a cut</p></div>
+      <div><p class="n anton">3</p><p class="k">Craft awards, two for sound</p></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="sec-head"><div><p class="k">The building</p><h2>Unit 4, The Tannery.</h2></div></div>
+    <div class="prose">
+      <p>A former leather works in the east end, which is as romantic as it sounds until February. We have the top two floors: a 9m by 14m stage with a 4.2m grid, two edit rooms, the grade suite, and a kitchen that is the actual centre of the company.</p>
+      <p>The stage is not a hire facility and we are not set up to rent it out, but if you are shooting with us it is included and so is the parking, which in this part of the city is worth more than the stage.</p>
+      <p>Visitors are welcome. There is no reception and the buzzer is the one marked 4 — the one marked Northfall has not worked since 2022.</p>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head"><div><p class="k">Working here</p><h2>We hire about twice a year.</h2></div></div>
+    <div class="prose">
+      <p>No open roles today. When there are, they go up here and on the usual Scottish crew lists, with the salary in the advert, because a job post without a number wastes everybody's afternoon.</p>
+      <p>We take two trainees a year through the Screen Scotland scheme, paid, for six months. That one is worth watching for in January.</p>
+    </div>
+  </section>
+</main>
+
+<section class="band" id="brief">
+  <div class="wrap">
+    <div>
+      <h2 class="anton">Start a<br><em>project.</em></h2>
+      <p>Tell us what it is, roughly when, and roughly what you have to spend. We will tell you within two days whether we are the right studio for it — and who is, if we are not.</p>
+      <p style="margin-top:1.25rem">Or just call. Ewan answers the phone and has never once transferred anyone.</p>
+    </div>
+    <form class="form" action="#" method="post">
+      <div class="two">
+        <label>Name <input type="text" name="name" autocomplete="name" required></label>
+        <label>Company <input type="text" name="company" autocomplete="organization"></label>
+      </div>
+      <div class="two">
+        <label>Email <input type="email" name="email" autocomplete="email" required></label>
+        <label>Phone <input type="tel" name="phone" autocomplete="tel"></label>
+      </div>
+      <div class="two">
+        <label>Type
+          <select name="type" required><option value="">Choose</option>
+          <option>Commercial</option><option>Documentary</option>
+          <option>Brand film</option><option>Post only</option><option>Kit hire</option></select>
+        </label>
+        <label>Budget
+          <select name="budget"><option value="">Choose</option>
+          <option>Under £15k</option><option>£15k – £50k</option>
+          <option>£50k – £150k</option><option>Over £150k</option><option>No idea yet</option></select>
+        </label>
+      </div>
+      <label>When does it need to exist
+        <select name="when"><option value="">Choose</option>
+        <option>Within a month</option><option>This quarter</option>
+        <option>Next quarter</option><option>No fixed date</option></select>
+      </label>
+      <label>The brief <textarea name="brief" rows="5" placeholder="What is it for, who is it for, and what would make it a success?"></textarea></label>
+      <button class="btn acid" type="submit" style="justify-self:start">Send brief</button>
+      <p style="font-size:var(--t-xs);color:var(--dim);margin:0">Read by the two of us, nobody else. No CRM, no follow-up sequence.</p>
+    </form>
+  </div>
+</section>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html" style="color:var(--bone)">North<span>fall</span></a>
+      <p style="margin-top:.6rem;max-width:30ch">Unit 4, The Tannery, Glasgow G40 · <a href="tel:+441410199220">+44 141 019 9220</a></p>
+    </div>
+    <div class="links">
+      <a href="work.html">Work</a><a href="services.html">Services</a>
+      <a href="studio.html">Studio</a><a href="studio.html#brief">Brief us</a>
+      <a href="mailto:hello@example.com">hello@example.com</a>
+    </div>
+    <div style="font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase">
+      © 2026 Northfall · Built as a template by Amazé Web
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

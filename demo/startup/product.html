@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Product — Nettle</title>
+<meta name="description" content="How Nettle detects, pages, records, and closes an incident — and what it connects to.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="glyph" aria-hidden="true"></span>Nettle</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="product.html" aria-current="page">Product</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="cta">
+      <a class="btn" href="contact.html">Sign in</a>
+      <a class="btn primary" href="pricing.html">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow">The product</p>
+    <h1 class="hero-h" style="max-width:20ch">Four steps, and only the second one needs you awake.</h1>
+    <p class="sub">Nettle sits between the things that tell you something is wrong and the people who can fix it. Here is the whole loop.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="cards">
+      <article class="card">
+        <span class="ico i1" aria-hidden="true"></span>
+        <h3>1 · Detect</h3>
+        <p>Point Nettle at what you already have — Prometheus, CloudWatch, a health endpoint, a webhook from anything. A check has to fail for a full interval before it counts, so a blip stays a blip.</p>
+        <p class="meta">Checks run every 30s from three regions</p>
+      </article>
+      <article class="card">
+        <span class="ico i2" aria-hidden="true"></span>
+        <h3>2 · Page</h3>
+        <p>One person, chosen from service ownership, reached by SMS and phone call. No answer in four minutes and it moves to the next owner, then to everyone.</p>
+        <p class="meta">Reply to the SMS to acknowledge — no app needed</p>
+      </article>
+      <article class="card">
+        <span class="ico i3" aria-hidden="true"></span>
+        <h3>3 · Record</h3>
+        <p>From the moment the incident opens, every alert, deploy, rollback, and comment is written to one ordered timeline with real timestamps.</p>
+        <p class="meta">Nothing to remember to turn on</p>
+      </article>
+      <article class="card">
+        <span class="ico i1" aria-hidden="true"></span>
+        <h3>4 · Close</h3>
+        <p>When the signal has been healthy for five minutes Nettle resolves the incident and drafts the postmortem, with the timeline filled and the judgement calls left blank.</p>
+        <p class="meta">Export to Markdown, Notion, or Linear</p>
+      </article>
+      <article class="card">
+        <span class="ico i2" aria-hidden="true"></span>
+        <h3>Quiet by default</h3>
+        <p>Alerts that have fired more than three times in a week without a human acting get flagged as noise, with a one-click mute and a note in the weekly digest.</p>
+        <p class="meta">Teams cut 31% of pages in the first month</p>
+      </article>
+      <article class="card">
+        <span class="ico i3" aria-hidden="true"></span>
+        <h3>Honest status page</h3>
+        <p>A public page that updates itself from real incidents, not from someone remembering to post. Your uptime figure is computed, not typed.</p>
+        <p class="meta">Custom domain on every paid plan</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" id="integrations" style="padding-top:0">
+    <div class="sec-head">
+      <p class="sec-kicker">Integrations</p>
+      <h2>It connects to what you run now, not to what you should be running.</h2>
+    </div>
+    <div class="metrics">
+      <div class="metric"><p class="n mono" style="font-size:1.1rem">Sources</p><p class="k">Prometheus · Grafana · CloudWatch · Datadog · Sentry · HTTP checks · generic webhook</p></div>
+      <div class="metric"><p class="n mono" style="font-size:1.1rem">Deploys</p><p class="k">GitHub Actions · GitLab CI · Vercel · Fly · Render · Kubernetes events</p></div>
+      <div class="metric"><p class="n mono" style="font-size:1.1rem">People</p><p class="k">SMS · voice call · Slack · Microsoft Teams · email · CODEOWNERS</p></div>
+      <div class="metric"><p class="n mono" style="font-size:1.1rem">After</p><p class="k">Markdown export · Notion · Linear · Jira · public status page</p></div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="quote">
+      <blockquote>“The first thing it did was tell us which alert had paged us forty times and never once been acted on.”</blockquote>
+      <div class="by"><span class="av" aria-hidden="true"></span>
+        <span><b style="color:var(--fg)">Tomás Beck</b> · CTO, Brightharbour · 6 engineers</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Wire up one check and see what happens.</h2>
+    <p>Thirty days, the whole product, no card.</p>
+    <div class="actions"><a class="btn primary big" href="pricing.html">Start free</a><a class="btn big" href="contact.html">Ask a question</a></div>
+  </div>
+</section>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html" style="color:var(--fg)"><span class="glyph" aria-hidden="true"></span>Nettle</a>
+      <p style="margin-top:.8rem;max-width:30ch">Incident response for teams who do not have an on-call team.</p>
+    </div>
+    <div><h4>Product</h4><ul>
+      <li><a href="product.html">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="changelog.html">Changelog</a></li>
+      <li><a href="product.html#integrations">Integrations</a></li>
+    </ul></div>
+    <div><h4>Company</h4><ul>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html">Careers</a></li>
+      <li><a href="changelog.html">Status</a></li>
+    </ul></div>
+    <div><h4>Legal</h4><ul>
+      <li><a href="contact.html">Privacy</a></li>
+      <li><a href="contact.html">Terms</a></li>
+      <li><a href="contact.html">Security</a></li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Nettle Software Ltd.</span>
+      <span class="mono">Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

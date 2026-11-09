@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pricing — Nettle</title>
+<meta name="description" content="Three plans, priced per engineer, with the annual saving shown rather than implied.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="glyph" aria-hidden="true"></span>Nettle</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="product.html">Product</a>
+      <a href="pricing.html" aria-current="page">Pricing</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="cta">
+      <a class="btn" href="contact.html">Sign in</a>
+      <a class="btn primary" href="pricing.html">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow">Pricing</p>
+    <h1 class="hero-h" style="max-width:17ch">Per engineer. Not per alert.</h1>
+    <p class="sub">Paging you more often should never cost us more money — that is how incident tools end up noisy. Pick a plan by team size and leave it alone.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="price-toggle" role="group" aria-label="Billing period">
+      <button data-period="month" aria-pressed="true">Monthly</button>
+      <button data-period="year" aria-pressed="false">Yearly <span class="save">−20%</span></button>
+    </div>
+
+    <div class="plans">
+      <article class="plan">
+        <h3>Solo</h3>
+        <p class="amt"><span class="fig mono" data-m="$0" data-y="$0">$0</span><span class="per" data-m="forever" data-y="forever">forever</span></p>
+        <p class="who">One engineer, one service. For side projects that still wake you up.</p>
+        <ul>
+          <li>1 service, 1 responder</li>
+          <li>SMS and email paging</li>
+          <li>Timeline and Markdown export</li>
+          <li class="no">No voice calls</li>
+          <li class="no">No status page</li>
+        </ul>
+        <a class="btn" href="contact.html">Create account</a>
+      </article>
+
+      <article class="plan featured">
+        <span class="badge">Most teams</span>
+        <h3>Team</h3>
+        <p class="amt"><span class="fig mono" data-m="$14" data-y="$11">$14</span><span class="per" data-m="per engineer / month" data-y="per engineer / month, billed yearly">per engineer / month</span></p>
+        <p class="who">The whole product for a team small enough that everyone knows everything.</p>
+        <ul>
+          <li>Unlimited services and checks</li>
+          <li>Voice calls and escalation</li>
+          <li>Deploy correlation</li>
+          <li>Drafted postmortems</li>
+          <li>Public status page, custom domain</li>
+        </ul>
+        <a class="btn primary" href="contact.html">Start 30 days free</a>
+      </article>
+
+      <article class="plan">
+        <h3>Company</h3>
+        <p class="amt"><span class="fig mono" data-m="$29" data-y="$23">$29</span><span class="per" data-m="per engineer / month" data-y="per engineer / month, billed yearly">per engineer / month</span></p>
+        <p class="who">For when there are enough teams that ownership has to be explicit.</p>
+        <ul>
+          <li>Everything in Team</li>
+          <li>SAML and SCIM</li>
+          <li>Audit log, 2-year retention</li>
+          <li>Per-team rotas and policies</li>
+          <li>99.9% SLA, priority support</li>
+        </ul>
+        <a class="btn" href="contact.html">Talk to us</a>
+      </article>
+    </div>
+    <p style="margin-top:1.5rem;color:var(--dim);font-size:var(--t-s)">Prices in USD, excluding tax. Yearly billing takes 20% off and is invoiced once. Change plan or cancel from the dashboard; we refund the unused part of a year without being asked.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head"><p class="sec-kicker">Questions</p><h2>The things people ask before they put a card in.</h2></div>
+    <div class="faq">
+      <details open><summary>What counts as an engineer?</summary>
+        <p class="ans">Anyone who can be paged. People who only read the status page or the postmortems are free and unlimited — a product manager watching an incident should not cost you fourteen dollars.</p></details>
+      <details><summary>What happens when the free trial ends?</summary>
+        <p class="ans">Paging keeps working for seven days past the end of the trial, because switching an alerting tool off without warning is a genuinely dangerous default. After that the account drops to Solo rather than locking.</p></details>
+      <details><summary>Do you charge for alerts, checks, or SMS?</summary>
+        <p class="ans">No. Unlimited on every paid plan, including voice calls. If the price of a page went up with the number of pages, we would have a reason to keep you noisy.</p></details>
+      <details><summary>Is there a discount for non-profits or open source?</summary>
+        <p class="ans">Team is free for registered non-profits and for maintainers of open-source projects with public infrastructure. One email, no form.</p></details>
+      <details><summary>Where does our data live?</summary>
+        <p class="ans">Frankfurt by default, with Virginia and Sydney available on Company. Incident data is kept for two years, then deleted. Exports are available at any time and are not a retention plan.</p></details>
+    </div>
+  </section>
+</main>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Thirty days, the whole product, no card.</h2>
+    <p>If it has not paged anyone usefully by the end of the month, it was not the right tool.</p>
+    <div class="actions"><a class="btn primary big" href="contact.html">Start free</a></div>
+  </div>
+</section>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html" style="color:var(--fg)"><span class="glyph" aria-hidden="true"></span>Nettle</a>
+      <p style="margin-top:.8rem;max-width:30ch">Incident response for teams who do not have an on-call team.</p>
+    </div>
+    <div><h4>Product</h4><ul>
+      <li><a href="product.html">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="changelog.html">Changelog</a></li>
+      <li><a href="product.html#integrations">Integrations</a></li>
+    </ul></div>
+    <div><h4>Company</h4><ul>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html">Careers</a></li>
+      <li><a href="changelog.html">Status</a></li>
+    </ul></div>
+    <div><h4>Legal</h4><ul>
+      <li><a href="contact.html">Privacy</a></li>
+      <li><a href="contact.html">Terms</a></li>
+      <li><a href="contact.html">Security</a></li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Nettle Software Ltd.</span>
+      <span class="mono">Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

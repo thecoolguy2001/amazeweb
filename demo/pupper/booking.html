@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Booking — Barkwell Dog Co.</title>
+<meta name="description" content="Book a half-price trial day. What we need from you, and what happens next.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="mark" aria-hidden="true"></span>Barkwell</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="booking.html" aria-current="page">Booking</a>
+      <a href="team.html">Our team</a>
+      <a href="reviews.html">Reviews</a>
+    </nav>
+    <a class="btn solid cta" href="booking.html">Book a trial day</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="pill">First day half price</p>
+        <h1 class="disp" style="font-size:var(--t-xl)">Book a trial day</h1>
+        <p class="sub">One day, half price, no commitment either way. We find out whether your dog is happy in a group; you find out whether we are any good.</p>
+
+        <div class="day" style="grid-template-columns:1fr;margin-top:2rem">
+          <div class="slotrow"><span class="t num">1</span><div><h4>You send this form</h4><p>Takes two minutes. We reply within a day, usually the same morning.</p></div></div>
+          <div class="slotrow"><span class="t num">2</span><div><h4>Ten minutes on the phone</h4><p>About your dog, not about selling you anything. Recall, other dogs, anything that has gone wrong before.</p></div></div>
+          <div class="slotrow"><span class="t num">3</span><div><h4>Trial day</h4><p>Drop off by nine. We watch how the introduction goes and keep it short if it is not working.</p></div></div>
+          <div class="slotrow"><span class="t num">4</span><div><h4>We tell you the truth</h4><p>At pickup. Including if the answer is that this is the wrong setting for your dog.</p></div></div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <form class="form" action="#" method="post">
+          <div class="two">
+            <label>Your name <input type="text" name="name" autocomplete="name" required></label>
+            <label>Phone <input type="tel" name="phone" autocomplete="tel" required></label>
+          </div>
+          <label>Email <input type="email" name="email" autocomplete="email" required></label>
+          <div class="two">
+            <label>Dog's name <input type="text" name="dog" required></label>
+            <label>Age <input type="text" name="age" placeholder="e.g. 3 years"></label>
+          </div>
+          <div class="two">
+            <label>Breed <input type="text" name="breed" placeholder="or best guess"></label>
+            <label>Size
+              <select name="size" required>
+                <option value="">Choose</option>
+                <option>Small, under 10kg</option><option>Medium, 10 – 25kg</option><option>Large, over 25kg</option>
+              </select>
+            </label>
+          </div>
+          <label>What do you need
+            <select name="service" required>
+              <option value="">Choose</option>
+              <option>Daycare</option><option>Grooming</option>
+              <option>Training</option><option>Boarding</option><option>Not sure yet</option>
+            </select>
+          </label>
+          <label>Which days suit
+            <select name="days" multiple size="5" style="min-height:auto">
+              <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+              <option>Thursday</option><option>Friday</option>
+            </select>
+          </label>
+          <label>Anything we should know
+            <textarea name="notes" rows="4" placeholder="How are they with other dogs? Anything they are frightened of? Medication, allergies, a bad experience somewhere else — all useful and none of it will put us off."></textarea>
+          </label>
+          <button class="btn solid" type="submit" style="justify-self:start">Request a trial day</button>
+          <p style="font-size:var(--t-xs);color:var(--mid);margin:0">We reply within one working day. Your details are used to arrange the booking and nothing else — no newsletter, no card stored.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head"><p class="k">Bring with you</p><h2 class="disp">On the first day</h2></div>
+    <div class="cards">
+      <article class="card"><h3>Vaccination record</h3><p>Including kennel cough, done at least two weeks before. A photo on your phone is fine.</p></article>
+      <article class="card"><h3>Flea and worm</h3><p>Treated within the last three months. Tell us the product and we will note the date.</p></article>
+      <article class="card"><h3>Your vet's details</h3><p>Practice name and number, and permission to take your dog there if we have to.</p></article>
+      <article class="card"><h3>Their own food</h3><p>If they eat at lunchtime. Labelled, in one bag, with the amount written on it.</p></article>
+    </div>
+    <p style="margin-top:1.5rem;font-size:var(--t-s);color:var(--mid);max-width:60ch">Leave the lead and collar on at drop-off; we take them off once the group has settled and they go back on before you arrive. Do not bring toys from home — they cause more arguments than they are worth.</p>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html"><span class="mark" aria-hidden="true"></span>Barkwell</a>
+      <p style="margin-top:.8rem;max-width:32ch">Daycare, grooming, training and boarding. Two streets back from the common, since 2017.</p>
+    </div>
+    <div><h4>Services</h4><ul>
+      <li><a href="services.html">Daycare</a></li>
+      <li><a href="services.html">Grooming</a></li>
+      <li><a href="services.html">Training</a></li>
+      <li><a href="services.html">Boarding</a></li>
+    </ul></div>
+    <div><h4>Practical</h4><ul>
+      <li><a href="booking.html">Book a trial day</a></li>
+      <li><a href="services.html#prices">Prices</a></li>
+      <li><a href="team.html">Who looks after them</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+    </ul></div>
+    <div><h4>Find us</h4><ul>
+      <li>8 Barkwell Yard, off Common Road</li>
+      <li><a href="tel:+15550177400">(555) 017-7400</a></li>
+      <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+      <li>Mon – Fri, 7:00 – 19:00</li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Barkwell Dog Co. Licensed by the council, inspected annually, insured to £5m.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

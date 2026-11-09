@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Changelog — Nettle</title>
+<meta name="description" content="Every change we ship, including the ones we took back.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="glyph" aria-hidden="true"></span>Nettle</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="product.html">Product</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="changelog.html" aria-current="page">Changelog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="cta">
+      <a class="btn" href="contact.html">Sign in</a>
+      <a class="btn primary" href="pricing.html">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow">Changelog</p>
+    <h1 class="hero-h" style="max-width:18ch">Everything we shipped, and what we took back.</h1>
+    <p class="sub">Updated the day it goes out. Removals are listed too — a product that only ever adds is a product nobody is editing.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="log-bar">
+      <button class="chip" data-kind="all" aria-pressed="true">Everything</button>
+      <button class="chip" data-kind="shipped" aria-pressed="false">Shipped</button>
+      <button class="chip" data-kind="fixed" aria-pressed="false">Fixed</button>
+      <button class="chip" data-kind="removed" aria-pressed="false">Removed</button>
+      <span class="shown mono" id="shown">12 entries</span>
+    </div>
+
+    <div class="log" id="log">
+      <div class="entry" data-kind="shipped"><span class="date mono">5 Nov 2026</span><span class="kind shipped">Shipped</span>
+        <div class="what"><b>Ownership from CODEOWNERS</b><p>Paging now follows the file you already maintain instead of a second list that drifts out of date.</p></div></div>
+      <div class="entry" data-kind="fixed"><span class="date mono">3 Nov 2026</span><span class="kind fixed">Fixed</span>
+        <div class="what"><b>Duplicate pages on flapping checks</b><p>A check crossing its threshold repeatedly could page twice in ninety seconds. It now holds for one full interval before escalating.</p></div></div>
+      <div class="entry" data-kind="shipped"><span class="date mono">29 Oct 2026</span><span class="kind shipped">Shipped</span>
+        <div class="what"><b>Deploy correlation</b><p>A deploy within forty minutes of an incident opening is surfaced in the timeline as a likely cause, with a one-click rollback link where the provider supports it.</p></div></div>
+      <div class="entry" data-kind="removed"><span class="date mono">24 Oct 2026</span><span class="kind removed">Removed</span>
+        <div class="what"><b>Severity levels 4 and 5</b><p>Nobody used them, and two teams said the picker slowed down the first minute of an incident. Three levels now.</p></div></div>
+      <div class="entry" data-kind="shipped"><span class="date mono">21 Oct 2026</span><span class="kind shipped">Shipped</span>
+        <div class="what"><b>Acknowledge by SMS reply</b><p>Reply to the text and the incident is acknowledged. Installing an app at 3am is a bad plan.</p></div></div>
+      <div class="entry" data-kind="fixed"><span class="date mono">17 Oct 2026</span><span class="kind fixed">Fixed</span>
+        <div class="what"><b>Timeline order across regions</b><p>Events from the Sydney checker could land out of order by up to two seconds. Timestamps are now normalised at write.</p></div></div>
+      <div class="entry" data-kind="shipped"><span class="date mono">14 Oct 2026</span><span class="kind shipped">Shipped</span>
+        <div class="what"><b>Noise report in the weekly digest</b><p>Alerts that fired more than three times without a human acting are listed with a one-click mute.</p></div></div>
+      <div class="entry" data-kind="shipped"><span class="date mono">9 Oct 2026</span><span class="kind shipped">Shipped</span>
+        <div class="what"><b>Microsoft Teams</b><p>Incident channels, acknowledgement, and resolution, matching what Slack has had since April.</p></div></div>
+      <div class="entry" data-kind="fixed"><span class="date mono">6 Oct 2026</span><span class="kind fixed">Fixed</span>
+        <div class="what"><b>Status page uptime rounding</b><p>99.985% was displaying as 100%. It now rounds down, always, because rounding uptime up is a lie with good manners.</p></div></div>
+      <div class="entry" data-kind="removed"><span class="date mono">1 Oct 2026</span><span class="kind removed">Removed</span>
+        <div class="what"><b>Weekly summary email to all members</b><p>Replaced by one digest to responders only. Six people told us it had become something they filter.</p></div></div>
+      <div class="entry" data-kind="shipped"><span class="date mono">26 Sep 2026</span><span class="kind shipped">Shipped</span>
+        <div class="what"><b>Public status pages</b><p>Generated from real incidents, with a computed uptime figure. Custom domains on every paid plan.</p></div></div>
+      <div class="entry" data-kind="shipped"><span class="date mono">18 Sep 2026</span><span class="kind shipped">Shipped</span>
+        <div class="what"><b>Drafted postmortems</b><p>The timeline, the probable cause, and empty fields for impact, decisions, and follow-up.</p></div></div>
+    </div>
+  </section>
+</main>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Watch it move for a month.</h2>
+    <p>Thirty days free. Every change above shipped during a beta you can join today.</p>
+    <div class="actions"><a class="btn primary big" href="pricing.html">Start free</a></div>
+  </div>
+</section>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html" style="color:var(--fg)"><span class="glyph" aria-hidden="true"></span>Nettle</a>
+      <p style="margin-top:.8rem;max-width:30ch">Incident response for teams who do not have an on-call team.</p>
+    </div>
+    <div><h4>Product</h4><ul>
+      <li><a href="product.html">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="changelog.html">Changelog</a></li>
+      <li><a href="product.html#integrations">Integrations</a></li>
+    </ul></div>
+    <div><h4>Company</h4><ul>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html">Careers</a></li>
+      <li><a href="changelog.html">Status</a></li>
+    </ul></div>
+    <div><h4>Legal</h4><ul>
+      <li><a href="contact.html">Privacy</a></li>
+      <li><a href="contact.html">Terms</a></li>
+      <li><a href="contact.html">Security</a></li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Nettle Software Ltd.</span>
+      <span class="mono">Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

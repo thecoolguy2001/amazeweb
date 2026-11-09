@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reservations — Saltfold</title>
+<meta name="description" content="Book a table at Saltfold. A third of the room is held for walk-ins every service.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Karla:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topline">
+  <div class="wrap">
+    <span>Wed – Sat, lunch and dinner · Sunday, one sitting</span>
+    <span class="right"><a href="tel:+15550143300">(555) 014-3300</a> · 11 Saltfold Lane</span>
+  </div>
+</div>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">Saltfold</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="reservations.html" aria-current="page">Reservations</a>
+      <a href="events.html">Events</a>
+      <a href="visit.html">Visit</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="wrap">
+    <div class="sec-head">
+      <p class="sc">Reservations</p>
+      <h2 class="don">Book a table</h2>
+      <p>Thirty-four seats, and a third of them held back for walk-ins at every service. If the form says nothing is free, the door may still say otherwise.</p>
+    </div>
+
+    <div class="service-bar">
+      <button class="tab" data-service="lunch" aria-pressed="false">Lunch</button>
+      <button class="tab" data-service="dinner" aria-pressed="true">Dinner</button>
+      <button class="tab" data-service="sunday" aria-pressed="false">Sunday</button>
+      <span class="when" id="when">Wednesday to Saturday, 18:00 – 22:00</span>
+    </div>
+
+    <div class="book">
+      <div class="book-card">
+        <form class="form" action="#" method="post">
+          <div class="three">
+            <label>Date <input type="date" name="date" value="2026-11-14" required></label>
+            <label>People
+              <select name="people" required>
+                <option>1</option><option selected>2</option><option>3</option>
+                <option>4</option><option>5</option><option>6+ — call us</option>
+              </select>
+            </label>
+            <label>Occasion
+              <select name="occasion">
+                <option>Just dinner</option><option>Birthday</option>
+                <option>Anniversary</option><option>Work</option>
+              </select>
+            </label>
+          </div>
+
+          <div>
+            <p class="sc" style="color:var(--mid)">Available times</p>
+            <div class="slots" data-slots="lunch" hidden>
+              <button class="slot" type="button" data-time="12:00" aria-pressed="false">12:00</button>
+              <button class="slot" type="button" data-time="12:30" aria-pressed="false">12:30</button>
+              <button class="slot" type="button" data-time="13:00" disabled>13:00</button>
+              <button class="slot" type="button" data-time="13:30" aria-pressed="false">13:30</button>
+              <button class="slot" type="button" data-time="14:00" aria-pressed="false">14:00</button>
+            </div>
+            <div class="slots" data-slots="dinner">
+              <button class="slot" type="button" data-time="18:00" aria-pressed="false">18:00</button>
+              <button class="slot" type="button" data-time="18:30" aria-pressed="false">18:30</button>
+              <button class="slot" type="button" data-time="19:00" disabled>19:00</button>
+              <button class="slot" type="button" data-time="19:30" disabled>19:30</button>
+              <button class="slot" type="button" data-time="20:00" aria-pressed="false">20:00</button>
+              <button class="slot" type="button" data-time="20:30" aria-pressed="false">20:30</button>
+              <button class="slot" type="button" data-time="21:00" aria-pressed="false">21:00</button>
+            </div>
+            <div class="slots" data-slots="sunday" hidden>
+              <button class="slot" type="button" data-time="12:30" aria-pressed="false">12:30 — one sitting</button>
+            </div>
+            <p class="slot-note" id="slot-note">Two tables left at seven; the rest of the evening is open.</p>
+            <input type="hidden" name="time" id="time" value="">
+          </div>
+
+          <div class="two">
+            <label>Name <input type="text" name="name" autocomplete="name" required></label>
+            <label>Phone <input type="tel" name="phone" autocomplete="tel" required></label>
+          </div>
+          <label>Email <input type="email" name="email" autocomplete="email" required></label>
+          <label>Anything we should know <textarea name="notes" rows="3" placeholder="Allergies, a birthday, a pushchair, a dog, a wheelchair — all useful."></textarea></label>
+          <button class="btn solid" type="submit" style="justify-self:start">Request the table</button>
+          <p style="font-size:var(--t-xs);color:var(--mid);margin:0">A text confirms it within the hour. No card except on Sundays.</p>
+        </form>
+      </div>
+
+      <div>
+        <h3 class="don" style="font-size:1.5rem;margin-bottom:1rem">How we do this</h3>
+        <table class="hours-table">
+          <tbody>
+            <tr><th scope="row">Holding</th><td>Tables are yours for two hours at dinner, ninety minutes at lunch. Nobody will be moved on if the table behind you is not booked.</td></tr>
+            <tr><th scope="row">Late</th><td>Fifteen minutes and we will still have the table. Longer than that, call us and we will almost always make it work.</td></tr>
+            <tr><th scope="row">Six or more</th><td>Phone, not the form. Large tables change how the whole room runs and we would rather talk it through.</td></tr>
+            <tr><th scope="row">Deposits</th><td>Only on Sundays, 10 a seat, taken off the bill. A single sitting means an empty chair cannot be resold.</td></tr>
+            <tr><th scope="row">Cancelling</th><td>Any time up to the day before, no charge, no guilt. Text the number on your confirmation.</td></tr>
+            <tr><th scope="row">Walk-ins</th><td>A third of the room, every service, including the four seats at the pass which are the best in the house.</td></tr>
+            <tr><th scope="row">Children</th><td>Welcome at every service. High chairs, smaller portions, and nobody minds the noise.</td></tr>
+            <tr><th scope="row">Dogs</th><td>Yes, in the front half. There is water by the door.</td></tr>
+            <tr><th scope="row">Access</th><td>One level, 90cm door, accessible toilet. Two steps outside and a ramp we are happy to put down.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html">Saltfold</a>
+      <p style="margin-top:.8rem;max-width:30ch">A wood-fired neighbourhood restaurant. Eleven Saltfold Lane, since 2021.</p>
+    </div>
+    <div><h4>Eat</h4><ul>
+      <li><a href="menu.html">The menu</a></li>
+      <li><a href="reservations.html">Book a table</a></li>
+      <li><a href="events.html">Events and supper clubs</a></li>
+      <li><a href="visit.html">Private dining</a></li>
+    </ul></div>
+    <div><h4>Visit</h4><ul>
+      <li>11 Saltfold Lane</li>
+      <li><a href="tel:+15550143300">(555) 014-3300</a></li>
+      <li><a href="mailto:table@example.com">table@example.com</a></li>
+      <li><a href="visit.html">Getting here</a></li>
+    </ul></div>
+    <div><h4>Hours</h4><ul>
+      <li>Wed – Sat · 12:00 – 14:30</li>
+      <li>Wed – Sat · 18:00 – 22:00</li>
+      <li>Sunday · 12:30 – 17:00</li>
+      <li>Mon &amp; Tue · closed</li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Saltfold. All allergen information available on request.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

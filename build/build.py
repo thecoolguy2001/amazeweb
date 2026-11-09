@@ -292,6 +292,13 @@ def page_theme(t):
     terms = " ".join(x for x in (COMMERCE["support"], COMMERCE["license"]) if x)
     demo_btn = (f'<a class="btn btn-light" href="{t["demo"]}">View demo</a>'
                 if t.get("demo") else "")
+    # Availability, told straight. A theme with a live demo but no price is
+    # viewable and not yet purchasable, and saying only "Coming Soon" next to
+    # a working demo button reads like the demo is not real.
+    if price == "Coming Soon":
+        avail = "Demo ready, not yet for sale" if t.get("demo") else "Coming Soon"
+    else:
+        avail = "Available now"
     buy_url = t.get("buy_url") or COMMERCE.get("buy_url")
     if buy_url:
         label = f'Buy {price}' if price != "Coming Soon" else "Buy"
@@ -310,7 +317,7 @@ def page_theme(t):
 <p class="theme-kicker">{E(t["kicker"])}</p>
 <h1 class="t-page">{E(t["name"])}</h1>
 <p class="theme-sub">{E(t["sub"])}</p>
-<div class="theme-meta">{plat}<p class="theme-avail">Coming Soon</p></div>
+<div class="theme-meta">{plat}<p class="theme-avail">{avail}</p></div>
 </section>
 <section class="theme-frame">{frame}</section>
 <section class="theme-buy">

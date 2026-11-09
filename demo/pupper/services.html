@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Services and prices — Barkwell Dog Co.</title>
+<meta name="description" content="Daycare, grooming, training and boarding, with every price published and an estimator that does the sums.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="mark" aria-hidden="true"></span>Barkwell</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="services.html" aria-current="page">Services</a>
+      <a href="booking.html">Booking</a>
+      <a href="team.html">Our team</a>
+      <a href="reviews.html">Reviews</a>
+    </nav>
+    <a class="btn solid cta" href="booking.html">Book a trial day</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap" style="padding-bottom:0">
+    <p class="pill">Every price on this page</p>
+    <h1 class="disp" style="font-size:var(--t-xl);max-width:20ch">What we do, and what it costs.</h1>
+    <p class="sub">Nothing here says “from” without saying what it is from. The estimator below gives you the real monthly number for your dog.</p>
+  </section>
+
+  <section class="wrap">
+    <div class="cards">
+      <article class="card">
+        <span class="ic c1" aria-hidden="true"></span>
+        <h3>Daycare</h3>
+        <p>7:00 to 19:00. Two play groups split by size and temperament, a walk on the common mid-morning, and two hours of genuine rest after lunch.</p>
+        <p style="font-size:var(--t-s);color:var(--mid)">Half days to 13:00 are 60% of the day rate. Late collection after 19:00 is £10 and we would much rather you just called.</p>
+        <p class="from">£30 – £40<small>per day, by size</small></p>
+      </article>
+      <article class="card">
+        <span class="ic c2" aria-hidden="true"></span>
+        <h3>Grooming</h3>
+        <p>Full groom, bath and tidy, or nails only. Separate quiet room, hand dried, never a cage dryer, and we stop if a dog is distressed rather than push through.</p>
+        <p style="font-size:var(--t-s);color:var(--mid)">Matting that needs clipping out is quoted before we start, never after. Nails on their own are £12 and take five minutes.</p>
+        <p class="from">£42 – £57<small>full groom, by size</small></p>
+      </article>
+      <article class="card">
+        <span class="ic c3" aria-hidden="true"></span>
+        <h3>Training</h3>
+        <p>One to one, reward based, hour long. In the yard, on the common, or at your house if the problem only happens there.</p>
+        <p style="font-size:var(--t-s);color:var(--mid)">Blocks of six are 10% off. We do not do group classes and we will say so if your dog needs a behaviourist instead of us.</p>
+        <p class="from">£35 – £47<small>per session, by size</small></p>
+      </article>
+      <article class="card">
+        <span class="ic c4" aria-hidden="true"></span>
+        <h3>Boarding</h3>
+        <p>Overnight in Sam's house, maximum four dogs, no kennel block. Walked twice, fed on your schedule, and a photo at bedtime.</p>
+        <p style="font-size:var(--t-s);color:var(--mid)">Only for dogs who already come to daycare, because we need to know them first. Christmas books out by September.</p>
+        <p class="from">£40 – £54<small>per night, by size</small></p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" id="prices" style="padding-top:0">
+    <div class="est" id="est">
+      <div class="inner">
+        <div>
+          <h2>What will it actually cost?</h2>
+          <p class="lede">Pick what you need. The number that appears is the number you will be charged.</p>
+          <fieldset>
+            <legend>What do you need</legend>
+            <div class="opts">
+              <button type="button" class="opt" data-k="service" data-v="daycare" aria-pressed="true">Daycare</button>
+              <button type="button" class="opt" data-k="service" data-v="grooming" aria-pressed="false">Grooming</button>
+              <button type="button" class="opt" data-k="service" data-v="training" aria-pressed="false">Training</button>
+              <button type="button" class="opt" data-k="service" data-v="boarding" aria-pressed="false">Boarding</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Size of dog</legend>
+            <div class="opts">
+              <button type="button" class="opt" data-k="size" data-v="small" aria-pressed="false">Small, under 10kg</button>
+              <button type="button" class="opt" data-k="size" data-v="medium" aria-pressed="true">Medium, 10 – 25kg</button>
+              <button type="button" class="opt" data-k="size" data-v="large" aria-pressed="false">Large, over 25kg</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>How often</legend>
+            <div class="opts">
+              <button type="button" class="opt" data-k="freq" data-v="once" aria-pressed="false">Just the once</button>
+              <button type="button" class="opt" data-k="freq" data-v="two" aria-pressed="true">2 days a week</button>
+              <button type="button" class="opt" data-k="freq" data-v="three" aria-pressed="false">3 days a week</button>
+              <button type="button" class="opt" data-k="freq" data-v="five" aria-pressed="false">5 days a week</button>
+            </div>
+          </fieldset>
+        </div>
+        <div class="quote-card">
+          <p class="big num" id="est-total">£0</p>
+          <p class="per" id="est-per">a month</p>
+          <dl>
+            <dt>Rate</dt><dd class="num" id="est-unit">—</dd>
+            <dt>Visits</dt><dd class="num" id="est-visits">—</dd>
+            <dt>Regular discount</dt><dd class="num" id="est-disc">—</dd>
+          </dl>
+          <a class="btn teal" href="booking.html" style="width:100%;justify-content:center">Book a trial day</a>
+          <p class="fine">A month means four and a bit weeks, which is how we invoice. First day half price, nothing owed if you stop after it. No joining fee, no card on file, no notice period.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head"><p class="k">The small print</p><h2 class="disp">Things worth knowing before you book</h2></div>
+    <div class="faq">
+      <details open><summary>What do you need from us before the first day?</summary>
+        <p class="ans">Vaccination record including kennel cough, a flea and worm treatment in the last three months, and your vet's details. Dogs need to be neutered from twelve months for the group — not a judgement, just what keeps the group stable. We will take all of it by photo on the day.</p></details>
+      <details><summary>What happens if my dog does not settle?</summary>
+        <p class="ans">We tell you the same day, at pickup, face to face. Some dogs are not group dogs and that is a fact about the dog, not a failure. If that is the answer after the trial we will say so and refund the half day, and usually suggest one-to-one walks instead.</p></details>
+      <details><summary>Do you ever use crates or corrections?</summary>
+        <p class="ans">Crates only at nap time, doors open, for dogs who choose to use them — several do. No slip leads, no prong collars, no spray bottles, no shouting. If a dog needs separating it goes to the quiet room with a person, not on its own.</p></details>
+      <details><summary>What is the waiting list like?</summary>
+        <p class="ans">Honest answer: Tuesdays and Thursdays are usually three to four months. Mondays and Fridays are often available within a fortnight. We cap at twenty-four dogs a day and we will not go over it to clear the list faster.</p></details>
+      <details><summary>What if my dog gets hurt?</summary>
+        <p class="ans">Minor scrapes get cleaned and written on the day sheet with a call if it is anything more than that. Anything worse and we go straight to the vet on Common Road — we are five minutes away — and phone you from the car. We carry £5m public liability and every member of staff holds a canine first-aid certificate.</p></details>
+      <details><summary>Can we visit before booking?</summary>
+        <p class="ans">Yes, and you should. Thursday afternoons at two, no appointment needed. You will see the actual yard with the actual dogs in it rather than a tidied version.</p></details>
+    </div>
+  </section>
+</main>
+
+<section class="band">
+  <div class="wrap">
+    <div><h2>Still not sure? Come and look at it.</h2>
+    <p>Thursdays at two, no appointment. Bring the dog if you like.</p></div>
+    <div class="actions"><a class="btn solid" href="booking.html">Book a trial day</a><a class="btn light" href="tel:+15550177400">Call us</a></div>
+  </div>
+</section>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html"><span class="mark" aria-hidden="true"></span>Barkwell</a>
+      <p style="margin-top:.8rem;max-width:32ch">Daycare, grooming, training and boarding. Two streets back from the common, since 2017.</p>
+    </div>
+    <div><h4>Services</h4><ul>
+      <li><a href="services.html">Daycare</a></li>
+      <li><a href="services.html">Grooming</a></li>
+      <li><a href="services.html">Training</a></li>
+      <li><a href="services.html">Boarding</a></li>
+    </ul></div>
+    <div><h4>Practical</h4><ul>
+      <li><a href="booking.html">Book a trial day</a></li>
+      <li><a href="services.html#prices">Prices</a></li>
+      <li><a href="team.html">Who looks after them</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+    </ul></div>
+    <div><h4>Find us</h4><ul>
+      <li>8 Barkwell Yard, off Common Road</li>
+      <li><a href="tel:+15550177400">(555) 017-7400</a></li>
+      <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+      <li>Mon – Fri, 7:00 – 19:00</li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Barkwell Dog Co. Licensed by the council, inspected annually, insured to £5m.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

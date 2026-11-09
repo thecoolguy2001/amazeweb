@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Timetable — Hopscotch</title>
+<meta name="description" content="The full weekly timetable with real space counts, plus term dates and collection times.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="mark" aria-hidden="true"></span>Hopscotch</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="programs.html">Programs</a>
+      <a href="schedule.html" aria-current="page">Timetable</a>
+      <a href="safety.html">Safety</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="btn solid cta" href="contact.html">Book a taster</a>
+  </div>
+</header>
+
+<main>
+  <section class="wrap">
+    <p class="pill">Updated Monday 9 November</p>
+    <h1 class="round" style="font-size:var(--t-xl);max-width:20ch">The weekly timetable</h1>
+    <p style="color:var(--mid);max-width:52ch;margin-top:.8rem">Filter by age. Space counts are updated every Monday morning and they are the actual numbers — if it says one left, there is one left.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:1rem">
+    <div class="agebar" id="agebar">
+      <span class="lbl">How old is your child?</span>
+      <button class="age" data-age="all" aria-pressed="true">Any age</button>
+      <button class="age" data-age="a" aria-pressed="false">2 – 3</button>
+      <button class="age" data-age="b" aria-pressed="false">4 – 5</button>
+      <button class="age" data-age="c" aria-pressed="false">6 – 8</button>
+      <button class="age" data-age="d" aria-pressed="false">9 – 12</button>
+      <span class="shown" id="shown">14 sessions a week</span>
+    </div>
+      <table class="tt">
+        <thead><tr><th>Day</th><th>Time</th><th>What</th><th>Ages</th><th>Spaces</th></tr></thead>
+        <tbody>
+          <tr data-ages="b c d"><td class="day">Monday</td><td class="time">15:15 – 18:30</td><td class="what"><b>After School</b></td><td class="ages"><span>4 – 12</span></td><td class="state">4 left</td></tr>
+          <tr data-ages="c d"><td class="day">Monday</td><td class="time">16:30 – 17:30</td><td class="what"><b>Code Club</b> — Scratch</td><td class="ages"><span>6 – 9</span></td><td class="state">8 left</td></tr>
+          <tr data-ages="a b"><td class="day">Tuesday</td><td class="time">10:00 – 11:00</td><td class="what"><b>Messy Mornings</b></td><td class="ages"><span>2 – 5</span></td><td class="state full">Waiting list</td></tr>
+          <tr data-ages="b c d"><td class="day">Tuesday</td><td class="time">15:15 – 18:30</td><td class="what"><b>After School</b></td><td class="ages"><span>4 – 12</span></td><td class="state">2 left</td></tr>
+          <tr data-ages="b c"><td class="day">Tuesday</td><td class="time">16:45 – 17:45</td><td class="what"><b>Story Makers</b></td><td class="ages"><span>4 – 8</span></td><td class="state">3 left</td></tr>
+          <tr data-ages="a b"><td class="day">Wednesday</td><td class="time">09:45 – 10:30</td><td class="what"><b>Tumble Club</b> — toddlers, parent stays</td><td class="ages"><span>2 – 3</span></td><td class="state">6 left</td></tr>
+          <tr data-ages="b"><td class="day">Wednesday</td><td class="time">11:00 – 11:45</td><td class="what"><b>Tumble Club</b> — drop off</td><td class="ages"><span>4 – 5</span></td><td class="state">1 left</td></tr>
+          <tr data-ages="b c d"><td class="day">Wednesday</td><td class="time">15:15 – 18:30</td><td class="what"><b>After School</b></td><td class="ages"><span>4 – 12</span></td><td class="state">5 left</td></tr>
+          <tr data-ages="c d"><td class="day">Thursday</td><td class="time">16:30 – 18:00</td><td class="what"><b>Build It</b> — four-week block</td><td class="ages"><span>6 – 12</span></td><td class="state">2 left</td></tr>
+          <tr data-ages="b c d"><td class="day">Thursday</td><td class="time">15:15 – 18:30</td><td class="what"><b>After School</b></td><td class="ages"><span>4 – 12</span></td><td class="state">3 left</td></tr>
+          <tr data-ages="b c d"><td class="day">Friday</td><td class="time">15:15 – 18:30</td><td class="what"><b>After School</b> — film and pizza</td><td class="ages"><span>4 – 12</span></td><td class="state full">Full</td></tr>
+          <tr data-ages="a b"><td class="day">Saturday</td><td class="time">09:00 – 09:45</td><td class="what"><b>Tumble Club</b> — toddlers</td><td class="ages"><span>2 – 3</span></td><td class="state">4 left</td></tr>
+          <tr data-ages="c d"><td class="day">Saturday</td><td class="time">10:00 – 11:30</td><td class="what"><b>Build It</b></td><td class="ages"><span>6 – 12</span></td><td class="state">6 left</td></tr>
+          <tr data-ages="c d"><td class="day">Saturday</td><td class="time">11:45 – 12:45</td><td class="what"><b>Code Club</b> — Python</td><td class="ages"><span>9 – 12</span></td><td class="state">7 left</td></tr>
+        </tbody>
+      </table>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head"><p class="k">Term dates</p><h2 class="round">2026 – 27</h2></div>
+    <table class="tt">
+      <thead><tr><th>Term</th><th>Starts</th><th>Ends</th><th>Half term</th><th>Weeks</th></tr></thead>
+      <tbody>
+        <tr><td class="day">Autumn</td><td class="time">2 September</td><td class="time">18 December</td><td class="time">27 – 31 October</td><td>15</td></tr>
+        <tr><td class="day">Spring</td><td class="time">6 January</td><td class="time">27 March</td><td class="time">16 – 20 February</td><td>11</td></tr>
+        <tr><td class="day">Summer</td><td class="time">13 April</td><td class="time">17 July</td><td class="time">25 – 29 May</td><td>13</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:1.25rem;font-size:var(--t-s);color:var(--mid);max-width:62ch">We follow the local authority calendar. Clubs do not run on inset days but holiday camps do, which catches people out every September.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head"><p class="k">Getting here</p><h2 class="round">School collection</h2></div>
+    <table class="tt">
+      <thead><tr><th>School</th><th>We collect at</th><th>Here by</th><th>How</th></tr></thead>
+      <tbody>
+        <tr><td class="day">Pelham Primary</td><td class="time">15:15</td><td class="time">15:25</td><td>Walked, two staff, high-vis</td></tr>
+        <tr><td class="day">St Aidan's</td><td class="time">15:20</td><td class="time">15:40</td><td>Minibus, seat-belted, tracked</td></tr>
+        <tr><td class="day">Greenway Juniors</td><td class="time">15:30</td><td class="time">15:50</td><td>Minibus, seat-belted, tracked</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:1.25rem;font-size:var(--t-s);color:var(--mid);max-width:62ch">You get a text when your child is signed in, every time, automatically. If they are not where they should be at collection we phone the school and then you, in that order, within five minutes.</p>
+  </section>
+</main>
+
+<section class="band">
+  <div class="wrap">
+    <div><h2>Need a day we do not run?</h2><p>Tell us. Two of the current clubs exist because enough parents asked for the same thing.</p></div>
+    <div class="actions"><a class="btn sun" href="contact.html">Get in touch</a></div>
+  </div>
+</section>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html"><span class="mark" aria-hidden="true"></span>Hopscotch</a>
+      <p style="margin-top:.8rem;max-width:32ch">After-school clubs, weekend classes and holiday camps for ages 2 to 12. The old library on Pelham Street.</p>
+    </div>
+    <div><h4>Programs</h4><ul>
+      <li><a href="programs.html">All programs</a></li>
+      <li><a href="schedule.html">Weekly timetable</a></li>
+      <li><a href="programs.html#camps">Holiday camps</a></li>
+      <li><a href="contact.html">Book a taster</a></li>
+    </ul></div>
+    <div><h4>For parents</h4><ul>
+      <li><a href="safety.html">Safety and staffing</a></li>
+      <li><a href="safety.html#fees">Fees and funding</a></li>
+      <li><a href="safety.html#send">Additional needs</a></li>
+      <li><a href="contact.html">Questions</a></li>
+    </ul></div>
+    <div><h4>Find us</h4><ul>
+      <li>The Old Library, Pelham Street</li>
+      <li><a href="tel:+15550166100">(555) 016-6100</a></li>
+      <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+      <li>Mon – Fri 15:00 – 18:30 · Sat 9:00 – 13:00</li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Hopscotch. Ofsted registered EY558201. All staff DBS checked and paediatric first-aid trained.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Work — Northfall</title>
+<meta name="description" content="Eleven projects: commercials, documentary, and brand film, filterable by kind.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">North<span>fall</span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Reel</a>
+      <a href="work.html" aria-current="page">Work</a>
+      <a href="services.html">Services</a>
+      <a href="studio.html">Studio</a>
+    </nav>
+    <a class="reel-link" href="studio.html#brief">Start a project</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap" style="padding-bottom:1.5rem">
+    <h1 class="anton" style="font-size:var(--t-xl)">Everything we have<br>put our name on.</h1>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="filters">
+      <button class="chip" data-cat="all" aria-pressed="true">All</button>
+      <button class="chip" data-cat="ad" aria-pressed="false">Commercial</button>
+      <button class="chip" data-cat="doc" aria-pressed="false">Documentary</button>
+      <button class="chip" data-cat="brand" aria-pressed="false">Brand film</button>
+      <span class="count" id="count">11 projects</span>
+    </div>
+    <div class="reel" id="reel">
+      <a class="tile wide" href="project.html" data-cat="ad" data-dur="112">
+        <span class="frames">
+          <span class="frame f-a on"></span><span class="frame f-d"></span>
+          <span class="frame f-g"></span><span class="frame f-c"></span>
+        </span>
+        <span class="scrub" aria-hidden="true"></span>
+        <span class="tc-badge tc">00:00</span>
+        <span class="cap"><span><h3>Nothing Comes From Nothing</h3><span class="yr">Caledonian Energy · 2026</span></span><span class="kind">Commercial<br>90s · broadcast</span></span>
+      </a>
+      <a class="tile narrow" href="project.html" data-cat="doc" data-dur="1680">
+        <span class="frames">
+          <span class="frame f-b on"></span><span class="frame f-h"></span>
+          <span class="frame f-f"></span><span class="frame f-e"></span>
+        </span>
+        <span class="scrub" aria-hidden="true"></span>
+        <span class="tc-badge tc">00:00</span>
+        <span class="cap"><span><h3>The Last Shift</h3><span class="yr">BBC Scotland · 2026</span></span><span class="kind">Documentary<br>28 min</span></span>
+      </a>
+      <a class="tile narrow" href="project.html" data-cat="brand" data-dur="60">
+        <span class="frames">
+          <span class="frame f-c on"></span><span class="frame f-g"></span>
+          <span class="frame f-a"></span><span class="frame f-d"></span>
+        </span>
+        <span class="scrub" aria-hidden="true"></span>
+        <span class="tc-badge tc">00:00</span>
+        <span class="cap"><span><h3>Open Water</h3><span class="yr">Harbour &amp; Son · 2025</span></span><span class="kind">Brand film<br>60s</span></span>
+      </a>
+      <a class="tile wide" href="project.html" data-cat="ad" data-dur="45">
+        <span class="frames">
+          <span class="frame f-d on"></span><span class="frame f-a"></span>
+          <span class="frame f-h"></span><span class="frame f-g"></span>
+        </span>
+        <span class="scrub" aria-hidden="true"></span>
+        <span class="tc-badge tc">00:00</span>
+        <span class="cap"><span><h3>Six Bridges</h3><span class="yr">Transport Scotland · 2025</span></span><span class="kind">Commercial<br>45s · cinema</span></span>
+      </a>
+      <a class="tile full" href="project.html" data-cat="doc" data-dur="240">
+        <span class="frames">
+          <span class="frame f-f on"></span><span class="frame f-b"></span>
+          <span class="frame f-e"></span><span class="frame f-h"></span>
+        </span>
+        <span class="scrub" aria-hidden="true"></span>
+        <span class="tc-badge tc">00:00</span>
+        <span class="cap"><span><h3>A Year in the Yard</h3><span class="yr">Ferguson Marine · 2024 · Craft Award</span></span><span class="kind">Documentary short<br>4 min</span></span>
+      </a>
+      <a class="tile " href="project.html" data-cat="brand" data-dur="150">
+        <span class="frames">
+          <span class="frame f-g on"></span><span class="frame f-c"></span>
+          <span class="frame f-d"></span><span class="frame f-a"></span>
+        </span>
+        <span class="scrub" aria-hidden="true"></span>
+        <span class="tc-badge tc">00:00</span>
+        <span class="cap"><span><h3>How the Glass Is Made</h3><span class="yr">Caithness Glass · 2025</span></span><span class="kind">Brand film<br>2:30</span></span>
+      </a>
+      <a class="tile " href="project.html" data-cat="ad" data-dur="30">
+        <span class="frames">
+          <span class="frame f-h on"></span><span class="frame f-f"></span>
+          <span class="frame f-b"></span><span class="frame f-e"></span>
+        </span>
+        <span class="scrub" aria-hidden="true"></span>
+        <span class="tc-badge tc">00:00</span>
+        <span class="cap"><span><h3>Last Train</h3><span class="yr">ScotRail · 2024</span></span><span class="kind">Commercial<br>30s · broadcast</span></span>
+      </a>
+      <a class="tile narrow" href="project.html" data-cat="doc" data-dur="900">
+        <span class="frames">
+          <span class="frame f-e on"></span><span class="frame f-b"></span>
+          <span class="frame f-f"></span><span class="frame f-h"></span>
+        </span>
+        <span class="scrub" aria-hidden="true"></span>
+        <span class="tc-badge tc">00:00</span>
+        <span class="cap"><span><h3>Quarry</h3><span class="yr">Independent · 2024</span></span><span class="kind">Documentary<br>15 min</span></span>
+      </a>
+      <a class="tile narrow" href="project.html" data-cat="brand" data-dur="75">
+        <span class="frames">
+          <span class="frame f-a on"></span><span class="frame f-g"></span>
+          <span class="frame f-c"></span><span class="frame f-d"></span>
+        </span>
+        <span class="scrub" aria-hidden="true"></span>
+        <span class="tc-badge tc">00:00</span>
+        <span class="cap"><span><h3>Ten Thousand Doors</h3><span class="yr">Hielan Joinery · 2024</span></span><span class="kind">Brand film<br>75s</span></span>
+      </a>
+      <a class="tile wide" href="project.html" data-cat="ad" data-dur="20">
+        <span class="frames">
+          <span class="frame f-c on"></span><span class="frame f-d"></span>
+          <span class="frame f-a"></span><span class="frame f-g"></span>
+        </span>
+        <span class="scrub" aria-hidden="true"></span>
+        <span class="tc-badge tc">00:00</span>
+        <span class="cap"><span><h3>Two Degrees</h3><span class="yr">Scottish Water · 2024</span></span><span class="kind">Commercial<br>20s · online</span></span>
+      </a>
+      <a class="tile full" href="project.html" data-cat="doc" data-dur="420">
+        <span class="frames">
+          <span class="frame f-b on"></span><span class="frame f-e"></span>
+          <span class="frame f-h"></span><span class="frame f-f"></span>
+        </span>
+        <span class="scrub" aria-hidden="true"></span>
+        <span class="tc-badge tc">00:00</span>
+        <span class="cap"><span><h3>The Ferry Men</h3><span class="yr">BBC Scotland · 2023</span></span><span class="kind">Documentary short<br>7 min</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head"><div><p class="k">Also</p><h2>Post for other studios.</h2></div></div>
+    <p style="max-width:58ch;color:var(--dim);font-size:var(--t-s)">Around a third of what goes through the suite is somebody else's footage — three studios in the city book it by the day for grade and sound. Those jobs are not listed here because they are not ours to show, but the rate card is on the services page.</p>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html" style="color:var(--bone)">North<span>fall</span></a>
+      <p style="margin-top:.6rem;max-width:30ch">Unit 4, The Tannery, Glasgow G40 · <a href="tel:+441410199220">+44 141 019 9220</a></p>
+    </div>
+    <div class="links">
+      <a href="work.html">Work</a><a href="services.html">Services</a>
+      <a href="studio.html">Studio</a><a href="studio.html#brief">Brief us</a>
+      <a href="mailto:hello@example.com">hello@example.com</a>
+    </div>
+    <div style="font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase">
+      © 2026 Northfall · Built as a template by Amazé Web
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

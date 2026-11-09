@@ -1,0 +1,207 @@
+/* ==========================================================================
+   Restaurant — hospitality template for Amazé Web
+   Concept: "The Service" — the page is laid out like a menu card, and one
+   control runs it: the day part. Switch between lunch, dinner and Sunday
+   and the menu, the hours and the booking slots all follow.
+   ========================================================================== */
+
+:root{
+  --cream:#FBF7EF;
+  --cream-2:#F3EDE1;
+  --ink:#211A16;
+  --claret:#6B1F2A;
+  --claret-2:#8A2B38;
+  --olive:#6E7A4F;
+  --mid:#7A6E63;
+  --line:#DED5C5;
+
+  --gut:clamp(1.15rem,4vw,4rem);
+  --maxw:1240px;
+
+  --t-xs:0.75rem;
+  --t-s:0.875rem;
+  --t-m:1.0625rem;
+  --t-l:clamp(1.1rem,1.7vw,1.35rem);
+  --t-xl:clamp(1.8rem,3.4vw,2.8rem);
+  --t-hero:clamp(2.6rem,6.5vw,5.5rem);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:"Karla",system-ui,-apple-system,sans-serif;
+  font-size:var(--t-m);line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4,p,dl,dd,figure,figcaption{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--claret);outline-offset:3px}
+
+.don{font-family:"Bodoni Moda",Didot,Georgia,serif;font-weight:400;line-height:1.04}
+.sc{font-size:var(--t-xs);letter-spacing:.18em;text-transform:uppercase}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
+section.wrap{padding-block:clamp(2.5rem,6vw,5rem)}
+
+/* ---------- top line ---------- */
+.topline{background:var(--ink);color:var(--cream)}
+.topline .wrap{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;padding-block:.5rem;font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase}
+.topline .right{margin-left:auto}
+.topline a{border-bottom:1px solid rgba(251,247,239,.35)}
+.topline a:hover{border-color:var(--cream)}
+
+/* ---------- masthead ---------- */
+.masthead{position:sticky;top:0;z-index:40;background:var(--cream);border-bottom:1px solid transparent;transition:border-color .25s}
+.masthead.is-stuck{border-bottom-color:var(--line)}
+.masthead .wrap{display:flex;align-items:center;gap:1.5rem;padding-block:1rem}
+.logo{font-family:"Bodoni Moda",Didot,serif;font-size:1.5rem;letter-spacing:.04em}
+.nav{display:flex;gap:1.5rem;font-size:var(--t-s);color:var(--mid);margin-left:auto}
+.nav a{transition:color .18s}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;border:1px solid var(--ink);border-radius:999px;font-size:var(--t-s);letter-spacing:.04em;transition:background .2s,color .2s,border-color .2s}
+.btn:hover{background:var(--ink);color:var(--cream)}
+.btn.solid{background:var(--claret);border-color:var(--claret);color:var(--cream)}
+.btn.solid:hover{background:var(--claret-2);border-color:var(--claret-2)}
+.btn.light{border-color:var(--cream);color:var(--cream)}
+.btn.light:hover{background:var(--cream);color:var(--ink)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:var(--ink);color:var(--cream)}
+.hero .scene{position:absolute;inset:0;overflow:hidden;opacity:.5}
+.hero .scene::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 90% at 72% 20%,#8A2B38 0%,transparent 62%),radial-gradient(60% 70% at 18% 92%,#6E7A4F 0%,transparent 60%)}
+.hero .scene::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(104deg,rgba(251,247,239,.05) 0 2px,transparent 2px 26px)}
+.hero .wrap{position:relative;padding-block:clamp(3.5rem,10vw,8rem)}
+.hero .sc{color:#D8B98C}
+.hero h1{font-size:var(--t-hero);margin-top:1.25rem;max-width:13ch}
+.hero p{margin-top:1.5rem;font-size:var(--t-l);max-width:44ch;color:#DDD2C4;line-height:1.5}
+.hero .actions{margin-top:2.25rem;display:flex;gap:.75rem;flex-wrap:wrap}
+.hero .hours{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(251,247,239,.18);display:flex;gap:clamp(1.25rem,4vw,3rem);flex-wrap:wrap;font-size:var(--t-s);color:#DDD2C4}
+.hero .hours b{display:block;color:var(--cream);font-family:"Bodoni Moda",serif;font-size:1.1rem}
+
+/* ---------- day-part switch ---------- */
+.service-bar{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:1rem;margin-bottom:clamp(1.75rem,3vw,2.5rem)}
+.service-bar .tab{padding:.5rem 1.1rem;border-radius:999px;font-size:var(--t-s);letter-spacing:.04em;color:var(--mid);border:1px solid transparent;transition:background .2s,color .2s,border-color .2s}
+.service-bar .tab:hover{border-color:var(--line);color:var(--ink)}
+.service-bar .tab[aria-pressed="true"]{background:var(--claret);color:var(--cream);border-color:var(--claret)}
+.service-bar .when{margin-left:auto;font-size:var(--t-s);color:var(--mid)}
+
+/* ---------- menu card ---------- */
+.service[hidden]{display:none}
+.courses{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
+.course h3{font-family:"Bodoni Moda",Didot,serif;font-size:1.5rem;padding-bottom:.6rem;border-bottom:1px solid var(--ink);margin-bottom:.5rem}
+.dish{display:grid;grid-template-columns:1fr auto;gap:.5rem 1rem;padding-block:.85rem;border-bottom:1px dotted var(--line);align-items:baseline}
+.dish .nm{font-weight:600}
+.dish .pr{font-variant-numeric:tabular-nums;color:var(--ink)}
+.dish .de{grid-column:1/-1;font-size:var(--t-s);color:var(--mid);line-height:1.5;margin-top:-.2rem}
+.dish .tags{display:inline-flex;gap:.35rem;margin-left:.5rem;vertical-align:middle}
+.tag{font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:.1rem .4rem;color:var(--mid)}
+.tag.v{border-color:var(--olive);color:var(--olive)}
+.tag.f{border-color:var(--claret);color:var(--claret)}
+.menu-note{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--line);font-size:var(--t-s);color:var(--mid);max-width:62ch}
+
+/* ---------- section head ---------- */
+.sec-head{text-align:center;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
+.sec-head .sc{color:var(--claret)}
+.sec-head h2{font-family:"Bodoni Moda",Didot,serif;font-size:var(--t-xl);margin-top:.7rem;line-height:1.08}
+.sec-head p{margin-top:.8rem;color:var(--mid);max-width:52ch;margin-inline:auto}
+.sec-head.left{text-align:left}
+.sec-head.left p{margin-inline:0}
+
+/* ---------- plates: food/room art ---------- */
+.plate{display:block;position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--cream-2)}
+.plate::before,.plate::after{content:"";position:absolute;display:block}
+.r1{background:#2A1C18}
+.r1::before{inset:18%;background:radial-gradient(60% 60% at 42% 38%,#C9752F,#5A2415 70%);border-radius:50%}
+.r1::after{inset:auto 32% 16% 32%;height:6%;background:#EBDCC2;border-radius:999px}
+.r2{background:#F0E8D8}
+.r2::before{inset:14% 14% 30% 14%;background:#6B1F2A;border-radius:50% 50% 44% 44%}
+.r2::after{inset:auto 22% 12% 22%;height:12%;background:#6E7A4F;border-radius:999px}
+.r3{background:linear-gradient(170deg,#3A2A20,#15100C)}
+.r3::before{inset:0;background:repeating-linear-gradient(88deg,rgba(235,220,194,.08) 0 2px,transparent 2px 20px)}
+.r3::after{inset:26% 30%;background:#D8B98C;border-radius:50%;opacity:.85}
+.r4{background:#EDE3D1}
+.r4::before{inset:0 0 42% 0;background:#6E7A4F}
+.r4::after{inset:34% 18% 14% 18%;background:#FBF7EF;border-radius:4px}
+.r5{background:#1B1512}
+.r5::before{inset:auto 0 0 0;height:52%;background:linear-gradient(0deg,#6B1F2A,transparent)}
+.r5::after{inset:16% 40% auto 40%;aspect-ratio:1;background:#D8B98C;border-radius:50%}
+.r6{background:#E3D8C2}
+.r6::before{inset:20% 10%;border:2px solid #6B1F2A;border-radius:50%}
+.r6::after{inset:38% 30%;background:#C9752F;border-radius:50%}
+
+/* ---------- gallery strip ---------- */
+.strip3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.5vw,1rem)}
+
+/* ---------- reservation ---------- */
+.book{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(2rem,4vw,3.5rem);align-items:start}
+.book-card{background:var(--cream-2);border:1px solid var(--line);padding:clamp(1.5rem,3vw,2.25rem)}
+.form{display:grid;gap:1rem}
+.form label{display:grid;gap:.35rem;font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
+.form input,.form select,.form textarea{font:inherit;font-size:var(--t-s);padding:.7rem .8rem;border:1px solid var(--line);border-radius:2px;background:var(--cream);color:var(--ink)}
+.form input:focus,.form select:focus,.form textarea:focus{outline:0;border-color:var(--claret)}
+.form textarea{resize:vertical;min-height:5rem}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form .three{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+
+.slots{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+.slot{font-size:var(--t-s);font-variant-numeric:tabular-nums;padding:.5rem .9rem;border:1px solid var(--line);border-radius:2px;background:var(--cream);transition:background .18s,color .18s,border-color .18s}
+.slot:hover:not([disabled]){border-color:var(--ink)}
+.slot[aria-pressed="true"]{background:var(--claret);border-color:var(--claret);color:var(--cream)}
+.slot[disabled]{color:#B9AE9F;text-decoration:line-through;cursor:not-allowed;background:transparent}
+.slot-note{font-size:var(--t-s);color:var(--mid);margin-top:.9rem;min-height:1.5em}
+.slot-note b{color:var(--claret)}
+
+/* ---------- events ---------- */
+.ev{border-top:1px solid var(--ink)}
+.ev .row{display:grid;grid-template-columns:7rem minmax(0,1.4fr) minmax(0,1fr) auto;gap:clamp(1rem,2.5vw,2rem);padding-block:1.5rem;border-bottom:1px solid var(--line);align-items:start}
+.ev .when{font-variant-numeric:tabular-nums;font-size:var(--t-s);color:var(--mid)}
+.ev h3{font-family:"Bodoni Moda",Didot,serif;font-size:1.35rem}
+.ev p{font-size:var(--t-s);color:var(--mid);line-height:1.55;margin-top:.3rem}
+.ev .price{font-variant-numeric:tabular-nums;font-size:var(--t-s);text-align:right}
+.ev .price b{display:block;font-family:"Bodoni Moda",serif;font-size:1.2rem}
+.ev .state{font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--olive)}
+.ev .state.out{color:var(--mid)}
+
+/* ---------- hours table ---------- */
+.hours-table{width:100%;border-collapse:collapse}
+.hours-table th,.hours-table td{text-align:left;padding:.7rem 0;border-bottom:1px solid var(--line);font-size:var(--t-s)}
+.hours-table th{font-weight:400;color:var(--mid);width:9rem}
+.hours-table td{font-variant-numeric:tabular-nums}
+
+/* ---------- quote ---------- */
+.press{background:var(--cream-2);border-block:1px solid var(--line)}
+.press .wrap{padding-block:clamp(2.5rem,6vw,4.5rem);text-align:center}
+.press blockquote{font-family:"Bodoni Moda",Didot,serif;font-size:var(--t-xl);line-height:1.2;max-width:26ch;margin-inline:auto}
+.press .by{margin-top:1.25rem;font-size:var(--t-s);color:var(--mid);letter-spacing:.08em;text-transform:uppercase}
+
+/* ---------- footer ---------- */
+.foot{background:var(--ink);color:#B2A79B;font-size:var(--t-s)}
+.foot .wrap{padding-block:2.5rem;display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:2rem}
+.foot h4{font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--cream);margin-bottom:.8rem}
+.foot li{padding-block:.25rem}
+.foot a:hover{color:var(--cream)}
+.foot .logo{color:var(--cream)}
+.foot .end{grid-column:1/-1;border-top:1px solid #3A312B;padding-top:1.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:var(--t-xs)}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .courses{grid-template-columns:1fr;gap:2.5rem}
+  .book{grid-template-columns:1fr}
+  .foot .wrap{grid-template-columns:1fr 1fr}
+  .ev .row{grid-template-columns:6rem minmax(0,1fr) auto;row-gap:.5rem}
+  .ev .state{grid-column:2}
+}
+@media (max-width:620px){
+  .nav{display:none}
+  .topline .right{margin-left:0}
+  .strip3{grid-template-columns:1fr}
+  .form .two,.form .three{grid-template-columns:1fr}
+  .foot .wrap{grid-template-columns:1fr}
+  .ev .row{grid-template-columns:1fr auto}
+  .ev .when{grid-column:1/-1}
+}

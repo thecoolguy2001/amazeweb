@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Menu — Saltfold</title>
+<meta name="description" content="Lunch, dinner and Sunday, plus the wine list. Rewritten every Wednesday after the market.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Karla:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topline">
+  <div class="wrap">
+    <span>Wed – Sat, lunch and dinner · Sunday, one sitting</span>
+    <span class="right"><a href="tel:+15550143300">(555) 014-3300</a> · 11 Saltfold Lane</span>
+  </div>
+</div>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">Saltfold</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="menu.html" aria-current="page">Menu</a>
+      <a href="reservations.html">Reservations</a>
+      <a href="events.html">Events</a>
+      <a href="visit.html">Visit</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="wrap">
+    <div class="sec-head">
+      <p class="sc">Rewritten Wednesday, 6 November</p>
+      <h2 class="don">The menu</h2>
+      <p>One fire, thirty-four seats, and a list that changes with the market. If something runs out we take it off the board rather than keep selling it.</p>
+    </div>
+
+    <div class="service-bar">
+      <button class="tab" data-service="lunch" aria-pressed="true">Lunch</button>
+      <button class="tab" data-service="dinner" aria-pressed="false">Dinner</button>
+      <button class="tab" data-service="sunday" aria-pressed="false">Sunday</button>
+      <span class="when" id="when">Wednesday to Saturday, 12:00 – 14:30</span>
+    </div>
+
+    <div class="service" data-service="lunch">
+      <div class="courses">
+        <div class="course">
+          <h3 class="don">To start</h3>
+          <div class="dish"><span class="nm">Fire bread, cultured butter <span class="tags"><span class="tag v">V</span></span></span><span class="pr">6</span><span class="de">Baked to order. Nine minutes; order it first.</span></div>
+          <div class="dish"><span class="nm">Grilled leeks, hazelnut, aged sheep's cheese <span class="tags"><span class="tag v">V</span></span></span><span class="pr">11</span></div>
+          <div class="dish"><span class="nm">Cured trout, buttermilk, dill oil</span><span class="pr">13</span></div>
+          <div class="dish"><span class="nm">Ember-roast beetroot, walnut, horseradish <span class="tags"><span class="tag v">V</span></span></span><span class="pr">10</span></div>
+        </div>
+        <div class="course">
+          <h3 class="don">Mains</h3>
+          <div class="dish"><span class="nm">Half chicken over the coals, bread sauce <span class="tags"><span class="tag f">Fire</span></span></span><span class="pr">24</span></div>
+          <div class="dish"><span class="nm">Whole plaice, brown butter, capers <span class="tags"><span class="tag f">Fire</span></span></span><span class="pr">27</span><span class="de">Six a service.</span></div>
+          <div class="dish"><span class="nm">Hogget shoulder, white beans, salsa verde</span><span class="pr">29</span></div>
+          <div class="dish"><span class="nm">Grilled cabbage, lentils, smoked yoghurt <span class="tags"><span class="tag v">V</span></span></span><span class="pr">18</span></div>
+        </div>
+        <div class="course">
+          <h3 class="don">Sides</h3>
+          <div class="dish"><span class="nm">Dripping potatoes</span><span class="pr">6</span></div>
+          <div class="dish"><span class="nm">Green salad, mustard dressing <span class="tags"><span class="tag v">V</span></span></span><span class="pr">5</span></div>
+          <div class="dish"><span class="nm">Burnt onions, thyme <span class="tags"><span class="tag v">V</span></span></span><span class="pr">6</span></div>
+        </div>
+        <div class="course">
+          <h3 class="don">To finish</h3>
+          <div class="dish"><span class="nm">Burnt honey custard <span class="tags"><span class="tag v">V</span></span></span><span class="pr">8</span></div>
+          <div class="dish"><span class="nm">Pear, bay leaf ice cream <span class="tags"><span class="tag v">V</span></span></span><span class="pr">9</span></div>
+          <div class="dish"><span class="nm">A piece of cheese, oatcakes <span class="tags"><span class="tag v">V</span></span></span><span class="pr">9</span></div>
+        </div>
+      </div>
+      <p class="menu-note">Two courses and a glass of what we are pouring is 26 on Wednesdays and Thursdays.</p>
+    </div>
+
+    <div class="service" data-service="dinner" hidden>
+      <div class="courses">
+        <div class="course">
+          <h3 class="don">Snacks</h3>
+          <div class="dish"><span class="nm">Fire bread, cultured butter <span class="tags"><span class="tag v">V</span></span></span><span class="pr">6</span></div>
+          <div class="dish"><span class="nm">Smoked almonds <span class="tags"><span class="tag v">V</span></span></span><span class="pr">4</span></div>
+          <div class="dish"><span class="nm">Trout roe, crisp potato</span><span class="pr">9</span></div>
+        </div>
+        <div class="course">
+          <h3 class="don">First</h3>
+          <div class="dish"><span class="nm">Grilled leeks, hazelnut, aged sheep's cheese <span class="tags"><span class="tag v">V</span></span></span><span class="pr">12</span></div>
+          <div class="dish"><span class="nm">Cured trout, buttermilk, dill oil</span><span class="pr">14</span></div>
+          <div class="dish"><span class="nm">Ember-roast beetroot, walnut, horseradish <span class="tags"><span class="tag v">V</span></span></span><span class="pr">11</span></div>
+          <div class="dish"><span class="nm">Grilled quail, fermented chilli</span><span class="pr">15</span></div>
+        </div>
+        <div class="course">
+          <h3 class="don">Over the fire</h3>
+          <div class="dish"><span class="nm">Dry-aged sirloin, 400g, to share <span class="tags"><span class="tag f">Fire</span></span></span><span class="pr">62</span><span class="de">Thirty-five days, a farm forty minutes north.</span></div>
+          <div class="dish"><span class="nm">Whole plaice, brown butter, capers <span class="tags"><span class="tag f">Fire</span></span></span><span class="pr">29</span></div>
+          <div class="dish"><span class="nm">Hogget shoulder, white beans, salsa verde</span><span class="pr">31</span></div>
+          <div class="dish"><span class="nm">Grilled cabbage, lentils, smoked yoghurt <span class="tags"><span class="tag v">V</span></span></span><span class="pr">19</span></div>
+        </div>
+        <div class="course">
+          <h3 class="don">To finish</h3>
+          <div class="dish"><span class="nm">Burnt honey custard <span class="tags"><span class="tag v">V</span></span></span><span class="pr">8</span></div>
+          <div class="dish"><span class="nm">Chocolate, olive oil, salt <span class="tags"><span class="tag v">V</span></span></span><span class="pr">9</span></div>
+          <div class="dish"><span class="nm">A piece of cheese, oatcakes <span class="tags"><span class="tag v">V</span></span></span><span class="pr">10</span></div>
+        </div>
+      </div>
+      <p class="menu-note">A full fire menu chosen by the kitchen is 58 a head, whole table. Last orders 21:30.</p>
+    </div>
+
+    <div class="service" data-service="sunday" hidden>
+      <div class="courses">
+        <div class="course">
+          <h3 class="don">One sitting, four courses</h3>
+          <div class="dish"><span class="nm">Sunday lunch, 12:30</span><span class="pr">42</span><span class="de">Everyone sits together and eats the same thing.</span></div>
+          <div class="dish"><span class="nm">Children under ten</span><span class="pr">18</span></div>
+          <div class="dish"><span class="nm">Wine pairing, three glasses</span><span class="pr">26</span></div>
+        </div>
+        <div class="course">
+          <h3 class="don">This Sunday</h3>
+          <div class="dish"><span class="nm">Fire bread and butter <span class="tags"><span class="tag v">V</span></span></span><span class="pr"></span></div>
+          <div class="dish"><span class="nm">Grilled leeks, hazelnut, sheep's cheese <span class="tags"><span class="tag v">V</span></span></span><span class="pr"></span></div>
+          <div class="dish"><span class="nm">Rib of beef, dripping potatoes, greens <span class="tags"><span class="tag f">Fire</span></span></span><span class="pr"></span></div>
+          <div class="dish"><span class="nm">Burnt honey custard <span class="tags"><span class="tag v">V</span></span></span><span class="pr"></span></div>
+        </div>
+      </div>
+      <p class="menu-note">A proper vegetarian Sunday is cooked for anyone who asks a day ahead. 10 deposit a seat.</p>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="sec-head"><p class="sc">To drink</p><h2 class="don">Wine, and the rest</h2>
+    <p>Forty bottles, most of them under 45, all of them available by the glass if you ask and we have it open.</p></div>
+    <div class="courses">
+      <div class="course">
+        <h3 class="don">By the glass</h3>
+        <div class="dish"><span class="nm">What we are pouring, white</span><span class="pr">7</span><span class="de">Changes weekly. Ask and we will give you a taste first.</span></div>
+        <div class="dish"><span class="nm">What we are pouring, red</span><span class="pr">7</span></div>
+        <div class="dish"><span class="nm">Txakoli, Basque</span><span class="pr">9</span></div>
+        <div class="dish"><span class="nm">Beaujolais, Lapierre</span><span class="pr">11</span></div>
+        <div class="dish"><span class="nm">Sherry, fino en rama</span><span class="pr">6</span></div>
+      </div>
+      <div class="course">
+        <h3 class="don">Not wine</h3>
+        <div class="dish"><span class="nm">Local pale ale, pint</span><span class="pr">6</span></div>
+        <div class="dish"><span class="nm">Cider, bottle, dry</span><span class="pr">7</span></div>
+        <div class="dish"><span class="nm">House vermouth and soda</span><span class="pr">7</span></div>
+        <div class="dish"><span class="nm">Rhubarb shrub, soda <span class="tags"><span class="tag v">No alcohol</span></span></span><span class="pr">5</span><span class="de">Made here, and the only soft drink we are proud of.</span></div>
+        <div class="dish"><span class="nm">Coffee, filter or espresso</span><span class="pr">3</span></div>
+      </div>
+    </div>
+    <p class="menu-note">Corkage is 15 a bottle and we are happy to do it — bring something you want to drink. Full allergen information for every dish is kept at the pass and we will go through it with you; please just tell us before you order rather than after.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:0;text-align:center">
+    <a class="btn solid" href="reservations.html">Book a table</a>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html">Saltfold</a>
+      <p style="margin-top:.8rem;max-width:30ch">A wood-fired neighbourhood restaurant. Eleven Saltfold Lane, since 2021.</p>
+    </div>
+    <div><h4>Eat</h4><ul>
+      <li><a href="menu.html">The menu</a></li>
+      <li><a href="reservations.html">Book a table</a></li>
+      <li><a href="events.html">Events and supper clubs</a></li>
+      <li><a href="visit.html">Private dining</a></li>
+    </ul></div>
+    <div><h4>Visit</h4><ul>
+      <li>11 Saltfold Lane</li>
+      <li><a href="tel:+15550143300">(555) 014-3300</a></li>
+      <li><a href="mailto:table@example.com">table@example.com</a></li>
+      <li><a href="visit.html">Getting here</a></li>
+    </ul></div>
+    <div><h4>Hours</h4><ul>
+      <li>Wed – Sat · 12:00 – 14:30</li>
+      <li>Wed – Sat · 18:00 – 22:00</li>
+      <li>Sunday · 12:30 – 17:00</li>
+      <li>Mon &amp; Tue · closed</li>
+    </ul></div>
+    <div class="end">
+      <span>© 2026 Saltfold. All allergen information available on request.</span>
+      <span>Built as a template by Amazé Web</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
