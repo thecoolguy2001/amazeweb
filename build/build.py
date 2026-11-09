@@ -225,9 +225,13 @@ def tpl_card(t):
     second inner panel for the name, the category pill and the status."""
     plat = (f'<span class="tpl-plat">{E(t["platform"])}</span>'
             if t.get("platform") else "")
+    thumb = (f'<img class="tpl-thumb" src="{t["shots"]}-card.png" alt="" '
+             f'width="313" height="240" loading="lazy" decoding="async">'
+             if t.get("shots") else '<div class="tpl-thumb ph-stripes"></div>')
+    status = ("Demo ready" if t.get("demo") else "Coming Soon")
     return (f'<a class="tpl-card" href="/themes/{t["slug"]}/">'
-            f'<div class="tpl-media"><div class="tpl-thumb ph-stripes"></div>'
-            f'{plat}<span class="tpl-soon">Coming Soon</span></div>'
+            f'<div class="tpl-media">{thumb}'
+            f'{plat}<span class="tpl-soon">{status}</span></div>'
             f'<div class="tpl-body">'
             f'<p class="tpl-name">{E(t["name"])}</p>'
             f'<span class="tpl-cat">{E(t["kicker"])}</span>'
@@ -286,15 +290,29 @@ def page_theme(t):
     setup_line = (f'<p class="setup-from">Setup from {E(setup_from)}</p>'
                   if setup_from else "")
     terms = " ".join(x for x in (COMMERCE["support"], COMMERCE["license"]) if x)
-    demo_btn = (f'<a class="btn btn-light" href="{t["demo"]}" rel="noopener">View demo</a>'
+    demo_btn = (f'<a class="btn btn-light" href="{t["demo"]}">View demo</a>'
                 if t.get("demo") else "")
+    buy_url = t.get("buy_url") or COMMERCE.get("buy_url")
+    if buy_url:
+        label = f'Buy {price}' if price != "Coming Soon" else "Buy"
+        demo_btn += (f'<a class="btn btn-buy" href="{buy_url}" rel="noopener">{E(label)}</a>')
+    if t.get("shots"):
+        frame = (f'<img class="inner" src="{t["shots"]}-hero.png" alt="{E(t["name"])} template, '
+                 f'home page" width="1008" height="630" loading="lazy" decoding="async">')
+        resp = "".join(
+            f'<img class="box" src="{t["shots"]}-{k}.png" alt="{E(t["name"])} on {lbl}" '
+            f'width="672" height="520" loading="lazy" decoding="async">'
+            for k, lbl in (("desk", "desktop"), ("tab", "a tablet"), ("phone", "a phone")))
+    else:
+        frame = '<div class="inner ph-stripes"></div>'
+        resp = '<div class="box ph-stripes"></div>' * 3
     body = f"""<section class="wrap theme-head">
 <p class="theme-kicker">{E(t["kicker"])}</p>
 <h1 class="t-page">{E(t["name"])}</h1>
 <p class="theme-sub">{E(t["sub"])}</p>
 <div class="theme-meta">{plat}<p class="theme-avail">Coming Soon</p></div>
 </section>
-<section class="theme-frame"><div class="inner ph-stripes"></div></section>
+<section class="theme-frame">{frame}</section>
 <section class="theme-buy">
 <div class="buy-left"><p class="note">{E(COMMERCE["note"])}</p>
 <p class="price">{price}</p>{setup_line}
@@ -313,7 +331,7 @@ def page_theme(t):
 </div></section>
 <section class="wrap theme-resp">
 <h2>Responsive by design</h2>
-<div class="row"><div class="box ph-stripes"></div><div class="box ph-stripes"></div><div class="box ph-stripes"></div></div>
+<div class="row">{resp}</div>
 </section>
 <section class="wrap"><div class="theme-mine"><div class="theme-row">
 <h2>Make it yours.</h2><p class="lead">{E(MAKE_IT_YOURS)}</p>

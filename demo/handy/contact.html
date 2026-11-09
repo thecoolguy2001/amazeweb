@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book a visit — Hartley Home Services</title>
+<meta name="description" content="Tell us what is wrong and get a firm price and a two-hour window.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dispatch">
+  <div class="wrap">
+    <span class="status" id="status">Checking hours…</span>
+    <a class="tel" href="tel:+15550147700">(555) 014-7700</a>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html">Hartley<span>.</span></a>
+    <nav class="menu" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services &amp; prices</a>
+      <a href="areas.html">Areas we cover</a>
+      <a href="contact.html" aria-current="page">Book a visit</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="phead">
+    <div class="wrap">
+      <h1 class="display">Tell us what is wrong.</h1>
+      <p>Plain words are fine. You will get a firm starting price and a two-hour window, usually within the hour during working hours.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="booking">
+        <form class="form-grid" onsubmit="return false">
+          <div><label for="nm">Your name</label><input id="nm" name="name" autocomplete="name" required></div>
+          <div><label for="ph">Phone</label><input id="ph" name="phone" type="tel" autocomplete="tel" required></div>
+          <div class="full"><label for="ad">Address or neighbourhood</label><input id="ad" name="address" autocomplete="street-address"></div>
+          <div>
+            <label for="tr">What kind of job</label>
+            <select id="tr" name="trade">
+              <option>Plumbing</option>
+              <option>Heating or hot water</option>
+              <option>Electrical</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+          <div>
+            <label for="ur">How urgent</label>
+            <select id="ur" name="urgency">
+              <option>Can wait a few days</option>
+              <option>This week please</option>
+              <option>Today if possible</option>
+              <option>Emergency, call me now</option>
+            </select>
+          </div>
+          <div class="full"><label for="ds">What is happening</label><textarea id="ds" name="details" placeholder="Water under the sink since this morning, cabinet is wet"></textarea></div>
+          <div class="full"><button class="btn solid" type="submit">Send and get a price</button></div>
+        </form>
+
+        <aside>
+          <h2 class="display" style="font-size:var(--t-l)">Faster by phone</h2>
+          <p style="margin-top:.6rem;color:var(--steel);max-width:34ch">Somebody picks up during working hours. Outside them, the emergency line reaches whoever is on call.</p>
+          <p style="margin-top:1rem"><a class="tel" href="tel:+15550147700" style="font-size:1.6rem">(555) 014-7700</a></p>
+
+          <ul class="hours" style="margin-top:2rem">
+            <li><span>Monday to Friday</span><span>7am to 8pm</span></li>
+            <li><span>Saturday</span><span>8am to 5pm</span></li>
+            <li><span>Sunday</span><span>Emergencies only</span></li>
+            <li class="now"><span>Emergency line</span><span>24 hours</span></li>
+          </ul>
+
+          <p style="margin-top:1.5rem;font-size:var(--t-s);color:var(--steel);max-width:34ch">The yard is at 118 Carver Street, Northgate. Drop-in for parts and advice on weekday mornings.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="block dark">
+    <div class="wrap">
+      <h2 class="display">Burst pipe, no heat, or no power?</h2>
+      <p class="lede">Do not use the form. Call the emergency line and somebody is dispatched while you are still on the phone.</p>
+      <div class="actions"><a class="btn" href="tel:+15550147700">Call the emergency line</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="base">
+  <div class="wrap">
+    <div class="base-grid">
+      <div>
+        <p class="logo" style="color:#fff">Hartley<span>.</span></p>
+        <p style="margin-top:.7rem;max-width:32ch;font-size:var(--t-s)">Plumbing, heating and electrical work across eight neighbourhoods. Family run since 2004.</p>
+        <p style="margin-top:1rem"><a class="tel" href="tel:+15550147700" style="color:#fff">(555) 014-7700</a></p>
+      </div>
+      <div>
+        <h4>Work we do</h4>
+        <ul>
+          <li><a href="services.html">Plumbing</a></li>
+          <li><a href="services.html">Heating and hot water</a></li>
+          <li><a href="services.html">Electrical</a></li>
+          <li><a href="services.html">Emergency call-outs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="areas.html">Areas we cover</a></li>
+          <li><a href="contact.html">Book a visit</a></li>
+          <li><a href="#">Our guarantee</a></li>
+          <li><a href="#">Licences and insurance</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Opening hours</h4>
+        <ul>
+          <li>Mon to Fri, 7am to 8pm</li>
+          <li>Saturday, 8am to 5pm</li>
+          <li>Sunday, emergencies only</li>
+          <li>Emergency line, 24 hours</li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>Hartley Home Services. License PL-40218, EC-11907. Fully insured.</span>
+      <span>Handy — an Amazé Web template</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>

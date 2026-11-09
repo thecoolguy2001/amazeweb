@@ -238,10 +238,27 @@ COMMERCE = {
     "setup_from":  None,          # e.g. "$249" -- shown as "Setup from $249"
     "support":     "Includes 30 days of setup support after purchase.",
     "license":     "One license covers one live site.",
+    # Stripe Payment Link per template, e.g. "https://buy.stripe.com/xxx".
+    # With one set, the theme page shows a Buy button instead of only "Ask".
+    "buy_url":     None,
     "excluded_h":  "Not included",
     "excluded":    "Content writing, custom sections, brand design, and ongoing "
                    "changes after launch. Setup and add-ons are available separately.",
 }
+
+# Templates that are actually built, with a live demo and real screenshots.
+# A theme not listed here keeps the striped placeholder and shows no demo
+# button, so the page never promises a preview that does not exist.
+# Images live at /assets/img/tpl/<slug>-{card,hero,desk,tab,phone}.png
+BUILT = {
+    "drop":             "/demo/drop/",
+    "showcase":         "/demo/showcase/",
+    "blue-collar-site": "/demo/handy/",
+}
+for _t in THEMES:
+    if _t["slug"] in BUILT:
+        _t["demo"]  = BUILT[_t["slug"]]
+        _t["shots"] = f'/assets/img/tpl/{_t["slug"]}'
 
 # Setup tiers, shown on /services/setup/. The block is skipped entirely while
 # this is empty, so the page never advertises a tier that has no price.

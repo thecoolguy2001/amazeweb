@@ -192,7 +192,8 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 /* theme page: "Responsive by design" — three empty device placeholders */
 .theme-resp h2{font-size:42px;line-height:1.2;font-weight:700;letter-spacing:-.01em;margin-bottom:24px}
 .theme-resp .row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.theme-resp .box{aspect-ratio:336/260;border-radius:var(--r-inner)}
+.theme-resp .box{aspect-ratio:336/260;border-radius:var(--r-inner);
+  width:100%;height:auto;object-fit:cover;display:block;background-color:var(--surface-2)}
 
 /* theme page: "Make it yours." panel */
 .theme-mine{background:var(--surface-2);border-radius:var(--r-card);padding:40px}
@@ -445,7 +446,7 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 }
 .tpl-media{position:relative}
 .tpl-thumb{
-  width:100%;aspect-ratio:313/240;border-radius:var(--r-inner);
+  width:100%;height:auto;aspect-ratio:313/240;border-radius:var(--r-inner);
   background-color:var(--surface-2);object-fit:cover;display:block;
 }
 /* The status rides on the artwork. Side by side with the category pill it had
@@ -546,7 +547,9 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
    are the sentence to point at when a buyer asks for work the template never
    included -- see also the "Not included" note further down the page. */
 .theme-buy .terms{font-size:13px;line-height:19px;color:var(--grey);margin-top:12px;max-width:520px}
-.theme-buy .buy-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;flex:0 0 auto}
+.btn-buy{background:#1B8A3A;color:var(--white)}
+.btn-buy:hover{filter:brightness(1.08)}
+.theme-buy .buy-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;flex:0 1 auto;min-width:0}
 .theme-split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .theme-note{background:var(--surface-2);border-radius:var(--r-panel);padding:24px}
 .theme-note h3{font-size:28px;line-height:1.2;font-weight:700;margin-bottom:10px}
