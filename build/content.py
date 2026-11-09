@@ -227,6 +227,27 @@ THEMES = [
          includes="Home, programs, age groups, schedule, safety details, and contact."),
 ]
 
+# ---------------------------------------------------------------- commerce
+# One set of purchase terms, inherited by all 14 theme pages. The money
+# fields are deliberately None: a page falls back to "Coming Soon" until a
+# real number is set here, so nothing false is ever published. Setting
+# `price` publishes it everywhere at once.
+COMMERCE = {
+    "note":        "One-time template access",
+    "price":       None,          # e.g. "$79"
+    "setup_from":  None,          # e.g. "$249" -- shown as "Setup from $249"
+    "support":     "Includes 30 days of setup support after purchase.",
+    "license":     "One license covers one live site.",
+    "excluded_h":  "Not included",
+    "excluded":    "Content writing, custom sections, brand design, and ongoing "
+                   "changes after launch. Setup and add-ons are available separately.",
+}
+
+# Setup tiers, shown on /services/setup/. The block is skipped entirely while
+# this is empty, so the page never advertises a tier that has no price.
+# Shape: dict(name=..., price=..., summary=..., includes=[...])
+SETUP_TIERS = []
+
 # Which templates ship as Shopify themes. The rest are not storefronts, so they
 # carry no platform tag at all rather than a second label that says "not Shopify".
 SHOPIFY_THEMES = {"styler", "clothing-site", "cosmetics-site", "icon", "drop"}

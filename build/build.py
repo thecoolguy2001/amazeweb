@@ -182,6 +182,25 @@ def svcx_panel(c, lead=False):
             f'<a class="btn" href="{href}">{E(label)}{ARROW}</a></div>'
             f'<div class="stats">{stats}</div></section>')
 
+def setup_tiers_block():
+    """Setup tiers for /services/setup/. Returns nothing while SETUP_TIERS is
+    empty, so the page never shows an empty pricing table."""
+    if not SETUP_TIERS:
+        return ""
+    cards = ""
+    for t in SETUP_TIERS:
+        items = "".join(f'<li>{E(i)}</li>' for i in t.get("includes", []))
+        cards += (f'<article class="tier">'
+                  f'<p class="tier-name">{E(t["name"])}</p>'
+                  f'<p class="tier-price">{E(t["price"])}</p>'
+                  f'<p class="tier-sum">{E(t.get("summary", ""))}</p>'
+                  f'<ul class="tier-list">{items}</ul>'
+                  f'<a class="btn" href="/support/#support-message">Get started{ARROW}</a>'
+                  f'</article>')
+    return (f'<section class="wrap tiers-sec">'
+            f'<h2 class="t-section tiers-head">Setup tiers</h2>'
+            f'<div class="tiers">{cards}</div></section>')
+
 def page_service_sub(key):
     d = SERVICE_PAGES[key]
     secs = ""
@@ -195,7 +214,8 @@ def page_service_sub(key):
             + f'<a class="btn btn-hero" href="/support/#support-message">Get Started{ARROW}</a></section>'
             + svcx_panel(d["panel"], lead=True)
             + f'<section class="wrap svcx-secs">{secs}</section>'
-            + svcx_panel(d["panel2"])
+            + (setup_tiers_block() if key == "setup" else "")
+              + svcx_panel(d["panel2"])
             + vision_and_services(SERVICES_SVC) + faq_block())
     return shell(d["title"], d["desc"], body, cls="svcx-page")
 
@@ -259,6 +279,15 @@ def page_theme(t):
     # animation -- the meta row keeps that count at 4.
     plat = (f'<span class="theme-plat">{E(t["platform"])}</span>'
             if t.get("platform") else "")
+    # Money and demo links come from data and fall back to the honest state:
+    # no price set -> "Coming Soon"; no demo URL -> no demo button.
+    price = E(t.get("price") or COMMERCE["price"] or "Coming Soon")
+    setup_from = COMMERCE.get("setup_from")
+    setup_line = (f'<p class="setup-from">Setup from {E(setup_from)}</p>'
+                  if setup_from else "")
+    terms = " ".join(x for x in (COMMERCE["support"], COMMERCE["license"]) if x)
+    demo_btn = (f'<a class="btn btn-light" href="{t["demo"]}" rel="noopener">View demo</a>'
+                if t.get("demo") else "")
     body = f"""<section class="wrap theme-head">
 <p class="theme-kicker">{E(t["kicker"])}</p>
 <h1 class="t-page">{E(t["name"])}</h1>
@@ -267,8 +296,11 @@ def page_theme(t):
 </section>
 <section class="theme-frame"><div class="inner ph-stripes"></div></section>
 <section class="theme-buy">
-<div><p class="note">One-time template access</p><p class="price">Coming Soon</p></div>
-<a class="btn btn-deep" href="/support/#support-message">Ask about this theme</a>
+<div class="buy-left"><p class="note">{E(COMMERCE["note"])}</p>
+<p class="price">{price}</p>{setup_line}
+<p class="terms">{terms}</p></div>
+<div class="buy-actions">{demo_btn}
+<a class="btn btn-deep" href="/support/#support-message">Ask about this theme</a></div>
 </section>
 <section class="wrap"><div class="theme-row">
 <h2>Overview</h2>
@@ -277,6 +309,7 @@ def page_theme(t):
 <section class="wrap"><div class="theme-split">
 <div class="theme-note"><h3>What this theme is built to do</h3><p>{E(t["does"])}</p></div>
 <div class="theme-note"><h3>Included pages and sections</h3><p>{E(t["includes"])}</p></div>
+<div class="theme-note"><h3>{E(COMMERCE["excluded_h"])}</h3><p>{E(COMMERCE["excluded"])}</p></div>
 </div></section>
 <section class="wrap theme-resp">
 <h2>Responsive by design</h2>

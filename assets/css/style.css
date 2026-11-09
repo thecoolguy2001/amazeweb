@@ -540,7 +540,14 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 }
 .theme-buy .price{font-size:36px;line-height:1.2;font-weight:700;color:var(--white)}
 .theme-buy .note{font-size:14px;line-height:20px;font-weight:500;color:var(--grey)}
-.theme-split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.theme-buy .buy-left{min-width:0}
+.theme-buy .setup-from{font-size:16px;line-height:24px;font-weight:500;color:var(--surface);margin-top:4px}
+/* The purchase terms: what the price covers and how far support goes. These
+   are the sentence to point at when a buyer asks for work the template never
+   included -- see also the "Not included" note further down the page. */
+.theme-buy .terms{font-size:13px;line-height:19px;color:var(--grey);margin-top:12px;max-width:520px}
+.theme-buy .buy-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;flex:0 0 auto}
+.theme-split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .theme-note{background:var(--surface-2);border-radius:var(--r-panel);padding:24px}
 .theme-note h3{font-size:28px;line-height:1.2;font-weight:700;margin-bottom:10px}
 .theme-note p{font-size:16px;line-height:1.5;color:var(--grey)}
@@ -553,6 +560,24 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .theme-cta h2{font-size:36px;line-height:38px;font-weight:700;color:var(--white);
   flex:1 1 auto;max-width:760px}  /* live: 760x76, i.e. two lines, with the pill
      sitting flush right on the same row */
+
+/* ---------- setup tiers (/services/setup/) ----------
+   Same card language as the template cards: surface shell, rounded inner
+   panel, pill-free. Renders only when SETUP_TIERS has entries. */
+.tiers-sec{margin-top:120px}
+.tiers-head{margin-bottom:40px}
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;
+  max-width:var(--maxw-card);margin:0 auto;width:100%}
+.tier{display:flex;flex-direction:column;gap:12px;padding:32px 28px;
+  background:var(--surface);border-radius:var(--r-panel)}
+.tier-name{font-size:20px;line-height:26px;font-weight:600;letter-spacing:-.4px;color:var(--ink-2)}
+.tier-price{font-size:36px;line-height:1.2;font-weight:700;color:var(--ink)}
+.tier-sum{font-size:16px;line-height:1.5;color:var(--grey-2)}
+.tier-list{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.tier-list li{position:relative;padding-left:20px;font-size:16px;line-height:1.5;color:var(--grey-2)}
+.tier-list li::before{content:"";position:absolute;left:0;top:9px;
+  width:7px;height:7px;border-radius:2px;background:var(--blue)}
+.tier .btn{margin-top:auto;align-self:flex-start}
 
 /* ---------- contact form ---------- */
 /* The published form sits in its own panel 208px below the hero at desktop,
@@ -632,6 +657,8 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   .tpl-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
   .tpl-grid .tpl-card{width:313px;max-width:100%;justify-self:center}
   .theme-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+  .theme-split{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tiers{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
 /* ==========================================================================
@@ -702,6 +729,7 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   .tpl-grid{grid-template-columns:minmax(0,1fr);gap:32px;max-width:420px}
   .tpl-grid .tpl-card{width:auto;max-width:none;justify-self:stretch}
   .theme-split{grid-template-columns:1fr}
+  .tiers{grid-template-columns:1fr}
   .theme-row{grid-template-columns:1fr;gap:20px}
   .theme-resp .row{grid-template-columns:1fr}
   .theme-mine{padding:24px}
