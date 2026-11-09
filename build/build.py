@@ -14,6 +14,9 @@ ARROW = ('<svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
 CHEV = ('<svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">'
         '<path d="M12 4v15m0 0 6-6m-6 6-6-6" stroke="currentColor" stroke-width="1.7" '
         'stroke-linecap="round" stroke-linejoin="round"/></svg>')
+CARET = ('<svg class="caret" viewBox="0 0 24 24" fill="none" aria-hidden="true">'
+         '<path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" '
+         'stroke-linecap="round" stroke-linejoin="round"/></svg>')
 SVC_ICONS = {
  "scan": '<svg viewBox="0 0 24 24" fill="none" stroke="#17A34A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V5a2 2 0 0 1 2-2h3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/><circle cx="12" cy="12" r="3.2"/></svg>',
  "framer": '<svg viewBox="0 0 24 24" fill="#17A34A"><path d="M6 2h12v6H12L6 2zm0 6h12l-6 6H6V8zm0 6h6v6l-6-6z"/></svg>',
@@ -205,14 +208,21 @@ def page_templates():
         "easy to customize, and ready to launch.", body)
 
 def page_support():
-    form = """<section class="wrap" id="support-message"><div class="form-card">
+    # Message is a SELECT on the published site, not a free-text box: the SSR
+    # markup is <select name="Message" required> with an empty first option and
+    # these four. The three text fields carry placeholders there too.
+    topics = ["General Inquiry", "Theme Installation Help",
+              "Feature Suggestion", "Partnership & Collaboration"]
+    options = '<option value=""></option>' + "".join(
+        f'<option value="{E(t)}">{E(t)}</option>' for t in topics)
+    form = f"""<section class="wrap s-form" id="support-message"><div class="form-card">
 <h2>Write us</h2><p class="sub">We’d love to hear from you!</p>
 <form name="support" method="POST" data-netlify="true" action="#">
 <div class="form-grid">
-<div class="field"><label for="fn">First name</label><input id="fn" name="first-name" type="text" autocomplete="given-name" required></div>
-<div class="field"><label for="ln">Last name</label><input id="ln" name="last-name" type="text" autocomplete="family-name" required></div>
-<div class="field full"><label for="em">Email</label><input id="em" name="email" type="email" autocomplete="email" required></div>
-<div class="field full"><label for="ms">Message</label><textarea id="ms" name="message" required></textarea></div>
+<div class="field"><label for="fn">First name</label><input id="fn" name="first-name" type="text" placeholder="Jane" autocomplete="given-name" required></div>
+<div class="field"><label for="ln">Last name</label><input id="ln" name="last-name" type="text" placeholder="Smith" autocomplete="family-name" required></div>
+<div class="field full"><label for="em">Email</label><input id="em" name="email" type="email" placeholder="janesmith@gmail.com" autocomplete="email" required></div>
+<div class="field full"><label for="ms">Message</label><div class="select-wrap"><select id="ms" name="message" required>{options}</select>{CARET}</div></div>
 </div>
 <button class="btn" type="submit">Submit</button>
 </form></div></section>"""

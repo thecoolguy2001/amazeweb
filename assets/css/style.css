@@ -399,8 +399,18 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 }
 .faq-head .t-faq-h{color:var(--ink)}
 .faq-head .chev{width:24px;height:24px;flex:0 0 auto;transition:transform .3s ease;color:var(--ink)}
-.faq-group[open] .chev{transform:rotate(180deg)}
-.faq-panel{display:flex;flex-direction:column;gap:28px;padding:4px 0 36px}
+.faq-group[open]:not(.closing) .chev{transform:rotate(180deg)}
+/* The 4px/36px used to be padding on the panel. It lives on the children now
+   so the panel's own height can animate down to a true 0 -- with border-box
+   padding, height:0 would still have rendered a 40px band. Open geometry is
+   unchanged. app.js adds .anim and drives the pixel heights; without JS the
+   <details> still opens, just instantly. */
+.faq-panel{display:flex;flex-direction:column;gap:28px}
+.faq-panel>:first-child{margin-top:4px}
+.faq-panel>:last-child{margin-bottom:36px}
+.faq-group.anim .faq-panel{overflow:hidden;transition:height .38s cubic-bezier(.22,.61,.36,1)}
+.faq-group.anim .faq-panel>*{opacity:0;transition:opacity .3s ease .05s}
+.faq-group.anim[open]:not(.closing) .faq-panel>*{opacity:1}
 .faq-q{font-size:20px;line-height:28px;font-weight:700;margin-bottom:6px}
 .faq-a{font-size:20px;line-height:28px;font-weight:400;max-width:860px}
 
@@ -459,9 +469,12 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
      sitting flush right on the same row */
 
 /* ---------- contact form ---------- */
+/* The published form sits in its own panel 208px below the hero at desktop,
+   176px at tablet and 195px on phone -- the section had no top margin at all. */
+.s-form{margin-top:208px}
 .form-card{
   max-width:1160px;margin:0 auto;width:100%;
-  background:var(--white);border:1px solid #ECECEC;border-radius:var(--r-panel);
+  background:#FAFAFA;border:1px solid #ECECEC;border-radius:var(--r-panel);
   padding:40px;box-shadow:var(--shadow-card);
 }
 .form-card h2{font-size:24px;line-height:1.3;font-weight:700;color:var(--ink-5)}
@@ -470,13 +483,24 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .field{display:flex;flex-direction:column;gap:8px}
 .field.full{grid-column:1/-1}
 .field label{font-size:16px;line-height:1.4;color:var(--ink-5)}
-.field input,.field textarea{
+.field input,.field select{
   font:inherit;font-size:16px;color:var(--ink);
   padding:12px 14px;border:1px solid #E3E3E3;border-radius:10px;background:var(--white);
   transition:border-color .18s ease;
 }
-.field textarea{min-height:140px;resize:vertical}
-.field input:focus,.field textarea:focus{outline:none;border-color:var(--blue)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--blue)}
+.field input::placeholder{color:#B4B4B4}
+/* Message is a dropdown, as on the published site. */
+.select-wrap{position:relative;display:flex}
+.select-wrap select{
+  appearance:none;-webkit-appearance:none;
+  width:100%;padding-right:44px;cursor:pointer;
+}
+.select-wrap select:invalid{color:#B4B4B4}      /* the empty first option reads as a placeholder */
+.select-wrap .caret{
+  position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  width:20px;height:20px;color:var(--grey-3);pointer-events:none;
+}
 .form-card .btn{margin-top:24px}
 
 /* ---------- footer ---------- */
@@ -505,6 +529,8 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   .scard{padding:48px 32px;gap:40px;height:auto;min-height:500px}
   .scard-right{width:min(428px,46%)}
   .svc-grid{max-width:none;margin-top:74px}
+  .s-form{margin-top:176px}
+  .s-faq{margin-top:221px}
   .tpl-grid{gap:40px}
 }
 
@@ -550,6 +576,15 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 
   .vision{grid-template-columns:1fr;gap:24px}
   .svc-grid{grid-template-columns:1fr;gap:16px;max-width:420px;margin-top:159px}
+  .s-form{margin-top:195px}
+  /* Phone gap from the service cards down to the FAQ. The desktop values are
+     measured, but they were never overridden here: 259px on home and 354/456px
+     on the services pages left a dead screen-and-a-half on a phone. The
+     published site runs 113px on home and 201px on /services; its own phone
+     layout for /services/setup and /services/tools overlaps (it reports a
+     NEGATIVE gap), so those follow /services rather than a broken target. */
+  .s-faq{margin-top:113px}
+  .svc-stack .s-faq,.svcx-page .s-faq{margin-top:201px}
   .svc.drop{margin-top:0}
 
   .faq-head{min-height:0;padding:18px 0;gap:16px}

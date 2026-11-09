@@ -2,12 +2,76 @@
 (function () {
   'use strict';
 
-  /* FAQ: one group open at a time (matches the Framer accordion) */
+  /* FAQ accordion, one group open at a time (as on the published site).
+     Framer collapses the group row with overflow:hidden and height 96px ->
+     min-content, and the answers inside start at opacity 0 (its closed SSR
+     markup carries `opacity:0;transform:none`, so it is a fade, not a slide).
+     <details> cannot transition to height:auto across browsers, so the height
+     is driven in pixels here and handed back to auto once it settles. */
   var groups = Array.prototype.slice.call(document.querySelectorAll('.faq-group'));
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   groups.forEach(function (g) {
-    g.addEventListener('toggle', function () {
-      if (!g.open) return;
-      groups.forEach(function (o) { if (o !== g) o.open = false; });
+    var panel = g.querySelector('.faq-panel');
+    var head = g.querySelector('.faq-head');
+    if (!panel || !head) return;
+
+    if (reduceMotion) {                        /* native open, no height animation */
+      g.addEventListener('toggle', function () {
+        if (!g.open) return;
+        groups.forEach(function (o) { if (o !== g) o.open = false; });
+      });
+      return;
+    }
+
+    g.classList.add('anim');
+    var run = 0;                               /* cancels callbacks from a superseded run */
+
+    function settle(token, fn) {
+      var timer;
+      var done = function (e) {
+        if (e && e.propertyName !== 'height') return;
+        panel.removeEventListener('transitionend', done);
+        clearTimeout(timer);
+        if (token === run) fn();
+      };
+      timer = setTimeout(done, 520);           /* in case transitionend never fires */
+      panel.addEventListener('transitionend', done);
+    }
+
+    function expand() {
+      var token = ++run;
+      g.classList.remove('closing');
+      g.open = true;
+      panel.style.height = '0px';
+      panel.style.height = panel.scrollHeight + 'px';   /* the read commits the 0 */
+      settle(token, function () { panel.style.height = 'auto'; });
+    }
+
+    function collapse() {
+      var token = ++run;
+      g.classList.add('closing');
+      panel.style.height = panel.scrollHeight + 'px';
+      void panel.offsetHeight;                 /* commit the pixel height */
+      panel.style.height = '0px';
+      settle(token, function () {
+        g.open = false;
+        g.classList.remove('closing');
+        panel.style.height = '';
+      });
+    }
+
+    g.collapseGroup = collapse;
+
+    head.addEventListener('click', function (e) {
+      e.preventDefault();                      /* drive `open` ourselves */
+      if (g.open && !g.classList.contains('closing')) { collapse(); return; }
+      groups.forEach(function (o) {
+        if (o !== g && o.open && o.collapseGroup && !o.classList.contains('closing')) {
+          o.collapseGroup();
+        }
+      });
+      expand();
     });
   });
 
