@@ -337,10 +337,14 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .vision-stmt .tail{color:var(--ink-2)}
 
 /* ---------- service cards (3-up, middle lifted) ---------- */
+/* The gap above this grid is the breathing room between the "Our Vision"
+   statement and the three service cards. The published site runs 60px at
+   desktop, 74px at tablet and 159px on phone; a `margin:0 auto` shorthand
+   used to sit after margin-top here and silently reset it to 0 at every
+   width. Keep the top value inside the shorthand so that can't recur. */
 .svc-grid{
-  margin-top:59px;
   display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:start;
-  max-width:var(--maxw-grid);margin:0 auto;
+  max-width:var(--maxw-grid);margin:60px auto 0;
 }
 .svc{
   display:flex;flex-direction:column;gap:6px;padding:6px;
@@ -500,7 +504,7 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   .shell{padding:var(--pad-top) 40px var(--pad-bottom)}
   .scard{padding:48px 32px;gap:40px;height:auto;min-height:500px}
   .scard-right{width:min(428px,46%)}
-  .svc-grid{max-width:none}
+  .svc-grid{max-width:none;margin-top:74px}
   .tpl-grid{gap:40px}
 }
 
@@ -545,13 +549,13 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   .scard-stats{gap:16px}
 
   .vision{grid-template-columns:1fr;gap:24px}
-  .svc-grid{grid-template-columns:1fr;gap:16px;max-width:420px}
+  .svc-grid{grid-template-columns:1fr;gap:16px;max-width:420px;margin-top:159px}
   .svc.drop{margin-top:0}
 
   .faq-head{min-height:0;padding:18px 0;gap:16px}
   .faq-a,.faq-q{font-size:20px;line-height:28px}
 
-  .tpl-grid{grid-template-columns:1fr;gap:32px;max-width:420px}
+  .tpl-grid{grid-template-columns:minmax(0,1fr);gap:32px;max-width:420px}
   .theme-split{grid-template-columns:1fr}
   .theme-row{grid-template-columns:1fr;gap:20px}
   .theme-resp .row{grid-template-columns:1fr}
@@ -576,6 +580,13 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 
 @media (max-width:420px){
   .footer-top{grid-template-columns:1fr}
+}
+
+/* 320px-class phones only. The widest hero word, "conversions," on /templates/,
+   is 291px of min-content at 46px -- wider than the 268px column -- so the hero
+   takes one more step down below 360px. Above this the 46px hero is unchanged. */
+@media (max-width:359px){
+  .t-hero{font-size:38px;line-height:45px}
 }
 
 @media (prefers-reduced-motion:reduce){
