@@ -222,7 +222,7 @@ def page_templates():
               f'<div class="tpl-grid">{cards}</div></section>'
             + vision_and_services(SERVICES_SVC) + faq_block())
     return shell("Templates | Amazé Web",
-        "Browse AmazeWeb website templates for Framer and Shopify — designed for conversions, "
+        "Browse AmazeWeb website templates for Shopify and custom builds — designed for conversions, "
         "easy to customize, and ready to launch.", body)
 
 def page_support():
@@ -254,11 +254,16 @@ def page_support():
 def page_theme(t):
     # The rail skips the theme you are already on -- the old grid listed it.
     others = "".join(tpl_card(o) for o in THEMES if o["slug"] != t["slug"])
+    # Same platform mark the card carries, so the two agree. .theme-head is a
+    # 4-child flex column whose children are staggered by the entrance
+    # animation -- the meta row keeps that count at 4.
+    plat = (f'<span class="theme-plat">{E(t["platform"])}</span>'
+            if t.get("platform") else "")
     body = f"""<section class="wrap theme-head">
 <p class="theme-kicker">{E(t["kicker"])}</p>
 <h1 class="t-page">{E(t["name"])}</h1>
 <p class="theme-sub">{E(t["sub"])}</p>
-<p class="theme-avail">Coming Soon</p>
+<div class="theme-meta">{plat}<p class="theme-avail">Coming Soon</p></div>
 </section>
 <section class="theme-frame"><div class="inner ph-stripes"></div></section>
 <section class="theme-buy">

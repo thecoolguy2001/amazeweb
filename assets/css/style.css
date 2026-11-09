@@ -514,6 +514,15 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 /* ---------- theme detail ---------- */
 .theme-head{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
 .theme-kicker{font-size:16px;line-height:24px;font-weight:600;color:var(--blue)}
+.theme-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.theme-plat{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:6px 13px 6px 11px;border-radius:var(--r-pill);
+  background:var(--surface);
+  font-size:14px;line-height:20px;font-weight:500;letter-spacing:-.2px;color:#5A8A1E;
+}
+.theme-plat::before{content:"";width:7px;height:7px;border-radius:2px;background:#95BF47;flex:0 0 auto}
+.theme-plat+.theme-avail{padding-left:0}   /* the 12px indent is for when it stands alone */
 .theme-sub{font-size:22px;line-height:1.5;font-weight:400;color:var(--grey);max-width:760px}
 .theme-frame{
   width:100%;max-width:1040px;margin:0 auto;background:var(--surface-2);

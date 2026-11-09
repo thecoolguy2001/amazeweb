@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-"""All site copy, transcribed verbatim from the published Framer site."""
+"""All site copy. Transcribed from the published Framer original, then
+updated: the site no longer ships Framer templates, so platform references
+name Shopify and custom builds instead."""
 
 SITE = {"name": "Amazé Web", "copyright": "Copyright © 2026 Amazé"}
 
@@ -29,7 +31,7 @@ FAQ = [
         ("How does AmazeWeb work?",
          "Choose a template, purchase it through our checkout, and receive everything you need to customize and launch your website."),
         ("What platforms do you support?",
-         "AmazeWeb focuses on Framer and Shopify templates, with additional services for website setup, email design, and brand assets."),
+         "AmazeWeb focuses on Shopify templates and custom-built sites, with additional services for website setup, email design, and brand assets."),
         ("Can you set up the website for me?",
          "Yes. If you want help, you can add a setup service and we’ll install the template, connect basic pages, and prepare the site for launch."),
     ]),
@@ -45,7 +47,7 @@ FAQ = [
         ("Can AmazeWeb set up the website for me?",
          "Yes. You can add setup support if you want us to install the template and prepare the website for launch."),
         ("What do I need before setup starts?",
-         "You’ll need your logo, brand colors, images, website copy, product info, and access to your Framer or Shopify account."),
+         "You’ll need your logo, brand colors, images, website copy, product info, and access to your Shopify account or hosting."),
         ("Can you connect my domain?",
          "Yes. Domain connection can be included with setup support, depending on your platform and hosting provider."),
     ]),
@@ -83,7 +85,7 @@ HOME_CARDS = [
 
 SERVICES_CARDS = [
     {"title": "Template Setup & Launch Support",
-     "body": "Need help turning a template into a finished website? AmazeWeb can set up your Framer or Shopify template, replace placeholder content, adjust colors, connect pages, organize sections, and prepare your site for launch.",
+     "body": "Need help turning a template into a finished website? AmazeWeb can set up your Shopify template, replace placeholder content, adjust colors, connect pages, organize sections, and prepare your site for launch.",
      "cta": ("Learn More", "/services/setup/"),
      "img": IMG + "FTAZ2Zly1EytGDVYhAqfSwh75I.png", "ratio": "428/269",
      "stats": [("Engagement", "12 min"), ("User Satisfaction", "4.5*")], "dim": True},
@@ -128,7 +130,7 @@ SERVICES_SVC = [
          ["82V0lDZt5IN8w9i1157kfT8pSU.jpg", "8ZlsEfjDITR5nOu3Yn61F22cbg.jpg", "Y1hHthCTPz6YNLIhonp2E5s5WU.jpg"],
          ["Logo design", "Brand guideline", "Brand strategy", "+more"], "scan"),
     _svc("Web Development",
-         "Transforming designs into fully responsive, interactive websites with Framer. Whether it’s a landing page or a full-scale web experience, I build fast, modern sites optimized for seamless performance",
+         "Transforming designs into fully responsive, interactive websites. Whether it’s a landing page or a full-scale web experience, I build fast, modern sites optimized for seamless performance",
          ["At4lVgdsU3vOE8OU9MxhtrSyU.png", "DxUbioKrcg6pEvPVPn8MKs3ShqY.png", "b89txAvenwqESiiy4RmX2Rq3cqw.png"],
          ["Landing page", "Multipages", "Web migration", "+more"], "code", "blue lift"),
     _svc("UI/UX Design",
