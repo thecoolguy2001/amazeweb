@@ -73,9 +73,21 @@ section.wrap{padding-block:clamp(3rem,7vw,6rem)}
 .btn.primary:hover{background:#7DEFC4;border-color:#7DEFC4}
 .btn.big{padding:.85rem 1.5rem;font-size:var(--t-m)}
 
-/* ---------- hero ---------- */
-.hero{padding-block:clamp(3rem,8vw,6.5rem) clamp(2rem,5vw,4rem)}
+/* ---------- hero: the timestamp ---------------------------------------
+   The product's whole argument is what happens at 03:04, so that is the
+   headline, set far past normal display size and running the width of
+   the page. The console then goes full width beneath it rather than
+   shrinking into a column alongside a paragraph. */
+.hero{padding-block:clamp(2rem,5vw,3.5rem) clamp(1.5rem,3vw,2.5rem)}
+.stamp{font-size:clamp(4.5rem,23vw,17rem);line-height:.78;letter-spacing:-.06em;
+  font-weight:700;white-space:nowrap;margin-top:1rem}
+.stamp em{font-style:normal;color:var(--mint)}
+.stamp-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(1.5rem,4vw,3rem);
+  align-items:end;margin-top:1.5rem;border-top:1px solid var(--line);padding-top:1.4rem}
+.stamp-row h1{font-size:clamp(1.3rem,2.4vw,1.9rem);line-height:1.15;letter-spacing:-.02em;font-weight:700;max-width:22ch}
+.stamp-row .side{display:grid;gap:1rem;justify-items:start}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:760px){ .stamp-row{grid-template-columns:1fr} }
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--mint);border:1px solid rgba(91,230,176,.3);background:rgba(91,230,176,.07);padding:.3rem .7rem;border-radius:999px;margin-bottom:1.5rem}
 h1.hero-h{font-size:var(--t-hero);line-height:1.02;letter-spacing:-.035em;font-weight:700;max-width:16ch}
 .hero .sub{margin-top:1.4rem;font-size:var(--t-l);color:var(--dim);max-width:46ch;line-height:1.55}

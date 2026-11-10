@@ -276,3 +276,38 @@ section.wrap{padding-block:clamp(2.5rem,6vw,4.5rem)}
   .step{grid-template-columns:44px 1fr;row-gap:.3rem}
   .step .pr{grid-column:2;justify-self:start}
 }
+
+
+/* ======================================================================
+   PAGE OPENERS
+   Every inner page used to begin the same way: a small left-aligned h1
+   with a paragraph under it. Five pages, one composition. Each page now
+   opens on its own geometry, so moving through the template feels like
+   moving through a magazine rather than reloading one layout.
+   ====================================================================== */
+
+/* shop — a full-bleed band. The title and the filters share it, so the
+   products start high up the page instead of below a text block. */
+.opener-band{background:var(--forest);color:var(--cream)}
+.opener-band .wrap{padding-block:clamp(1.75rem,4vw,3rem);text-align:center}
+.opener-band h1{font-family:"Newsreader",Georgia,serif;font-size:var(--t-xl)}
+.opener-band p{margin-top:.7rem;color:#B6C4B6;max-width:52ch;margin-inline:auto;font-size:var(--t-s)}
+.opener-band .bar{margin-top:1.4rem;justify-content:center}
+.opener-band .chip{border-color:rgba(253,248,244,.3);color:var(--cream)}
+.opener-band .chip:hover{border-color:var(--cream)}
+.opener-band .chip[aria-pressed="true"]{background:var(--petal);border-color:var(--petal);color:var(--forest)}
+.opener-band .bar .right{margin-left:0;color:#B6C4B6}
+
+/* product — a masthead rule: name on the left of the line, price hard
+   right, the whole thing spanning both columns beneath. */
+.opener-mast{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;
+  flex-wrap:wrap;border-bottom:1px solid var(--forest);padding-bottom:1rem}
+.opener-mast .for{font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
+.opener-mast h1{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.8rem,3.4vw,2.8rem);margin-top:.3rem}
+.opener-mast .amt{font-size:clamp(1.3rem,2.2vw,1.9rem);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* cart — centred, with the count below the rule rather than beside the
+   title. */
+.opener-mid{text-align:center;border-bottom:1px solid var(--line);padding-bottom:1.1rem}
+.opener-mid h1{font-family:"Newsreader",Georgia,serif;font-size:var(--t-xl)}
+.opener-mid p{margin-top:.4rem;color:var(--mid);font-size:var(--t-s)}

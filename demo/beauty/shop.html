@@ -30,22 +30,23 @@
 </header>
 
 <main>
-  <section class="wrap" style="padding-block:clamp(1.5rem,3vw,2.5rem) 0">
-    <h1 class="serif" style="font-size:var(--t-xl)">Ten products</h1>
-    <p style="margin-top:.7rem;max-width:50ch;color:var(--mid)">Filter by where it sits in a routine. If you would rather be told what to use, the <a href="routines.html" style="text-decoration:underline">routine builder</a> does that in two clicks.</p>
+  <section class="opener-band">
+    <div class="wrap">
+      <h1 class="serif">Ten products</h1>
+      <p>Filter by where it sits in a routine. If you would rather be told what to use, the <a href="routines.html" style="text-decoration:underline">routine builder</a> does that in two clicks.</p>
+      <div class="bar" style="margin-bottom:0">
+        <button class="chip" data-step-filter="all" aria-pressed="true">Everything</button>
+        <button class="chip" data-step-filter="cleanse" aria-pressed="false">Cleanse</button>
+        <button class="chip" data-step-filter="prep" aria-pressed="false">Prep</button>
+        <button class="chip" data-step-filter="treat" aria-pressed="false">Treat</button>
+        <button class="chip" data-step-filter="seal" aria-pressed="false">Seal</button>
+        <button class="chip" data-step-filter="protect" aria-pressed="false">Protect</button>
+        <span class="right" id="count">10 products</span>
+      </div>
+    </div>
   </section>
 
-  <section class="wrap" style="padding-top:clamp(1.25rem,2.5vw,2rem)">
-    <div class="bar">
-      <button class="chip" data-step-filter="all" aria-pressed="true">Everything</button>
-      <button class="chip" data-step-filter="cleanse" aria-pressed="false">Cleanse</button>
-      <button class="chip" data-step-filter="prep" aria-pressed="false">Prep</button>
-      <button class="chip" data-step-filter="treat" aria-pressed="false">Treat</button>
-      <button class="chip" data-step-filter="seal" aria-pressed="false">Seal</button>
-      <button class="chip" data-step-filter="protect" aria-pressed="false">Protect</button>
-      <span class="right" id="count">10 products</span>
-    </div>
-
+  <section class="wrap" style="padding-top:clamp(1.5rem,3vw,2.5rem)">
     <div class="grid" id="grid">
       <article class="card" data-step="cleanse">
         <span class="plate b2" aria-hidden="true"></span>

@@ -72,9 +72,34 @@ section.wrap{padding-block:clamp(2.5rem,6vw,4.5rem)}
 .btn.light{border-color:var(--cream);color:var(--cream)}
 .btn.light:hover{background:var(--cream);color:var(--teal)}
 
-/* ---------- hero ---------- */
+/* ---------- hero: the scatter -----------------------------------------
+   Photographs pinned up around the notice, at the angles they actually
+   end up at on a wall by a door. The type sits in the middle of them
+   rather than in a column with the pictures tidied into a grid beside
+   it. Pins stay inside the box so nothing widens the page. */
 .hero{padding-block:clamp(2rem,5vw,4rem)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
+.scatter{position:relative;display:grid;place-items:center;text-align:center;
+  min-height:min(72vh,580px);overflow:clip}
+.scatter .mid{position:relative;z-index:2;max-width:42ch;display:grid;justify-items:center}
+.scatter .pin{position:absolute;z-index:1;width:clamp(96px,13vw,188px);
+  border-radius:20px;box-shadow:0 16px 38px rgba(35,31,28,.16)}
+.scatter .p-a{top:2%;left:1%;transform:rotate(-7deg)}
+.scatter .p-b{top:7%;right:2%;transform:rotate(6deg)}
+.scatter .p-c{bottom:4%;left:7%;transform:rotate(5deg)}
+.scatter .p-d{bottom:1%;right:8%;transform:rotate(-6deg)}
+.scatter .p-e{top:42%;left:0;transform:rotate(11deg);width:clamp(74px,9vw,128px)}
+.scatter .p-f{top:46%;right:0;transform:rotate(-9deg);width:clamp(74px,9vw,128px)}
+/* Below 900 the pins would land on the words, so only the four corners
+   stay and they shrink out of the way. */
+@media (max-width:900px){
+  .scatter{min-height:0;padding-block:clamp(5rem,16vw,7rem)}
+  .scatter .pin{width:clamp(72px,17vw,110px)}
+  .scatter .p-e,.scatter .p-f{display:none}
+}
+@media (max-width:520px){
+  .scatter .p-c,.scatter .p-d{display:none}
+  .scatter{padding-block:6rem 2rem}
+}
 .pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--cream-2);border:2px solid var(--line);border-radius:999px;padding:.35rem .9rem;font-size:var(--t-xs);font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--teal);margin-bottom:1.25rem}
 .pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral)}
 .hero h1{font-size:var(--t-hero);max-width:14ch}

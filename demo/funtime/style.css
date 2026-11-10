@@ -80,8 +80,40 @@ section.wrap{padding-block:clamp(2.5rem,6vw,4.5rem)}
 .hero .blobs{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .hero .blobs::before{content:"";position:absolute;width:38vw;height:38vw;right:-8vw;top:-12vw;background:var(--sun);border-radius:50%;opacity:.35}
 .hero .blobs::after{content:"";position:absolute;width:26vw;height:26vw;right:2vw;bottom:-19vw;background:var(--sky);border-radius:50%;opacity:.22}
-.hero .wrap{position:relative;padding-block:clamp(2rem,5vw,4rem)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(1.5rem,4vw,3rem);align-items:center}
+.hero .wrap{position:relative;padding-block:clamp(1.5rem,3.5vw,2.75rem)}
+/* ---------- hero: the activity board ----------------------------------
+   Flat panels tiled like the notice board in the hall, unequal on
+   purpose. The headline takes the biggest panel instead of sitting in a
+   text column with pictures lined up beside it. */
+.board{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));
+  grid-auto-rows:minmax(118px,auto);gap:12px}
+.board > *{border-radius:22px;padding:clamp(1rem,2vw,1.6rem);display:flex;
+  flex-direction:column;justify-content:space-between;gap:.6rem;min-width:0}
+.board .say{grid-column:span 4;grid-row:span 2;background:var(--grape);color:#fff}
+.board .say h1{font-size:clamp(1.8rem,3.8vw,3.1rem)}
+.board .say h1 em{font-style:normal;color:var(--sun)}
+.board .say .sub{color:#DCD4FF;max-width:40ch;font-size:var(--t-s)}
+.board .say .actions{display:flex;gap:.6rem;flex-wrap:wrap}
+.board .pic{grid-column:span 2;grid-row:span 2;padding:0;overflow:hidden}
+.board .pic .plate{width:100%;height:100%;border-radius:0;aspect-ratio:auto}
+.board .p-sun{background:var(--sun)}
+.board .p-sky{background:var(--sky);color:#fff}
+.board .p-blossom{background:var(--blossom);color:#fff}
+.board .p-paper{background:var(--paper-2)}
+.board .w2{grid-column:span 2}
+.board .w3{grid-column:span 3}
+.board .big{font-family:"Baloo 2",sans-serif;font-weight:700;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1}
+.board .lab{font-size:var(--t-xs);font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+@media (max-width:900px){
+  .board{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .board .say{grid-column:span 4}
+  .board .pic{grid-column:span 2}
+  .board .w3{grid-column:span 2}
+}
+@media (max-width:520px){
+  .board{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .board .say,.board .pic,.board .w2,.board .w3{grid-column:span 2}
+}
 .pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--blossom);color:#fff;border-radius:999px;padding:.35rem 1rem;font-size:var(--t-xs);font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.25rem}
 .hero h1{font-size:var(--t-hero);max-width:15ch}
 .hero h1 em{font-style:normal;color:var(--grape)}

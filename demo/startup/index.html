@@ -41,34 +41,37 @@
 <main>
 
   <section class="hero wrap">
-    <div class="hero-grid">
-      <div>
-        <p class="eyebrow">Now in public beta</p>
-        <h1 class="hero-h">Something broke at 3am. Nobody was on call.</h1>
-        <p class="sub">Nettle watches your services, wakes exactly one person, and writes the timeline while it happens — so the morning after is a document, not an archaeology project.</p>
-        <div class="actions">
+    <p class="eyebrow">Now in public beta</p>
+    <p class="stamp mono">03:<em>04</em></p>
+    <div class="stamp-row">
+      <h1>Something broke. Nobody was on call.</h1>
+      <div class="side">
+        <p class="sub" style="margin:0">Nettle watches your services, wakes exactly one person, and writes the timeline while it happens — so the morning after is a document, not an archaeology project.</p>
+        <div class="actions" style="margin:0">
           <a class="btn primary big" href="pricing.html">Start free for 30 days</a>
           <a class="btn big" href="product.html">See how it works</a>
         </div>
-        <p class="fineprint">No card. Five minutes to first alert. Works with what you already run.</p>
-      </div>
-
-      <div class="panel">
-        <div class="panel-bar">
-          <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
-          <span class="nm mono">incident-204 · checkout-api</span>
-          <span class="live mono">LIVE</span>
-        </div>
-        <div class="panel-body mono">
-          <div class="inc"><span class="t">03:04</span><span class="msg"><span class="who dim">nettle</span> p95 latency over 2s for 3 min — <b>opened incident</b></span></div>
-          <div class="inc"><span class="t">03:04</span><span class="msg"><span class="who amber">page</span> on-call rota is empty → nearest owner of <b>checkout-api</b></span></div>
-          <div class="inc"><span class="t">03:06</span><span class="msg"><span class="who">priya</span> acknowledged, from phone</span></div>
-          <div class="inc"><span class="t">03:09</span><span class="msg"><span class="who dim">nettle</span> deploy <b>#1841</b> 22 min before — likely cause</span></div>
-          <div class="inc"><span class="t">03:12</span><span class="msg"><span class="who">priya</span> rolled back to <b>#1840</b></span></div>
-          <div class="inc"><span class="t">03:18</span><span class="msg"><span class="who dim">nettle</span> latency normal for 5 min — <b>resolved</b>, draft written</span></div>
-        </div>
       </div>
     </div>
+  </section>
+
+  <section class="wrap" style="padding-block:0 clamp(2rem,5vw,3.5rem)">
+    <div class="panel">
+      <div class="panel-bar">
+        <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
+        <span class="nm mono">incident-204 · checkout-api</span>
+        <span class="live mono">LIVE</span>
+      </div>
+      <div class="panel-body mono">
+        <div class="inc"><span class="t">03:04</span><span class="msg"><span class="who dim">nettle</span> p95 latency over 2s for 3 min — <b>opened incident</b></span></div>
+        <div class="inc"><span class="t">03:04</span><span class="msg"><span class="who amber">page</span> on-call rota is empty → nearest owner of <b>checkout-api</b></span></div>
+        <div class="inc"><span class="t">03:06</span><span class="msg"><span class="who">priya</span> acknowledged, from phone</span></div>
+        <div class="inc"><span class="t">03:09</span><span class="msg"><span class="who dim">nettle</span> deploy <b>#1841</b> 22 min before — likely cause</span></div>
+        <div class="inc"><span class="t">03:12</span><span class="msg"><span class="who">priya</span> rolled back to <b>#1840</b></span></div>
+        <div class="inc"><span class="t">03:18</span><span class="msg"><span class="who dim">nettle</span> latency normal for 5 min — <b>resolved</b>, draft written</span></div>
+      </div>
+    </div>
+    <p class="fineprint" style="margin-top:1rem">No card. Five minutes to first alert. Works with what you already run.</p>
   </section>
 
   <section class="trust">
