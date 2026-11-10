@@ -262,3 +262,34 @@ section.wrap{padding-block:clamp(2.5rem,6vw,5rem)}
   .agent .creds{grid-template-columns:1fr}
   .bar{grid-template-columns:6rem 1fr 2.2rem}
 }
+
+
+/* ======================================================================
+   PAGE OPENERS — four geometries instead of one left-set Fraunces
+   heading on every page.
+   ====================================================================== */
+/* listings — the title on a rule with the count, filters directly under. */
+.op-mast{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  border-bottom:1px solid var(--ink);padding-bottom:.9rem}
+.op-mast h1{font-family:"Fraunces",Georgia,serif;font-size:var(--t-xl);line-height:1.05}
+.op-mast .n{font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+/* neighborhoods — a forest band, the colour of the valuation CTA. */
+.op-band{background:var(--forest);color:var(--bone)}
+.op-band .wrap{padding-block:clamp(1.75rem,4vw,3rem);text-align:center}
+.op-band h1{font-family:"Fraunces",Georgia,serif;font-size:var(--t-xl);line-height:1.08}
+.op-band p{margin-top:.8rem;color:#C3D0C6;max-width:56ch;margin-inline:auto;font-size:var(--t-s)}
+/* contact — a narrow label column beside the title. */
+.op-side{display:grid;grid-template-columns:minmax(0,.32fr) minmax(0,1fr);gap:clamp(1.25rem,3vw,2.5rem);
+  align-items:end;border-bottom:1px solid var(--line);padding-bottom:1.1rem}
+.op-side .lab{font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.op-side h1{font-family:"Fraunces",Georgia,serif;font-size:var(--t-xl);line-height:1.06}
+@media (max-width:760px){.op-side{grid-template-columns:1fr;align-items:start;gap:.6rem}}
+/* listing — the address is the page title, set over the gallery. */
+.op-addr{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  border-bottom:1px solid var(--ink);padding-bottom:1rem;margin-bottom:1.25rem}
+.op-addr .where{font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+.op-addr h1{font-family:"Fraunces",Georgia,serif;font-size:clamp(1.7rem,3.2vw,2.6rem);margin-top:.3rem}
+.op-addr .amt{font-family:"Fraunces",Georgia,serif;font-size:clamp(1.5rem,2.6vw,2.1rem);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.op-addr .amt small{display:block;font-family:"Public Sans",sans-serif;font-size:var(--t-xs);
+  color:var(--mid);text-align:right;margin-top:.2rem}

@@ -33,19 +33,21 @@
 </header>
 
 <main>
-  <section class="wrap">
-    <div class="sec-head">
-      <p class="sc">Rewritten Wednesday, 6 November</p>
-      <h1 class="don">The menu</h1>
+  <section class="op-band">
+    <div class="wrap">
+      <p class="sc" style="color:#EDD8DA">Rewritten Wednesday, 6 November</p>
+      <h1 class="don" style="margin-top:.6rem">The menu</h1>
       <p>One fire, thirty-four seats, and a list that changes with the market. If something runs out we take it off the board rather than keep selling it.</p>
+      <div class="service-bar">
+        <button class="tab" data-service="lunch" aria-pressed="true">Lunch</button>
+        <button class="tab" data-service="dinner" aria-pressed="false">Dinner</button>
+        <button class="tab" data-service="sunday" aria-pressed="false">Sunday</button>
+        <span class="when" id="when">Wednesday to Saturday, 12:00 – 14:30</span>
+      </div>
     </div>
+  </section>
 
-    <div class="service-bar">
-      <button class="tab" data-service="lunch" aria-pressed="true">Lunch</button>
-      <button class="tab" data-service="dinner" aria-pressed="false">Dinner</button>
-      <button class="tab" data-service="sunday" aria-pressed="false">Sunday</button>
-      <span class="when" id="when">Wednesday to Saturday, 12:00 – 14:30</span>
-    </div>
+  <section class="wrap">
 
     <div class="service" data-service="lunch">
       <div class="courses">

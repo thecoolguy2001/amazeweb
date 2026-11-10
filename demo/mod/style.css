@@ -257,3 +257,27 @@ section.wrap{padding-block:clamp(2.5rem,6vw,4.5rem)}
   .line .right{grid-column:1/-1;justify-items:start}
   .sz-table th,.sz-table td{padding:.6rem .25rem;font-size:var(--t-xs)}
 }
+
+
+/* ======================================================================
+   PAGE OPENERS — four geometries instead of one left-set heading.
+   ====================================================================== */
+.op-mast{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  border-bottom:2px solid var(--espresso);padding-bottom:.8rem}
+.op-mast h1{font-family:"Darker Grotesque",sans-serif;font-weight:800;font-size:var(--t-xl);
+  text-transform:uppercase;line-height:.9}
+.op-mast .n{font-size:var(--t-s);color:var(--tan);font-weight:600}
+/* product — name left, price hard right, above both columns. */
+.op-pdp{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  border-bottom:2px solid var(--espresso);padding-bottom:.9rem}
+.op-pdp h1{font-family:"Darker Grotesque",sans-serif;font-weight:800;
+  font-size:clamp(1.9rem,3.6vw,3rem);text-transform:uppercase;line-height:.9}
+.op-pdp .amt{font-size:clamp(1.1rem,2vw,1.5rem);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* sizing — an oat sheet, because it is a reference page. */
+.op-sheet{background:var(--oat);border-radius:18px;padding:clamp(1.5rem,3.5vw,2.5rem);max-width:64ch}
+.op-sheet h1{font-family:"Darker Grotesque",sans-serif;font-weight:800;font-size:var(--t-xl);text-transform:uppercase;line-height:.92}
+.op-sheet p{margin-top:.8rem;color:var(--mid);font-size:var(--t-s)}
+/* cart — centred. */
+.op-mid{text-align:center;border-bottom:2px solid var(--line);padding-bottom:1rem}
+.op-mid h1{font-family:"Darker Grotesque",sans-serif;font-weight:800;font-size:var(--t-xl);text-transform:uppercase}
+.op-mid p{margin-top:.4rem;color:var(--mid);font-size:var(--t-s)}

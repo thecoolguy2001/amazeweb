@@ -256,3 +256,32 @@ section.wrap{padding-block:clamp(2.5rem,6vw,5rem)}
   .exh .row{grid-template-columns:5.5rem minmax(0,1fr)}
   .exh .state{display:none}
 }
+
+
+/* ======================================================================
+   PAGE OPENERS — four pages, four geometries. They used to share one:
+   a left-aligned h1 with a paragraph under it.
+   ====================================================================== */
+/* gallery — the title sits on the rule with the count, so the hang
+   starts immediately instead of below a block of text. */
+.op-mast{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;
+  flex-wrap:wrap;border-bottom:1px solid var(--ink);padding-bottom:.9rem}
+.op-mast h1{font-family:"Instrument Serif",Georgia,serif;font-size:var(--t-xl);line-height:1.05}
+.op-mast .n{font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+/* exhibitions — a full-bleed dark band, the same ink as the enquire
+   panel, so the page opens on a block of colour. */
+.op-band{background:var(--deep);color:var(--paper)}
+.op-band .wrap{padding-block:clamp(2rem,5vw,3.5rem);text-align:center}
+.op-band h1{font-family:"Instrument Serif",Georgia,serif;font-size:var(--t-xl);line-height:1.08}
+.op-band p{margin-top:.8rem;color:#B9B4A5;max-width:52ch;margin-inline:auto;font-size:var(--t-s)}
+/* shop — centred under a hairline. */
+.op-mid{text-align:center;border-bottom:1px solid var(--line);padding-bottom:1.1rem}
+.op-mid h1{font-family:"Instrument Serif",Georgia,serif;font-size:var(--t-xl)}
+.op-mid p{margin-top:.7rem;color:var(--mid);max-width:54ch;margin-inline:auto;font-size:var(--t-s)}
+/* about — a narrow label column against a wide title column, set on
+   different baselines. */
+.op-side{display:grid;grid-template-columns:minmax(0,.32fr) minmax(0,1fr);gap:clamp(1.25rem,3vw,3rem);
+  align-items:end;border-bottom:1px solid var(--line);padding-bottom:1.2rem}
+.op-side .lab{font-size:var(--t-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
+.op-side h1{font-family:"Instrument Serif",Georgia,serif;font-size:var(--t-xl);line-height:1.08}
+@media (max-width:760px){.op-side{grid-template-columns:1fr;align-items:start;gap:.7rem}}

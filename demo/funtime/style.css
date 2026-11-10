@@ -262,3 +262,28 @@ section.wrap{padding-block:clamp(2.5rem,6vw,4.5rem)}
   .foot .wrap{grid-template-columns:1fr}
   .agebar{border-radius:var(--r-lg)}
 }
+
+
+/* ======================================================================
+   PAGE OPENERS — four geometries instead of one left-set heading.
+   ====================================================================== */
+/* programs — a grape band carrying the title and the age filter. */
+.op-band{background:var(--grape);color:#fff}
+.op-band .wrap{padding-block:clamp(1.75rem,4vw,2.75rem);text-align:center}
+.op-band h1{font-family:"Baloo 2",sans-serif;font-weight:700;font-size:var(--t-xl)}
+.op-band p{margin-top:.6rem;color:#DCD4FF;max-width:52ch;margin-inline:auto;font-size:var(--t-s)}
+/* schedule — the title on a rule with the week it covers. */
+.op-mast{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  border-bottom:3px solid var(--grape);padding-bottom:.8rem}
+.op-mast h1{font-family:"Baloo 2",sans-serif;font-weight:700;font-size:var(--t-xl)}
+.op-mast .n{font-size:var(--t-s);font-weight:800;color:var(--blossom)}
+/* safety — a plain sheet, deliberately the quietest page on the site. */
+.op-sheet{background:#fff;border:2px solid var(--line);border-radius:var(--r-lg);
+  padding:clamp(1.5rem,3.5vw,2.5rem);max-width:62ch}
+.op-sheet .ref{font-size:var(--t-xs);font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mid)}
+.op-sheet h1{font-family:"Baloo 2",sans-serif;font-weight:700;font-size:var(--t-xl);margin-top:.4rem}
+.op-sheet p{margin-top:.7rem;color:var(--mid);font-size:var(--t-s)}
+/* contact — centred over the blobs. */
+.op-mid{text-align:center}
+.op-mid h1{font-family:"Baloo 2",sans-serif;font-weight:700;font-size:clamp(2rem,4.6vw,3.4rem)}
+.op-mid p{margin-top:.7rem;color:var(--mid);max-width:50ch;margin-inline:auto}

@@ -277,3 +277,29 @@ section.wrap{padding-block:clamp(2.5rem,6vw,4.5rem)}
   .mode{width:100%}
   .mode button{flex:1}
 }
+
+
+/* ======================================================================
+   PAGE OPENERS — four geometries instead of one left-set heading.
+   ====================================================================== */
+.op-mast{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  border-bottom:1px solid var(--plum);padding-bottom:.9rem}
+.op-mast h1{font-family:"Prata",Georgia,serif;font-size:var(--t-xl);line-height:1.1}
+.op-mast .n{font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+/* product — name left, price hard right, above both columns. */
+.op-pdp{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  border-bottom:1px solid var(--plum);padding-bottom:1rem}
+.op-pdp .maker{font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.op-pdp h1{font-family:"Prata",Georgia,serif;font-size:clamp(1.6rem,3vw,2.4rem);margin-top:.3rem}
+.op-pdp .amt{font-family:"Prata",Georgia,serif;font-size:clamp(1.3rem,2.2vw,1.8rem);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+/* visit — a plum band with the address in it, because the address is
+   the whole argument of this page. */
+.op-band{background:var(--plum);color:var(--stone)}
+.op-band .wrap{padding-block:clamp(2rem,4.5vw,3.25rem);text-align:center}
+.op-band h1{font-family:"Prata",Georgia,serif;font-size:var(--t-xl);line-height:1.12;max-width:22ch;margin-inline:auto}
+.op-band p{margin-top:.8rem;color:#C9BCCE;max-width:52ch;margin-inline:auto;font-size:var(--t-s)}
+/* cart — centred. */
+.op-mid{text-align:center;border-bottom:1px solid var(--line);padding-bottom:1rem}
+.op-mid h1{font-family:"Prata",Georgia,serif;font-size:var(--t-xl)}
+.op-mid p{margin-top:.4rem;color:var(--mid);font-size:var(--t-s)}

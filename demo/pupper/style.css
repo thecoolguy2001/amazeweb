@@ -257,3 +257,35 @@ section.wrap{padding-block:clamp(2.5rem,6vw,4.5rem)}
   .foot .wrap{grid-template-columns:1fr}
   .slotrow{grid-template-columns:4rem 1fr}
 }
+
+
+/* ======================================================================
+   PAGE OPENERS — four geometries instead of one left-set heading with
+   a pill above it on every page.
+   ====================================================================== */
+/* services — a teal band carrying the title and the price range. */
+.op-band{background:var(--teal);color:var(--cream)}
+.op-band .wrap{padding-block:clamp(1.75rem,4vw,3rem);text-align:center}
+.op-band h1{font-family:"Outfit",sans-serif;font-weight:700;letter-spacing:-.03em;font-size:var(--t-xl)}
+.op-band p{margin-top:.8rem;color:#B9CFCC;max-width:52ch;margin-inline:auto;font-size:var(--t-s)}
+.op-band .pill{background:rgba(255,248,239,.14);border-color:rgba(255,248,239,.3);color:var(--cream)}
+/* booking — the four steps are the point, so the title shares a rule
+   with the promise rather than stacking above it. */
+.op-mast{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  border-bottom:2px solid var(--espresso,var(--ink));padding-bottom:.9rem}
+.op-mast h1{font-family:"Outfit",sans-serif;font-weight:700;letter-spacing:-.03em;font-size:var(--t-xl)}
+.op-mast .n{font-size:var(--t-s);font-weight:700;color:var(--coral)}
+/* team — centred between two rules. */
+.op-mid{text-align:center;border-block:2px dotted var(--line);padding-block:clamp(1.5rem,3.5vw,2.5rem)}
+.op-mid h1{font-family:"Outfit",sans-serif;font-weight:700;letter-spacing:-.03em;font-size:var(--t-xl)}
+.op-mid p{margin-top:.7rem;color:var(--mid);max-width:50ch;margin-inline:auto;font-size:var(--t-s)}
+/* reviews — the score sits large on the left with the title beside it. */
+.op-score{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(1.25rem,3vw,2.5rem);
+  align-items:center;background:var(--cream-2);border:2px solid var(--line);
+  border-radius:var(--r-lg);padding:clamp(1.25rem,3vw,2rem)}
+.op-score .big{font-family:"Outfit",sans-serif;font-weight:700;font-size:clamp(2.6rem,7vw,4.6rem);
+  line-height:1;color:var(--teal)}
+.op-score .stars{color:var(--mustard);letter-spacing:.1em}
+.op-score h1{font-family:"Outfit",sans-serif;font-weight:700;letter-spacing:-.03em;font-size:var(--t-xl)}
+.op-score p{margin-top:.5rem;color:var(--mid);font-size:var(--t-s);max-width:48ch}
+@media (max-width:620px){.op-score{grid-template-columns:1fr;text-align:left}}

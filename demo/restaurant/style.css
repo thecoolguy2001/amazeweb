@@ -205,3 +205,47 @@ section.wrap{padding-block:clamp(2.5rem,6vw,5rem)}
   .ev .row{grid-template-columns:1fr auto}
   .ev .when{grid-column:1/-1}
 }
+
+
+/* ======================================================================
+   PAGE OPENERS — four geometries instead of one centred heading on
+   every page.
+   ====================================================================== */
+/* menu — a claret band holding the title and the day-part switch, so
+   the card itself starts high. */
+.op-band{background:var(--claret);color:var(--cream)}
+.op-band .wrap{padding-block:clamp(1.75rem,4vw,3rem);text-align:center}
+.op-band h1{font-family:"Bodoni Moda",Didot,serif;font-size:var(--t-xl)}
+.op-band p{margin-top:.7rem;color:#EDD8DA;max-width:54ch;margin-inline:auto;font-size:var(--t-s)}
+.op-band .service-bar{border-bottom:0;justify-content:center;margin:1.2rem 0 0;padding-bottom:0}
+.op-band .service-bar .tab{color:#EDD8DA}
+.op-band .service-bar .tab:hover{border-color:rgba(251,247,239,.4);color:var(--cream)}
+.op-band .service-bar .tab[aria-pressed="true"]{background:var(--cream);color:var(--claret);border-color:var(--cream)}
+.op-band .service-bar .when{margin-left:0;flex-basis:100%;color:#EDD8DA;margin-top:.5rem}
+/* reservations — the title lies on a rule with tonight's state to its
+   right, like a board by the door. */
+.op-mast{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  border-bottom:1px solid var(--ink);padding-bottom:.9rem}
+.op-mast h1{font-family:"Bodoni Moda",Didot,serif;font-size:var(--t-xl)}
+.op-mast .n{font-size:var(--t-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--claret)}
+/* events — a narrow label column beside the title. */
+.op-side{display:grid;grid-template-columns:minmax(0,.3fr) minmax(0,1fr);gap:clamp(1.25rem,3vw,2.5rem);
+  align-items:end;border-bottom:1px solid var(--line);padding-bottom:1.1rem}
+.op-side .lab{font-size:var(--t-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
+.op-side h1{font-family:"Bodoni Moda",Didot,serif;font-size:var(--t-xl)}
+@media (max-width:760px){.op-side{grid-template-columns:1fr;align-items:start;gap:.6rem}}
+/* visit — the title sits on the photographs rather than above them. */
+/* One wide plate, not three short ones — a three-up strip at 21/9 is
+   too shallow to hold a title and a paragraph without the text spilling
+   across the pictures. */
+.op-over{position:relative;border-radius:0}
+/* Height is set directly, not via aspect-ratio. With aspect-ratio set,
+   a min-height makes the box compute its WIDTH from that height
+   (260 x 21/8 = 682px), which forced the layout viewport open to 701px
+   at a 390px screen. */
+.op-over .plate{width:100%;aspect-ratio:auto;height:clamp(230px,26vw,340px)}
+.op-over .cap{position:absolute;left:0;right:0;bottom:0;padding:clamp(1rem,3vw,2.25rem);
+  background:linear-gradient(0deg,rgba(33,26,22,.82),transparent);color:var(--cream)}
+.op-over h1{font-family:"Bodoni Moda",Didot,serif;font-size:var(--t-xl)}
+.op-over p{margin-top:.5rem;color:#E4D8CC;max-width:52ch;font-size:var(--t-s)}
+@media (max-width:620px){.op-over .strip3{grid-template-columns:1fr 1fr 1fr}}

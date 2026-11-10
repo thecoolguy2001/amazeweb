@@ -256,3 +256,34 @@ section.wrap{padding-block:clamp(2.5rem,6vw,5rem)}
   .line .right{grid-column:1/-1;justify-items:start;text-align:left}
   .hot-card{width:min(200px,62vw)}
 }
+
+
+/* ======================================================================
+   PAGE OPENERS — four geometries. Monochrome leaves only scale, rule
+   and position to work with, which is the point of the template.
+   ====================================================================== */
+/* collection — the season on a rule with the count. */
+.op-mast{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  border-bottom:1px solid var(--ink);padding-bottom:.8rem}
+.op-mast h1{font-family:"Syne",sans-serif;font-weight:800;letter-spacing:-.045em;
+  font-size:var(--t-xl);text-transform:uppercase;overflow-wrap:break-word}
+.op-mast .n{font-size:var(--t-xs);letter-spacing:.18em;text-transform:uppercase;color:var(--mid)}
+/* product — the garment name with the price hard right, above both
+   columns rather than inside the buy panel. */
+.op-pdp{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  border-bottom:1px solid var(--ink);padding-bottom:1rem}
+.op-pdp h1{font-family:"Syne",sans-serif;font-weight:800;letter-spacing:-.045em;
+  font-size:clamp(1.7rem,3.2vw,2.7rem);text-transform:uppercase;line-height:.95}
+.op-pdp .amt{font-size:clamp(1.1rem,2vw,1.5rem);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* lookbook — inverted: a black band, the one place the template flips. */
+.op-inv{background:var(--ink);color:var(--bone)}
+.op-inv .wrap{padding-block:clamp(2rem,5vw,3.5rem)}
+.op-inv h1{font-family:"Syne",sans-serif;font-weight:800;letter-spacing:-.045em;
+  font-size:clamp(2rem,7vw,5.5rem);text-transform:uppercase;line-height:.88}
+.op-inv .meta{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  margin-top:1.25rem;font-size:var(--t-xs);letter-spacing:.18em;text-transform:uppercase;color:var(--greige)}
+/* cart — centred. */
+.op-mid{text-align:center;border-bottom:1px solid var(--line);padding-bottom:1rem}
+.op-mid h1{font-family:"Syne",sans-serif;font-weight:800;letter-spacing:-.045em;
+  font-size:var(--t-xl);text-transform:uppercase}
+.op-mid p{margin-top:.5rem;font-size:var(--t-xs);letter-spacing:.18em;text-transform:uppercase;color:var(--mid)}
