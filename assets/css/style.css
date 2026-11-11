@@ -329,9 +329,12 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .scard-left .btn{margin-top:auto;align-self:flex-start}
 .scard-right{width:428px;flex:0 0 auto;display:flex;flex-direction:column;gap:36px}
 .scard-shot{width:100%;border-radius:8px;object-fit:cover;aspect-ratio:428/269}
-/* a card with no stat pair: the artwork takes the whole right column */
-.scard-right.full .scard-shot,
+/* a card with no stat pair: drawn artwork takes the whole right column, while
+   a photo keeps its own ratio and sits centred — stretching it to the full
+   height just crops the picture */
+.scard-right.full{justify-content:center}
 .scard-right.full .scard-art{flex:1 1 auto;min-height:0;height:auto;aspect-ratio:auto}
+.scard-right.full .scard-shot{flex:0 0 auto;width:100%;height:auto}
 
 /* artwork in the services sub-page panels, where the stat pairs used to sit */
 .svcx-panel .art-slot{margin-left:auto;width:min(428px,100%)}

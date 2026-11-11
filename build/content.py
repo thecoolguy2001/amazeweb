@@ -65,27 +65,26 @@ IMG = "/assets/img/"
 LOGO = IMG + "9Rb6ELE5jVlzfGlbglZUejG8k.png"
 
 # --- homepage sticky cards -------------------------------------------------
-# Drawn artwork, same as the services cards: "art" names a scene in build.py.
 HOME_CARDS = [
     {"title": "Designing Premium Website Templates",
      "body": "Crafted for speed, style, and performance. Our templates are built to look stunning right out of the box, with flexible layouts that adapt to your brand’s personality. Launch faster without sacrificing design quality or user experience.",
      "cta": ("Browse Templates", "/templates/"),
-     "art": "gallery",
+     "img": IMG + "HBt1P1lrolW51BNI8Z2o6uf2rs.png", "ratio": "428/269",
      "dim": True},
     {"title": "Delivering End-to-End Creative Solutions",
      "body": "From concept to launch, I handle every detail. Whether it’s building a high-performing website, designing intuitive interfaces, or crafting cohesive brand systems every project is guided by strategy, creativity, and precision.",
      "cta": ("View Services", "/services/"),
-     "art": "pipeline",
+     "img": IMG + "HwBYfWSfyi6G2G045HaZGZXPc0Q.png", "ratio": "428/240",
      "dim": False},
     {"title": "Personalized Support That Actually Supports You",
      "body": "Every project comes with direct, one-on-one guidance. Whether you need help setting up your site, customizing a design, or troubleshooting, you’ll have expert support that’s fast, clear, and genuinely helpful.",
      "cta": ("Get Support", "/support/"),
-     "art": "support",
+     "img": IMG + "RTjbsnkPpAAeiE7d5IHsWvFzjco.png", "ratio": "428/269",
      "dim": False},
 ]
 
-# These three carry drawn artwork instead of a photo: "art" names a scene in
-# build.py (card_art), so each card shows the thing it is selling.
+# Drawn scenes, one per service ("art" names a scene in build.py). The home
+# cards keep their photos.
 SERVICES_CARDS = [
     {"title": "Template Setup & Launch Support",
      "body": "Need help turning a template into a finished website? AmazeWeb can set up your Shopify template, replace placeholder content, adjust colors, connect pages, organize sections, and prepare your site for launch.",

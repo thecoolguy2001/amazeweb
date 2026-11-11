@@ -219,7 +219,9 @@ def stack(cards):
         stats = "".join(f'<div><p class="k">{E(k)}</p><p class="t-stat v">{E(v)}</p></div>'
                         for k, v in pairs)
         stats = f'<div class="scard-stats">{stats}</div>' if pairs else ""
-        shot_style = f' style="aspect-ratio:{c["ratio"]}"' if pairs else ""
+        # keep the photo's own ratio whether or not the stat pair is there,
+        # so a card without stats shows the whole image instead of a crop
+        shot_style = f' style="aspect-ratio:{c["ratio"]}"' if c.get("ratio") else ""
         shot = (card_art(c["art"]) if c.get("art") else
                 f'<img class="scard-shot"{shot_style} src="{c["img"]}" '
                 f'alt="" loading="lazy" decoding="async">')
