@@ -542,8 +542,12 @@ def page_theme(t):
     # showing, decided once here rather than scattered through the markup.
     if example:
         client = t.get("client")
-        kind = f"Built for {client}" if client else "Our own build"
-        lead = CLIENT_LEAD.format(client=client) if client else EXAMPLE_LEAD
+        if client:
+            kind, lead = f"Built for {client}", CLIENT_LEAD.format(client=client)
+        elif t.get("real"):
+            kind, lead = REAL_KIND, REAL_LEAD
+        else:
+            kind, lead = "Our own build", EXAMPLE_LEAD
         buy_section = (f'<section class="theme-buy example">'
                        f'<div class="buy-left"><p class="note">{E(kind)}</p>'
                        f'<p class="terms">{E(lead)}</p></div>'

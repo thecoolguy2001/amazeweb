@@ -150,6 +150,33 @@ SERVICES_SVC = [
 
 # --- templates / themes ----------------------------------------------------
 THEMES = [
+    # Real businesses, built for real people. They are shown as work, not as
+    # stock: there is nothing here a buyer could install. The demo under each
+    # one is a frozen copy with every form, phone number, email and checkout
+    # link made inert, so browsing our portfolio cannot ring a client's phone
+    # or put a stranger through their till. `real` marks them, because the
+    # "our own build" line promises an invented brand and these have real ones.
+    dict(slug="md-landmark", name="MD Landmark", kicker="Real Estate Development Site",
+         sub="A development company’s site, speaking to universities, builders and investors without splitting into three.",
+         overview="Three audiences, one company, one site. The pages give each audience what it came for while the company tells a single story.",
+         who="Developers, construction firms, and property companies selling to institutions rather than to the public.",
+         does="Expertise framing, partner routes by partner type, and one inquiry path shared by every audience.",
+         includes="Home, about and vision, areas of expertise, a partners page split by partner type, and contact.",
+         real=True),
+    dict(slug="spiritual-chosen", name="The Spiritual Chosen", kicker="Author & Book Site",
+         sub="A book launch site: the trailer, the sample, the shop and the author, in the order a reader asks for them.",
+         overview="One title in three formats, plus apparel. The reason to care comes first and the places to buy come immediately after it.",
+         who="Authors, speakers, and anyone launching a single title or product that needs persuading before selling.",
+         does="Trailer-led persuasion, an audiobook sample you can play on the page, and a short route from interest to purchase.",
+         includes="Home with a trailer, the book with a chapter sample, a shop covering e-book, audiobook and apparel, about the author, and contact.",
+         real=True),
+    dict(slug="monnarx", name="Monnarx", kicker="IT Services Site",
+         sub="A one-page site for an IT infrastructure firm, written to be read top to bottom in a single scroll.",
+         overview="Everything a prospective client asks — what the firm does, who it is, what it has delivered, how to reach it — answered in one page, in the order it gets asked.",
+         who="B2B service firms, IT providers, and consultancies whose whole offer fits on one page.",
+         does="Credibility first, services second, and a contact point that is never more than one scroll away.",
+         includes="A single page covering positioning, about, figures, services, portfolio, team, testimonials and a contact form.",
+         real=True),
     dict(slug="showcase", name="Showcase", kicker="Portfolio Site",
          sub="A portfolio template that puts selected work, proof, and a clear contact path in one polished narrative.",
          overview="Showcase is for work-led brands that need a calm, credible place to make the work count.",
@@ -287,6 +314,9 @@ BUILT = {
     "clothing-site":    "/demo/mod/",
     "cosmetics-site":   "/demo/beauty/",
     "icon":             "/demo/icon/",
+    "md-landmark":      "/demo/md-landmark/",
+    "spiritual-chosen": "/demo/spiritual-chosen/",
+    "monnarx":          "/demo/monnarx/",
 }
 for _t in THEMES:
     if _t["slug"] in BUILT:
@@ -365,13 +395,22 @@ TEMPLATES_NOTE = ("{price} each, one-time, for a theme you install on your own s
 EXAMPLES_HEAD = "Sites we have built"
 # A mix of client projects and our own builds. The line does not count either
 # kind, because the mix changes; each build's own page says which it is.
-EXAMPLES_NOTE = ("Client projects and our own builds. Each one is a complete, working site you "
-                 "can click through, and each says which it is.")
+EXAMPLES_NOTE = ("Sites built for real businesses, alongside builds of our own. Each one is a "
+                 "complete, working site you can click through, and each says which it is.")
 
 EXAMPLE_LEAD = ("One of our own builds. The brand, the words and the pictures in it are invented; "
                 "the site itself is real and every page of it works. Yours would be built the "
                 "same way, around your business.")
 CLIENT_LEAD = "Built for {client}. A real site, live and in use."
+
+# A third kind, and the reason it needs its own line: these are real
+# businesses. Saying "the brand is invented" over one would be false, and
+# naming the business would be publishing a client. So the line says what is
+# true of all of them -- real work, shown as a copy, with nothing live in it.
+REAL_LEAD = ("A real business site we designed and built. What you are clicking through is a "
+             "copy kept here as a record of the work, so its forms, phone numbers and checkout "
+             "links do nothing. Yours would be built the same way, around your business.")
+REAL_KIND = "A site we built"
 
 for _t in THEMES:
     if _t["slug"] in CLIENT_BUILDS:

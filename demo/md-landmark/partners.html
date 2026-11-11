@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Partners | MD Landmark Group</title>
+<meta name="description" content="MD Landmark Group is an Atlanta-based real estate development company focused on student housing and community development.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html" aria-label="MD Landmark Group home"><img src="assets/logo.png" alt="MD Landmark Group — Real Estate, Development, Construction, Investments" width="920" height="563"></a>
+    <button class="menu-toggle" type="button" id="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="about.html#expertise">Our Expertise</a>
+        <a href="partners.html" aria-current="page">Partners</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a class="btn btn-gold" href="contact.html">Partner With Us</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="page-hero" style="--page-img:url('assets/brick-apartments.jpg')">
+  <div class="container">
+    <div class="eyebrow">Our Partners</div>
+    <h1>Partners &amp; Collaborators</h1>
+    <p>We work alongside institutions, builders, and investors who share our commitment to stronger campuses and communities.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Who We Partner With</div>
+      <h2>Built Together</h2>
+      <p class="section-sub">Every MD Landmark Group project brings together the people who make it possible.</p>
+    </div>
+    <div class="trio">
+      <article class="service"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M6 22l26-12 26 12-26 12z"/><path d="M16 27v12c0 4 7 8 16 8s16-4 16-8V27"/><path d="M58 22v16"/><path d="M8 58h48M14 58V50M50 58V50"/></svg><h3>Universities &amp; HBCUs</h3><p>Institutions looking to expand quality student housing and support campus growth.</p></article>
+      <article class="service"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M8 44h48c0 5-5 8-12 8H20c-7 0-12-3-12-8z"/><path d="M13 44c0-12 8-21 19-21s19 9 19 21"/><path d="M27 23v-6h10v6M27 44V26M37 44V26"/></svg><h3>Builders &amp; Contractors</h3><p>Experienced building partners who deliver quality construction from site work to move-in.</p></article>
+      <article class="service"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M6 58h52"/><rect x="10" y="40" width="7" height="18"/><rect x="22" y="32" width="7" height="26"/><rect x="34" y="24" width="7" height="34"/><rect x="46" y="16" width="7" height="42"/><path d="M8 34l14-10 10 6L50 10"/><path d="M42 10h8v8"/></svg><h3>Investment Partners</h3><p>Investors who help fund thoughtfully structured developments with long-term value.</p></article>
+    </div>
+  </div>
+</section>
+
+
+<section class="band">
+  <div class="container">
+    <div class="eyebrow">Become a Partner</div>
+    <h2>Interested in Working With Us?</h2>
+    <p>MD Landmark Group welcomes inquiries from universities, landowners, builders, investors, and prospective partners.</p>
+    <a class="btn btn-gold" href="contact.html">Partner With Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <a href="index.html" aria-label="MD Landmark Group home"><img src="assets/logo.png" alt="MD Landmark Group" width="920" height="563" loading="lazy"></a>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="index.html">Home</a><a href="about.html">About Us</a><a href="about.html#expertise">Our Expertise</a><a href="partners.html">Partners</a><a href="contact.html">Contact</a>
+    </nav>
+    <div>730 Peachtree Street NE, Suite 570, Atlanta, GA 30308</div>
+    <small>&copy; 2026 MD Landmark Group. All rights reserved.</small>
+  </div>
+</footer>
+<script>
+  (function () {
+    var btn = document.getElementById('menu-toggle'), nav = document.getElementById('site-nav');
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+  })();
+</script>
+</body>
+</html>
