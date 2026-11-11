@@ -461,23 +461,18 @@ SERVICE_PAGES = {
          "Which is how most of your customers will see it, whatever you designed it on."),
      ], "list"),
      ("Add-Ons", "", "Bolt on whatever the template didn’t come with.", [
-        ("Extra pages",
-         "Anything the template did not include: about, FAQ, a second collection, a landing "
-         "page for one campaign.", "$149 a page"),
-        ("Products loaded in",
-         "Your catalogue entered properly, with variants, images and the right prices, instead "
-         "of you typing all of it in yourself.", "$249 for up to 50"),
-        ("Signup and a welcome email",
-         "A form that works and the first email it sends, written and designed in your brand.",
-         "$249"),
-        ("Booking or enquiry",
-         "A way to book a slot or ask a question that reaches you, rather than a form that "
-         "quietly goes nowhere.", "$199"),
-        ("Reviews and analytics",
-         "A review link worth sending, and enough analytics to tell what people actually do "
-         "on the site.", "$199"),
-        ("Brand basics",
-         "A logo tidied up, or made from scratch if there is not one yet.", "from $349"),
+        ("Extra Page",
+         "A page beyond the ones your tier covers: a second about, an FAQ, another "
+         "collection, a landing page for one campaign. Built in the theme you already have, "
+         "so it matches everything around it.", "$75–$125 a page"),
+        ("Site Migration",
+         "Your old site’s words and pictures brought across, and redirects set from the old "
+         "addresses to the new ones, so Google keeps sending people to the pages you already "
+         "rank for.", "$150–$300"),
+        ("Shopify Email Setup",
+         "Your signup form, the welcome email it sends and a branded template to reuse, set "
+         "up inside Shopify, so what lands in an inbox looks like the store it came from.",
+         "$150–$300"),
      ], "cards"),
      ("How it runs", "", "Four steps, and the first one takes a minute.", [
         ("Tell us which template",
