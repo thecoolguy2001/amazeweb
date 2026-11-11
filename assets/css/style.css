@@ -340,7 +340,12 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 }
 .btn-deep{background:var(--blue-deep);border-radius:var(--r-pill);padding:12px 24px;font-weight:500}
 .btn-light{background:var(--white);color:var(--ink);font-weight:500}
-.btn .arrow{width:14px;height:14px;flex:0 0 auto}
+.btn .arrow{width:14px;height:14px;flex:0 0 auto;
+  transition:transform .26s cubic-bezier(.22,1,.36,1)}
+/* the glyph points up-and-right; 45 degrees clockwise lands it pointing right */
+.btn:hover .arrow,.btn:focus-visible .arrow,
+.sec-link:hover .arrow,.sec-link:focus-visible .arrow{transform:rotate(45deg)}
+.sec-link .arrow{transition:transform .26s cubic-bezier(.22,1,.36,1)}
 
 /* ---------- hero ---------- */
 .hero{display:flex;flex-direction:column;gap:80px;align-items:flex-start}
@@ -530,7 +535,18 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:8px 8px 8px 12px;background:var(--white);border-radius:var(--r-inner);min-height:56px;
 }
-.svc-head .name{font-size:20px;line-height:26px;font-weight:500;letter-spacing:-.6px;color:var(--ink-2)}
+.svc-head .name{font-size:20px;line-height:26px;font-weight:500;letter-spacing:-.6px;
+  color:var(--ink-2);display:block;white-space:nowrap}
+/* the title swap: a one-line window over a two-line column. Hover moves the
+   column up by exactly one line, so "Start a Project" takes the name's place. */
+.svc-head .name-swap{display:block;height:26px;overflow:hidden;min-width:0;flex:1 1 auto}
+.svc-head .name-swap .name{transition:transform .34s cubic-bezier(.22,1,.36,1)}
+.svc:hover .name-swap .name,
+.svc:focus-visible .name-swap .name{transform:translateY(-26px)}
+/* and the card lifts out of the page while it is being considered */
+.svc{transition:box-shadow .3s cubic-bezier(.22,1,.36,1)}
+.svc:hover,.svc:focus-visible{box-shadow:var(--shadow-card)}
+html.js .svc:not(.in){box-shadow:none}
 .svc-head .ico{width:40px;height:40px;border-radius:12px;background:#EEFFF3;display:grid;place-items:center;flex:0 0 auto}
 .svc-head .ico img{width:22px;height:22px;object-fit:contain}
 .svc-body{

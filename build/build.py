@@ -244,8 +244,12 @@ def vision_and_services(cards):
                  "".join(f'<img src="{s}" alt="" loading="lazy" decoding="async">'
                          for s in c["shots"]))
         tags = "".join(f'<span>{E(t)}</span>' for t in c["tags"])
+        # Two titles stacked in a clipped 26px box: the card's name, and what
+        # clicking it actually does. Hover slides the column up by one line.
         svc += (f'<a class="svc {c["variant"]}" href="/support/#support-message">'
-                f'<div class="svc-head"><span class="name">{E(c["name"])}</span>'
+                f'<div class="svc-head"><span class="name-swap">'
+                f'<span class="name">{E(c["name"])}</span>'
+                f'<span class="name alt">Start a Project</span></span>'
                 f'<span class="ico">{SVC_ICONS[c["icon"]]}</span></div>'
                 f'<div class="svc-body">'
                 f'<div class="svc-copy"><p class="t-16">{E(c["body"])}</p>'
