@@ -297,15 +297,30 @@ for _t in THEMES:
         # built, and are not for sale.
         _t["example"] = True
 
-# Said plainly on every example page and over the gallery: these are our own
-# builds with invented brands, not commissioned client work.
+# The work gallery mixes client projects with our own builds. Add a client
+# build by naming it here -- slug: "Client name" -- and the gallery copy, the
+# card badge and that build's own page all follow from it. Anything not listed
+# is one of ours and says so, because a build with an invented business must
+# never read as work somebody commissioned.
+CLIENT_BUILDS = {}       # e.g. "restaurant-site": "Saltfold"
+
 EXAMPLES_HEAD = "Sites we have built"
-EXAMPLES_NOTE = ("Each of these is a complete, working site you can click through. They are our "
-                 "own builds, made to show the standard and the range — the businesses in them "
-                 "are invented, not clients.")
-EXAMPLE_LEAD = ("This is one of our own builds, not a client project. The brand, the words and "
-                "the pictures in it are invented; the site itself is real and you can use every "
-                "page of it. Yours would be built the same way, around your business.")
+# Two versions of the same promise: the first is what is true until a client
+# build is listed above, the second takes over the moment one is.
+EXAMPLES_NOTE_OURS = ("Each of these is a complete, working site you can click through. Right now "
+                      "every one is our own build, so the businesses in them are invented — "
+                      "client projects go here too as they go live.")
+EXAMPLES_NOTE_MIXED = ("Each of these is a complete, working site you can click through: client "
+                       "projects, and our own builds where the business is invented. Every one "
+                       "says which it is.")
+EXAMPLE_LEAD = ("One of our own builds. The brand, the words and the pictures in it are invented; "
+                "the site itself is real and every page of it works. Yours would be built the "
+                "same way, around your business.")
+CLIENT_LEAD = "Built for {client}. A real site, live and in use."
+
+for _t in THEMES:
+    if _t["slug"] in CLIENT_BUILDS:
+        _t["client"] = CLIENT_BUILDS[_t["slug"]]
 
 THEME_SLUG_TO_CARD = {t["slug"]: t for t in THEMES}
 

@@ -692,6 +692,9 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .tpl-plat::before{
   content:"";width:7px;height:7px;border-radius:2px;background:#95BF47;flex:0 0 auto;
 }
+/* same pill, worn by a build made for a client rather than a platform mark */
+.tpl-plat.is-client{color:var(--blue)}
+.tpl-plat.is-client::before{background:var(--blue);border-radius:50%}
 .tpl-soon{
   position:absolute;top:12px;right:12px;
   padding:5px 11px;border-radius:var(--r-pill);

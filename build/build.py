@@ -377,8 +377,12 @@ def tpl_card(t):
     """One template card, in the same language as the home-page service cards:
     a surface-coloured shell with a rounded inner panel for the artwork and a
     second inner panel for the name, the category pill and the status."""
-    plat = (f'<span class="tpl-plat">{E(t["platform"])}</span>'
-            if t.get("platform") else "")
+    if t.get("client"):
+        plat = f'<span class="tpl-plat is-client">Client build</span>'
+    elif t.get("platform"):
+        plat = f'<span class="tpl-plat">{E(t["platform"])}</span>'
+    else:
+        plat = ""
     thumb = (f'<img class="tpl-thumb" src="{t["shots"]}-card.png" alt="" '
              f'width="313" height="240" loading="lazy" decoding="async">'
              if t.get("shots") else '<div class="tpl-thumb ph-stripes"></div>')
@@ -410,11 +414,14 @@ def page_templates():
         "Browse AmazeWeb Shopify templates — install the theme, add your products, and launch.", body)
 
 def examples_block():
-    """The nine non-storefront builds, shown as work rather than stock."""
+    """The non-storefront builds, shown as work rather than stock. The intro
+    line follows CLIENT_BUILDS, so the page never claims client work before
+    a client build is actually in it."""
     cards = "".join(tpl_card(t) for t in EXAMPLES)
+    note = EXAMPLES_NOTE_MIXED if any(t.get("client") for t in EXAMPLES) else EXAMPLES_NOTE_OURS
     return (f'<section class="wrap tpl-sec" id="our-work">'
             f'<h2 class="t-section tpl-head">{E(EXAMPLES_HEAD)}</h2>'
-            f'<p class="tpl-note">{E(EXAMPLES_NOTE)}</p>'
+            f'<p class="tpl-note">{E(note)}</p>'
             f'<div class="tpl-grid">{cards}</div></section>')
 
 def page_support():
@@ -467,7 +474,7 @@ def page_theme(t):
     # viewable and not yet purchasable, and saying only "Coming Soon" next to
     # a working demo button reads like the demo is not real.
     if example:
-        avail = "A site we built"
+        avail = f'Built for {t["client"]}' if t.get("client") else "A site we built"
     elif price == "Coming Soon":
         avail = "Demo ready, not yet for sale" if t.get("demo") else "Coming Soon"
     else:
@@ -479,14 +486,17 @@ def page_theme(t):
     # Everything that differs between a template for sale and a build we are
     # showing, decided once here rather than scattered through the markup.
     if example:
+        client = t.get("client")
+        kind = f"Built for {client}" if client else "Our own build"
+        lead = CLIENT_LEAD.format(client=client) if client else EXAMPLE_LEAD
         buy_section = (f'<section class="theme-buy example">'
-                       f'<div class="buy-left"><p class="note">Our own build</p>'
-                       f'<p class="terms">{E(EXAMPLE_LEAD)}</p></div>'
+                       f'<div class="buy-left"><p class="note">{E(kind)}</p>'
+                       f'<p class="terms">{E(lead)}</p></div>'
                        f'<div class="buy-actions">{demo_btn}'
                        f'<a class="btn btn-deep" href="/services/custom/">'
                        f'Get one built for you</a></div></section>')
         excluded_note = ""
-        mine_h, mine_p = "Built around you.", E(EXAMPLE_LEAD)
+        mine_h, mine_p = "Built around you.", E(lead)
         more_h = "More of our work"
         cta_h = "Want something like this for your business?"
         cta_href, cta_label = "/services/custom/", "Start a custom build"
