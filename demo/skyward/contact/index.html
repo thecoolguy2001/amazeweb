@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Deshaun Walker | Contact</title>
+  <!-- Standard favicon -->
+  <link rel="icon" type="image/png" href="/demo/skyward/assets/favicon.png">
+    
+  <!-- PNG favicon for browsers that prefer PNG -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/demo/skyward/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/demo/skyward/assets/favicon-16x16.png">
+    
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/demo/skyward/assets/apple-touch-icon.png">
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Staatliches&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Include Three.js and GLTFLoader -->
+
+  <style media="screen">
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('video.mp4'); /* Replace with your actual sky background image */
+      background-size: cover;
+      background-position: center;
+    }
+    #background-video {
+  position: fixed;
+  top: 50%; 
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the container without stretching */
+  transform: translate(-50%, -50%); /* Centers the video */
+  z-index: -1; /* Keeps the video behind other content */
+}
+
+    .navigation-bar {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 6px;
+      border-radius: 999px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
+      backdrop-filter: blur(30px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 10px 32px rgba(0, 0, 0, 0.32),
+        0 2px 6px rgba(0, 0, 0, 0.16);
+    }
+
+    .navigation-bar a {
+      margin: 0;
+      padding: 8px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 0.95em;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .navigation-bar a:hover {
+      background-color: rgba(255, 255, 255, 0.14);
+      text-decoration: none;
+    }
+
+    .navigation-bar a.active {
+      background-color: rgba(255, 255, 255, 0.22);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+      text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+    /* iOS 26 Liquid Glass panel wrapping the entire contact card */
+    .contact-form {
+      position: relative;
+      box-sizing: border-box;
+      width: clamp(360px, 90%, 540px);
+      padding: 2.25rem 2.25rem 2.5rem;
+      border-radius: 28px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
+      backdrop-filter: blur(30px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 18px 48px rgba(0, 0, 0, 0.35),
+        0 2px 8px rgba(0, 0, 0, 0.18);
+    }
+
+    .contact-header {
+      position: static;
+      color: #fff;
+      text-align: center;
+      animation-name: fadeIn;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+.contact-form h2 {
+  text-align: center;
+  margin-top: 0.5em; /* Adjust this value to set the header higher as needed */
+  margin-bottom: 1em;
+  animation-name: fadeIn;
+    animation-duration: 1s; /* Adjust the time as needed */
+    animation-fill-mode: both;
+}
+
+    .contact-form input[type='text'],
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.5em;
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: none;
+      animation-name: fadeIn;
+    animation-duration: 1s; /* Adjust the time as needed */
+    animation-fill-mode: both;
+    }
+
+    .contact-form input[type='submit'] {
+      width: 100%;
+      padding: 1em;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+      animation-name: fadeIn;
+    animation-duration: 1s; /* Adjust the time as needed */
+    animation-fill-mode: both;
+    }
+
+    .contact-form input[type='submit']:hover {
+      background-color: #388E3C;
+      animation-name: fadeIn;
+    animation-duration: 1s; /* Adjust the time as needed */
+    animation-fill-mode: both;
+    }
+    /* Style for the bottom-right image */
+    #bottom-right-image {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 2;
+      width: 125px; /* Adjust size as needed */
+      height: auto;
+    }
+    /* Logo Container */
+    #logo-container {
+      width: 100px;
+      height: 100px;
+      position: fixed;
+      top: 5px;
+      left: 0;
+      z-index: 2;
+    }
+    /* Style for the active navigation link */
+.tooltip {
+  position: absolute;
+  padding: 8px 12px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.9em;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  white-space: nowrap;
+  z-index: 9999; /* Ensure tooltips appear above other elements */
+}
+#bottom-right-image.active {
+  width: 180px; /* Increased width from 125px to 150px */
+  bottom: -35px;
+  right: -15px;  /* Reduced bottom padding from 10px to 5px */
+  transition: width 0.3s ease-in-out, bottom 0.3s ease-in-out; /* Smooth transitions for size and position changes */
+}
+/* Mobile Styles */
+@media (max-width: 768px) {
+  /* 1. Adjust Navigation Bar */
+  .navigation-bar {
+    top: 12px;
+    right: 12px;
+    padding: 4px;
+    max-width: none;
+    width: auto;
+  }
+
+  .navigation-bar a {
+    margin: 0;
+    padding: 7px 12px;
+    font-size: 0.85em;
+    display: flex;
+  }
+
+  /* 2. Adjust Carousel Container */
+  #carousel-container {
+    width: 100%; /* Make containers full width on mobile */
+    height: 100vh; /* Maintain full viewport height */
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0; /* Remove negative margin if causing layout issues */
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  /* 3. Ensure Carousel Renderer Fits Mobile Screen */
+  #carousel-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    pointer-events: auto;
+    transition: opacity 0.5s ease-in-out;
+
+  }
+
+  /* 4. Adjust Video Background */
+  #background-video {
+    object-fit: cover;
+  }
+
+  /* 5. Optimize Bottom Images Positioning */
+  #bottom-right-image {
+    bottom: 20px; /* Adjust bottom positioning */
+    right: 20px;  /* Adjust right positioning */
+  }
+  #bottom-right-image.active {
+  width: 110px; /* Increased width from 125px to 150px */
+  bottom: -4px;
+  right: -2px;  /* Reduced bottom padding from 10px to 5px */
+  transition: width 0.3s ease-in-out, bottom 0.3s ease-in-out; /* Smooth transitions for size and position changes */
+}
+
+  #bottom-left-image {
+    bottom: 20px; /* Adjust bottom positioning */
+    left: 20px;    /* Adjust left positioning */
+  }
+
+  /* 6. Increase Icon Sizes */
+  #bottom-right-image,
+  #bottom-left-image {
+    width: 80px; /* Adjusted width for mobile */
+    height: auto;
+  }
+
+  /* 7. Remove Tooltips on Mobile */
+  .tooltip {
+    display: none;
+  }
+  .contact-header h2 {
+    font-size: 1.5em; /* Smaller header font size */
+    margin-top: 1em; /* Adjust top margin for spacing */
+    margin-bottom: 1em; /* Adjust bottom margin for spacing */
+  }
+
+  /* Make all input fields and textarea the same smaller size */
+  .contact-form input[type='text'],
+  .contact-form textarea,
+  .contact-form input[type='submit'] {
+    font-size: 0.9em; /* Smaller font size for form elements */
+    width: 100%; /* Ensure they take full width */
+    padding: 0.5em; /* Adjust padding for touch-friendly size */
+    margin-bottom: 1em; /* Maintain uniform spacing */
+    box-sizing: border-box; /* Include padding in element width */
+  }
+
+  /* Mobile: keep the glass chrome, adjust sizing/padding only */
+  .contact-form {
+    width: clamp(300px, 92%, 500px);
+    margin: 10px auto;
+    padding: 1.75rem 1.5rem 2rem;
+  }
+
+  /* Optional: Reduce submit button padding */
+  .contact-form input[type='submit'] {
+    padding: 0.8em; /* Slightly smaller button padding */
+    font-size: 1em; /* Adjust button text size */
+  }
+}
+  </style>
+</head>
+<body>
+<!-- Video Background -->
+<video autoplay muted loop playsinline webkit-playsinline disablepictureinpicture preload="auto" poster="/demo/skyward/assets/video-poster.jpg" id="background-video">
+  <source src="/demo/skyward/assets/video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<script src="/demo/skyward/assets/site-perf.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.129.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.129.0/examples/js/loaders/GLTFLoader.js"></script>
+  
+  <nav class="navigation-bar">
+    <a href="/demo/skyward/catalog/">Works</a>
+    <a href="/demo/skyward/about/">About</a>
+    <a href="/demo/skyward/contact/" class="active">Contact</a>
+  </nav>
+  <!-- Logo Container -->
+  <div id="logo-container"></div>
+
+  <div class="contact-form">
+    <div class="contact-header">
+      <h2>Contact</h2>
+    </div>
+    
+    <!-- Updated form tag with id for AJAX -->
+    <form onsubmit="return false" id="contactForm" action="#" method="POST">
+      <input type="text" id="name" name="name" placeholder="Name">
+      <input type="text" id="email" name="email" placeholder="Email address">
+      <textarea id="message" name="message" placeholder="Message" style="height:150px"></textarea>
+      <input type="submit" value="Submit">
+    </form>
+    <div id="formFeedback"></div> <!-- Element to display the feedback message -->
+  
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.129.0/examples/js/controls/OrbitControls.js"></script>
+
+  <!-- Tooltip for Logo -->
+<div id="logo-tooltip" class="tooltip">Home</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Check if the user is on a mobile device
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    if (isMobile) {
+      // Find the Catalog link in the navigation bar
+      const catalogLink = document.querySelector(".navigation-bar a[href='/demo/skyward/catalog/']");
+
+      // Change the href attribute to point to port12.html
+      if (catalogLink) {
+        catalogLink.setAttribute('href', '/demo/skyward/catalog/12');
+      }
+    }
+  });
+</script>
+  <!-- Your JavaScript code -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- Include jQuery -->
+  <script>
+      $(document).ready(function(){
+      $('#contactForm').submit(function(event){
+        event.preventDefault(); // Prevent the default form submit
+  
+        var submitButton = $('#contactForm input[type="submit"]');
+        var originalButtonText = submitButton.val();
+        var originalButtonColor = submitButton.css('background-color'); // Store the original color
+  
+        $.ajax({
+          url: 'https://formspree.io/f/xeqyvblg', // Your Formspree endpoint
+          method: 'POST',
+          data: $(this).serialize(),
+          dataType: 'json',
+          
+          success: function(data) {
+            submitButton.val('Thanks!').css('background-color', 'green'); // Change button text to 'Thank you!' and color to green
+            $('#contactForm')[0].reset(); // Clear the form fields
+            // Reset the button after 2 seconds
+            setTimeout(function(){
+              submitButton.val(originalButtonText).css('background-color', originalButtonColor).removeAttr('disabled');
+            }, 2000);
+          },
+          error: function(err) {
+            submitButton.val('Error!').css('background-color', 'red'); // Change button text to 'Error!' and color to red
+            // Reset the button after 2 seconds
+            setTimeout(function(){
+              submitButton.val(originalButtonText).css('background-color', originalButtonColor).removeAttr('disabled');
+            }, 2000);
+          }
+        });
+      });
+    });
+    window.addEventListener('load', function() {
+  // === Spinning Logo Code ===
+  const logoScene = new THREE.Scene();
+  const logoCamera = new THREE.PerspectiveCamera(80, 1, 0.1, 1000);
+  logoCamera.position.z = 1;
+  
+  const logoRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: SITE_AA });
+  logoRenderer.setSize(100, 100);
+  logoRenderer.setPixelRatio(SITE_DPR);
+  document.getElementById('logo-container').appendChild(logoRenderer.domElement);
+  
+  const logoAmbientLight = new THREE.AmbientLight(0xffffff, 0.8);
+  logoScene.add(logoAmbientLight);
+  
+  const logoDirectionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+  logoDirectionalLight.position.set(5, 10, 7.5);
+  logoScene.add(logoDirectionalLight);
+  
+  const logoRaycaster = new THREE.Raycaster();
+  const logoMouse = new THREE.Vector2();
+  let logoModel;
+  
+  const logoLoader = new THREE.GLTFLoader();
+  logoLoader.load(
+    '/demo/skyward/models/logo.v2.glb',
+    function(gltf) {
+      logoModel = gltf.scene;
+      logoModel.traverse(child => {
+        if (child.isMesh) {
+          child.material.side = THREE.DoubleSide;
+          child.material.needsUpdate = true;
+        }
+      });
+      logoScene.add(logoModel);
+    },
+    undefined,
+    function(error) {
+      console.error('Error loading logo model:', error);
+    }
+  );
+  
+  // Logo click event
+  logoRenderer.domElement.addEventListener('click', function(event) {
+    const rect = logoRenderer.domElement.getBoundingClientRect();
+    logoMouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    logoMouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    logoRaycaster.setFromCamera(logoMouse, logoCamera);
+    if (logoModel) {
+      const intersects = logoRaycaster.intersectObject(logoModel, true);
+      if (intersects.length > 0) {
+        window.location.href = '/';
+      }
+    }
+  }, false);
+  
+  // Animation loop for the logo
+  function animateLogo() {
+    requestAnimationFrame(animateLogo);
+    if (logoModel) {
+      logoModel.rotation.y += 0.01;
+    }
+    logoRenderer.render(logoScene, logoCamera);
+  }
+  animateLogo();
+  
+  // === Logo Tooltip Logic (moved inside the load callback) ===
+  const logoTooltip = document.getElementById('logo-tooltip');
+  
+  // Bind mousemove event to the logo renderer's canvas
+  logoRenderer.domElement.addEventListener('mousemove', onLogoMouseMove, false);
+  
+  function onLogoMouseMove(event) {
+    // Calculate mouse position relative to the logo renderer's DOM element
+    const rect = logoRenderer.domElement.getBoundingClientRect();
+    logoMouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    logoMouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+  
+    // Update the raycaster with the logo camera and computed mouse coordinates
+    logoRaycaster.setFromCamera(logoMouse, logoCamera);
+  
+    // Check if the logo model is intersected
+    let intersects = [];
+    if (logoModel) {
+      intersects = logoRaycaster.intersectObject(logoModel, true);
+    }
+  
+    // If an intersection is detected, show the tooltip and change the cursor
+    if (intersects.length > 0) {
+      logoRenderer.domElement.style.cursor = 'pointer';
+      showTooltip(event.clientX, event.clientY, 'Home');
+    } else {
+      logoRenderer.domElement.style.cursor = 'default';
+      hideTooltip();
+    }
+  }
+  
+  function showTooltip(x, y, text) {
+    logoTooltip.textContent = text;
+    logoTooltip.style.left = (x + 10) + 'px';
+    logoTooltip.style.top = y + 'px';
+    logoTooltip.style.opacity = '1';
+  }
+  
+  function hideTooltip() {
+    logoTooltip.style.opacity = '0';
+  }
+});
+          /*************************************
+           * * CD TOOLTIP LOGIC
+           * *************************************/
+          // Grab the existing tooltip element for the CD
+          const cdTooltip = document.getElementById('cd-tooltip');
+          // Get the CD image element
+          const bottomRightImage = document.getElementById('bottom-right-image');
+          
+          if (bottomRightImage) {
+            bottomRightImage.addEventListener('mouseenter', showTooltipCD);
+            bottomRightImage.addEventListener('mousemove', moveTooltipCD);
+            bottomRightImage.addEventListener('mouseleave', hideTooltipCD);
+          }
+          
+          function showTooltipCD(event) {
+            cdTooltip.textContent = 'Radio Off'; // or conditionally check bottomRightImage.alt if needed
+            cdTooltip.style.opacity = '1';
+            positionTooltipCD(event);
+          }
+          
+          function moveTooltipCD(event) {
+            if (cdTooltip.style.opacity === '1') {
+              positionTooltipCD(event);
+            }
+          }
+          
+          function positionTooltipCD(event) {
+            const tooltipWidth = cdTooltip.offsetWidth;
+            const tooltipHeight = cdTooltip.offsetHeight;
+            const pageWidth = window.innerWidth;
+            const pageHeight = window.innerHeight;
+            
+            let tooltipX = event.clientX + 10; // Offset horizontally
+            let tooltipY = event.clientY - tooltipHeight - 10; // Offset vertically above cursor
+            
+            // Prevent tooltip from going off the right edge
+            if (tooltipX + tooltipWidth > pageWidth) {
+              tooltipX = event.clientX - tooltipWidth - 10;
+            }
+            // Prevent tooltip from going above the top edge
+            if (tooltipY < 0) {
+              tooltipY = event.clientY + 10;
+            }
+            
+            cdTooltip.style.left = tooltipX + 'px';
+            cdTooltip.style.top = tooltipY + 'px';
+          }
+          
+          function hideTooltipCD() {
+            cdTooltip.style.opacity = '0';
+          }
+</script>
+
+<!-- Shared 3D radio widget -->
+<script src="/demo/skyward/assets/radio.js?v=2" defer></script>
+</body>
+</html>

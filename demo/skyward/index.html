@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Deshaun Walker</title>
+   <!-- Standard favicon -->
+   <link rel="icon" type="image/png" href="/demo/skyward/assets/favicon.png">
+    
+   <!-- PNG favicon for browsers that prefer PNG -->
+   <link rel="icon" type="image/png" sizes="32x32" href="/demo/skyward/assets/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/demo/skyward/assets/favicon-16x16.png">
+     
+   <!-- Apple Touch Icon -->
+   <link rel="apple-touch-icon" sizes="180x180" href="/demo/skyward/assets/apple-touch-icon.png">
+  <!-- Background video + poster first: these must win the bandwidth race -->
+  <link rel="preload" as="image" href="/demo/skyward/assets/video-poster.jpg" fetchpriority="high">
+  <!-- 3D assets: low priority so they never starve the background video -->
+  <link rel="preload" as="fetch" href="/demo/skyward/models/logo.v2.glb" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="image" href="/demo/skyward/models/_shared/canvas_baseColor_1k.jpg" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="image" href="/demo/skyward/models/_shared/canvas_metallicRoughness_512.jpg" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_perseverance/scene.1k.gltf" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_perseverance/scene.bin" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="image" href="/demo/skyward/models/painting_perseverance/textures/Material.001_baseColor_1k.jpg" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_reflection/scene.1k.gltf" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_reflection/scene.bin" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="image" href="/demo/skyward/models/painting_reflection/textures/Material.001_baseColor_1k.jpg" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_rejoicehewillprovide/scene.1k.gltf" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_rejoicehewillprovide/scene.bin" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="image" href="/demo/skyward/models/painting_rejoicehewillprovide/textures/Material.001_baseColor_1k.jpg" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_eternalyouth/scene.1k.gltf" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_eternalyouth/scene.bin" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="image" href="/demo/skyward/models/painting_eternalyouth/textures/Material.001_baseColor_1k.jpg" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_faith/scene.1k.gltf" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_faith/scene.bin" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="image" href="/demo/skyward/models/painting_faith/textures/Material.001_baseColor_1k.jpg" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_feelingbloom/scene.1k.gltf" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_feelingbloom/scene.bin" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="image" href="/demo/skyward/models/painting_feelingbloom/textures/Material.001_baseColor_1k.jpg" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_goodbye/scene.1k.gltf" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_goodbye/scene.bin" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="image" href="/demo/skyward/models/painting_goodbye/textures/Material.002_baseColor_1k.jpg" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_hell/scene.1k.gltf" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/skyward/models/painting_hell/scene.bin" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="image" href="/demo/skyward/models/painting_hell/textures/Material.001_baseColor_1k.jpg" crossorigin="anonymous" fetchpriority="low">
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Staatliches&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+
+   <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Set a neutral or matching background to reduce visible flash */
+      background: url('assets/placeholder.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    #background-video {
+      position: fixed;
+      top: 50%; 
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures the video covers the container without stretching */
+      transform: translate(-50%, -50%); /* Centers the video */
+      z-index: -1; /* Keeps the video behind other content */
+    }
+
+    .navigation-bar {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 6px;
+      border-radius: 999px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
+      backdrop-filter: blur(30px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 10px 32px rgba(0, 0, 0, 0.32),
+        0 2px 6px rgba(0, 0, 0, 0.16);
+    }
+
+    .navigation-bar a {
+      margin: 0;
+      padding: 8px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 0.95em;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .navigation-bar a:hover {
+      background-color: rgba(255, 255, 255, 0.14);
+      text-decoration: none;
+    }
+
+    .navigation-bar a.active {
+      background-color: rgba(255, 255, 255, 0.22);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+      text-decoration: none;
+    }
+
+    #model-container {
+      width: 500px;
+      height: 500px;
+      position: fixed;
+      top: 5px;
+      left: 0;
+      z-index: 2;
+      pointer-events: none;   /* let taps/swipes reach the carousel underneath */
+    }
+
+    #model-container canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    /* Carousel container styles */
+    #carousel-container {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -50px;
+      opacity: 0; /* Start with invisible carousel */
+      transition: opacity 0.5s ease-in-out;
+    }
+    /* Ensure the canvas fills the carousel container */
+    #carousel-container canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+     /* Style for the bottom-right image */
+     #bottom-right-image {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 2;
+      width: 125px; /* Adjust size as needed */
+      height: auto;
+    }
+    /* Bottom Left Image Styles */
+    #bottom-left-image {
+      position: fixed;
+      bottom: 10px;
+      left: 5px;
+      z-index: 2;
+      width: 125px; /* Adjust size as needed */
+      height: auto;
+      cursor: pointer; /* Change cursor to pointer on hover */
+      transition: transform 0.3s ease; /* Smooth hover effect */
+    }
+
+    #bottom-left-image:hover {
+      transform: scale(1.05); /* Slightly enlarge on hover */
+    }
+    /* Tooltip Styles */
+    .tooltip {
+      position: absolute;
+      padding: 8px 12px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 4px;
+      font-size: 0.9em;
+      pointer-events: none; /* Allows mouse events to pass through */
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+      white-space: nowrap; /* Prevents text from wrapping */
+      z-index: 10; /* Ensures tooltip appears above other elements */
+    }
+
+    /* Tooltip Styles */
+    #nettspend-tooltip {
+      position: absolute;
+      padding: 8px 12px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 4px;
+      font-size: 0.9em;
+      pointer-events: none; /* Allows mouse events to pass through */
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+      white-space: nowrap; /* Prevents text from wrapping */
+      z-index: 10; /* Ensures tooltip appears above other elements */
+    }
+    
+    #bottom-right-image.active {
+      width: 180px; /* Increased width from 125px to 150px */
+      bottom: -35px;
+      right: -15px;  /* Reduced bottom padding from 10px to 5px */
+      transition: width 0.3s ease-in-out, bottom 0.3s ease-in-out; /* Smooth transitions for size and position changes */
+    }
+    
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      /* 1. Adjust Navigation Bar */
+      .navigation-bar {
+        top: 12px;
+        right: 12px;
+        padding: 4px;
+        max-width: none;
+        width: auto;
+      }
+
+      .navigation-bar a {
+        margin: 0;
+        padding: 7px 12px;
+        font-size: 0.85em;
+        display: flex;
+      }
+      
+      /* 2. Adjust Carousel Container */
+      #carousel-container {
+        width: 100%; /* Make containers full width on mobile */
+        height: 100vh; /* Maintain full viewport height */
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0; /* Remove negative margin if causing layout issues */
+        transition: opacity 0.5s ease-in-out;
+      }
+      /* 3. Ensure Carousel Renderer Fits Mobile Screen */
+      #carousel-container canvas {
+        width: 100% !important;
+        height: 100% !important;
+        position: absolute;
+        height: 100%;
+        z-index: 1; 
+        display: block;
+        pointer-events: auto;
+        transition: opacity 0.5s ease-in-out;
+      }
+      /* 4. Adjust Video Background */
+      #background-video {
+        object-fit: cover;
+      }
+      /* 5. Optimize Bottom Images Positioning */
+      #bottom-right-image {
+        bottom: 20px; /* Adjust bottom positioning */
+        right: 20px;  /* Adjust right positioning */
+      }
+      
+      #bottom-right-image.active {
+        width: 110px; /* Increased width from 125px to 150px */
+        bottom: -4px;
+        right: -2px;  /* Reduced bottom padding from 10px to 5px */
+        transition: width 0.3s ease-in-out, bottom 0.3s ease-in-out; /* Smooth transitions for size and position changes */
+      }
+      
+      #bottom-left-image {
+        bottom: 20px; /* Adjust bottom positioning */
+        left: 20px;    /* Adjust left positioning */
+      }
+      /* 6. Increase Icon Sizes */
+      #bottom-right-image,
+      #bottom-left-image {
+        width: 80px; /* Adjusted width for mobile */
+        height: auto;
+        z-index: 2;
+      }
+      /* 7. Remove Tooltips on Mobile */
+      .tooltip {
+        display: none;
+      }
+      /* 8. Optional: Hide Certain Elements on Mobile */
+      /* If certain elements are too bulky for mobile, consider hiding them */
+      /* Example:
+      #model-container {
+      display: none;
+      }
+      */
+    }
+    
+    </style>
+    </head>
+    <body>
+      <video autoplay muted loop playsinline webkit-playsinline disablepictureinpicture preload="auto" poster="/demo/skyward/assets/video-poster.jpg" id="background-video">
+        <source src="/demo/skyward/assets/video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <script src="/demo/skyward/assets/site-perf.js"></script>
+      <!-- Include Three.js and GLTFLoader -->
+      <script src="https://cdn.jsdelivr.net/npm/three@0.129.0/build/three.min.js"></script>
+      <!-- Corrected GLTFLoader script tag -->
+      <script src="https://cdn.jsdelivr.net/npm/three@0.129.0/examples/js/loaders/GLTFLoader.js"></script>
+      <script>THREE.Cache.enabled = true;</script>
+      <div id="model-container"></div>
+      <nav class="navigation-bar">
+        <a href="/demo/skyward/catalog/">Works</a>
+        <a href="/demo/skyward/about/">About</a>
+        <a href="/demo/skyward/contact/">Contact</a>
+      </nav>
+      <!-- Carousel Container -->
+      <div id="carousel-container"></div>
+      <!-- Tooltip for Home Logo -->
+<div id="logo-tooltip" class="tooltip"></div>
+      <script>
+      document.addEventListener('DOMContentLoaded', function () {
+      // Check if the user is on a mobile device
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      
+      if (isMobile) {
+        // Find the Catalog link in the navigation bar
+        const catalogLink = document.querySelector(".navigation-bar a[href='/demo/skyward/catalog/']");
+        // Change the href attribute to point to port13.html
+        if (catalogLink) {
+          catalogLink.setAttribute('href', '/demo/skyward/catalog/12');
+        }
+      }
+      });
+      </script>
+      <!-- Your JavaScript Code -->
+      <script>
+      // Create the scene
+      const scene = new THREE.Scene();
+      // Set up the camera
+      const camera = new THREE.PerspectiveCamera(80, 1, 0.1, 1000);
+      camera.position.z = 1;
+      
+      // Create the renderer
+      // Create the renderer
+      // Render settings (pixel-budget resolution, antialiasing) come from /assets/site-perf.js
+      const MAX_DPR = SITE_DPR;
+      const USE_AA = SITE_AA;
+
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: USE_AA, powerPreference: 'high-performance' });
+      renderer.setSize(100, 100);
+      renderer.setPixelRatio(MAX_DPR);
+      document.getElementById('model-container').appendChild(renderer.domElement);
+      // Add lights to the scene
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.8); // Soft white light
+      scene.add(ambientLight);
+      
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+      directionalLight.position.set(5, 10, 7.5); // Adjust position as needed
+      scene.add(directionalLight);
+      
+      // Raycaster and mouse vector for detecting clicks
+      const raycasterLogo = new THREE.Raycaster();
+      const mouseLogo = new THREE.Vector2();
+      // Variable to hold the logo model
+      let logoModel;
+      
+      // Load the logo model
+      const loader = new THREE.GLTFLoader();
+      
+      // Load the logo model
+      loader.load(
+        '/demo/skyward/models/logo.v2.glb',
+      
+        function (gltf) {
+          logoModel = gltf.scene;
+          
+          // Center the logo model
+          const box = new THREE.Box3().setFromObject(logoModel);
+          const center = box.getCenter(new THREE.Vector3());
+          logoModel.position.sub(center); // Shift the model so that its center is at (0,0,0)
+          
+          // Optional: Adjust material properties if the logo is still dark
+          logoModel.traverse((child) => {
+            if (child.isMesh) {
+              child.material.side = THREE.DoubleSide; // Ensure both sides are rendered
+              child.material.needsUpdate = true;
+            }
+          });
+          
+          scene.add(logoModel);
+        },
+        
+        undefined,
+        
+        function (error) {
+          console.error(error);
+        }
+      );
+      
+      // Add event listener for click on the renderer's DOM element
+      renderer.domElement.addEventListener('click', onLogoClick, false);
+      
+      function onLogoClick(event) {
+        // Calculate mouse position in normalized device coordinates (-1 to +1)
+        const rect = renderer.domElement.getBoundingClientRect();
+        mouseLogo.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        mouseLogo.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+        
+        // Update the raycaster
+        raycasterLogo.setFromCamera(mouseLogo, camera);
+        
+        // Calculate objects intersecting the picking ray
+        if (logoModel) {
+          const intersects = raycasterLogo.intersectObject(logoModel, true);
+          
+          if (intersects.length > 0) {
+            // Redirect to homepage
+            window.location.href = '/';
+          }
+        }
+      }
+      
+      renderer.domElement.addEventListener('mousemove',onLogoMouseMove,false);
+      
+      function onLogoMouseMove(event) {
+        const rect = renderer.domElement.getBoundingClientRect();
+        mouseLogo.x = ((event.clientX-rect.left)/rect.width)*2-1;
+        mouseLogo.y = -((event.clientY-rect.top)/rect.height)*2+1;
+        
+        raycasterLogo.setFromCamera(mouseLogo,camera);
+        
+        let intersects=[];
+        
+        if(logoModel){
+          intersects=raycasterLogo.intersectObject(logoModel,true);
+        }
+        
+        renderer.domElement.style.cursor = intersects.length>0?'pointer':'default';
+      }
+      
+      // Animation loop for the header logo
+      function animateLogo() {
+        requestAnimationFrame(animateLogo);
+        // Rotate the model
+        if (logoModel) {
+          logoModel.rotation.y += 0.01;
+        }
+        renderer.render(scene, camera);
+      }
+      
+      animateLogo();
+      
+      // 3D Carousel Code
+
+      // Get the carousel container
+      const carouselContainer = document.getElementById('carousel-container');
+      
+      // Create a Three.js scene for the carousel
+      const carouselScene = new THREE.Scene();
+      
+      // Set up a camera for the carousel
+      const carouselCamera = new THREE.PerspectiveCamera(
+        80,
+        carouselContainer.clientWidth / carouselContainer.clientHeight,
+        10,
+        5000
+      );
+      carouselCamera.position.set(0, 200, 1000);
+      carouselCamera.lookAt(0, 0, 0);
+      
+      // Instantiate a new renderer for the carousel
+      const carouselRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: USE_AA, powerPreference: 'high-performance' });
+      const MAX_ANISO = Math.min(8, carouselRenderer.capabilities.getMaxAnisotropy());
+      carouselRenderer.setPixelRatio(MAX_DPR);
+      carouselRenderer.setSize(carouselContainer.clientWidth, carouselContainer.clientHeight);
+      carouselContainer.appendChild(carouselRenderer.domElement);
+      
+      // Add lights to the carousel scene
+      const carouselAmbientLight = new THREE.AmbientLight(0x404040, 2); // Increased intensity
+      carouselScene.add(carouselAmbientLight);
+      
+      const carouselDirectionalLight1 = new THREE.DirectionalLight(0xffffff, 3);
+      carouselDirectionalLight1.position.set(1, 1, 1).normalize();
+      carouselScene.add(carouselDirectionalLight1);
+      
+      const carouselPointLight = new THREE.PointLight(0xffffff, 2.5, 3000);
+      carouselPointLight.position.set(0, 500, 500); // Position above and in front of the carousel
+      carouselScene.add(carouselPointLight);
+      
+      // Instantiate a loader for the carousel models
+      const carouselLoader = new THREE.GLTFLoader();
+      
+      // Group to hold carousel items
+      const carouselGroup = new THREE.Group();
+      carouselScene.add(carouselGroup);
+      
+      // Raycasting variables for carousel interaction
+      const raycasterCarousel = new THREE.Raycaster();
+      const mouseCarousel = new THREE.Vector2(9999, 9999);
+      let hoveredCarouselModel = null;
+      let isCarouselPaused = false;
+      
+      // Event listeners for mouse movement
+      carouselRenderer.domElement.addEventListener('mousemove', onCarouselMouseMove, false);
+      carouselRenderer.domElement.addEventListener('mouseleave', function () { mouseCarousel.set(9999, 9999); }, false);
+      
+      // Array of model paths to use in the carousel
+      const models = [
+        '/demo/skyward/models/painting_perseverance/scene.1k.gltf', //Third
+      '/demo/skyward/models/painting_reflection/scene.1k.gltf', //Second
+      '/demo/skyward/models/painting_rejoicehewillprovide/scene.1k.gltf', //First
+      '/demo/skyward/models/painting_eternalyouth/scene.1k.gltf', //Eigth
+      '/demo/skyward/models/painting_faith/scene.1k.gltf', //Seventh
+      '/demo/skyward/models/painting_feelingbloom/scene.1k.gltf', //Sixth
+      '/demo/skyward/models/painting_goodbye/scene.1k.gltf', //Fifth
+      '/demo/skyward/models/painting_hell/scene.1k.gltf',//Fourth
+        // Add more model paths as needed
+        ];
+        
+        // Counter to track loaded models
+        let modelsLoaded = 0;
+        
+        // Total number of models in the carousel
+        const totalModels = models.length;
+        // Function to create a carousel of 3D models
+        const createCarousel = (modelPaths, numItems, radius) => {
+          for (let i = 0; i < numItems; i++) {
+            const modelPath = modelPaths[i % modelPaths.length];
+            carouselLoader.load(
+              modelPath,
+              
+              function (gltf) {
+                const object = gltf.scene;
+                const angle = (i / numItems) * Math.PI * 2;
+                const x = Math.cos(angle) * radius;
+                const z = Math.sin(angle) * radius;
+                object.position.set(x, 0, z);
+                object.rotation.y = -angle + Math.PI / 2;
+                
+                // **Uniform Scaling for All Models**
+                object.scale.set(250, 250, 250); // Same scale as painting1
+        
+                // Center the model and align its base to Y = 0
+                const box = new THREE.Box3().setFromObject(object);
+                const center = box.getCenter(new THREE.Vector3());
+                const size = box.getSize(new THREE.Vector3());
+                object.position.sub(center);
+                object.position.y += size.y / 2;
+                
+                // Adjust position after centering
+                object.position.x += x;
+                object.position.z += z;
+                
+                // Assign URLs for models
+                if (modelPath.includes('painting_rejoicehewillprovide')) {
+                  object.userData.url = '/demo/skyward/catalog/12';
+                } else if (modelPath.includes('painting_reflection')) {
+                  object.userData.url = '/demo/skyward/catalog/11';
+                } else if (modelPath.includes('painting_perseverance')) {
+                  object.userData.url = '/demo/skyward/catalog/10';
+                } else if (modelPath.includes('painting_hell')) {
+                  object.userData.url = '/demo/skyward/catalog/9';
+                } else if (modelPath.includes('painting_goodbye')) {
+                  object.userData.url = '/demo/skyward/catalog/8';
+                } else if (modelPath.includes('painting_feelingbloom')) {
+                  object.userData.url = '/demo/skyward/catalog/7';
+                } else if (modelPath.includes('painting_faith')) {
+                  object.userData.url = '/demo/skyward/catalog/6';
+                } else if (modelPath.includes('painting_eternalyouth')) {
+                  object.userData.url = '/demo/skyward/catalog/5';
+                }
+                // Add more models and URLs as needed
+                 
+                // Keep angled paintings crisp instead of smearing as they turn
+                object.traverse((child) => {
+                  if (child.isMesh && child.material.map) {
+                    child.material.map.anisotropy = MAX_ANISO;
+                  }
+                });
+
+                carouselGroup.add(object);
+                // Increment loaded models counter
+                modelsLoaded++;
+                
+                // Check if all models are loaded
+                if (modelsLoaded === totalModels) {
+                  // Fade in the carousel container
+                  const carouselContainer = document.getElementById('carousel-container');
+                  carouselContainer.style.opacity = 1; // Trigger the CSS transition
+                }
+              },
+              undefined,
+                
+              function (error) {
+                console.error('Error loading model:', modelPath, error);
+              }
+            );
+          }
+        };
+        
+        // Create the carousel
+        createCarousel(models, 8, 500);
+        
+        // Variables to manage carousel rotation
+        let carouselAngle = 0;
+        let carouselTargetAngle = 0;
+        const carouselRotationSpeed = 0.02;
+        
+        function onCarouselMouseMove(event) {
+          // Calculate mouse position in normalized device coordinates (-1 to +1)
+          const rect = carouselRenderer.domElement.getBoundingClientRect();
+          mouseCarousel.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+          mouseCarousel.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+        }
+        
+        carouselRenderer.domElement.addEventListener('click', onCarouselClick, false);
+        
+        function onCarouselClick(event) {
+          // Calculate mouse position in normalized device coordinates (-1 to +1)
+          const rect = carouselRenderer.domElement.getBoundingClientRect();
+          mouseCarousel.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+          mouseCarousel.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+          
+          // Update the raycaster
+          raycasterCarousel.setFromCamera(mouseCarousel, carouselCamera);
+          
+          // Calculate objects intersecting the picking ray
+          const intersects = raycasterCarousel.intersectObjects(carouselGroup.children, true);
+          
+          if (intersects.length > 0) {
+            const intersectedObject = intersects[0].object;
+            
+            // Find the top-level model object
+            let model = intersectedObject;
+            while (model.parent && model.parent !== carouselGroup) {
+              model = model.parent;
+            }
+            
+            if (model.userData.url) {
+              window.location.href = model.userData.url;
+            }
+          }
+        }
+        
+        // Animation loop for the carousel
+      
+        function animateCarousel() {
+          requestAnimationFrame(animateCarousel);
+
+          // Temporarily push the lifted model back to its un-lifted Y for the
+          // hover raycast. Without this the trigger area moves with the model,
+          // and a cursor near the bottom edge oscillates hover on/off.
+          let _liftedY = null;
+          if (hoveredCarouselModel && hoveredCarouselModel.userData.originalY !== undefined) {
+            _liftedY = hoveredCarouselModel.position.y;
+            hoveredCarouselModel.position.y = hoveredCarouselModel.userData.originalY;
+            hoveredCarouselModel.updateMatrixWorld(true);
+          }
+
+          // Only raycast while the pointer is over the carousel
+          let intersects = [];
+          if (mouseCarousel.x !== 9999) {
+            raycasterCarousel.setFromCamera(mouseCarousel, carouselCamera);
+            intersects = raycasterCarousel.intersectObjects(carouselGroup.children, true);
+          }
+
+          // Restore the lifted position before any hover-state branch reads it.
+          if (_liftedY !== null) {
+            hoveredCarouselModel.position.y = _liftedY;
+            hoveredCarouselModel.updateMatrixWorld(true);
+          }
+
+          if (intersects.length > 0) {
+            const intersectedObject = intersects[0].object;
+            
+            // Find the top-level model object
+            let model = intersectedObject;
+            while (model.parent && model.parent !== carouselGroup) {
+              model = model.parent;
+            }
+            
+            if (hoveredCarouselModel !== model) {
+              // Reset previous hovered model position
+              if (hoveredCarouselModel) {
+                hoveredCarouselModel.position.y = hoveredCarouselModel.userData.originalY || 0;
+              }
+              
+              hoveredCarouselModel = model;
+              
+              // Store original Y position if not already stored
+              if (!hoveredCarouselModel.userData.originalY) {
+                hoveredCarouselModel.userData.originalY = hoveredCarouselModel.position.y;
+              }
+              
+              // Pause carousel rotation
+              isCarouselPaused = true;
+            }
+            
+            // Change cursor to pointer
+            carouselRenderer.domElement.style.cursor = 'pointer';
+          } else {
+            // No intersections
+            if (hoveredCarouselModel) {
+              // Reset position
+              hoveredCarouselModel.position.y = hoveredCarouselModel.userData.originalY || 0;
+              hoveredCarouselModel = null;
+            }
+            
+            // Resume carousel rotation
+            isCarouselPaused = false;
+            
+            // Change cursor back to default
+            carouselRenderer.domElement.style.cursor = 'default';
+          }
+          
+          // Animate model raising up smoothly
+          if (hoveredCarouselModel) {
+            const targetY = hoveredCarouselModel.userData.originalY + 50; // Raise by 50 units
+            hoveredCarouselModel.position.y += (targetY - hoveredCarouselModel.position.y) * 0.1;
+          }
+          
+          // Smoothly transition other models back down
+          carouselGroup.children.forEach((model) => {
+            if (model !== hoveredCarouselModel && model.userData.originalY !== undefined) {
+              model.position.y += (model.userData.originalY - model.position.y) * 0.1;
+            }
+          });
+          
+          // Rotate the carousel if not paused
+          if (!isCarouselPaused) {
+            // Smoothly transition to the target angle
+            carouselAngle += (carouselTargetAngle - carouselAngle) * carouselRotationSpeed;
+          }
+          
+          carouselGroup.rotation.y = carouselAngle;
+          carouselRenderer.render(carouselScene, carouselCamera);
+        }
+        
+        // Handle window resizing for the carousel
+        window.addEventListener('resize', function () {
+          carouselCamera.aspect = carouselContainer.clientWidth / carouselContainer.clientHeight;
+          carouselCamera.updateProjectionMatrix();
+          carouselRenderer.setSize(carouselContainer.clientWidth, carouselContainer.clientHeight);
+        });
+        
+        // Event listener for keyboard arrow key navigation
+        document.addEventListener('keydown', function(event) {
+          if (event.key === 'ArrowRight') {
+            carouselTargetAngle -= Math.PI / 4;
+          } else if (event.key === 'ArrowLeft') {
+            carouselTargetAngle += Math.PI / 4;
+          }
+        });
+        
+        // Automatic rotation
+        setInterval(() => {
+          carouselTargetAngle -= Math.PI / 4;
+        }, 6000);
+        
+        // Start the carousel animation
+        animateCarousel();
+          
+          /*************************************
+           * * LOGO TOOLTIP LOGIC
+           * *************************************/
+          // Grab the existing tooltip element for the logo
+          const logoTooltip = document.getElementById('logo-tooltip');
+          
+          // Modify your onLogoMouseMove function to show/hide the tooltip
+          function onLogoMouseMove(event) {
+            const rect = renderer.domElement.getBoundingClientRect();
+            mouseLogo.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+            mouseLogo.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+            
+            raycasterLogo.setFromCamera(mouseLogo, camera);
+            
+            let intersects = [];
+            if (logoModel) {
+              intersects = raycasterLogo.intersectObject(logoModel, true);
+            }
+            
+            // Change cursor
+            renderer.domElement.style.cursor = intersects.length > 0 ? 'pointer' : 'default';
+            
+            // === SHOW/HIDE TOOLTIP FOR THE LOGO ===
+            if (intersects.length > 0) {
+              showTooltipLogo(event.clientX, event.clientY, 'Home');
+            } else {
+              hideTooltipLogo();
+            }
+          }
+          
+          // Show the tooltip near the mouse cursor
+          function showTooltipLogo(x, y, text) {
+            logoTooltip.textContent = text;
+            // Position the tooltip a bit offset from the cursor
+            logoTooltip.style.left = (x + 10) + 'px';
+            logoTooltip.style.top = (y) + 'px';
+            logoTooltip.style.opacity = '1';
+          }
+          
+          function hideTooltipLogo() {
+            logoTooltip.style.opacity = '0';
+          }
+          
+          /*************************************
+           * * CD TOOLTIP LOGIC
+           * *************************************/
+          // Grab the existing tooltip element for the CD
+          const cdTooltip = document.getElementById('cd-tooltip');
+          // Get the CD image element
+          const bottomRightImage = document.getElementById('bottom-right-image');
+          
+          if (bottomRightImage) {
+            bottomRightImage.addEventListener('mouseenter', showTooltipCD);
+            bottomRightImage.addEventListener('mousemove', moveTooltipCD);
+            bottomRightImage.addEventListener('mouseleave', hideTooltipCD);
+          }
+          
+          function showTooltipCD(event) {
+            cdTooltip.textContent = 'Radio Off'; // or conditionally check bottomRightImage.alt if needed
+            cdTooltip.style.opacity = '1';
+            positionTooltipCD(event);
+          }
+          
+          function moveTooltipCD(event) {
+            if (cdTooltip.style.opacity === '1') {
+              positionTooltipCD(event);
+            }
+          }
+          
+          function positionTooltipCD(event) {
+            const tooltipWidth = cdTooltip.offsetWidth;
+            const tooltipHeight = cdTooltip.offsetHeight;
+            const pageWidth = window.innerWidth;
+            const pageHeight = window.innerHeight;
+            
+            let tooltipX = event.clientX + 10; // Offset horizontally
+            let tooltipY = event.clientY - tooltipHeight - 10; // Offset vertically above cursor
+            
+            // Prevent tooltip from going off the right edge
+            if (tooltipX + tooltipWidth > pageWidth) {
+              tooltipX = event.clientX - tooltipWidth - 10;
+            }
+            // Prevent tooltip from going above the top edge
+            if (tooltipY < 0) {
+              tooltipY = event.clientY + 10;
+            }
+            
+            cdTooltip.style.left = tooltipX + 'px';
+            cdTooltip.style.top = tooltipY + 'px';
+          }
+          
+          function hideTooltipCD() {
+            cdTooltip.style.opacity = '0';
+          }
+          
+          </script>
+          
+            <script>
+                  
+                  /*************************************
+                   * POINTER EVENTS FOR CAROUSEL
+                   *************************************/
+                  
+                   // Variables to track pointer interactions
+                   let pointerStartX = 0;
+                   let pointerEndX = 0;
+                   let pointerStartY = 0;
+                   let pointerEndY = 0;
+                   const swipeThreshold = 50; // Minimum swipe distance in pixels to consider as a swipe
+                   let isTap = true;
+                   const tapThreshold = 10; // Maximum movement in pixels to consider as a tap
+                   
+                   // Add pointer event listeners to the carousel renderer's DOM element
+                   carouselRenderer.domElement.addEventListener('pointerdown', onPointerDown, false);
+                   carouselRenderer.domElement.addEventListener('pointermove', onPointerMove, false);
+                   carouselRenderer.domElement.addEventListener('pointerup', onPointerUp, false);
+                   
+                   // Prevent default touch actions to avoid scrolling when interacting with the carousel
+                   carouselRenderer.domElement.style.touchAction = 'none';
+                   
+                   // Pointer Down: Capture starting positions and reset states
+                   function onPointerDown(event) {
+                    if (event.pointerType === 'touch' || event.pointerType === 'mouse') {
+                      pointerStartX = event.clientX;
+                      pointerStartY = event.clientY;
+                      pointerEndX = pointerStartX;
+                      pointerEndY = pointerStartY;
+                      isTap = true; // Assume it's a tap until movement exceeds threshold
+                      }
+                    }
+                    
+                    // Pointer Move: Track movement and determine if it's a tap or swipe
+                    function onPointerMove(event) {
+                      if (event.pointerType === 'touch' || event.pointerType === 'mouse') {
+                        pointerEndX = event.clientX;
+                        pointerEndY = event.clientY;
+                        const moveX = Math.abs(pointerEndX - pointerStartX);
+                        const moveY = Math.abs(pointerEndY - pointerStartY);
+                        
+                        // If movement exceeds the tap threshold, it's no longer considered a tap
+                        if (moveX > tapThreshold || moveY > tapThreshold) {
+                          isTap = false;
+                        }
+                      }
+                    }
+                    
+                    // Pointer Up: Determine whether the interaction is a swipe or tap
+                    function onPointerUp(event) {
+                      const swipeDistanceX = pointerEndX - pointerStartX;
+                      const swipeDistanceY = pointerEndY - pointerStartY;
+                      
+                      if (!isTap) {
+                        // It's a swipe interaction
+                        if (Math.abs(swipeDistanceX) > swipeThreshold && Math.abs(swipeDistanceY) < swipeThreshold) {
+                          // Horizontal swipe detected
+                          if (swipeDistanceX < 0) {
+                            // Swiped left: Rotate carousel to the right
+                            carouselTargetAngle -= Math.PI / 4; // Adjust the rotation angle as needed
+                            } else {
+                              // Swiped right: Rotate carousel to the left
+                              carouselTargetAngle += Math.PI / 4; // Adjust the rotation angle as needed
+                              }
+                            }
+                          } else {
+                            // It's a tap interaction
+                            const rect = carouselRenderer.domElement.getBoundingClientRect();
+                            const normalizedMouseX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+                            const normalizedMouseY = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+                            
+                            // Simulate a mouse click using raycaster
+                            raycasterCarousel.setFromCamera({ x: normalizedMouseX, y: normalizedMouseY }, carouselCamera);
+                            const intersects = raycasterCarousel.intersectObjects(carouselGroup.children, true);
+                            
+                            if (intersects.length > 0) {
+                              const clickedObject = intersects[0].object;
+                              
+                              // Traverse up to find the main model
+                              
+                              let model = clickedObject;
+                              while (model.parent && model.parent !== carouselGroup) {
+                                model = model.parent;
+                              }
+                              
+                              if (model.userData.url) {
+                                
+                                // Navigate to the associated URL
+                                window.location.href = model.userData.url;
+                              }
+                            }
+                          }
+                          
+                          // Reset variables for next interaction
+                          pointerStartX = 0;
+                          pointerEndX = 0;
+                          pointerStartY = 0;
+                          pointerEndY = 0;
+                          isTap = true;
+                        }
+                      
+            </script>
+    <!-- Shared 3D radio widget -->
+    <script src="/demo/skyward/assets/radio.js?v=2" defer></script>
+
+    <!-- Easter egg: on the home page, type "wazzup" -> the sky video crossfades
+         to the Whatzupwitu clip (song baked in), the radio shows it playing,
+         then it fades back when the ~30s clip ends. -->
+    <script>
+    (function () {
+      var SEQ = 'wazzup';
+      var buf = '';
+      var active = false;
+
+      var egg = document.createElement('video');
+      egg.id = 'easter-video';
+      egg.src = '/demo/skyward/assets/wazzup.mp4';
+      egg.setAttribute('playsinline', '');
+      egg.playsInline = true;
+      egg.preload = 'none';
+      egg.style.cssText =
+        'position:fixed;top:50%;left:50%;width:100%;height:100%;object-fit:cover;' +
+        'transform:translate(-50%,-50%);z-index:-1;opacity:0;' +
+        'transition:opacity .6s ease;pointer-events:none';
+
+      function addEgg() { document.body.appendChild(egg); }
+      if (document.body) addEgg(); else document.addEventListener('DOMContentLoaded', addEgg);
+
+      // Reveal the clip. Fire on whichever event lands first —
+      // the 'playing' event alone is unreliable, so we also use timeupdate/
+      // canplay plus a short fallback timer.
+      function reveal() {
+        if (!active) return;
+        egg.style.opacity = '1';   // models stay in front (carousel is above this layer)
+      }
+      egg.addEventListener('playing', reveal);
+      egg.addEventListener('timeupdate', reveal);
+      egg.addEventListener('canplay', reveal);
+      egg.addEventListener('loadeddata', reveal);
+
+      function start() {
+        if (active) return;
+        active = true;
+        try { egg.currentTime = 0; } catch (e) {}
+        var p = egg.play();
+        if (p && p.catch) p.catch(function (err) { console.error('wazzup play failed', err); });
+        if (window.RadioWidget) window.RadioWidget.announce('WHATZUPWITU');
+        setTimeout(reveal, 450);   // fallback in case the media events are flaky
+      }
+
+      function stop() {
+        if (!active) return;
+        active = false;
+        egg.style.opacity = '0';
+        if (window.RadioWidget) window.RadioWidget.clear();
+        setTimeout(function () { try { egg.pause(); egg.currentTime = 0; } catch (e) {} }, 700);
+      }
+      egg.addEventListener('ended', stop);
+
+      window.addEventListener('keydown', function (e) {
+        if (active || !e.key || e.key.length !== 1) return;
+        buf = (buf + e.key.toLowerCase()).slice(-SEQ.length);
+        if (buf === SEQ) { buf = ''; start(); }
+      });
+    })();
+    </script>
+    </body>
+</html>
