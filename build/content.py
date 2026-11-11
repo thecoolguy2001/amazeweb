@@ -639,20 +639,22 @@ SERVICE_PAGES = {
      ], "cards"),
      ("Email & automation", "Most small businesses do not lose customers to competitors.",
       "They lose them to nobody answering.", [
-        ("An automatic reply",
-         "Sent the moment somebody gets in touch, saying when a person will come back to "
-         "them. It is the cheapest thing on this page, and it stops people ringing the next "
-         "business on the list.", "$99"),
-        ("A list worth having",
-         "A signup form that works, and the welcome email it sends, so people who liked you "
-         "once can be reached again.", "$249"),
-        ("Emails in your brand",
-         "A template you can reuse for an offer, a change of hours or a quiet month, that "
-         "does not look like it came out of a free tool.", "$249"),
-        ("The follow-up after the job",
-         "A thank-you and a review ask, sent a few days later without you remembering to, "
-         "which is where most reviews actually come from.", "$249"),
-     ], "list"),
+        ("Automatic Reply",
+         "The moment somebody contacts you they get an answer saying you have it and when a "
+         "person will come back to them. It stops them ringing the next business on the "
+         "list while they wait.", "$50–$75"),
+        ("Post-Job Follow-Up",
+         "A thank-you and a review ask, sent a few days after the job without you "
+         "remembering to send it. Wired to whatever marks a job finished, which is where "
+         "most reviews actually come from.", "$150–$250"),
+        ("Email Template",
+         "A branded shell you reuse for an offer, a change of hours, a quiet month or a "
+         "regular newsletter. You add the words; it already looks like you.", "$100–$150"),
+        ("Marketing Email",
+         "One email designed and built for a particular send, so it arrives looking right "
+         "in Gmail, Outlook and on a phone instead of falling apart in half of them.",
+         "$125–$200"),
+     ], "cards"),
      _PRICE_COVER,
      ("Other ways we help", "", "", [
         ("Shopify templates", "/templates/"),
