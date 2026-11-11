@@ -88,17 +88,23 @@ def stack(cards):
     out = '<section class="stack" id="case-study">'
     for c in cards:
         dim = " dim" if c["dim"] else ""
+        # Stats are optional. With none, the shot fills the right column instead of
+        # leaving the stat pair's height as dead space under it — so no inline
+        # aspect-ratio either, since that would fight the flex height.
+        pairs = c.get("stats") or []
         stats = "".join(f'<div><p class="k">{E(k)}</p><p class="t-stat v">{E(v)}</p></div>'
-                        for k, v in c["stats"])
+                        for k, v in pairs)
+        stats = f'<div class="scard-stats">{stats}</div>' if pairs else ""
+        shot_style = f' style="aspect-ratio:{c["ratio"]}"' if pairs else ""
         label, href = c["cta"]
         out += (f'<div class="stack-item"><article class="scard{dim}">'
                 f'<div class="scard-left"><h2 class="t-card-h">{E(c["title"])}</h2>'
                 f'<p class="t-18">{E(c["body"])}</p>'
                 f'<a class="btn" href="{href}">{E(label)}{ARROW}</a></div>'
-                f'<div class="scard-right">'
-                f'<img class="scard-shot" style="aspect-ratio:{c["ratio"]}" src="{c["img"]}" '
+                f'<div class="scard-right{"" if pairs else " full"}">'
+                f'<img class="scard-shot"{shot_style} src="{c["img"]}" '
                 f'alt="" loading="lazy" decoding="async">'
-                f'<div class="scard-stats">{stats}</div></div></article></div>')
+                f'{stats}</div></article></div>')
     return out + "</section>"
 
 def vision_and_services(cards):

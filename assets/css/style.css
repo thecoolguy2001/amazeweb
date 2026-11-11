@@ -329,6 +329,8 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .scard-left .btn{margin-top:auto;align-self:flex-start}
 .scard-right{width:428px;flex:0 0 auto;display:flex;flex-direction:column;gap:36px}
 .scard-shot{width:100%;border-radius:8px;object-fit:cover;aspect-ratio:428/269}
+/* a card with no stat pair: the shot takes the whole right column */
+.scard-right.full .scard-shot{flex:1 1 auto;min-height:0;height:auto;aspect-ratio:auto}
 .scard-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .scard-stats .k{font-size:20px;line-height:28px;font-weight:400;color:var(--white);margin-bottom:8px}
 .scard-stats .v{color:var(--white)}
