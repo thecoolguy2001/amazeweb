@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Deshaun Walker | Catalog</title>
+  <!-- Standard favicon -->
+  <link rel="icon" type="image/png" href="/demo/deshaun-walker/assets/favicon.png">
+    
+  <!-- PNG favicon for browsers that prefer PNG -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/demo/deshaun-walker/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/demo/deshaun-walker/assets/favicon-16x16.png">
+    
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/demo/deshaun-walker/assets/apple-touch-icon.png">
+  
+  <!-- Preload the painting model + its textures (parallel during HTML parse) -->
+  <link rel="preload" as="fetch" href="/demo/deshaun-walker/models/logo.v2.glb" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="fetch" href="/demo/deshaun-walker/models/painting_goodbye/scene.gltf" crossorigin="anonymous" fetchpriority="high">
+  <link rel="preload" as="fetch" href="/demo/deshaun-walker/models/painting_goodbye/scene.bin" crossorigin="anonymous" fetchpriority="high">
+  <link rel="preload" as="image" href="/demo/deshaun-walker/models/painting_goodbye/textures/Material.002_baseColor.jpeg" crossorigin="anonymous" fetchpriority="high">
+  <link rel="preload" as="image" href="/demo/deshaun-walker/models/_shared/SMS_Canvas_Material_baseColor.png" crossorigin="anonymous" fetchpriority="low">
+  <link rel="preload" as="image" href="/demo/deshaun-walker/models/_shared/SMS_Canvas_Material_metallicRoughness.png" crossorigin="anonymous" fetchpriority="low">
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Staatliches&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Include Three.js and GLTFLoader -->
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: sans-serif;
+      background-color: #000;
+    }
+
+    /* Background Video Styles */
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .navigation-bar {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 6px;
+      border-radius: 999px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
+      backdrop-filter: blur(30px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 10px 32px rgba(0, 0, 0, 0.32),
+        0 2px 6px rgba(0, 0, 0, 0.16);
+    }
+
+    .navigation-bar a {
+      margin: 0;
+      padding: 8px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 0.95em;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .navigation-bar a:hover {
+      background-color: rgba(255, 255, 255, 0.14);
+      text-decoration: none;
+    }
+
+    .navigation-bar a.active {
+      background-color: rgba(255, 255, 255, 0.22);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+      text-decoration: none;
+    }
+
+    /* Logo Container */
+    #logo-container {
+      width: 100px;
+      height: 100px;
+      position: fixed;
+      top: 5px;
+      left: 0px;
+      z-index: 2;
+    }
+
+    /* Profile container to hold the 3D model and bio */
+    .profile-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Container for the 3D model */
+    #container3D {
+      width: 50%; /* Adjust as needed */
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Style for the biography section */
+    .text-container {
+      width: 30%; /* Adjust the width as necessary */
+      margin-right: 5%; /* Adjust the margin to position the text */
+      color: #FFFFFF;
+      text-align: center;
+      position: relative;
+      right: 75px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.1rem;
+
+      /* iOS 26 Liquid Glass panel */
+      box-sizing: border-box;
+      padding: 2.25rem 2.25rem 2.5rem;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
+      backdrop-filter: blur(30px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 18px 48px rgba(0, 0, 0, 0.35),
+        0 2px 8px rgba(0, 0, 0, 0.18);
+    }
+
+    /* Style for the title */
+    .art-title {
+      font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+      line-height: 1.1;
+      margin: 0;
+      font-weight: bold;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      hyphens: auto;
+      max-width: 100%;
+    }
+
+    /* Style for the details */
+    .art-details p {
+      margin: 0;
+      font-size: 1.2em;
+    }
+
+    /* Style for additional description if needed */
+    .art-description p {
+      margin: 0;
+      font-size: 1.5em;
+    }
+    /* Tooltip Styles */
+.tooltip {
+  position: absolute;
+  padding: 8px 12px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.9em;
+  pointer-events: none; /* Allows mouse events to pass through */
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  white-space: nowrap; /* Prevents text from wrapping */
+  z-index: 10; /* Ensures tooltip appears above other elements */
+}    /* Style for the bottom-right image */
+    #bottom-right-image {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 2;
+      width: 125px; /* Adjust size as needed */
+      height: auto;
+    }
+    .next-page-button,
+    .back-page-button {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #FFFFFF;
+      border-radius: 50%;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
+      backdrop-filter: blur(30px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 12px 32px rgba(0, 0, 0, 0.32),
+        0 2px 6px rgba(0, 0, 0, 0.16);
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      z-index: 3;
+    }
+    .next-page-button svg,
+    .back-page-button svg { display: block; }
+
+    .next-page-button { right: 24px; }
+    .back-page-button { left: 24px; }
+
+    .next-page-button:hover,
+    .back-page-button:hover {
+      background-color: rgba(255, 255, 255, 0.14);
+      transform: translateY(-50%) scale(1.06);
+    }
+    #bottom-right-image.active {
+  width: 180px; /* Increased width from 125px to 150px */
+  bottom: -35px;
+  right: -15px;  /* Reduced bottom padding from 10px to 5px */
+  transition: width 0.3s ease-in-out, bottom 0.3s ease-in-out; /* Smooth transitions for size and position changes */
+}
+/* Mobile Styles */
+@media (max-width: 768px) {
+      /* 1. Adjust Navigation Bar */
+      .navigation-bar {
+        top: 12px;
+        right: 12px;
+        padding: 4px;
+        max-width: none;
+        width: auto;
+      }
+
+      .navigation-bar a {
+        margin: 0;
+        padding: 7px 12px;
+        font-size: 0.85em;
+        display: flex;
+      }
+
+      /* 2. Adjust Carousel Container */
+      #carousel-container {
+        width: 100%; /* Make containers full width on mobile */
+        height: 100vh; /* Maintain full viewport height */
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0; /* Remove negative margin if causing layout issues */
+        opacity: 0; /* Start with invisible carousel */
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      /* 3. Ensure Carousel Renderer Fits Mobile Screen */
+      #carousel-container canvas {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
+        pointer-events: auto; /* Ensure it can receive pointer events */
+      }
+
+      /* 4. Adjust Video Background */
+      #background-video {
+        object-fit: cover;
+      }
+
+      /* 5. Optimize Bottom Images Positioning */
+      #bottom-right-image {
+        bottom: 20px; /* Adjust bottom positioning */
+        right: 20px;  /* Adjust right positioning */
+      }
+
+      #bottom-right-image.active {
+        width: 110px; /* Adjusted width for mobile */
+        bottom: -4px;
+        right: -2px;  /* Reduced bottom padding from 10px to 5px */
+        transition: width 0.3s ease-in-out, bottom 0.3s ease-in-out; /* Smooth transitions for size and position changes */
+      }
+
+      #bottom-left-image {
+        bottom: 20px; /* Adjust bottom positioning */
+        left: 20px;    /* Adjust left positioning */
+      }
+
+      /* 6. Increase Icon Sizes */
+      #bottom-right-image,
+      #bottom-left-image {
+        width: 80px; /* Adjusted width for mobile */
+        height: auto;
+      }
+
+      /* 7. Remove Tooltips on Mobile */
+      .tooltip {
+        display: none;
+      }
+  /* Center the Profile Container */
+  .profile-container {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center;    /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    text-align: center; /* Center align text inside children */
+    width: 100%;
+    height: auto;
+    margin: 0 auto; /* Center horizontally on the page */
+  }
+
+  /* Center the 3D Model Container */
+  #container3D {
+    width: 100%; /* Full width */
+    height: 300px; /* Fixed height */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    margin: 0 auto; /* Center horizontally */
+  }
+
+  /* Center the Text Container */
+  .text-container {
+    width: 90%; /* Adjust width for mobile view */
+    margin: 0px auto; /* Center horizontally */
+    padding: 0; /* Reset any extra padding */
+    text-align: center; /* Center the text content */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Ensure all children are horizontally centered */
+    justify-content: center; /* Vertically center if needed */
+    position: relative;
+    right: 0; /* Reset any offset to the left */
+  }
+
+  /* Reduce Font Sizes for Mobile */
+  .art-title {
+    font-size: 2em; /* Smaller font size for better fit */
+    margin-bottom: 0em;
+  }
+
+  .art-details p,
+  .art-description p {
+    font-size: 1em; /* Smaller font for details */
+    margin-bottom: 0em; /* Reduce vertical spacing */
+  }
+  /* Adjust Next and Back Buttons */
+  .next-page-button,
+  .back-page-button {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2em;
+  }
+
+  .next-page-button {
+    right: 15px;
+  }
+
+  .back-page-button {
+    left: 15px;
+  }
+}
+
+    /* Painting actions — iOS 26 glass pill buttons */
+    .painting-actions {
+      display: flex;
+      gap: 0.7rem;
+      margin: 0.4rem 0 0;
+      width: 100%;
+      justify-content: flex-start;
+    }
+    .painting-btn {
+      width: 52px;
+      height: 52px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 100%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      backdrop-filter: blur(20px) saturate(180%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.45),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 8px 18px rgba(0, 0, 0, 0.28);
+      color: #fff;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+    .painting-btn svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+    .painting-btn:hover {
+      background-color: rgba(255, 255, 255, 0.18);
+      transform: translateY(-1px);
+    }
+    .painting-btn:active { transform: translateY(0); }
+
+    /* Full-screen 2D image viewer */
+    .painting-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.85);
+      -webkit-backdrop-filter: blur(40px);
+      backdrop-filter: blur(40px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .painting-modal.open { display: flex; opacity: 1; }
+    .painting-modal__img {
+      max-width: 92vw;
+      max-height: 92vh;
+      border-radius: 12px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+    }
+    .painting-modal__close,
+    .painting-ar__close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.12);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      backdrop-filter: blur(20px) saturate(180%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.45),
+        0 4px 12px rgba(0, 0, 0, 0.25);
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+    .painting-ar__close {
+      position: fixed;
+      z-index: 101;
+      display: none;
+    }
+    .painting-modal__close:hover,
+    .painting-ar__close:hover {
+      background-color: rgba(255, 255, 255, 0.20);
+      transform: scale(1.05);
+    }
+    .painting-modal__close svg,
+    .painting-ar__close svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+    }
+    .painting-ar__close.open { display: flex; }
+
+    /* AR view container */
+    model-viewer.painting-ar {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 100;
+      display: none;
+    }
+    model-viewer.painting-ar.open { display: block; }
+
+
+
+
+
+
+    /* === Full-screen model (desktop info box unchanged) === */
+    #container3D {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      overflow: visible;
+      pointer-events: auto;
+    }
+    #container3D canvas { display: block; width: 100% !important; height: 100% !important; }
+    .profile-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      justify-content: flex-end;
+      pointer-events: none;
+    }
+    .text-container { pointer-events: auto; }
+
+    /* Desktop: keep arrows + action buttons together inside the card, centred,
+       flowing below the text (no overlap with the painting info) */
+    @media (min-width: 769px) {
+      .next-page-button, .back-page-button {
+        position: static;
+        top: auto; left: auto; right: auto; bottom: auto;
+        transform: none;
+        width: 48px;
+        height: 48px;
+      }
+      .next-page-button:hover, .back-page-button:hover { transform: translateY(-1px); }
+      .painting-actions {
+        position: static;
+        justify-content: center;
+        gap: 0.8rem;
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .profile-container { display: block; height: 100%; }
+
+      /* info box: centred card (matches the About page), above the corner radio */
+      .text-container {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 100px;
+        top: auto;
+        margin: 0;
+        width: calc(100% - 48px);
+        max-width: 300px;
+        padding: 1.1rem 1.25rem 1.3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.45rem;
+        text-align: center;
+        z-index: 3;
+      }
+      .art-title { font-size: 1.3em; margin: 0; line-height: 1.12; }
+      .art-details p { font-size: 0.9em; margin: 0; opacity: 0.85; }
+      .art-description p { font-size: 1em; margin: 0; }
+
+      /* arrows live INSIDE the info box, flanking the centred buttons */
+      .painting-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0.5rem;
+        margin: 0.4rem 0 0;
+      }
+      .painting-btn { width: 46px; height: 46px; }
+      .next-page-button, .back-page-button {
+        position: static;
+        top: auto; left: auto; right: auto; bottom: auto;
+        transform: none;
+        width: 44px; height: 44px;
+        flex: 0 0 auto;
+      }
+      .next-page-button:hover, .back-page-button:hover { transform: none; }
+
+      /* radio: stays in the bottom-right corner, just a touch smaller */
+      #radio-widget {
+        width: 88px !important;
+        height: 72px !important;
+        right: 12px !important;
+        bottom: 12px !important;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline webkit-playsinline disablepictureinpicture preload="auto" poster="/demo/deshaun-walker/assets/video-poster.jpg" id="background-video">
+    <source src="/demo/deshaun-walker/assets/video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <script src="/demo/deshaun-walker/assets/site-perf.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.129.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.129.0/examples/js/loaders/GLTFLoader.js"></script>
+
+  <!-- Navigation Bar -->
+  <nav class="navigation-bar">
+    <a href="/demo/deshaun-walker/catalog/">Works</a>
+    <a href="/demo/deshaun-walker/about/">About</a>
+    <a href="/demo/deshaun-walker/contact/">Contact</a>
+  </nav>
+
+  <!-- Logo Container -->
+  <div id="logo-container"></div>
+ 
+  <!-- Tooltip for Logo -->
+<div id="logo-tooltip" class="tooltip">Home</div>
+
+
+  <!-- Profile Content -->
+  <div class="profile-container">
+    <!-- Eye model container -->
+    <div id="container3D"></div>
+
+    <!-- Bio text -->
+    <div class="text-container">
+      <div class="art-title">Goodbye</div>
+      <div class="art-details">
+        <p>Painting | 20 x 16in</p>
+      </div>
+      <div class="art-description">
+        <p>Acrylic, Using Pastel, on Canvas</p>
+      </div>
+      <div class="painting-actions">
+        <a href="/demo/deshaun-walker/catalog/9" class="back-page-button" aria-label="Back Portfolio Page" title="Back"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <button type="button" class="painting-btn" data-action="view-2d" aria-label="View as 2D" title="View as 2D"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="11" r="1.7"/><path d="m21 17-5-5-9 9"/></svg></button>
+        <a href="/demo/deshaun-walker/catalog/7" class="next-page-button" aria-label="Next Portfolio Page" title="Next"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Check if the user is on a mobile device
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  
+      if (isMobile) {
+        // Find the Catalog link in the navigation bar
+        const catalogLink = document.querySelector(".navigation-bar a[href='/demo/deshaun-walker/catalog/']");
+  
+        // Change the href attribute to point to port12.html
+        if (catalogLink) {
+          catalogLink.setAttribute('href', '/demo/deshaun-walker/catalog/12');
+        }
+      }
+    });
+  </script>
+  <!-- Include Three.js and modules via script tags -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.129.0/examples/js/controls/OrbitControls.js"></script>
+
+  <!-- Your JavaScript code -->
+  <script>
+    const cdTooltip = document.getElementById('cd-tooltip'); // Tooltip for CD Image
+    const logoTooltip = document.getElementById('logo-tooltip');
+     // Raycaster and mouse vector for detecting mouse intersections
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+    // Wait for the DOM to be fully loaded
+    window.addEventListener('load', function() {
+       // === Spinning Logo Code ===
+
+      // Create the scene for the logo
+      const logoScene = new THREE.Scene();
+
+      // Set up the camera for the logo
+      const logoCamera = new THREE.PerspectiveCamera(80, 1, 0.1, 1000);
+      logoCamera.position.z = 1;
+
+      // Create the renderer for the logo
+      const logoRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: SITE_AA });
+      logoRenderer.setSize(100, 100);
+      logoRenderer.setPixelRatio(SITE_DPR);
+      document.getElementById('logo-container').appendChild(logoRenderer.domElement);
+
+      // Add lights to the logo scene
+      const logoAmbientLight = new THREE.AmbientLight(0xffffff, 0.8); // Soft white light
+      logoScene.add(logoAmbientLight);
+
+      const logoDirectionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+      logoDirectionalLight.position.set(5, 10, 7.5); // Adjust position as needed
+      logoScene.add(logoDirectionalLight);
+
+      // Variable to hold the logo model
+      const logoRaycaster = new THREE.Raycaster();
+    const logoMouse = new THREE.Vector2();
+      let logoModel;
+
+      // Load the logo model
+      const logoLoader = new THREE.GLTFLoader();
+      logoLoader.load(
+        '/demo/deshaun-walker/models/logo.v2.glb',
+        function(gltf) {
+        logoModel = gltf.scene;
+        logoModel.traverse((child)=>{
+          if(child.isMesh) {
+            child.material.side = THREE.DoubleSide;
+            child.material.needsUpdate = true;
+          }
+        });
+        logoScene.add(logoModel);
+      },
+      undefined,
+      function(error){
+        console.error(error);
+      }
+    );
+    logoRenderer.domElement.addEventListener('click', onLogoClickLogo, false);
+    function onLogoClickLogo(event) {
+      const rect = logoRenderer.domElement.getBoundingClientRect();
+      logoMouse.x = ((event.clientX-rect.left)/rect.width)*2-1;
+      logoMouse.y = -((event.clientY-rect.top)/rect.height)*2+1;
+
+      logoRaycaster.setFromCamera(logoMouse,logoCamera);
+
+      if(logoModel){
+        const intersects = logoRaycaster.intersectObject(logoModel,true);
+        if(intersects.length>0){
+          window.location.href='/';
+        }
+      }
+    }
+
+    logoRenderer.domElement.addEventListener('mousemove',onLogoMouseMove,false);
+
+    function onLogoMouseMove(event) {
+  // Calculate mouse position in normalized device coordinates (-1 to +1) for both components
+  const rect = logoRenderer.domElement.getBoundingClientRect();
+  logoMouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+  logoMouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+  // Update the picking ray with the camera and mouse position
+  logoRaycaster.setFromCamera(logoMouse, logoCamera);
+
+  // Calculate objects intersecting the picking ray
+  let intersects = [];
+  if (logoModel) {
+    intersects = logoRaycaster.intersectObject(logoModel, true);
+  }
+
+  if (intersects.length > 0) {
+    logoRenderer.domElement.style.cursor = 'pointer';
+    showTooltip(event.clientX, event.clientY);
+  } else {
+    logoRenderer.domElement.style.cursor = 'default';
+    hideTooltip();
+  }
+}
+function showTooltip(x, y) {
+  // Calculate the viewport coordinates for positioning
+  const viewportX = x;
+  const viewportY = y;
+
+  // Set the position of the tooltip
+  logoTooltip.style.left = (viewportX + 10) + 'px'; // 10px offset to the right
+  logoTooltip.style.top = (viewportY) + 'px'; // Align vertically with the cursor
+  logoTooltip.style.opacity = '1'; // Make tooltip visible
+}
+
+function hideTooltip() {
+  logoTooltip.style.opacity = '0'; // Hide tooltip
+}
+      // Animation loop for the logo
+      function animateLogo() {
+        requestAnimationFrame(animateLogo);
+
+        // Rotate the model
+        if (logoModel) {
+          logoModel.rotation.y += 0.01;
+        }
+
+        logoRenderer.render(logoScene, logoCamera);
+      }
+
+      animateLogo();
+
+
+      // === Existing 3D Model Code ===
+
+      // Create a Three.JS Scene
+      const scene = new THREE.Scene();
+      scene.background = null; // Transparent background
+
+      // Get the container and set the camera
+      const container = document.getElementById("container3D");
+      const width = container.clientWidth || window.innerWidth * 0.5;
+      const height = container.clientHeight || window.innerHeight;
+
+      const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+
+      // Set the camera position
+      camera.position.set(0, 0, 2);
+
+      // Instantiate the renderer
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: SITE_AA });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(SITE_DPR);
+
+      // Append the renderer to the DOM
+      container.appendChild(renderer.domElement);
+
+      // Add OrbitControls
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true; // Optional: add smoothness to controls
+      controls.dampingFactor = 0.05;
+
+      // Add lights to the scene
+      const topLight = new THREE.DirectionalLight(0xffffff, 2);
+      topLight.position.set(500, 500, 500);
+      scene.add(topLight);
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+      scene.add(ambientLight);
+
+      // Instantiate a loader for the .gltf file
+      const loader = new THREE.GLTFLoader();
+
+      let object;
+
+              // Variables for fade-in effect
+let fadeInAlpha = 0; // Current opacity
+const fadeInSpeed = 0.05; // Speed of fade-in (adjust as needed)
+let meshes = []; // Array to cache mesh references
+let fadeInComplete = false; // Flag to indicate fade-in completion
+
+
+      // Load the eye model
+      loader.load(
+        '/demo/deshaun-walker/models/painting_goodbye/scene.gltf',
+        function (gltf) {
+    object = gltf.scene;
+
+    // Traverse the model to set materials for transparency and cache meshes
+    object.traverse(function (child) {
+      if (child.isMesh) {
+        if (child.material) {
+          child.material.transparent = true;
+          child.material.opacity = 0; // Start fully transparent
+          child.material.depthWrite = true; // Ensure depth writing is enabled
+          meshes.push(child); // Cache the mesh for later updates
+        }
+      }
+    });
+
+    // Adjust the model's position and scale
+    object.position.set(0, 0, 0);
+          object.scale.set(1, 1, 1);
+
+          // Normalize to the painting's real-world size so relative sizes are
+          // accurate across the whole catalog (same UNITS_PER_IN on every page).
+          var REAL_MAX_IN = 20;   // longest real-world side of THIS painting (inches)
+          var UNITS_PER_IN = 0.028;        // global constant — identical on every product page
+          var _nbox = new THREE.Box3().setFromObject(object);
+          var _nsize = _nbox.getSize(new THREE.Vector3());
+          var _nmax = Math.max(_nsize.x, _nsize.y, _nsize.z);
+          if (_nmax > 0) {
+            var _nscale = (REAL_MAX_IN * UNITS_PER_IN) / _nmax;
+            object.scale.set(_nscale, _nscale, _nscale);
+          }
+
+          // Center the (now correctly-scaled) model
+          const box = new THREE.Box3().setFromObject(object);
+          const center = box.getCenter(new THREE.Vector3());
+          object.position.sub(center);
+
+    scene.add(object);
+    console.log('Model loaded:', object);
+  },
+  undefined,
+  function (error) {
+    console.error('Error loading model:', error);
+  }
+);
+function animate() {
+  requestAnimationFrame(animate);
+
+  controls.update();
+  renderer.render(scene, camera);
+
+  // === Fade-In Effect ===
+  if (meshes.length > 0 && !fadeInComplete) {
+    fadeInAlpha += fadeInSpeed; // Increment opacity
+
+    // Ensure opacity does not exceed 1
+    if (fadeInAlpha >= 1) {
+      fadeInAlpha = 1;
+      fadeInComplete = true; // Mark fade-in as complete
+    }
+
+    // Update opacity of all cached meshes
+    meshes.forEach(function (mesh) {
+      mesh.material.opacity = fadeInAlpha;
+    });
+
+    // Once fade-in is complete, reset material properties to opaque
+    if (fadeInComplete) {
+      meshes.forEach(function (mesh) {
+        mesh.material.transparent = false; // Disable transparency
+        mesh.material.opacity = 1; // Ensure full opacity
+        mesh.material.needsUpdate = true; // Inform Three.js to update the material
+      });
+      console.log('Fade-in complete');
+    }
+  }
+}
+// Add event listener for mouse movement over the renderer's DOM element
+renderer.domElement.addEventListener('mousemove', onMouseMove, false);
+
+// Change cursor to 'grabbing' when the user is interacting with OrbitControls
+controls.addEventListener('start', function () {
+  renderer.domElement.style.cursor = 'grabbing';
+});
+
+controls.addEventListener('end', function () {
+  renderer.domElement.style.cursor = 'grab';
+});
+
+function onMouseMove(event) {
+  // Calculate mouse position in normalized device coordinates (-1 to +1) for both components
+  const rect = renderer.domElement.getBoundingClientRect();
+  mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+  // Update the picking ray with the camera and mouse position
+  raycaster.setFromCamera(mouse, camera);
+
+  // Calculate objects intersecting the picking ray
+  const intersects = raycaster.intersectObjects(meshes, true);
+
+  if (intersects.length > 0) {
+    renderer.domElement.style.cursor = 'grab';
+  } else {
+    renderer.domElement.style.cursor = 'default';
+  }
+}
+// === CD Image Tooltip and Toggle Functionality ===
+
+// Get the CD image element
+const bottomRightImage = document.getElementById('bottom-right-image');
+
+
+// Function to show the tooltip when hovering over the CD image
+function showTooltipCD(event) {
+  cdTooltip.textContent = 'Radio Off';
+  cdTooltip.style.opacity = '1'; // Show the tooltip
+  positionTooltipCD(event);
+}
+
+// Function to update the tooltip position as the mouse moves
+function moveTooltipCD(event) {
+  if (cdTooltip.style.opacity === '1') {
+    positionTooltipCD(event);
+  }
+}
+
+// Function to position the tooltip near the cursor
+function positionTooltipCD(event) {
+  const tooltipWidth = cdTooltip.offsetWidth;
+  const tooltipHeight = cdTooltip.offsetHeight;
+  const pageWidth = window.innerWidth;
+  const pageHeight = window.innerHeight;
+
+  let tooltipX = event.clientX + 10; // 10px to the right of the cursor
+  let tooltipY = event.clientY - tooltipHeight - 10; // 10px above the cursor
+
+  // Prevent tooltip from going off the right edge
+  if (tooltipX + tooltipWidth > pageWidth) {
+    tooltipX = event.clientX - tooltipWidth - 10;
+  }
+
+  // Prevent tooltip from going above the top edge
+  if (tooltipY < 0) {
+    tooltipY = event.clientY + 10;
+  }
+
+  cdTooltip.style.left = tooltipX + 'px';
+  cdTooltip.style.top = tooltipY + 'px';
+}
+
+// Function to hide the tooltip when not hovering
+function hideTooltipCD() {
+  cdTooltip.style.opacity = '0'; // Hide the tooltip
+}
+
+
+      // Handle window resizing
+            // Full-screen model; keep it left-of-centre on desktop, centred on mobile.
+      function sizeView() {
+        var W = window.innerWidth, H = window.innerHeight;
+        renderer.setSize(W, H);
+        if (window.matchMedia('(max-width: 768px)').matches) {
+          // Mobile: pull the camera back (smaller painting, headroom) and raise it
+          // above the info card. No zoom, so real-world relative sizes are preserved.
+          camera.position.set(0, 0, 4.3);
+          camera.aspect = W / H;
+          camera.setViewOffset(W, H, 0, 0.13 * H, W, H);
+        } else {
+          camera.position.set(0, 0, 2);
+          var frac = 0.30;                 // model sits ~30% from the left
+          camera.aspect = (2 * W) / H;
+          camera.setViewOffset(2 * W, H, (1 - frac) * W, 0, W, H);
+        }
+        camera.updateProjectionMatrix();
+      }
+      window.addEventListener('resize', sizeView);
+      sizeView();
+
+      // Start rendering
+      animate();
+    });
+  </script>
+  
+  <!-- Painting actions: 2D modal + AR viewer -->
+  <div class="painting-modal" id="painting-modal-2d" role="dialog" aria-modal="true" aria-label="2D view">
+    <button type="button" class="painting-modal__close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18"/></svg></button>
+    <img class="painting-modal__img" id="painting-modal-img" alt="">
+  </div>
+  <button type="button" class="painting-ar__close" id="painting-ar-close" aria-label="Close AR"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18"/></svg></button>
+  <script>
+  (function() {
+    var imgUrl  = '/demo/deshaun-walker/models/painting_goodbye/textures/Material.002_baseColor.jpeg';
+    var gltfUrl = '/demo/deshaun-walker/models/painting_goodbye/scene.gltf';
+
+    // ---- 2D view ----
+    var modal = document.getElementById('painting-modal-2d');
+    var modalImg = document.getElementById('painting-modal-img');
+    var modalClose = modal.querySelector('.painting-modal__close');
+    modalImg.src = imgUrl;
+    function openModal() { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (modal.classList.contains('open')) closeModal();
+        closeAR();
+      }
+    });
+    document.querySelectorAll('[data-action="view-2d"]').forEach(function(btn) {
+      btn.addEventListener('click', openModal);
+    });
+
+    // ---- AR view (lazy-loads <model-viewer>) ----
+    var arViewer = null;
+    var arClose = document.getElementById('painting-ar-close');
+    var mvLoadPromise = null;
+    function ensureModelViewer() {
+      if (window.customElements && window.customElements.get('model-viewer')) {
+        return Promise.resolve();
+      }
+      if (mvLoadPromise) return mvLoadPromise;
+      mvLoadPromise = new Promise(function(resolve, reject) {
+        var s = document.createElement('script');
+        s.type = 'module';
+        s.src = 'https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js';
+        s.onload = function() { customElements.whenDefined('model-viewer').then(resolve); };
+        s.onerror = reject;
+        document.head.appendChild(s);
+      });
+      return mvLoadPromise;
+    }
+    function getOrCreateViewer() {
+      if (arViewer) return arViewer;
+      arViewer = document.createElement('model-viewer');
+      arViewer.id = 'painting-ar';
+      arViewer.className = 'painting-ar';
+      arViewer.setAttribute('ar', '');
+      arViewer.setAttribute('ar-modes', 'webxr scene-viewer quick-look');
+      arViewer.setAttribute('ar-placement', 'wall');
+      arViewer.setAttribute('camera-controls', '');
+      arViewer.setAttribute('touch-action', 'pan-y');
+      arViewer.setAttribute('alt', '');
+      // Single-file GLB drives Android Scene Viewer + the desktop 3D fallback;
+      // ios-src (USDZ) drives iOS Quick Look. USDZ files are generated separately.
+      arViewer.setAttribute('ios-src', gltfUrl.replace('scene.gltf', 'scene.usdz'));
+      arViewer.src = gltfUrl.replace('scene.gltf', 'scene.glb');
+      document.body.appendChild(arViewer);
+      return arViewer;
+    }
+    function closeAR() {
+      if (!arViewer) return;
+      arViewer.classList.remove('open');
+      arClose.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    arClose.addEventListener('click', closeAR);
+    function viewInAR() {
+      // iOS: launch AR Quick Look directly with the USDZ. This MUST run
+      // synchronously inside the tap gesture, so we can't wait on model-viewer.
+      var isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      if (isIOS) {
+        var arLink = document.createElement('a');
+        arLink.setAttribute('rel', 'ar');
+        arLink.href = gltfUrl.replace('scene.gltf', 'scene.usdz');
+        var arImg = document.createElement('img');   // Quick Look needs a child element
+        arImg.style.display = 'none';
+        arLink.appendChild(arImg);
+        document.body.appendChild(arLink);
+        arLink.click();
+        setTimeout(function() { arLink.remove(); }, 1500);
+        return;
+      }
+      ensureModelViewer().then(function() {
+        var mv = getOrCreateViewer();
+        function tryActivate() {
+          if (mv.canActivateAR) {
+            mv.activateAR();
+          } else {
+            // No AR available — show interactive 3D viewer as fallback.
+            mv.classList.add('open');
+            arClose.classList.add('open');
+            document.body.style.overflow = 'hidden';
+          }
+        }
+        if (mv.loaded) tryActivate();
+        else mv.addEventListener('load', tryActivate, { once: true });
+      }).catch(function(err) {
+        console.error('AR loading failed:', err);
+        alert('AR view is not available right now.');
+      });
+    }
+    document.querySelectorAll('[data-action="view-ar"]').forEach(function(btn) {
+      btn.addEventListener('click', viewInAR);
+    });
+  })();
+  </script>
+
+<!-- Shared 3D radio widget -->
+<script src="/demo/deshaun-walker/assets/radio.js?v=2" defer></script>
+</body>
+</html>

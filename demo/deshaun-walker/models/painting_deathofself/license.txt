@@ -1,0 +1,11 @@
+Model Information:
+* title:	painting_deathofself
+* source:	https://sketchfab.com/3d-models/painting-deathofself-378d0624d58c4e6abab5309044db8db0
+* author:	wdeshaun64 (https://sketchfab.com/wdeshaun64)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "painting_deathofself" (https://sketchfab.com/3d-models/painting-deathofself-378d0624d58c4e6abab5309044db8db0) by wdeshaun64 (https://sketchfab.com/wdeshaun64) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

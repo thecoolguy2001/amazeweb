@@ -1,0 +1,11 @@
+Model Information:
+* title:	painting_reflection
+* source:	https://sketchfab.com/3d-models/painting-reflection-056db88cb51948b9903c1eb867127b20
+* author:	wdeshaun64 (https://sketchfab.com/wdeshaun64)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "painting_reflection" (https://sketchfab.com/3d-models/painting-reflection-056db88cb51948b9903c1eb867127b20) by wdeshaun64 (https://sketchfab.com/wdeshaun64) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	painting_goodbye
+* source:	https://sketchfab.com/3d-models/painting-goodbye-bc61145200544759a6abda90a89c1366
+* author:	wdeshaun64 (https://sketchfab.com/wdeshaun64)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "painting_goodbye" (https://sketchfab.com/3d-models/painting-goodbye-bc61145200544759a6abda90a89c1366) by wdeshaun64 (https://sketchfab.com/wdeshaun64) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

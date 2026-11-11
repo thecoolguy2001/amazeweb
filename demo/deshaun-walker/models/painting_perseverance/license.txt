@@ -1,0 +1,11 @@
+Model Information:
+* title:	painting_perseverance
+* source:	https://sketchfab.com/3d-models/painting-perseverance-f2bc96eb9b064e2b8edf7f62bf4f530f
+* author:	wdeshaun64 (https://sketchfab.com/wdeshaun64)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "painting_perseverance" (https://sketchfab.com/3d-models/painting-perseverance-f2bc96eb9b064e2b8edf7f62bf4f530f) by wdeshaun64 (https://sketchfab.com/wdeshaun64) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

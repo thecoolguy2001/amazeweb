@@ -156,6 +156,13 @@ THEMES = [
     # link made inert, so browsing our portfolio cannot ring a client's phone
     # or put a stranger through their till. `real` marks them, because the
     # "our own build" line promises an invented brand and these have real ones.
+    dict(slug="deshaun-walker", name="Deshaun Walker", kicker="3D Artist Site",
+         sub="A painter’s catalogue hung in a sky you move through, rather than a grid of thumbnails.",
+         overview="Each painting is a scanned surface you can turn in the light, not a flat photograph of itself — so the site shows the texture a photograph of a painting throws away.",
+         who="Artists, galleries and makers whose work loses something the moment it is flattened into a picture.",
+         does="Work shown in three dimensions, catalogue navigation one piece at a time, and a route to ask about a painting.",
+         includes="A three-dimensional home, a fourteen-work catalogue, a page per painting with medium and dimensions, about, contact, and a radio that plays while you browse.",
+         real=True),
     dict(slug="md-landmark", name="MD Landmark", kicker="Real Estate Development Site",
          sub="A development company’s site, speaking to universities, builders and investors without splitting into three.",
          overview="Three audiences, one company, one site. The pages give each audience what it came for while the company tells a single story.",
@@ -317,6 +324,7 @@ BUILT = {
     "md-landmark":      "/demo/md-landmark/",
     "spiritual-chosen": "/demo/spiritual-chosen/",
     "monnarx":          "/demo/monnarx/",
+    "deshaun-walker":   "/demo/deshaun-walker/",
 }
 for _t in THEMES:
     if _t["slug"] in BUILT:
