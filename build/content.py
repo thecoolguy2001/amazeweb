@@ -337,7 +337,6 @@ MAKE_IT_YOURS = ("Customize colors, fonts, imagery, copy, sections, and buttons 
 
 # --- services sub-pages ----------------------------------------------------
 # Transcribed from the published pages. Note two things the live site does:
-#   * /services/custom reuses the /services/tools intro panel copy verbatim.
 #   * every section heading below has an empty body on the live site.
 # Statements are (grey_clause, black_clause); grey may be "".
 _P2 = {"title": "Not sure what you need? Tell us about your business.",
@@ -345,6 +344,15 @@ _P2 = {"title": "Not sure what you need? Tell us about your business.",
                "fixes it, even when that means spending less with us.",
        "cta": ("Learn More", "/support/#support-message"),
        "dim": False}
+
+_CUSTOM_INTRO = {
+    "title": "When a template is not the shape of your business.",
+    "body": "A template decides the pages, the order and the shape before it knows anything "
+            "about you, and most of the time that is fine. When it is not \u2014 when the way you "
+            "sell does not fit a layout somebody else drew \u2014 we start from what you actually "
+            "do and build the site around it.",
+    "cta": ("Start a custom build", "/support/#support-message"),
+    "dim": True}
 
 _TOOLS_INTRO = {
     "title": "Simple digital tools that help customers find, contact and review your business.",
@@ -378,7 +386,7 @@ SERVICE_PAGES = {
    "desc": "A custom website from AmazeWeb, designed and built from scratch around your brand, "
            "content, features, and goals.",
    "hero": ("Custom Website.", "Built from scratch around your business."),
-   "panel": _TOOLS_INTRO,
+   "panel": _CUSTOM_INTRO,
    "sections": [
      ("What you get", "Three levels,", "depending on how much already exists.", [
         ("Site only",
