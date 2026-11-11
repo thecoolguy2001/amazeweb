@@ -601,21 +601,23 @@ SERVICE_PAGES = {
    "hero": ("Business Tools.", "Small things that bring customers in."),
    "panel": _TOOLS_INTRO,
    "sections": [
+     # Named products, same as Everyday Tools. The two lines that used to sit
+     # here and were not products -- photo guidance, and an argument for
+     # buying a website -- are gone: the first folded into the profile setup,
+     # the second was a sales line in a list of prices.
      ("Get found and reviewed", "Most local customers decide.",
       "before they ever reach your website.", [
-        ("Your listing, tidied",
+        ("Google Business Profile Setup",
          "The hours, the phone number, the address and the category, correct and saying the "
-         "same thing everywhere somebody might look.", "$199"),
-        ("A review link worth sending",
-         "One short link, and a code people can scan on a table, a counter or the side of a "
-         "van, that opens straight on the review box.", "$149"),
-        ("Photos of the real place",
-         "Not stock pictures of somebody else’s shop. We will tell you which ones to take.",
-         "Included with either of the above"),
-        ("Somewhere worth landing on",
-         "A listing sends people somewhere. Making that somewhere good is the rest of what "
-         "we do."),
-     ], "list"),
+         "same thing everywhere somebody might look, plus a list of the photos of the real "
+         "place worth taking.", "$75–$150"),
+        ("Review Starter Pack",
+         "One short link that opens straight on the review box, and a printed code people "
+         "can scan on a table, a counter or the side of a van.", "$100–$150"),
+        ("Google Review NFC Card",
+         "A card on the counter a customer taps with their phone and lands on your review "
+         "box. No app, no typing, and no finding you on a map first.", "$50–$75"),
+     ], "cards"),
      ("Everyday Tools", "", "One link, one tap, one page that does its job.", [
         ("Link-in-Bio Site",
          "One page holding your menu, your booking, your number and your socials, for the "
