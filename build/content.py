@@ -554,7 +554,7 @@ SERVICE_PAGES = {
          "A thank-you and a review ask, sent a few days later without you remembering to, "
          "which is where most reviews actually come from."),
      ], "list"),
-     ("Other way we help", "", "", [
+     ("Other ways we help", "", "", [
         ("Shopify templates", "/templates/"),
         ("Template setup and launch", "/services/setup/"),
         ("Custom website", "/services/custom/"),
