@@ -107,9 +107,10 @@ VISION = {"label": "Our Vision",
           "lead": "Design solutions that elevate brands and create seamless user experiences.",
           "tail": "I help bring ideas to life with strategy and creativity"}
 
-def _svc(name, body, shots, tags, icon, variant=""):
+def _svc(name, body, shots, tags, icon, variant="", art=None):
+    """shots lists image files; art instead names a drawn tile set in build.py."""
     return {"name": name, "body": body, "shots": [IMG + s for s in shots],
-            "tags": tags, "icon": icon, "variant": variant}
+            "tags": tags, "icon": icon, "variant": variant, "art": art}
 
 HOME_SVC = [
     _svc("Creative Direction",
@@ -130,15 +131,18 @@ SERVICES_SVC = [
     _svc("Branding Design",
          "A strong brand is more than just a logo—it’s the foundation of how your audience perceives you. I create cohesive and impactful brand identities that ensure consistency and recognition across all touchpoints",
          ["82V0lDZt5IN8w9i1157kfT8pSU.jpg", "8ZlsEfjDITR5nOu3Yn61F22cbg.jpg", "Y1hHthCTPz6YNLIhonp2E5s5WU.jpg"],
-         ["Logo design", "Brand guideline", "Brand strategy", "+more"], "scan"),
+         ["Logo design", "Brand guideline", "Brand strategy", "+more"], "scan",
+         art="branding"),
     _svc("Web Development",
          "Transforming designs into fully responsive, interactive websites. Whether it’s a landing page or a full-scale web experience, I build fast, modern sites optimized for seamless performance",
          ["At4lVgdsU3vOE8OU9MxhtrSyU.png", "DxUbioKrcg6pEvPVPn8MKs3ShqY.png", "b89txAvenwqESiiy4RmX2Rq3cqw.png"],
-         ["Landing page", "Multipages", "Web migration", "+more"], "code", "blue lift"),
+         ["Landing page", "Multipages", "Web migration", "+more"], "code", "blue lift",
+         art="webdev"),
     _svc("UI/UX Design",
          "Designing user-centered experiences that are both functional and visually engaging. From concept to final prototype, I focus on intuitive interfaces that drive engagement and enhance usability",
          ["kFcT28JBAneTQjyVSMGiDyiwRlw.png", "Fm5dfyOw1px3Dsxu5sZmvHsOrKw.png", "6GwrKzXzNodjRpfhql82bLNul1E.jpg"],
-         ["Web & app design", "Design system", "Prototyping", "+more"], "monitor", "drop"),
+         ["Web & app design", "Design system", "Prototyping", "+more"], "monitor", "drop",
+         art="uiux"),
 ]
 
 # --- templates / themes ----------------------------------------------------

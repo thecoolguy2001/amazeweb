@@ -186,17 +186,54 @@ def stack(cards):
                 f'{shot}{stats}</div></article></div>')
     return out + "</section>"
 
+# --- service-card tiles --------------------------------------------------
+# The three squares under each Vision card. Drawn, like the service artwork
+# above, and each trio spells out what that card's three tags actually are.
+# They render around 88px square, so each tile holds one idea, no more.
+
+def _bars(spec, cls="b"):
+    return "".join(f'<i class="{cls}" style="width:{w}%"></i>' for w in spec)
+
+SVC_TILES = {
+    # Branding: the mark, the palette, the type — the three brand tags.
+    "branding": (
+        '<span class="stile st-mark"><i class="c1"></i><i class="c2"></i></span>'
+        '<span class="stile st-palette"><i></i><i></i><i></i><i></i></span>'
+        '<span class="stile st-type"><b>Aa</b>' + _bars([78, 54]) + '</span>'),
+    # Web development: a landing page, the code behind it, a multi-page stack.
+    "webdev": (
+        '<span class="stile st-browser"><i class="bar"></i><i class="hero"></i>'
+        '<i class="half"></i></span>'
+        '<span class="stile st-code">'
+        + "".join(f'<i class="{c}" style="width:{w}%"></i>'
+                  for c, w in (("k", 54), ("s", 72), ("p", 40), ("k", 64), ("s", 48)))
+        + '</span>'
+        '<span class="stile st-pages"><i class="p3"></i><i class="p2"></i><i class="p1"></i></span>'),
+    # UI/UX: an app screen, a component set, a prototype flow.
+    "uiux": (
+        '<span class="stile st-app"><i class="top"></i><i class="row"></i><i class="row s"></i>'
+        '<i class="tabs"></i></span>'
+        '<span class="stile st-system"><i class="pill"></i><i class="sw"></i><i class="tog"></i>'
+        '<i class="box"></i></span>'
+        '<span class="stile st-flow"><i class="f1"></i><i class="arw"></i><i class="f2"></i></span>'),
+}
+
+def svc_tiles(name):
+    return SVC_TILES[name]
+
 def vision_and_services(cards):
     svc = ""
     for c in cards:
-        shots = "".join(f'<img src="{s}" alt="" loading="lazy" decoding="async">' for s in c["shots"])
+        shots = (svc_tiles(c["art"]) if c.get("art") else
+                 "".join(f'<img src="{s}" alt="" loading="lazy" decoding="async">'
+                         for s in c["shots"]))
         tags = "".join(f'<span>{E(t)}</span>' for t in c["tags"])
         svc += (f'<a class="svc {c["variant"]}" href="/support/#support-message">'
                 f'<div class="svc-head"><span class="name">{E(c["name"])}</span>'
                 f'<span class="ico">{SVC_ICONS[c["icon"]]}</span></div>'
                 f'<div class="svc-body">'
                 f'<div class="svc-copy"><p class="t-16">{E(c["body"])}</p>'
-                f'<div class="svc-shots">{shots}</div></div>'
+                f'<div class="svc-shots{" art" if c.get("art") else ""}" aria-hidden="true">{shots}</div></div>'
                 f'<div class="svc-tags">{tags}</div></div></a>')
     return (f'<section class="wrap s-vision" id="ourvision">'
             f'<div class="vision"><p class="t-label tag">{E(VISION["label"])}</p>'

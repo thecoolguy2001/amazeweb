@@ -476,6 +476,75 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .svc-copy{display:flex;flex-direction:column;gap:12px}
 .svc-shots{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
 .svc-shots img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--r-img)}
+/* drawn tiles in place of the three thumbnails — each one is a tag of the
+   card above it. They land near 88px square, so one idea per tile. */
+.svc-shots.art{gap:6px}
+.stile{position:relative;aspect-ratio:1;border-radius:var(--r-img);overflow:hidden;
+       background:var(--surface-2);display:flex;flex-direction:column;
+       container-type:inline-size;   /* tiles run 61px on tablet and 92px on
+       desktop, so padding, gaps and the specimen all scale with the tile */
+       padding:10%;gap:5.5%;justify-content:center;
+       box-shadow:inset 0 0 0 1px rgba(0,0,0,.07)}  /* hairline: several tiles are
+       white, and without it they vanish into the white card behind them */
+.stile i{display:block;border-radius:3px;background:#CFCFCF;flex:0 0 auto}
+
+/* branding — mark, palette, type specimen */
+.st-mark{background:#F1F3E4;align-items:center;justify-content:center;flex-direction:row}
+.st-mark i{border-radius:50%;width:38%;aspect-ratio:1;height:auto}
+.st-mark .c1{background:var(--blue)}
+.st-mark .c2{background:var(--lime);margin-left:-13%;mix-blend-mode:multiply}
+.st-palette{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
+            gap:5%;padding:9%}
+.st-palette i{border-radius:4px;width:auto;height:auto}
+.st-palette i:nth-child(1){background:var(--ink-3)}
+.st-palette i:nth-child(2){background:var(--blue)}
+.st-palette i:nth-child(3){background:var(--lime)}
+.st-palette i:nth-child(4){background:var(--white);box-shadow:inset 0 0 0 1px var(--line)}
+.st-type{background:var(--white);justify-content:flex-start;gap:4px}
+.st-type b{font-size:28cqw;line-height:1;font-weight:600;letter-spacing:-.04em;
+           color:var(--ink-2);margin-bottom:4%}
+.st-type i{height:4px;background:var(--line)}
+
+/* web development — a landing page, its code, a multi-page stack */
+.st-browser{background:var(--white);justify-content:flex-start;gap:5%;padding:9%}
+.st-browser .bar{height:6px;border-radius:3px;background:var(--line)}
+.st-browser .hero{flex:1 1 auto;min-height:0;border-radius:5px;
+                  background:linear-gradient(135deg,#E9F5FF,#DFE6EC)}
+.st-browser .half{height:9px;width:62%;border-radius:4px;background:#DCDCDC}
+.st-code{background:var(--ink-4);gap:6%;padding:11%}
+.st-code i{height:4px}
+.st-code .k{background:var(--blue)}
+.st-code .s{background:var(--lime)}
+.st-code .p{background:#555}
+.st-pages{background:var(--white);display:block;padding:0}
+.st-pages i{position:absolute;border-radius:5px;background:var(--white);
+            border:1px solid var(--line);width:52%;height:66%}
+.st-pages .p1{left:13%;top:13%;box-shadow:0 2px 5px rgba(0,0,0,.08)}
+.st-pages .p2{left:26%;top:21%;background:var(--surface)}
+.st-pages .p3{left:39%;top:29%;background:var(--surface-2)}
+
+/* ui/ux — an app screen, a component set, a prototype flow */
+.st-app{background:var(--white);justify-content:flex-start;gap:5%;padding:9%}
+.st-app .top{height:10px;border-radius:4px;background:var(--blue)}
+.st-app .row{height:8px;border-radius:4px;background:var(--surface-2)}
+.st-app .row.s{width:64%}
+.st-app .tabs{margin-top:auto;height:8px;border-radius:4px;
+              background:repeating-linear-gradient(90deg,#D4D4D4 0 8px,transparent 8px 16px)}
+.st-system{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
+           gap:6%;padding:10%;background:var(--white)}
+.st-system i{width:auto;height:auto;border-radius:4px;background:var(--surface-2)}
+.st-system .pill{border-radius:999px;background:var(--blue)}
+.st-system .sw{background:var(--lime)}
+.st-system .tog{border-radius:999px;background:var(--surface-2);border:1px solid var(--line)}
+.st-flow{background:var(--white);flex-direction:row;align-items:center;gap:5%;padding:10%}
+.st-flow .f1,.st-flow .f2{flex:1 1 0;height:64%;border-radius:4px;background:var(--surface-2);
+                          border:1px solid var(--line)}
+.st-flow .f2{background:#E9F5FF;border-color:#CBE4F7}
+.st-flow .arw{position:relative;width:9px;height:2px;border-radius:0;background:var(--grey);flex:0 0 auto}   /* relative: its ::after arrowhead would otherwise anchor to the tile */
+.st-flow .arw::after{content:"";position:absolute;width:5px;height:5px;
+                     border-top:2px solid var(--grey);border-right:2px solid var(--grey);
+                     transform:translate(-2px,-2px) rotate(45deg)}
+
 .svc-tags{display:flex;flex-wrap:wrap;gap:8px}
 .svc-tags span{
   padding:6px 12px;border-radius:var(--r-pill);background:var(--surface);
