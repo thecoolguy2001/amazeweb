@@ -84,6 +84,84 @@ def hero(black, grey):
     return (f'<section class="wrap hero"><h1 class="t-hero">{E(black)} '
             f'<span class="muted">{E(grey)}</span></h1>')
 
+# --- card artwork --------------------------------------------------------
+# Drawn, not photographed: each scene shows the service its card sells, so it
+# stays honest (nothing is a screenshot of work we did not do) and adds no
+# binary assets. Decorative, hence aria-hidden.
+
+def _rows(spec):
+    """Code lines: (indent, [(class, width%), ...])."""
+    out = ""
+    for indent, parts in spec:
+        bars = "".join(f'<i class="{c}" style="width:{w}%"></i>' for c, w in parts)
+        out += f'<span class="row in{indent}"><i class="n"></i>{bars}</span>'
+    return out
+
+CHEVRON = ('<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">'
+           '<path d="M12 5v14m0 0 6-6m-6 6-6-6" stroke="currentColor" stroke-width="2.2" '
+           'stroke-linecap="round" stroke-linejoin="round"/></svg>')
+ENVELOPE = ('<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">'
+            '<rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/>'
+            '<path d="m3.5 7 8.5 6 8.5-6" stroke="currentColor" stroke-width="1.6" '
+            'stroke-linecap="round" stroke-linejoin="round"/></svg>')
+
+def _art_setup():
+    """A bought template being set up: real domain in the bar, one section
+       still snapping into place, and the same page already on a phone."""
+    nav = '<span class="l"></span><span class="l"></span><span class="l last"></span>'
+    return ('<div class="scard-art art-setup" aria-hidden="true">'
+            '<div class="win-bar"><i></i><i></i><i></i>'
+            '<span class="url">yourshop.com</span><span class="live">Live</span></div>'
+            '<div class="win-body">'
+            f'<div class="w-nav"><span class="mark"></span>{nav}</div>'
+            '<div class="w-hero"><span class="b1"></span><span class="b2"></span>'
+            '<span class="cta"></span></div>'
+            '<div class="w-grid"><span class="snap"></span><span></span><span></span></div>'
+            '</div>'
+            '<div class="w-phone"><span class="nub"></span><span class="s1"></span>'
+            '<span class="s2"></span><span class="s3"></span></div></div>')
+
+def _art_custom():
+    """Written from scratch, then rendered: the editor above, the page below."""
+    code = _rows([(0, [("k", 26), ("s", 34)]),
+                  (1, [("p", 18), ("k", 30), ("s", 22)]),
+                  (1, [("s", 44), ("p", 16)]),
+                  (2, [("k", 22), ("p", 38)]),
+                  (2, [("p", 30), ("s", 26), ("p", 14)]),
+                  (1, [("k", 18), ("p", 46)]),
+                  (0, [("p", 24), ("k", 20)]),
+                  (0, [("s", 38), ("p", 18)])])
+    return ('<div class="scard-art art-custom" aria-hidden="true">'
+            '<div class="code"><span class="tab">index.html</span>'
+            f'<div class="rows">{code}</div></div>'
+            f'<div class="seam"><span class="badge">{CHEVRON}</span></div>'
+            '<div class="out">'
+            '<div class="o-nav"><span class="mark"></span><span class="l"></span>'
+            '<span class="l"></span><span class="l last"></span></div>'
+            '<div class="o-hero"><span class="t1"></span><span class="t2"></span>'
+            '<span class="cta"></span></div>'
+            '<div class="o-row"><span></span><span></span><span></span></div>'
+            '</div></div>')
+
+def _art_tools():
+    """Four of the add-ons named in the card copy, each as its own small tool."""
+    bars = "".join(f'<i style="height:{h}%"></i>' for h in (34, 58, 46, 76, 92))
+    return ('<div class="scard-art art-tools" aria-hidden="true">'
+            '<div class="tool t-book"><p class="cap">Booking</p>'
+            '<div class="slots"><span></span><span class="on"></span><span></span>'
+            '<span></span></div></div>'
+            '<div class="tool t-form"><p class="cap">Signup</p>'
+            '<div class="field"></div><div class="field short"></div>'
+            '<div class="send"></div></div>'
+            f'<div class="tool t-mail"><p class="cap">Email</p><div class="env">{ENVELOPE}</div></div>'
+            f'<div class="tool t-stat"><p class="cap">Analytics</p><div class="bars">{bars}</div></div>'
+            '</div>')
+
+ART = {"setup": _art_setup, "custom": _art_custom, "tools": _art_tools}
+
+def card_art(name):
+    return ART[name]()
+
 def stack(cards):
     out = '<section class="stack" id="case-study">'
     for c in cards:
@@ -96,15 +174,16 @@ def stack(cards):
                         for k, v in pairs)
         stats = f'<div class="scard-stats">{stats}</div>' if pairs else ""
         shot_style = f' style="aspect-ratio:{c["ratio"]}"' if pairs else ""
+        shot = (card_art(c["art"]) if c.get("art") else
+                f'<img class="scard-shot"{shot_style} src="{c["img"]}" '
+                f'alt="" loading="lazy" decoding="async">')
         label, href = c["cta"]
         out += (f'<div class="stack-item"><article class="scard{dim}">'
                 f'<div class="scard-left"><h2 class="t-card-h">{E(c["title"])}</h2>'
                 f'<p class="t-18">{E(c["body"])}</p>'
                 f'<a class="btn" href="{href}">{E(label)}{ARROW}</a></div>'
                 f'<div class="scard-right{"" if pairs else " full"}">'
-                f'<img class="scard-shot"{shot_style} src="{c["img"]}" '
-                f'alt="" loading="lazy" decoding="async">'
-                f'{stats}</div></article></div>')
+                f'{shot}{stats}</div></article></div>')
     return out + "</section>"
 
 def vision_and_services(cards):

@@ -83,21 +83,23 @@ HOME_CARDS = [
      "stats": [("Conversion Rate", "12%"), ("User Satisfaction", "4.8*")], "dim": False},
 ]
 
+# These three carry drawn artwork instead of a photo: "art" names a scene in
+# build.py (card_art), so each card shows the thing it is selling.
 SERVICES_CARDS = [
     {"title": "Template Setup & Launch Support",
      "body": "Need help turning a template into a finished website? AmazeWeb can set up your Shopify template, replace placeholder content, adjust colors, connect pages, organize sections, and prepare your site for launch.",
      "cta": ("Learn More", "/services/setup/"),
-     "img": IMG + "FTAZ2Zly1EytGDVYhAqfSwh75I.png", "ratio": "428/269",
+     "art": "setup",
      "dim": True},
     {"title": "Custom Web Development",
      "body": "Need something built from scratch? AmazeWeb can design and develop a custom website based on your brand, content, features, and goals, giving you a site that feels made specifically for you.",
      "cta": ("Learn More", "/services/custom/"),
-     "img": IMG + "1x6Kw84z16xT9kYkhOHSldsqAF4.png", "ratio": "428/240",
+     "art": "custom",
      "dim": False},
     {"title": "Business Tools",
      "body": "Upgrade your site and business with extra tools and features. Add email design, signup forms, booking links, automations, AI tools, analytics, extra pages, product sections, and other integrations built around how your business works.",
      "cta": ("Learn More", "/services/tools/"),
-     "img": IMG + "KI7aSRP3L2vttQ79sArwUunvcBk.png", "ratio": "428/269",
+     "art": "tools",
      "dim": False},
 ]
 
