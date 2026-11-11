@@ -315,7 +315,7 @@ SETUP_TIERS = [
          "Everything in Launch",
          "Up to three extra pages: about, FAQ, a second collection",
          "Up to 50 products loaded in, with variants and images",
-         "A signup form and the welcome email it sends",
+         "Shopify Email Setup — signup form, welcome email and a branded template",
          "A review link worth sending, and analytics that tell you something",
        ]),
   dict(name="Done for you", price="from $1,600",
