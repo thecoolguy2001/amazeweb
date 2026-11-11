@@ -377,12 +377,10 @@ def tpl_card(t):
     """One template card, in the same language as the home-page service cards:
     a surface-coloured shell with a rounded inner panel for the artwork and a
     second inner panel for the name, the category pill and the status."""
-    if t.get("client"):
-        plat = f'<span class="tpl-plat is-client">Client build</span>'
-    elif t.get("platform"):
-        plat = f'<span class="tpl-plat">{E(t["platform"])}</span>'
-    else:
-        plat = ""
+    # No badge for a client build: the card stays plain and the page itself
+    # says who it was built for.
+    plat = (f'<span class="tpl-plat">{E(t["platform"])}</span>'
+            if t.get("platform") else "")
     thumb = (f'<img class="tpl-thumb" src="{t["shots"]}-card.png" alt="" '
              f'width="313" height="240" loading="lazy" decoding="async">'
              if t.get("shots") else '<div class="tpl-thumb ph-stripes"></div>')
@@ -405,10 +403,8 @@ def page_templates():
                  "Install the theme, add your products, and launch.") + '</section>'
             + f'<section class="wrap tpl-sec">'
               f'<h2 class="t-section tpl-head">Latest Templates</h2>'
-              f'<div class="tpl-grid">{cards}</div>'
-              f'<p class="tpl-note">Not selling online? We build sites for businesses that '
-              f'are not storefronts too \u2014 <a href="/services/custom/">see what we have built</a>.</p>'
-              f'</section>'
+              f'<div class="tpl-grid">{cards}</div></section>'
+            + svcx_panel(CUSTOM_PITCH)
             + vision_and_services(SERVICES_SVC) + faq_block())
     return shell("Shopify Templates | Amazé Web",
         "Browse AmazeWeb Shopify templates — install the theme, add your products, and launch.", body)

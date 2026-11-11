@@ -304,6 +304,15 @@ for _t in THEMES:
 # never read as work somebody commissioned.
 CLIENT_BUILDS = {}       # e.g. "restaurant-site": "Saltfold"
 
+# The grey panel under the template grid: a template is not the only way in,
+# and a custom build can be a storefront too.
+CUSTOM_PITCH = {"title": "Want a custom site?",
+                "body": "We build from scratch as well, storefronts included. If none of the "
+                        "templates is the right fit, we design and build the site around your "
+                        "business instead.",
+                "cta": ("See what we have built", "/services/custom/#our-work"),
+                "dim": False}
+
 EXAMPLES_HEAD = "Sites we have built"
 # Two versions of the same promise: the first is what is true until a client
 # build is listed above, the second takes over the moment one is.

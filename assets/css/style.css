@@ -227,6 +227,8 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .svcx-panel .btn{margin-top:40px}
 .svcx-panel.lead{margin-top:147px}      /* gap from the hero button, measured live */
 .shell .svcx-secs + .svcx-panel{margin-top:0}
+/* the custom-build panel under the template grid */
+.tpl-sec + .svcx-panel{margin-top:96px}
 .svcx-page .s-vision{margin-top:371px}
 /* The gap between "Our Vision" and the FAQ is not uniform on the published
    site: it is 1085px on the home page but 1178-1298px across the services
@@ -237,7 +239,6 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .svcx-page .s-faq{margin-top:371px}   /* = .svcx-page .s-vision above it */
 .svc-stack .s-vision{margin-top:286px}
 .svc-stack .s-faq{margin-top:286px}   /* = .svc-stack .s-vision above it */
-
 
 
 @media (max-width:809px){
@@ -692,9 +693,7 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .tpl-plat::before{
   content:"";width:7px;height:7px;border-radius:2px;background:#95BF47;flex:0 0 auto;
 }
-/* same pill, worn by a build made for a client rather than a platform mark */
-.tpl-plat.is-client{color:var(--blue)}
-.tpl-plat.is-client::before{background:var(--blue);border-radius:50%}
+
 .tpl-soon{
   position:absolute;top:12px;right:12px;
   padding:5px 11px;border-radius:var(--r-pill);
@@ -922,7 +921,6 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   .t-faq-h{font-size:32px;line-height:40px}
   .t-label{font-size:20px;line-height:20px}
   .footer-bar{font-size:20px;line-height:30px}
-
 
   .hero{gap:36px}
   .stack{gap:24px}
