@@ -1010,6 +1010,9 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   .theme-row{grid-template-columns:1fr;gap:20px}
   .theme-resp .row{grid-template-columns:1fr}
   .theme-mine{padding:24px}
+  /* the 45px indent is a desktop measurement; on a phone it just pushes the
+     sections out of line with the hero and the panels above them */
+  .svcx-secs{padding-left:0}
   .svcx-sec{grid-template-columns:1fr;gap:0}
   .sec-cards,.sec-list{grid-template-columns:1fr}
   .sec-list li{padding-left:14px}
