@@ -314,14 +314,11 @@ CUSTOM_PITCH = {"title": "Want a custom site?",
                 "dim": False}
 
 EXAMPLES_HEAD = "Sites we have built"
-# Two versions of the same promise: the first is what is true until a client
-# build is listed above, the second takes over the moment one is.
-EXAMPLES_NOTE_OURS = ("Each of these is a complete, working site you can click through. Right now "
-                      "every one is our own build, so the businesses in them are invented — "
-                      "client projects go here too as they go live.")
-EXAMPLES_NOTE_MIXED = ("Each of these is a complete, working site you can click through: client "
-                       "projects, and our own builds where the business is invented. Every one "
-                       "says which it is.")
+# A mix of client projects and our own builds. The line does not count either
+# kind, because the mix changes; each build's own page says which it is.
+EXAMPLES_NOTE = ("Client projects and our own builds. Each one is a complete, working site you "
+                 "can click through, and each says which it is.")
+
 EXAMPLE_LEAD = ("One of our own builds. The brand, the words and the pictures in it are invented; "
                 "the site itself is real and every page of it works. Yours would be built the "
                 "same way, around your business.")
@@ -383,11 +380,70 @@ SERVICE_PAGES = {
    "hero": ("Custom Website.", "Built from scratch around your business."),
    "panel": _TOOLS_INTRO,
    "sections": [
-     ("What you get", "Three levels,", "depending on how much already exists."),
-     ("What we build", "", "Different businesses, same standard."),
-     ("Process", "", "You see it in the browser halfway through, not at the end."),
-     ("Before we start", "", "What we will need from you."),
-     ("Other ways we help", "", ""),
+     ("What you get", "Three levels,", "depending on how much already exists.", [
+        ("Site only",
+         "You have a name, a logo and a rough idea of what the pages should say. We design "
+         "and build the site, put your words and pictures in, connect your domain and launch it."),
+        ("Site and brand",
+         "There is no logo yet, or it was made in a hurry and you have never liked it. We "
+         "settle the name treatment, the colours and the type first, then build on top of that."),
+        ("Site, brand and the tools around it",
+         "The site, plus the things that actually bring work in: enquiry forms, booking, email, "
+         "review links and analytics, set up and working on the day it goes live."),
+     ], "cards"),
+     ("What we build", "", "Different businesses, same standard.", [
+        ("Storefronts",
+         "Shopify, built around your products instead of bending a theme until it nearly fits."),
+        ("Service businesses",
+         "Trades, clinics, studios. Prices visible, and a way to book that works on a phone "
+         "held in one hand."),
+        ("Food and venues",
+         "A menu you can change yourself, opening hours that are right, and a table booked "
+         "in two taps."),
+        ("Portfolios and galleries",
+         "The work first and large, with a contact path that does not get lost underneath it."),
+        ("Launches",
+         "One page, one date, one thing for the visitor to do."),
+     ], "list"),
+     ("Process", "", "You see it in the browser halfway through, not at the end.", [
+        ("A call, then a brief",
+         "What the business does, who buys from you, and what has to happen on the site for "
+         "it to be worth building. Written down, so we are both working from the same page."),
+        ("Structure and words",
+         "Which pages exist, in what order, and what each one says. Agreed before anything "
+         "is designed, because moving a sentence is cheap and moving a page is not."),
+        ("Design in the browser",
+         "A real link you can open on your own phone, not a flat picture of a website. You "
+         "tell us what to change while it is still easy to change."),
+        ("Build and test",
+         "Real devices and real browsers. Every link followed, every form submitted, every "
+         "page checked at phone, tablet and desktop width."),
+        ("Launch",
+         "Domain connected, the site live, and your email left exactly as it was."),
+     ], "steps"),
+     ("Before we start", "", "What we will need from you.", [
+        ("Your logo",
+         "As a file rather than a screenshot of one. If you do not have it, say so and we "
+         "will make one."),
+        ("Pictures you are allowed to use",
+         "Your own photos are best. We will tell you what is missing and what we can source."),
+        ("What you sell, and for how much",
+         "Services or products, with the prices you want shown. If prices are not public, "
+         "that is a decision, not a blocker."),
+        ("Whatever words already exist",
+         "An old site, a flyer, a rough list in your notes. Anything beats a blank page."),
+        ("Access to your domain",
+         "The login for wherever it is registered, or the go-ahead for us to buy one for you."),
+        ("One person who decides",
+         "Two people with different opinions is the single most common reason a build runs "
+         "long."),
+     ], "list"),
+     ("Other ways we help", "", "", [
+        ("Shopify templates", "/templates/"),
+        ("Template setup and launch", "/services/setup/"),
+        ("Business tools", "/services/tools/"),
+        ("Ask a question", "/support/#support-message"),
+     ], "links"),
    ],
    "panel2": _P2,
  },

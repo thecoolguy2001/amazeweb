@@ -348,15 +348,44 @@ def setup_tiers_block():
             f'<h2 class="t-section tiers-head">Setup tiers</h2>'
             f'<div class="tiers">{cards}</div></section>')
 
+def sec_body(items, style):
+    """The content under a section heading. A section may carry none, in which
+    case the heading and its statement stand alone as they did before."""
+    if not items:
+        return ""
+    if style == "links":
+        return ('<div class="sec-links">'
+                + "".join(f'<a class="sec-link" href="{href}">{E(label)}{ARROW}</a>'
+                          for label, href in items)
+                + '</div>')
+    if style == "steps":
+        rows = "".join(
+            f'<li class="sec-step"><span class="n">{i:02d}</span>'
+            f'<div><h3>{E(t)}</h3><p>{E(p)}</p></div></li>'
+            for i, (t, p) in enumerate(items, 1))
+        return f'<ol class="sec-steps">{rows}</ol>'
+    if style == "cards":
+        return ('<div class="sec-cards">'
+                + "".join(f'<div class="sec-card"><h3>{E(t)}</h3><p>{E(p)}</p></div>'
+                          for t, p in items)
+                + '</div>')
+    return ('<ul class="sec-list">'
+            + "".join(f'<li><h3>{E(t)}</h3><p>{E(p)}</p></li>' for t, p in items)
+            + '</ul>')
+
 def page_service_sub(key):
     d = SERVICE_PAGES[key]
     secs = ""
-    for kick, grey, black in d["sections"]:
+    for sec in d["sections"]:
+        kick, grey, black = sec[0], sec[1], sec[2]
+        items = sec[3] if len(sec) > 3 else []
+        style = sec[4] if len(sec) > 4 else "list"
         stmt = ""
         if grey or black:
             g = f'<span class="mute">{E(grey)}</span> ' if grey else ""
             stmt = f'<p class="stat">{g}{E(black)}</p>'
-        secs += f'<div class="svcx-sec"><p class="kick">{E(kick)}</p>{stmt}</div>'
+        secs += (f'<div class="svcx-sec"><p class="kick">{E(kick)}</p>{stmt}'
+                 f'{sec_body(items, style)}</div>')
     body = (hero(d["hero"][0], d["hero"][1])
             + f'<a class="btn btn-hero" href="/support/#support-message">Get Started{ARROW}</a></section>'
             + svcx_panel(d["panel"], lead=True)
@@ -410,14 +439,11 @@ def page_templates():
         "Browse AmazeWeb Shopify templates — install the theme, add your products, and launch.", body)
 
 def examples_block():
-    """The non-storefront builds, shown as work rather than stock. The intro
-    line follows CLIENT_BUILDS, so the page never claims client work before
-    a client build is actually in it."""
+    """The non-storefront builds, shown as work rather than stock."""
     cards = "".join(tpl_card(t) for t in EXAMPLES)
-    note = EXAMPLES_NOTE_MIXED if any(t.get("client") for t in EXAMPLES) else EXAMPLES_NOTE_OURS
     return (f'<section class="wrap tpl-sec" id="our-work">'
             f'<h2 class="t-section tpl-head">{E(EXAMPLES_HEAD)}</h2>'
-            f'<p class="tpl-note">{E(note)}</p>'
+            f'<p class="tpl-note">{E(EXAMPLES_NOTE)}</p>'
             f'<div class="tpl-grid">{cards}</div></section>')
 
 def page_support():
