@@ -308,14 +308,14 @@ _P2 = {"title": "Not sure what you need? Tell us about your business.",
        "body": "Describe what is happening and we will recommend the smallest thing that "
                "fixes it, even when that means spending less with us.",
        "cta": ("Learn More", "/support/#support-message"),
-       "art": "support", "dim": False}
+       "dim": False}
 
 _TOOLS_INTRO = {
     "title": "Simple digital tools that help customers find, contact and review your business.",
     "body": "Each of these works on its own, costs a fraction of a website, and starts paying "
             "for itself the week it goes live. Most customers start here and build up from it.",
     "cta": ("Learn More", "/support/#support-message"),
-    "art": "tools", "dim": True}
+    "dim": True}
 
 SERVICE_PAGES = {
  "setup": {
@@ -328,7 +328,7 @@ SERVICE_PAGES = {
                      "own words and images, connected to your domain and working properly on a "
                      "phone is where most people stall. That is the part we do.",
              "cta": ("Buy Template Setup", "/support/#support-message"),
-             "art": "setup", "dim": True},
+             "dim": True},
    "sections": [
      ("Setup", "Everything between buying a template and", "having a website that works."),
      ("Add-Ons", "", "Bolt on whatever the template didn’t come with."),
