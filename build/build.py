@@ -377,7 +377,8 @@ def sec_body(items, style):
             for i, (t, p, _m) in enumerate(map(_priced, items), 1))
         return f'<ol class="sec-steps">{rows}</ol>'
     if style == "cards":
-        return ('<div class="sec-cards">'
+        wide = " n2" if len(items) == 4 else ""
+        return (f'<div class="sec-cards{wide}">'
                 + "".join(f'<div class="sec-card"><h3>{E(t)}</h3><p>{E(p)}</p>'
                           f'{_price_tag(m)}</div>'
                           for t, p, m in map(_priced, items))

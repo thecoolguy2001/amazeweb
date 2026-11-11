@@ -425,9 +425,11 @@ _PRICE_COVER = ("What the prices cover", "One-time, and agreed before anything s
      "Shopify’s own plan, your domain registration, and whatever a third-party tool "
      "charges for its paid tier. Those are paid by you, directly to them, and we will tell "
      "you which ones a job needs before it starts."),
-    ("Where a line says “from”",
-     "That figure is the smallest honest version of the job. Anything larger is quoted and "
-     "agreed in writing before work begins, never added afterwards."),
+    ("Where a price is a range, or says “from”",
+     "The low end is the straightforward version of the job; the high end is the one with "
+     "more in it — more pages, more products, more of the writing and the photography made "
+     "by us rather than handed to us. You are told which end you are at, and why, before "
+     "anything starts, never afterwards."),
 ], "list")
 
 SERVICE_PAGES = {
@@ -614,23 +616,21 @@ SERVICE_PAGES = {
          "A listing sends people somewhere. Making that somewhere good is the rest of what "
          "we do."),
      ], "list"),
-     ("Everyday Tools", "", "One link, one scan, one page that does its job.", [
-        ("One link for everything",
-         "A single page holding your menu, your booking, your number and your socials, for "
-         "the bio field that only allows one link.", "$149"),
-        ("A code people can scan",
-         "On the table, the window, the receipt or the van. You can change where it points "
-         "later without reprinting anything.", "$79"),
-        ("A booking link",
-         "Pick a slot, leave a number, done — on a phone, without ringing anybody.", "$199"),
-        ("An enquiry form that reaches you",
-         "Straight to the inbox you actually read, with an automatic reply so nobody is left "
-         "wondering.", "$179"),
-        ("A price list you can edit",
-         "Prices change. Changing them should not mean asking somebody and waiting a week.",
-         "$179"),
-        ("A one-page site",
-         "For when a full website is more than the business needs right now.", "from $449"),
+     ("Everyday Tools", "", "One link, one tap, one page that does its job.", [
+        ("Link-in-Bio Site",
+         "One page holding your menu, your booking, your number and your socials, for the "
+         "bio field that only allows a single link.", "$100–$200"),
+        ("Digital NFC Business Card",
+         "A card somebody taps with their phone to get your details, your booking page or "
+         "your socials. You can change where it points later without reprinting anything.",
+         "$50–$100"),
+        ("Booking Page",
+         "Pick a slot, leave a number, done — on a phone, without ringing anybody.",
+         "$100–$250"),
+        ("QR Menu",
+         "Your menu or price list on a page you can edit yourself, behind a code people scan "
+         "at the table. Changing a price should not mean asking somebody and waiting a week.",
+         "$75–$150"),
      ], "cards"),
      ("Email & automation", "Most small businesses do not lose customers to competitors.",
       "They lose them to nobody answering.", [

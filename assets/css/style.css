@@ -235,6 +235,8 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 /* three levels, side by side */
 .sec-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .sec-card{background:var(--surface);border-radius:var(--r-inner);padding:22px 20px}
+/* four of them: two up, rather than a row of three with one stranded */
+.sec-cards.n2{grid-template-columns:repeat(2,1fr)}
 
 /* a plain set of things, two up */
 .sec-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:24px 40px;
