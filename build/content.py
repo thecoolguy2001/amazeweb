@@ -374,10 +374,56 @@ SERVICE_PAGES = {
              "cta": ("Buy Template Setup", "/support/#support-message"),
              "dim": True},
    "sections": [
-     ("Setup", "Everything between buying a template and", "having a website that works."),
-     ("Add-Ons", "", "Bolt on whatever the template didn’t come with."),
-     ("How it runs", "", "Four steps, and the first one takes a minute."),
-     ("Other ways we help", "", ""),
+     ("Setup", "Everything between buying a template and", "having a website that works.", [
+        ("The theme installed",
+         "Into your own store, on your own account, so it stays yours whatever happens to us."),
+        ("Your content where the placeholder text was",
+         "Your words, your pictures, your products and the prices you want shown — not the "
+         "demo copy the template shipped with."),
+        ("Colours and type set to your brand",
+         "So it looks like you rather than like the demo everybody else also bought."),
+        ("Every page connected",
+         "Navigation, footer, contact, and the legal pages a shop is expected to have."),
+        ("Your domain pointed at it",
+         "Connected properly, with your email left exactly as it was."),
+        ("Checked on a phone",
+         "Which is how most of your customers will see it, whatever you designed it on."),
+     ], "list"),
+     ("Add-Ons", "", "Bolt on whatever the template didn’t come with.", [
+        ("Extra pages",
+         "Anything the template did not include: about, FAQ, a second collection, a landing "
+         "page for one campaign."),
+        ("Products loaded in",
+         "Your catalogue entered properly, with variants, images and the right prices, instead "
+         "of you typing all of it in yourself."),
+        ("Signup and a welcome email",
+         "A form that works and the first email it sends, written and designed in your brand."),
+        ("Booking or enquiry",
+         "A way to book a slot or ask a question that reaches you, rather than a form that "
+         "quietly goes nowhere."),
+        ("Reviews and analytics",
+         "A review link worth sending, and enough analytics to tell what people actually do "
+         "on the site."),
+        ("Brand basics",
+         "A logo tidied up, or made from scratch if there is not one yet."),
+     ], "cards"),
+     ("How it runs", "", "Four steps, and the first one takes a minute.", [
+        ("Tell us which template",
+         "That, plus whatever you already have: logo, pictures, words, product list. A rough "
+         "pile is fine."),
+        ("We install and fill it",
+         "The theme goes into your store and your content replaces the demo content."),
+        ("You look at a live link",
+         "On your own phone. You mark what you want changed, and we change it."),
+        ("We launch it",
+         "Domain connected, site live, and a note of what was done and where everything is."),
+     ], "steps"),
+     ("Other ways we help", "", "", [
+        ("Shopify templates", "/templates/"),
+        ("Custom website", "/services/custom/"),
+        ("Business tools", "/services/tools/"),
+        ("Ask a question", "/support/#support-message"),
+     ], "links"),
    ],
    "panel2": _P2,
  },
@@ -462,12 +508,58 @@ SERVICE_PAGES = {
    "hero": ("Business Tools.", "Small things that bring customers in."),
    "panel": _TOOLS_INTRO,
    "sections": [
-     ("Get found and reviewed", "Most local customers decide.", "before they ever reach your website."),
-     ("Everyday Tools", "", "One link, one scan, one page that does its job."),
+     ("Get found and reviewed", "Most local customers decide.",
+      "before they ever reach your website.", [
+        ("Your listing, tidied",
+         "The hours, the phone number, the address and the category, correct and saying the "
+         "same thing everywhere somebody might look."),
+        ("A review link worth sending",
+         "One short link, and a code people can scan on a table, a counter or the side of a "
+         "van, that opens straight on the review box."),
+        ("Photos of the real place",
+         "Not stock pictures of somebody else’s shop. We will tell you which ones to take."),
+        ("Somewhere worth landing on",
+         "A listing sends people somewhere. Making that somewhere good is the rest of what "
+         "we do."),
+     ], "list"),
+     ("Everyday Tools", "", "One link, one scan, one page that does its job.", [
+        ("One link for everything",
+         "A single page holding your menu, your booking, your number and your socials, for "
+         "the bio field that only allows one link."),
+        ("A code people can scan",
+         "On the table, the window, the receipt or the van. You can change where it points "
+         "later without reprinting anything."),
+        ("A booking link",
+         "Pick a slot, leave a number, done — on a phone, without ringing anybody."),
+        ("An enquiry form that reaches you",
+         "Straight to the inbox you actually read, with an automatic reply so nobody is left "
+         "wondering."),
+        ("A price list you can edit",
+         "Prices change. Changing them should not mean asking somebody and waiting a week."),
+        ("A one-page site",
+         "For when a full website is more than the business needs right now."),
+     ], "cards"),
      ("Email & automation", "Most small businesses do not lose customers to competitors.",
-      "They lose them to nobody answering."),
-     # live page reads "Other way we help" (missing s) — kept verbatim
-     ("Other way we help", "", ""),
+      "They lose them to nobody answering.", [
+        ("An automatic reply",
+         "Sent the moment somebody gets in touch, saying when a person will come back to "
+         "them. It costs nothing, and it stops people ringing the next business on the list."),
+        ("A list worth having",
+         "A signup form that works, and the welcome email it sends, so people who liked you "
+         "once can be reached again."),
+        ("Emails in your brand",
+         "A template you can reuse for an offer, a change of hours or a quiet month, that "
+         "does not look like it came out of a free tool."),
+        ("The follow-up after the job",
+         "A thank-you and a review ask, sent a few days later without you remembering to, "
+         "which is where most reviews actually come from."),
+     ], "list"),
+     ("Other way we help", "", "", [
+        ("Shopify templates", "/templates/"),
+        ("Template setup and launch", "/services/setup/"),
+        ("Custom website", "/services/custom/"),
+        ("Ask a question", "/support/#support-message"),
+     ], "links"),
    ],
    "panel2": _P2,
  },
