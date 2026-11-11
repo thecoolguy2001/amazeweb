@@ -208,27 +208,28 @@ def _bars(spec, cls="b"):
     return "".join(f'<i class="{cls}" style="width:{w}%"></i>' for w in spec)
 
 SVC_TILES = {
-    # Branding: the mark, the palette, the type — the three brand tags.
+    # Branding Design — logo, guideline, strategy.
     "branding": (
-        '<span class="stile st-mark"><i class="c1"></i><i class="c2"></i></span>'
-        '<span class="stile st-palette"><i></i><i></i><i></i><i></i></span>'
-        '<span class="stile st-type"><b>Aa</b>' + _bars([78, 54]) + '</span>'),
-    # Web development: a landing page, the code behind it, a multi-page stack.
+        '<span class="stile st-logo"><i class="m"></i><i class="w1"></i><i class="w2"></i></span>'
+        '<span class="stile st-guide"><span class="chips"><i></i><i></i><i></i></span>'
+        '<b>Aa</b><i class="ln"></i><i class="ln s"></i></span>'
+        '<span class="stile st-matrix"><i class="ax-v"></i><i class="ax-h"></i>'
+        '<i class="dot"></i><i class="dot2"></i></span>'),
+    # Web Development — a landing page, the code behind it, a multi-page stack.
     "webdev": (
-        '<span class="stile st-browser"><i class="bar"></i><i class="hero"></i>'
-        '<i class="half"></i></span>'
+        '<span class="stile st-land"><i class="bar"></i><i class="hero"></i>'
+        '<i class="cta"></i><i class="sec"></i></span>'
         '<span class="stile st-code">'
         + "".join(f'<i class="{c}" style="width:{w}%"></i>'
                   for c, w in (("k", 54), ("s", 72), ("p", 40), ("k", 64), ("s", 48)))
         + '</span>'
         '<span class="stile st-pages"><i class="p3"></i><i class="p2"></i><i class="p1"></i></span>'),
-    # UI/UX: an app screen, a component set, a prototype flow.
+    # UI/UX — an app on a phone, a component set, a prototype flow.
     "uiux": (
-        '<span class="stile st-app"><i class="top"></i><i class="row"></i><i class="row s"></i>'
-        '<i class="tabs"></i></span>'
-        '<span class="stile st-system"><i class="pill"></i><i class="sw"></i><i class="tog"></i>'
-        '<i class="box"></i></span>'
-        '<span class="stile st-flow"><i class="f1"></i><i class="arw"></i><i class="f2"></i></span>'),
+        '<span class="stile st-phone"><span class="scr"><i class="nub"></i><i class="hd"></i>'
+        '<i class="r"></i><i class="r s"></i></span></span>'
+        '<span class="stile st-sys"><i class="btn"></i><i class="tog"></i><i class="sld"></i></span>'
+        '<span class="stile st-proto"><i class="f1"></i><i class="arw"></i><i class="f2"></i></span>'),
 }
 
 def svc_tiles(name):

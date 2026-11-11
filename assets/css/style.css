@@ -476,46 +476,59 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .svc-copy{display:flex;flex-direction:column;gap:12px}
 .svc-shots{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
 .svc-shots img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--r-img)}
-/* drawn tiles in place of the three thumbnails — each one is a tag of the
-   card above it. They land near 88px square, so one idea per tile. */
+/* drawn tiles in place of the three thumbnails — one per tag on the card
+   above them. No two tiles share a shape: an earlier pass had the brand
+   palette and the design system both as 2x2 grids of blue and lime, which
+   read as the same picture twice. ~92px desktop, ~61px tablet. */
 .svc-shots.art{gap:6px}
 .stile{position:relative;aspect-ratio:1;border-radius:var(--r-img);overflow:hidden;
        background:var(--surface-2);display:flex;flex-direction:column;
        container-type:inline-size;   /* tiles run 61px on tablet and 92px on
-       desktop, so padding, gaps and the specimen all scale with the tile */
+       desktop, so padding, gaps and type all scale with the tile */
        padding:10%;gap:5.5%;justify-content:center;
        box-shadow:inset 0 0 0 1px rgba(0,0,0,.07)}  /* hairline: several tiles are
        white, and without it they vanish into the white card behind them */
 .stile i{display:block;border-radius:3px;background:#CFCFCF;flex:0 0 auto}
 
-/* branding — mark, palette, type specimen */
-.st-mark{background:#F1F3E4;align-items:center;justify-content:center;flex-direction:row}
-.st-mark i{border-radius:50%;width:38%;aspect-ratio:1;height:auto}
-.st-mark .c1{background:var(--blue)}
-.st-mark .c2{background:var(--lime);margin-left:-13%;mix-blend-mode:multiply}
-.st-palette{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
-            gap:5%;padding:9%}
-.st-palette i{border-radius:4px;width:auto;height:auto}
-.st-palette i:nth-child(1){background:var(--ink-3)}
-.st-palette i:nth-child(2){background:var(--blue)}
-.st-palette i:nth-child(3){background:var(--lime)}
-.st-palette i:nth-child(4){background:var(--white);box-shadow:inset 0 0 0 1px var(--line)}
-.st-type{background:var(--white);justify-content:flex-start;gap:4px}
-.st-type b{font-size:28cqw;line-height:1;font-weight:600;letter-spacing:-.04em;
-           color:var(--ink-2);margin-bottom:4%}
-.st-type i{height:4px;background:var(--line)}
+/* --- Branding Design --- */
+/* Logo design: a mark with its wordmark under it. */
+.st-logo{background:#F1F3E4;align-items:center;justify-content:center;gap:7%}
+.st-logo .m{width:34%;aspect-ratio:1;border-radius:26%;background:var(--ink-3);position:relative}
+.st-logo .m::after{content:"";position:absolute;inset:27%;border-radius:50%;background:var(--lime)}
+.st-logo .w1{width:52%;height:6%;border-radius:99px;background:#B9BFA2;margin-top:4%}
+.st-logo .w2{width:32%;height:5%;border-radius:99px;background:#CDD2BC}
+/* Brand guideline: a spec sheet — the colours, then the type, then the rules. */
+.st-guide{background:var(--white);justify-content:flex-start;gap:7%}
+.st-guide .chips{display:flex;gap:6%;flex:0 0 auto}
+.st-guide .chips i{flex:1;height:0;padding-bottom:30%;border-radius:2px}
+.st-guide .chips i:nth-child(1){background:var(--ink-3)}
+.st-guide .chips i:nth-child(2){background:var(--blue)}
+.st-guide .chips i:nth-child(3){background:var(--lime)}
+.st-guide b{font-size:26cqw;line-height:1;font-weight:600;letter-spacing:-.04em;color:var(--ink-2)}
+.st-guide .ln{height:5%;border-radius:99px;background:var(--line)}
+.st-guide .ln.s{width:60%}
+/* Brand strategy: where the brand sits — axes with a position plotted. */
+.st-matrix{background:var(--white);display:block}
+.st-matrix .ax-v{position:absolute;left:50%;top:16%;bottom:16%;width:1.5px;border-radius:0;background:var(--line)}
+.st-matrix .ax-h{position:absolute;top:50%;left:16%;right:16%;height:1.5px;border-radius:0;background:var(--line)}
+.st-matrix .dot{position:absolute;right:23%;top:23%;width:21%;aspect-ratio:1;border-radius:50%;background:var(--blue)}
+.st-matrix .dot2{position:absolute;left:27%;bottom:27%;width:11%;aspect-ratio:1;border-radius:50%;background:#DCDCDC}
 
-/* web development — a landing page, its code, a multi-page stack */
-.st-browser{background:var(--white);justify-content:flex-start;gap:5%;padding:9%}
-.st-browser .bar{height:6px;border-radius:3px;background:var(--line)}
-.st-browser .hero{flex:1 1 auto;min-height:0;border-radius:5px;
-                  background:linear-gradient(135deg,#E9F5FF,#DFE6EC)}
-.st-browser .half{height:9px;width:62%;border-radius:4px;background:#DCDCDC}
+/* --- Web Development --- */
+/* Landing page: one page, hero to call-to-action. */
+.st-land{background:var(--white);justify-content:flex-start;gap:5%}
+.st-land .bar{height:7%;border-radius:99px;background:var(--line)}
+.st-land .hero{flex:1 1 auto;min-height:0;border-radius:5px;
+               background:linear-gradient(135deg,#E9F5FF,#DCE4EA)}
+.st-land .cta{height:11%;width:42%;border-radius:99px;background:var(--blue)}
+.st-land .sec{height:13%;border-radius:4px;background:var(--surface-2)}
+/* The code behind it. */
 .st-code{background:var(--ink-4);gap:6%;padding:11%}
 .st-code i{height:4px}
 .st-code .k{background:var(--blue)}
 .st-code .s{background:var(--lime)}
 .st-code .p{background:#555}
+/* Multipages / migration: a stack of pages, not one. */
 .st-pages{background:var(--white);display:block;padding:0}
 .st-pages i{position:absolute;border-radius:5px;background:var(--white);
             border:1px solid var(--line);width:52%;height:66%}
@@ -523,27 +536,40 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .st-pages .p2{left:26%;top:21%;background:var(--surface)}
 .st-pages .p3{left:39%;top:29%;background:var(--surface-2)}
 
-/* ui/ux — an app screen, a component set, a prototype flow */
-.st-app{background:var(--white);justify-content:flex-start;gap:5%;padding:9%}
-.st-app .top{height:10px;border-radius:4px;background:var(--blue)}
-.st-app .row{height:8px;border-radius:4px;background:var(--surface-2)}
-.st-app .row.s{width:64%}
-.st-app .tabs{margin-top:auto;height:8px;border-radius:4px;
-              background:repeating-linear-gradient(90deg,#D4D4D4 0 8px,transparent 8px 16px)}
-.st-system{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
-           gap:6%;padding:10%;background:var(--white)}
-.st-system i{width:auto;height:auto;border-radius:4px;background:var(--surface-2)}
-.st-system .pill{border-radius:999px;background:var(--blue)}
-.st-system .sw{background:var(--lime)}
-.st-system .tog{border-radius:999px;background:var(--surface-2);border:1px solid var(--line)}
-.st-flow{background:var(--white);flex-direction:row;align-items:center;gap:5%;padding:10%}
-.st-flow .f1,.st-flow .f2{flex:1 1 0;height:64%;border-radius:4px;background:var(--surface-2);
-                          border:1px solid var(--line)}
-.st-flow .f2{background:#E9F5FF;border-color:#CBE4F7}
-.st-flow .arw{position:relative;width:9px;height:2px;border-radius:0;background:var(--grey);flex:0 0 auto}   /* relative: its ::after arrowhead would otherwise anchor to the tile */
-.st-flow .arw::after{content:"";position:absolute;width:5px;height:5px;
-                     border-top:2px solid var(--grey);border-right:2px solid var(--grey);
-                     transform:translate(-2px,-2px) rotate(45deg)}
+/* --- UI/UX Design --- */
+/* Web & app design: a handset, so it cannot be mistaken for the browser above. */
+.st-phone{background:var(--surface-2);align-items:center;justify-content:center;padding:9%}
+.st-phone .scr{width:58%;height:100%;border:2px solid var(--ink-3);border-radius:8px;
+               background:var(--white);display:flex;flex-direction:column;gap:7%;padding:9% 8%}
+.st-phone .nub{align-self:center;width:36%;height:4%;border-radius:99px;background:var(--ink-3)}
+.st-phone .hd{height:16%;border-radius:3px;background:var(--blue)}
+.st-phone .r{height:9%;border-radius:3px;background:var(--surface-2)}
+.st-phone .r.s{width:66%}
+/* Design system: the components themselves, listed. */
+.st-sys{background:var(--white);justify-content:center;gap:11%;align-items:flex-start}
+.st-sys .btn{height:17%;width:64%;border-radius:99px;background:var(--blue)}
+.st-sys .tog{position:relative;height:15%;width:42%;border-radius:99px;
+             background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line)}
+.st-sys .tog::after{content:"";position:absolute;right:4%;top:11%;bottom:11%;
+                    aspect-ratio:1;border-radius:50%;background:var(--lime)}
+.st-sys .sld{position:relative;height:8%;width:82%;border-radius:99px;background:var(--surface-2);
+             margin-top:4%}
+.st-sys .sld::after{content:"";position:absolute;left:54%;top:50%;width:22%;aspect-ratio:1;
+                    height:auto;   /* NOT a % height: the knob is a circle sized off its
+                    own width, and a % of an 8%-tall track draws an ellipse */
+                    transform:translateY(-50%);border-radius:50%;background:var(--white);
+                    box-shadow:inset 0 0 0 1.5px var(--blue)}
+/* Prototyping: one screen leading to the next. */
+.st-proto{background:var(--white);flex-direction:row;align-items:center;gap:5%;padding:10%}
+.st-proto .f1,.st-proto .f2{flex:1 1 0;height:64%;border-radius:4px;background:var(--surface-2);
+                            box-shadow:inset 0 0 0 1px var(--line)}
+.st-proto .f2{background:#E9F5FF;box-shadow:inset 0 0 0 1px #CBE4F7}
+.st-proto .arw{position:relative;width:9px;height:2px;border-radius:0;background:var(--grey);
+               flex:0 0 auto}   /* relative: its ::after arrowhead would otherwise
+               anchor to the tile */
+.st-proto .arw::after{content:"";position:absolute;width:5px;height:5px;
+                      border-top:2px solid var(--grey);border-right:2px solid var(--grey);
+                      transform:translate(-2px,-2px) rotate(45deg)}
 
 .svc-tags{display:flex;flex-wrap:wrap;gap:8px}
 .svc-tags span{
