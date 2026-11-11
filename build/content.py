@@ -29,7 +29,7 @@ FOOTER = {
 FAQ = [
     ("Get Started", [
         ("How does AmazeWeb work?",
-         "Choose a template, purchase it through our checkout, and receive everything you need to customize and launch your website."),
+         "Choose a template, buy it, and receive everything you need to customize and launch your website."),
         ("What platforms do you support?",
          "AmazeWeb focuses on Shopify templates and custom-built sites, with additional services for website setup, email design, and brand assets."),
         ("Can you set up the website for me?",
@@ -237,14 +237,14 @@ THEMES = [
 ]
 
 # ---------------------------------------------------------------- commerce
-# One set of purchase terms, inherited by all 14 theme pages. The money
-# fields are deliberately None: a page falls back to "Coming Soon" until a
-# real number is set here, so nothing false is ever published. Setting
-# `price` publishes it everywhere at once.
+# One set of purchase terms, inherited by every template page. One price for
+# all five Shopify themes, set here and published everywhere at once. Setting
+# a money field back to None returns that line to its honest empty state
+# ("Coming Soon", no price on the card), so nothing false is ever published.
 COMMERCE = {
     "note":        "One-time template access",
-    "price":       None,          # e.g. "$79"
-    "setup_from":  None,          # e.g. "$249" -- shown as "Setup from $249"
+    "price":       "$299",
+    "setup_from":  "$499",        # shown as "Setup from $499"
     "support":     "Includes 30 days of setup support after purchase.",
     "license":     "One license covers one live site.",
     # Stripe Payment Link per template, e.g. "https://buy.stripe.com/xxx".
@@ -254,6 +254,19 @@ COMMERCE = {
     "excluded":    "Content writing, custom sections, brand design, and ongoing "
                    "changes after launch. Setup and add-ons are available separately.",
 }
+
+# The price belongs in the FAQ too, and the FAQ must never disagree with the
+# theme pages about it. Appended here rather than written into FAQ above,
+# because it reads from COMMERCE -- and it disappears with the price.
+if COMMERCE["price"]:
+    _p, _s = COMMERCE["price"], COMMERCE.get("setup_from")
+    FAQ[0][1].append((
+        "What does it cost?",
+        f"A Shopify template is {_p}, one-time, for a theme you install on your own store."
+        + (f" Setup starts at {_s} if you would rather we installed it and put your content "
+           f"in for you." if _s else "")
+        + " Custom builds are quoted after a call, and the smaller business tools are priced "
+          "individually on the page that lists them."))
 
 # Templates that are actually built, with a live demo and real screenshots.
 # A theme not listed here keeps the striped placeholder and shows no demo
@@ -283,7 +296,38 @@ for _t in THEMES:
 # Setup tiers, shown on /services/setup/. The block is skipped entirely while
 # this is empty, so the page never advertises a tier that has no price.
 # Shape: dict(name=..., price=..., summary=..., includes=[...])
-SETUP_TIERS = []
+# Every figure says "from": the work scales with how much content there is to
+# place, and a number without "from" in front of it is a promise.
+SETUP_TIERS = [
+  dict(name="Launch", price="from $499",
+       summary="The template you bought, installed and live with your own content.",
+       includes=[
+         "The theme installed on your own store, on your own account",
+         "Your words, pictures and products in place of the demo content",
+         "Colours and type set to your brand",
+         "Every page connected, including the legal pages a shop needs",
+         "Your domain pointed at it, with your email left exactly as it was",
+         "Checked on a real phone before it goes live",
+       ]),
+  dict(name="Complete", price="from $899",
+       summary="Launch, plus the pages and the catalogue the template did not come with.",
+       includes=[
+         "Everything in Launch",
+         "Up to three extra pages: about, FAQ, a second collection",
+         "Up to 50 products loaded in, with variants and images",
+         "A signup form and the welcome email it sends",
+         "A review link worth sending, and analytics that tell you something",
+       ]),
+  dict(name="Done for you", price="from $1,600",
+       summary="Everything, including the brand basics and the tools that bring work in.",
+       includes=[
+         "Everything in Complete",
+         "Your logo tidied up, or made from scratch if there is not one yet",
+         "Booking or enquiry that reaches the inbox you actually read",
+         "An automatic reply, so nobody is left wondering",
+         "60 days of support after launch instead of 30",
+       ]),
+]
 
 # Which templates ship as Shopify themes. The rest are not storefronts, so they
 # carry no platform tag at all rather than a second label that says "not Shopify".
@@ -312,6 +356,11 @@ CUSTOM_PITCH = {"title": "Want a custom site?",
                         "business instead.",
                 "cta": ("See what we have built", "/services/custom/#our-work"),
                 "dim": False}
+
+# Stated once above the template grid. It reads from COMMERCE, so the page can
+# never disagree with the theme pages about what a template costs.
+TEMPLATES_NOTE = ("{price} each, one-time, for a theme you install on your own store. "
+                  "Setup from {setup} if you would rather we did it for you.")
 
 EXAMPLES_HEAD = "Sites we have built"
 # A mix of client projects and our own builds. The line does not count either
@@ -361,6 +410,26 @@ _TOOLS_INTRO = {
     "cta": ("Learn More", "/support/#support-message"),
     "dim": True}
 
+
+# The same terms sit on the setup and tools pages, because they are the same
+# terms. Anything a third party charges for its own account is theirs, not
+# ours, and a page that quotes a price has to say so.
+_PRICE_COVER = ("What the prices cover", "One-time, and agreed before anything starts.", "", [
+    ("One-time, not a subscription",
+     "You pay once for the work. We do not bill monthly, and nothing we set up stops "
+     "working if you stop talking to us."),
+    ("Everything in your own accounts",
+     "The store, the domain, the listing and the inbox are all in your name, so it stays "
+     "yours whatever happens to us."),
+    ("What is not in the price",
+     "Shopify’s own plan, your domain registration, and whatever a third-party tool "
+     "charges for its paid tier. Those are paid by you, directly to them, and we will tell "
+     "you which ones a job needs before it starts."),
+    ("Where a line says “from”",
+     "That figure is the smallest honest version of the job. Anything larger is quoted and "
+     "agreed in writing before work begins, never added afterwards."),
+], "list")
+
 SERVICE_PAGES = {
  "setup": {
    "title": "Setup & Add-Ons | Amazé Web",
@@ -392,20 +461,21 @@ SERVICE_PAGES = {
      ("Add-Ons", "", "Bolt on whatever the template didn’t come with.", [
         ("Extra pages",
          "Anything the template did not include: about, FAQ, a second collection, a landing "
-         "page for one campaign."),
+         "page for one campaign.", "$149 a page"),
         ("Products loaded in",
          "Your catalogue entered properly, with variants, images and the right prices, instead "
-         "of you typing all of it in yourself."),
+         "of you typing all of it in yourself.", "$249 for up to 50"),
         ("Signup and a welcome email",
-         "A form that works and the first email it sends, written and designed in your brand."),
+         "A form that works and the first email it sends, written and designed in your brand.",
+         "$249"),
         ("Booking or enquiry",
          "A way to book a slot or ask a question that reaches you, rather than a form that "
-         "quietly goes nowhere."),
+         "quietly goes nowhere.", "$199"),
         ("Reviews and analytics",
          "A review link worth sending, and enough analytics to tell what people actually do "
-         "on the site."),
+         "on the site.", "$199"),
         ("Brand basics",
-         "A logo tidied up, or made from scratch if there is not one yet."),
+         "A logo tidied up, or made from scratch if there is not one yet.", "from $349"),
      ], "cards"),
      ("How it runs", "", "Four steps, and the first one takes a minute.", [
         ("Tell us which template",
@@ -418,6 +488,7 @@ SERVICE_PAGES = {
         ("We launch it",
          "Domain connected, site live, and a note of what was done and where everything is."),
      ], "steps"),
+     _PRICE_COVER,
      ("Other ways we help", "", "", [
         ("Shopify templates", "/templates/"),
         ("Custom website", "/services/custom/"),
@@ -437,13 +508,16 @@ SERVICE_PAGES = {
      ("What you get", "Three levels,", "depending on how much already exists.", [
         ("Site only",
          "You have a name, a logo and a rough idea of what the pages should say. We design "
-         "and build the site, put your words and pictures in, connect your domain and launch it."),
+         "and build the site, put your words and pictures in, connect your domain and launch it.",
+         "Quoted"),
         ("Site and brand",
          "There is no logo yet, or it was made in a hurry and you have never liked it. We "
-         "settle the name treatment, the colours and the type first, then build on top of that."),
+         "settle the name treatment, the colours and the type first, then build on top of that.",
+         "Quoted"),
         ("Site, brand and the tools around it",
          "The site, plus the things that actually bring work in: enquiry forms, booking, email, "
-         "review links and analytics, set up and working on the day it goes live."),
+         "review links and analytics, set up and working on the day it goes live.",
+         "Quoted"),
      ], "cards"),
      ("What we build", "", "Different businesses, same standard.", [
         ("Storefronts",
@@ -492,6 +566,23 @@ SERVICE_PAGES = {
          "Two people with different opinions is the single most common reason a build runs "
          "long."),
      ], "list"),
+     ("What it costs", "Every custom build is quoted.",
+      "No two are the same shape, so no two cost the same.", [
+        ("You get one figure, in writing, before anything starts",
+         "After the call and the brief we send a single price for the whole build. It does "
+         "not move unless you ask for something that was not in the brief, and then you see "
+         "the new figure before we touch it."),
+        ("What moves the number",
+         "How many pages there are, whether a brand exists yet, whether products, booking or "
+         "payments have to work, and how much of the writing and the photography we are "
+         "making rather than being handed."),
+        ("What is not in it",
+         "Shopify’s own plan, your domain, and anything a third-party tool charges for its "
+         "paid tier. Those are paid by you, directly to them."),
+        ("The smaller version, if there is one",
+         "If a template plus setup would do the same job for less, we will say so and point "
+         "you at it instead of quoting you for a custom build you do not need."),
+     ], "list"),
      ("Other ways we help", "", "", [
         ("Shopify templates", "/templates/"),
         ("Template setup and launch", "/services/setup/"),
@@ -512,12 +603,13 @@ SERVICE_PAGES = {
       "before they ever reach your website.", [
         ("Your listing, tidied",
          "The hours, the phone number, the address and the category, correct and saying the "
-         "same thing everywhere somebody might look."),
+         "same thing everywhere somebody might look.", "$199"),
         ("A review link worth sending",
          "One short link, and a code people can scan on a table, a counter or the side of a "
-         "van, that opens straight on the review box."),
+         "van, that opens straight on the review box.", "$149"),
         ("Photos of the real place",
-         "Not stock pictures of somebody else’s shop. We will tell you which ones to take."),
+         "Not stock pictures of somebody else’s shop. We will tell you which ones to take.",
+         "Included with either of the above"),
         ("Somewhere worth landing on",
          "A listing sends people somewhere. Making that somewhere good is the rest of what "
          "we do."),
@@ -525,35 +617,38 @@ SERVICE_PAGES = {
      ("Everyday Tools", "", "One link, one scan, one page that does its job.", [
         ("One link for everything",
          "A single page holding your menu, your booking, your number and your socials, for "
-         "the bio field that only allows one link."),
+         "the bio field that only allows one link.", "$149"),
         ("A code people can scan",
          "On the table, the window, the receipt or the van. You can change where it points "
-         "later without reprinting anything."),
+         "later without reprinting anything.", "$79"),
         ("A booking link",
-         "Pick a slot, leave a number, done — on a phone, without ringing anybody."),
+         "Pick a slot, leave a number, done — on a phone, without ringing anybody.", "$199"),
         ("An enquiry form that reaches you",
          "Straight to the inbox you actually read, with an automatic reply so nobody is left "
-         "wondering."),
+         "wondering.", "$179"),
         ("A price list you can edit",
-         "Prices change. Changing them should not mean asking somebody and waiting a week."),
+         "Prices change. Changing them should not mean asking somebody and waiting a week.",
+         "$179"),
         ("A one-page site",
-         "For when a full website is more than the business needs right now."),
+         "For when a full website is more than the business needs right now.", "from $449"),
      ], "cards"),
      ("Email & automation", "Most small businesses do not lose customers to competitors.",
       "They lose them to nobody answering.", [
         ("An automatic reply",
          "Sent the moment somebody gets in touch, saying when a person will come back to "
-         "them. It costs nothing, and it stops people ringing the next business on the list."),
+         "them. It is the cheapest thing on this page, and it stops people ringing the next "
+         "business on the list.", "$99"),
         ("A list worth having",
          "A signup form that works, and the welcome email it sends, so people who liked you "
-         "once can be reached again."),
+         "once can be reached again.", "$249"),
         ("Emails in your brand",
          "A template you can reuse for an offer, a change of hours or a quiet month, that "
-         "does not look like it came out of a free tool."),
+         "does not look like it came out of a free tool.", "$249"),
         ("The follow-up after the job",
          "A thank-you and a review ask, sent a few days later without you remembering to, "
-         "which is where most reviews actually come from."),
+         "which is where most reviews actually come from.", "$249"),
      ], "list"),
+     _PRICE_COVER,
      ("Other ways we help", "", "", [
         ("Shopify templates", "/templates/"),
         ("Template setup and launch", "/services/setup/"),

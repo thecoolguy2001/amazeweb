@@ -352,6 +352,14 @@ def setup_tiers_block():
             f'<h2 class="t-section tiers-head">Setup tiers</h2>'
             f'<div class="tiers">{cards}</div></section>')
 
+def _priced(it):
+    """An item is (title, body) or (title, body, price). The price is optional
+    because most sections describe what happens rather than what it costs."""
+    return (it[0], it[1], it[2] if len(it) > 2 else "")
+
+def _price_tag(price):
+    return f'<p class="sec-price">{E(price)}</p>' if price else ""
+
 def sec_body(items, style):
     """The content under a section heading. A section may carry none, in which
     case the heading and its statement stand alone as they did before."""
@@ -366,15 +374,17 @@ def sec_body(items, style):
         rows = "".join(
             f'<li class="sec-step"><span class="n">{i:02d}</span>'
             f'<div><h3>{E(t)}</h3><p>{E(p)}</p></div></li>'
-            for i, (t, p) in enumerate(items, 1))
+            for i, (t, p, _m) in enumerate(map(_priced, items), 1))
         return f'<ol class="sec-steps">{rows}</ol>'
     if style == "cards":
         return ('<div class="sec-cards">'
-                + "".join(f'<div class="sec-card"><h3>{E(t)}</h3><p>{E(p)}</p></div>'
-                          for t, p in items)
+                + "".join(f'<div class="sec-card"><h3>{E(t)}</h3><p>{E(p)}</p>'
+                          f'{_price_tag(m)}</div>'
+                          for t, p, m in map(_priced, items))
                 + '</div>')
     return ('<ul class="sec-list">'
-            + "".join(f'<li><h3>{E(t)}</h3><p>{E(p)}</p></li>' for t, p in items)
+            + "".join(f'<li><h3>{E(t)}</h3><p>{E(p)}</p>{_price_tag(m)}</li>'
+                      for t, p, m in map(_priced, items))
             + '</ul>')
 
 def page_service_sub(key):
@@ -393,8 +403,10 @@ def page_service_sub(key):
     body = (hero(d["hero"][0], d["hero"][1])
             + f'<a class="btn btn-hero" href="/support/#support-message">Get Started{ARROW}</a></section>'
             + svcx_panel(d["panel"], lead=True)
-            + f'<section class="wrap svcx-secs">{secs}</section>'
+            # Price before detail: the tiers answer the first question, and the
+            # sections below them say what each line of a tier actually means.
             + (setup_tiers_block() if key == "setup" else "")
+            + f'<section class="wrap svcx-secs">{secs}</section>'
             + (examples_block() if key == "custom" else "")
               + svcx_panel(d["panel2"])
             + vision_and_services(SERVICES_SVC) + faq_block())
@@ -420,8 +432,13 @@ def tpl_card(t):
     if t.get("example"):
         status = ""   # not for sale, so neither "Demo ready" nor "Coming Soon"
     else:
-        status = (f'<span class="tpl-soon">'
-                  f'{"Demo ready" if t.get("demo") else "Coming Soon"}</span>')
+        # The card answers the first question a buyer has. Price wins over
+        # "Demo ready" because a demo button is right there on the page it
+        # opens; it falls back to the build state when no price is set.
+        label = (t.get("price") or COMMERCE["price"]
+                 or ("Demo ready" if t.get("demo") else "Coming Soon"))
+        status = f'<span class="tpl-soon">{E(label)}</span>'
+
     return (f'<a class="tpl-card" href="/themes/{t["slug"]}/">'
             f'<div class="tpl-media">{thumb}'
             f'{plat}{status}</div>'
@@ -430,12 +447,23 @@ def tpl_card(t):
             f'<span class="tpl-cat">{E(t["kicker"])}</span>'
             f'</div></a>')
 
+def tpl_note():
+    """The price, said once above the grid. Skipped while no price is set, so
+    the page never carries a sentence with a hole in it."""
+    price, setup = COMMERCE.get("price"), COMMERCE.get("setup_from")
+    if not price:
+        return ""
+    text = (TEMPLATES_NOTE.format(price=price, setup=setup) if setup
+            else TEMPLATES_NOTE.split(" Setup from")[0].format(price=price, setup=""))
+    return f'<p class="tpl-note">{E(text)}</p>'
+
 def page_templates():
     cards = "".join(tpl_card(t) for t in TEMPLATES)
     body = (hero("Shopify templates for your store.",
                  "Install the theme, add your products, and launch.") + '</section>'
             + f'<section class="wrap tpl-sec">'
               f'<h2 class="t-section tpl-head">Latest Templates</h2>'
+              f'{tpl_note()}'
               f'<div class="tpl-grid">{cards}</div></section>'
             + svcx_panel(CUSTOM_PITCH)
             + vision_and_services(SERVICES_SVC) + faq_block())

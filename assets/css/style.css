@@ -241,6 +241,14 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   margin:0;padding:0}
 .sec-list li{padding-left:16px;border-left:2px solid var(--line)}
 
+/* the price of one thing, under what it is. A hairline rather than a coloured
+   pill: a price has to be read as a fact, not as a button. */
+.sec-cards .sec-price,.sec-list .sec-price{font-size:15px;line-height:22px;
+  font-weight:600;letter-spacing:-.1px;color:var(--ink-2);
+  margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line)}
+.sec-card{display:flex;flex-direction:column}
+.sec-card .sec-price{margin-top:auto}
+
 /* numbered, because the order is the point */
 .sec-steps{list-style:none;display:flex;flex-direction:column;gap:20px;margin:0;padding:0}
 .sec-step{display:flex;gap:18px;align-items:flex-start}
