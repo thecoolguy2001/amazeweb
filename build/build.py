@@ -7,6 +7,19 @@ from content import *
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 E = lambda s: html.escape(s, quote=True)
 
+# ---------------------------------------------------------------- asset hashes
+# GitHub Pages serves everything with cache-control: max-age=600, so a browser
+# can hold a ten-minute-old style.css while already running today's HTML — the
+# markup arrives, the rules that size it do not, and the page renders gutted.
+# Fingerprinting the URL makes a changed file a different file, so that skew
+# cannot happen: the browser either has this exact build's CSS or fetches it.
+def _v(relpath):
+    f = ROOT / relpath.lstrip("/")
+    if not f.exists():
+        return relpath
+    import hashlib
+    return f"{relpath}?v={hashlib.sha1(f.read_bytes()).hexdigest()[:10]}"
+
 # ---------------------------------------------------------------- icons
 ARROW = ('<svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">'
          '<path d="M4 12L12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.6" '
@@ -255,8 +268,8 @@ def shell(title, desc, body, extra_head="", cls=""):
 <link rel="apple-touch-icon" href="/assets/img/favicon-180.png">
 <link rel="preload" href="/assets/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-display-700-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/fonts.css">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="{_v("/assets/css/fonts.css")}">
+<link rel="stylesheet" href="{_v("/assets/css/style.css")}">
 <meta property="og:title" content="{E(title)}">
 <meta property="og:description" content="{E(desc)}">
 <meta property="og:type" content="website">
@@ -267,7 +280,7 @@ def shell(title, desc, body, extra_head="", cls=""):
 {body}
 {footer()}
 </div></main>
-<script src="/assets/js/app.js" defer></script>
+<script src="{_v("/assets/js/app.js")}" defer></script>
 </body>
 </html>
 """
