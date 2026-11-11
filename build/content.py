@@ -611,12 +611,15 @@ SERVICE_PAGES = {
          "The hours, the phone number, the address and the category, correct and saying the "
          "same thing everywhere somebody might look, plus a list of the photos of the real "
          "place worth taking.", "$75–$150"),
-        ("Review Starter Pack",
-         "One short link that opens straight on the review box, and a printed code people "
-         "can scan on a table, a counter or the side of a van.", "$100–$150"),
         ("Google Review NFC Card",
-         "A card on the counter a customer taps with their phone and lands on your review "
-         "box. No app, no typing, and no finding you on a map first.", "$50–$75"),
+         "One branded card a customer taps with their phone to land straight on your Google "
+         "review box. A QR code on the back for phones that will not tap, programmed and "
+         "tested before it reaches you. No app, no typing, no finding you on a map first.",
+         "$50–$75"),
+        ("Review Starter Pack",
+         "The same card, two or three of them, so there is one at the till, one where people "
+         "wait and one by the door — plus a printable QR sign for the counter. The whole "
+         "place set up to collect reviews rather than one spot in it.", "$100–$150"),
      ], "cards"),
      ("Everyday Tools", "", "One link, one tap, one page that does its job.", [
         ("Link-in-Bio Site",
