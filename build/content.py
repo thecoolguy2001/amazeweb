@@ -291,6 +291,21 @@ SHOPIFY_THEMES = {"styler", "clothing-site", "cosmetics-site", "icon", "drop"}
 for _t in THEMES:
     if _t["slug"] in SHOPIFY_THEMES:
         _t["platform"] = "Shopify"
+    else:
+        # Not a storefront, so not something a buyer could install and use on
+        # their own. These are shown on /services/custom/ as work we have
+        # built, and are not for sale.
+        _t["example"] = True
+
+# Said plainly on every example page and over the gallery: these are our own
+# builds with invented brands, not commissioned client work.
+EXAMPLES_HEAD = "Sites we have built"
+EXAMPLES_NOTE = ("Each of these is a complete, working site you can click through. They are our "
+                 "own builds, made to show the standard and the range — the businesses in them "
+                 "are invented, not clients.")
+EXAMPLE_LEAD = ("This is one of our own builds, not a client project. The brand, the words and "
+                "the pictures in it are invented; the site itself is real and you can use every "
+                "page of it. Yours would be built the same way, around your business.")
 
 THEME_SLUG_TO_CARD = {t["slug"]: t for t in THEMES}
 

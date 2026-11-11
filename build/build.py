@@ -362,9 +362,16 @@ def page_service_sub(key):
             + svcx_panel(d["panel"], lead=True)
             + f'<section class="wrap svcx-secs">{secs}</section>'
             + (setup_tiers_block() if key == "setup" else "")
+            + (examples_block() if key == "custom" else "")
               + svcx_panel(d["panel2"])
             + vision_and_services(SERVICES_SVC) + faq_block())
     return shell(d["title"], d["desc"], body, cls="svcx-page")
+
+# The catalogue splits in two: what someone can buy and install themselves,
+# and what we show as our own work. A static site is not a product a buyer
+# could do anything with, so it is not sold.
+TEMPLATES = [t for t in THEMES if not t.get("example")]
+EXAMPLES = [t for t in THEMES if t.get("example")]
 
 def tpl_card(t):
     """One template card, in the same language as the home-page service cards:
@@ -375,26 +382,40 @@ def tpl_card(t):
     thumb = (f'<img class="tpl-thumb" src="{t["shots"]}-card.png" alt="" '
              f'width="313" height="240" loading="lazy" decoding="async">'
              if t.get("shots") else '<div class="tpl-thumb ph-stripes"></div>')
-    status = ("Demo ready" if t.get("demo") else "Coming Soon")
+    if t.get("example"):
+        status = ""   # not for sale, so neither "Demo ready" nor "Coming Soon"
+    else:
+        status = (f'<span class="tpl-soon">'
+                  f'{"Demo ready" if t.get("demo") else "Coming Soon"}</span>')
     return (f'<a class="tpl-card" href="/themes/{t["slug"]}/">'
             f'<div class="tpl-media">{thumb}'
-            f'{plat}<span class="tpl-soon">{status}</span></div>'
+            f'{plat}{status}</div>'
             f'<div class="tpl-body">'
             f'<p class="tpl-name">{E(t["name"])}</p>'
             f'<span class="tpl-cat">{E(t["kicker"])}</span>'
             f'</div></a>')
 
 def page_templates():
-    cards = "".join(tpl_card(t) for t in THEMES)
-    body = (hero("Find the perfect website template for your business.",
-                 "Designed for conversions, easy to customize, and ready to launch.") + '</section>'
+    cards = "".join(tpl_card(t) for t in TEMPLATES)
+    body = (hero("Shopify templates for your store.",
+                 "Install the theme, add your products, and launch.") + '</section>'
             + f'<section class="wrap tpl-sec">'
               f'<h2 class="t-section tpl-head">Latest Templates</h2>'
-              f'<div class="tpl-grid">{cards}</div></section>'
+              f'<div class="tpl-grid">{cards}</div>'
+              f'<p class="tpl-note">Not selling online? We build sites for businesses that '
+              f'are not storefronts too \u2014 <a href="/services/custom/">see what we have built</a>.</p>'
+              f'</section>'
             + vision_and_services(SERVICES_SVC) + faq_block())
-    return shell("Templates | Amazé Web",
-        "Browse AmazeWeb website templates for Shopify and custom builds — designed for conversions, "
-        "easy to customize, and ready to launch.", body)
+    return shell("Shopify Templates | Amazé Web",
+        "Browse AmazeWeb Shopify templates — install the theme, add your products, and launch.", body)
+
+def examples_block():
+    """The nine non-storefront builds, shown as work rather than stock."""
+    cards = "".join(tpl_card(t) for t in EXAMPLES)
+    return (f'<section class="wrap tpl-sec" id="our-work">'
+            f'<h2 class="t-section tpl-head">{E(EXAMPLES_HEAD)}</h2>'
+            f'<p class="tpl-note">{E(EXAMPLES_NOTE)}</p>'
+            f'<div class="tpl-grid">{cards}</div></section>')
 
 def page_support():
     # Message is a SELECT on the published site, not a free-text box: the SSR
@@ -423,8 +444,11 @@ def page_support():
         "Get help with AmazeWeb templates, setup, and launch support. Check the FAQs or send a message.", body)
 
 def page_theme(t):
-    # The rail skips the theme you are already on -- the old grid listed it.
-    others = "".join(tpl_card(o) for o in THEMES if o["slug"] != t["slug"])
+    # The rail stays inside its own catalogue: an example never advertises a
+    # template for sale, and a template never points at something unbuyable.
+    example = bool(t.get("example"))
+    siblings = EXAMPLES if example else TEMPLATES
+    others = "".join(tpl_card(o) for o in siblings if o["slug"] != t["slug"])
     # Same platform mark the card carries, so the two agree. .theme-head is a
     # 4-child flex column whose children are staggered by the entrance
     # animation -- the meta row keeps that count at 4.
@@ -442,7 +466,9 @@ def page_theme(t):
     # Availability, told straight. A theme with a live demo but no price is
     # viewable and not yet purchasable, and saying only "Coming Soon" next to
     # a working demo button reads like the demo is not real.
-    if price == "Coming Soon":
+    if example:
+        avail = "A site we built"
+    elif price == "Coming Soon":
         avail = "Demo ready, not yet for sale" if t.get("demo") else "Coming Soon"
     else:
         avail = "Available now"
@@ -450,6 +476,34 @@ def page_theme(t):
     if buy_url:
         label = f'Buy {price}' if price != "Coming Soon" else "Buy"
         demo_btn += (f'<a class="btn btn-buy" href="{buy_url}" rel="noopener">{E(label)}</a>')
+    # Everything that differs between a template for sale and a build we are
+    # showing, decided once here rather than scattered through the markup.
+    if example:
+        buy_section = (f'<section class="theme-buy example">'
+                       f'<div class="buy-left"><p class="note">Our own build</p>'
+                       f'<p class="terms">{E(EXAMPLE_LEAD)}</p></div>'
+                       f'<div class="buy-actions">{demo_btn}'
+                       f'<a class="btn btn-deep" href="/services/custom/">'
+                       f'Get one built for you</a></div></section>')
+        excluded_note = ""
+        mine_h, mine_p = "Built around you.", E(EXAMPLE_LEAD)
+        more_h = "More of our work"
+        cta_h = "Want something like this for your business?"
+        cta_href, cta_label = "/services/custom/", "Start a custom build"
+    else:
+        buy_section = (f'<section class="theme-buy">'
+                       f'<div class="buy-left"><p class="note">{E(COMMERCE["note"])}</p>'
+                       f'<p class="price">{price}</p>{setup_line}'
+                       f'<p class="terms">{terms}</p></div>'
+                       f'<div class="buy-actions">{demo_btn}'
+                       f'<a class="btn btn-deep" href="/support/#support-message">'
+                       f'Ask about this theme</a></div></section>')
+        excluded_note = (f'<div class="theme-note"><h3>{E(COMMERCE["excluded_h"])}</h3>'
+                         f'<p>{E(COMMERCE["excluded"])}</p></div>')
+        mine_h, mine_p = "Make it yours.", E(MAKE_IT_YOURS)
+        more_h = "More themes to explore"
+        cta_h = "Need a hand getting this theme ready to launch?"
+        cta_href, cta_label = "/services/setup/", "Explore setup support"
     if t.get("shots"):
         frame = (f'<img class="inner" src="{t["shots"]}-hero.png" alt="{E(t["name"])} template, '
                  f'home page" width="1008" height="630" loading="lazy" decoding="async">')
@@ -467,13 +521,7 @@ def page_theme(t):
 <div class="theme-meta">{plat}<p class="theme-avail">{avail}</p></div>
 </section>
 <section class="theme-frame">{frame}</section>
-<section class="theme-buy">
-<div class="buy-left"><p class="note">{E(COMMERCE["note"])}</p>
-<p class="price">{price}</p>{setup_line}
-<p class="terms">{terms}</p></div>
-<div class="buy-actions">{demo_btn}
-<a class="btn btn-deep" href="/support/#support-message">Ask about this theme</a></div>
-</section>
+{buy_section}
 <section class="wrap"><div class="theme-row">
 <h2>Overview</h2>
 <div><p class="lead">{E(t["overview"])}</p><p class="who">{E(t["who"])}</p></div>
@@ -481,23 +529,23 @@ def page_theme(t):
 <section class="wrap"><div class="theme-split">
 <div class="theme-note"><h3>What this theme is built to do</h3><p>{E(t["does"])}</p></div>
 <div class="theme-note"><h3>Included pages and sections</h3><p>{E(t["includes"])}</p></div>
-<div class="theme-note"><h3>{E(COMMERCE["excluded_h"])}</h3><p>{E(COMMERCE["excluded"])}</p></div>
+{excluded_note}
 </div></section>
 <section class="wrap theme-resp">
 <h2>Responsive by design</h2>
 <div class="row">{resp}</div>
 </section>
 <section class="wrap"><div class="theme-mine"><div class="theme-row">
-<h2>Make it yours.</h2><p class="lead">{E(MAKE_IT_YOURS)}</p>
+<h2>{mine_h}</h2><p class="lead">{mine_p}</p>
 </div></div></section>
-<section class="wrap"><h2 class="t-page" style="font-size:42px;margin-bottom:32px">More themes to explore</h2>
+<section class="wrap"><h2 class="t-page" style="font-size:42px;margin-bottom:32px">{more_h}</h2>
 <div class="rail-wrap"><button class="rail-btn prev" type="button" aria-label="Scroll left" hidden>{CARET_L}</button><div class="rail theme-more" tabindex="0" role="group" aria-label="More themes">{others}</div><button class="rail-btn next" type="button" aria-label="Scroll right" hidden>{CARET_R}</button></div></section>
 <section class="theme-cta wrap">
-<h2>Need a hand getting this theme ready to launch?</h2>
-<a class="btn btn-light" href="/services/setup/">Explore setup support</a>
+<h2>{cta_h}</h2>
+<a class="btn btn-light" href="{cta_href}">{cta_label}</a>
 </section>
 {faq_block()}"""
-    return shell(f'{t["name"]} | AmazeWeb Template',
+    return shell(f'{t["name"]} | AmazeWeb {"Example Build" if example else "Template"}',
                  t["sub"], body, cls="theme")
 
 

@@ -659,6 +659,10 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
    of loose text under it, which belonged to no part of the system. */
 .tpl-sec{margin-top:77px}   /* the gap the old .tpl-head margin used to give */
 .tpl-head{margin-top:0}
+/* the line under a grid heading: what this set of cards is, said plainly */
+.tpl-note{font-size:16px;line-height:24px;color:var(--grey-2);max-width:640px;margin:18px 0 36px}
+.tpl-note a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
+.tpl-grid + .tpl-note{margin:32px 0 0}
 .tpl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
 .tpl-card{
   display:flex;flex-direction:column;gap:6px;padding:6px;
@@ -771,6 +775,10 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
    are the sentence to point at when a buyer asks for work the template never
    included -- see also the "Not included" note further down the page. */
 .theme-buy .terms{font-size:13px;line-height:19px;color:var(--grey);margin-top:12px;max-width:520px}
+/* the same bar on a page for work rather than stock: no price, so the note
+   carries the weight and the text may run wider */
+.theme-buy.example .note{font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+.theme-buy.example .terms{font-size:15px;line-height:23px;color:var(--surface);max-width:540px;margin-top:10px}
 .btn-buy{background:#1B8A3A;color:var(--white)}
 .btn-buy:hover{filter:brightness(1.08)}
 .theme-buy .buy-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;flex:0 1 auto;min-width:0}
