@@ -170,7 +170,40 @@ def _art_tools():
             f'<div class="tool t-stat"><p class="cap">Analytics</p><div class="bars">{bars}</div></div>'
             '</div>')
 
-ART = {"setup": _art_setup, "custom": _art_custom, "tools": _art_tools}
+def _art_gallery():
+    """A library of finished templates, each a different brand."""
+    cards = ""
+    for cls, hd in (("g1", 62), ("g2", 48), ("g3", 70), ("g4", 54)):
+        cards += (f'<span class="mini {cls}"><i class="top"></i>'
+                  f'<i class="ln" style="width:{hd}%"></i><i class="ln s"></i>'
+                  f'<i class="blk"></i></span>')
+    return f'<div class="scard-art art-gallery" aria-hidden="true">{cards}</div>'
+
+def _art_pipeline():
+    """Concept to launch, in the order it actually happens."""
+    steps = (("Concept", "sketch"), ("Design", "comp"),
+             ("Build", "code"), ("Launch", "live"))
+    rows = ""
+    for i, (label, kind) in enumerate(steps):
+        last = " last" if i == len(steps) - 1 else ""
+        rows += (f'<span class="step{last}"><i class="node"></i>'
+                 f'<span class="what"><b>{label}</b><i class="art {kind}"></i></span></span>')
+    return f'<div class="scard-art art-pipeline" aria-hidden="true">{rows}</div>'
+
+def _art_support():
+    """One thread, one person answering — not a ticket queue."""
+    return ('<div class="scard-art art-support" aria-hidden="true">'
+            '<span class="hdr"><i class="av"></i><i class="who"></i><i class="on"></i></span>'
+            '<span class="msgs">'
+            '<span class="bub in w-a"><i></i><i class="s"></i></span>'
+            '<span class="bub out w-b"><i></i><i></i><i class="s"></i></span>'
+            '<span class="bub in w-c"><i></i></span>'
+            '<span class="bub out w-a"><i></i><i class="s"></i></span>'
+            '<span class="typing"><i></i><i></i><i></i></span>'
+            '</span></div>')
+
+ART = {"setup": _art_setup, "custom": _art_custom, "tools": _art_tools,
+       "gallery": _art_gallery, "pipeline": _art_pipeline, "support": _art_support}
 
 def card_art(name):
     return ART[name]()
@@ -310,13 +343,19 @@ def page_services(title, h_black, h_grey, desc):
 
 def svcx_panel(c, lead=False):
     dim = (" dim" if c.get("dim") else "") + (" lead" if lead else "")
-    stats = "".join(f'<div><p class="k">{E(k)}</p><p class="v">{E(v)}</p></div>'
-                    for k, v in c["stats"])
+    pairs = c.get("stats") or []
+    if c.get("art"):
+        right = f'<div class="art-slot">{card_art(c["art"])}</div>'
+    else:
+        right = ('<div class="stats">'
+                 + "".join(f'<div><p class="k">{E(k)}</p><p class="v">{E(v)}</p></div>'
+                           for k, v in pairs)
+                 + '</div>') if pairs else ""
     label, href = c["cta"]
     return (f'<section class="svcx-panel{dim}">'
             f'<div><h2>{E(c["title"])}</h2><p>{E(c["body"])}</p>'
             f'<a class="btn" href="{href}">{E(label)}{ARROW}</a></div>'
-            f'<div class="stats">{stats}</div></section>')
+            f'{right}</section>')
 
 def setup_tiers_block():
     """Setup tiers for /services/setup/. Returns nothing while SETUP_TIERS is

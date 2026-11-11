@@ -65,22 +65,23 @@ IMG = "/assets/img/"
 LOGO = IMG + "9Rb6ELE5jVlzfGlbglZUejG8k.png"
 
 # --- homepage sticky cards -------------------------------------------------
+# Drawn artwork, same as the services cards: "art" names a scene in build.py.
 HOME_CARDS = [
     {"title": "Designing Premium Website Templates",
      "body": "Crafted for speed, style, and performance. Our templates are built to look stunning right out of the box, with flexible layouts that adapt to your brand’s personality. Launch faster without sacrificing design quality or user experience.",
      "cta": ("Browse Templates", "/templates/"),
-     "img": IMG + "HBt1P1lrolW51BNI8Z2o6uf2rs.png", "ratio": "428/269",
-     "stats": [("Engagement", "12 min"), ("User Satisfaction", "4.5*")], "dim": True},
+     "art": "gallery",
+     "dim": True},
     {"title": "Delivering End-to-End Creative Solutions",
      "body": "From concept to launch, I handle every detail. Whether it’s building a high-performing website, designing intuitive interfaces, or crafting cohesive brand systems every project is guided by strategy, creativity, and precision.",
      "cta": ("View Services", "/services/"),
-     "img": IMG + "HwBYfWSfyi6G2G045HaZGZXPc0Q.png", "ratio": "428/240",
-     "stats": [("Usability", "85%"), ("User Retention", "70%")], "dim": False},
+     "art": "pipeline",
+     "dim": False},
     {"title": "Personalized Support That Actually Supports You",
      "body": "Every project comes with direct, one-on-one guidance. Whether you need help setting up your site, customizing a design, or troubleshooting, you’ll have expert support that’s fast, clear, and genuinely helpful.",
      "cta": ("Get Support", "/support/"),
-     "img": IMG + "RTjbsnkPpAAeiE7d5IHsWvFzjco.png", "ratio": "428/269",
-     "stats": [("Conversion Rate", "12%"), ("User Satisfaction", "4.8*")], "dim": False},
+     "art": "support",
+     "dim": False},
 ]
 
 # These three carry drawn artwork instead of a photo: "art" names a scene in
@@ -116,15 +117,18 @@ HOME_SVC = [
     _svc("Creative Direction",
          "Shape the entire creative vision for your brand. Ensuring your identity feels intentional, distinctive, and unforgettable. Every touchpoint is crafted to tell your story with clarity, emotion, and impact.",
          ["LGDtCdeGWOBQctfcyQdUAqRQ.png", "Wob2IiVf0Qf8a4f3C8BGkgsGA.png", "mNl8apblPCRUgHesQx8Rjntd9vc.png"],
-         ["Logo design", "Brand guideline", "Brand strategy", "+more"], "scan"),
+         ["Logo design", "Brand guideline", "Brand strategy", "+more"], "scan",
+         art="branding"),
     _svc("Web Development",
          "Transforming designs into fully responsive and interactive websites. Whether it’s a landing page or a full-scale web experience, I build fast, modern sites optimized for seamless performance.",
          ["jqIuFi9hfEHbRxZa7p0SZHPsrkQ.png", "MVpdciinfDWQQ6UE6NdJFCe59oE.png", "VS8qzOk6qRLeJDr4BNatI7UAm8Q.png"],
-         ["Landing page", "Multipages", "Web migration", "+more"], "code", "blue lift"),
+         ["Landing page", "Multipages", "Web migration", "+more"], "code", "blue lift",
+         art="webdev"),
     _svc("UI/UX Design",
          "Designing user-centered experiences that are both functional and visually engaging. From concept to final prototype, we focus on intuitive interfaces that drive engagement and enhance usability.",
          ["kFcT28JBAneTQjyVSMGiDyiwRlw.png", "Fm5dfyOw1px3Dsxu5sZmvHsOrKw.png", "6GwrKzXzNodjRpfhql82bLNul1E.jpg"],
-         ["Web & app design", "Design system", "Prototyping", "+more"], "monitor", "drop"),
+         ["Web & app design", "Design system", "Prototyping", "+more"], "monitor", "drop",
+         art="uiux"),
 ]
 
 SERVICES_SVC = [
@@ -305,14 +309,14 @@ _P2 = {"title": "Not sure what you need? Tell us about your business.",
        "body": "Describe what is happening and we will recommend the smallest thing that "
                "fixes it, even when that means spending less with us.",
        "cta": ("Learn More", "/support/#support-message"),
-       "stats": [("Conversion Rate", "12%"), ("User Satisfaction", "4.8*")], "dim": False}
+       "art": "support", "dim": False}
 
 _TOOLS_INTRO = {
     "title": "Simple digital tools that help customers find, contact and review your business.",
     "body": "Each of these works on its own, costs a fraction of a website, and starts paying "
             "for itself the week it goes live. Most customers start here and build up from it.",
     "cta": ("Learn More", "/support/#support-message"),
-    "stats": [("Engagement", "12 min"), ("User Satisfaction", "4.5*")], "dim": True}
+    "art": "tools", "dim": True}
 
 SERVICE_PAGES = {
  "setup": {
@@ -325,7 +329,7 @@ SERVICE_PAGES = {
                      "own words and images, connected to your domain and working properly on a "
                      "phone is where most people stall. That is the part we do.",
              "cta": ("Buy Template Setup", "/support/#support-message"),
-             "stats": [("Engagement", "12 min"), ("User Satisfaction", "4.5*")], "dim": True},
+             "art": "setup", "dim": True},
    "sections": [
      ("Setup", "Everything between buying a template and", "having a website that works."),
      ("Add-Ons", "", "Bolt on whatever the template didn’t come with."),

@@ -333,6 +333,19 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .scard-right.full .scard-shot,
 .scard-right.full .scard-art{flex:1 1 auto;min-height:0;height:auto;aspect-ratio:auto}
 
+/* artwork in the services sub-page panels, where the stat pairs used to sit */
+.svcx-panel .art-slot{margin-left:auto;width:min(428px,100%)}
+/* Between the phone layout and the desktop one, the panel keeps a fixed 428px
+   text column and the rest collapses to ~166px. That held two numbers; it
+   cannot hold a picture, so the panel stacks until there is room for both. */
+@media (max-width:1060px) and (min-width:810px){
+  .svcx-panel{grid-template-columns:minmax(0,1fr);gap:36px}
+  .svcx-panel .art-slot{margin-left:0}
+}
+/* 428/380, the same box the scenes are drawn for — at 428/300 the support
+   thread and the tool grid ran past the bottom of their own frame */
+.svcx-panel .scard-art{width:100%;aspect-ratio:428/380}
+
 /* ---------- drawn card artwork ----------
    Three scenes, one per service card, built from boxes rather than photos so
    they say what the card says and ship no extra bytes. They only ever render
@@ -340,6 +353,9 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
    hidden on phones. */
 .scard-art{
   position:relative;overflow:hidden;border-radius:8px;
+  container-type:size;   /* the panels hand these scenes a shorter box than the
+  cards do — 289px at tablet against 380 on desktop — so the scenes query their
+  own height and tighten up rather than running past their frame */
   background:var(--surface-2);
   box-shadow:0 1px 2px rgba(0,0,0,.14),0 14px 32px rgba(0,0,0,.18);
 }
@@ -439,6 +455,91 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 .scard-stats .k{font-size:20px;line-height:28px;font-weight:400;color:var(--white);margin-bottom:8px}
 .scard-stats .v{color:var(--white)}
 .scard.dim .k,.scard.dim .v{color:rgba(255,255,255,.75)}
+
+/* 4. A library of templates, each one a different brand. */
+.art-gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
+             gap:12px;padding:14px}
+.art-gallery .mini{border-radius:9px;overflow:hidden;background:var(--white);
+                   display:flex;flex-direction:column;gap:6px;padding:9px;min-height:0;
+                   box-shadow:0 1px 2px rgba(0,0,0,.07),0 7px 16px rgba(0,0,0,.07)}
+.art-gallery .mini .top{height:7px;border-radius:4px;flex:0 0 auto}
+.art-gallery .mini .ln{height:5px;border-radius:3px;background:#DCDCDC;flex:0 0 auto}
+.art-gallery .mini .ln.s{width:38%}
+.art-gallery .mini .blk{flex:1;min-height:0;border-radius:5px;margin-top:2px}
+/* four palettes, lifted from the real templates: plum/gold, mono, blush, espresso */
+.art-gallery .g1 .top{background:#6B2D5C}
+.art-gallery .g1 .blk{background:linear-gradient(135deg,#F3E7EF,#E7D3B7)}
+.art-gallery .g2 .top{background:var(--ink-3)}
+.art-gallery .g2 .blk{background:linear-gradient(135deg,#ECECEC,#D6D6D6)}
+.art-gallery .g3 .top{background:#C98B8B}
+.art-gallery .g3 .blk{background:linear-gradient(135deg,#F7E9E7,#DCE7DB)}
+.art-gallery .g4 .top{background:#6B4A34}
+.art-gallery .g4 .blk{background:linear-gradient(135deg,#EFE6DC,#D9C7B2)}
+
+/* 5. Concept to launch, in the order it happens. */
+.art-pipeline{background:var(--white);padding:20px 18px;display:flex;
+              flex-direction:column;justify-content:space-between}
+.art-pipeline .step{position:relative;display:flex;align-items:center;gap:14px;
+                    padding-left:4px;min-height:0}
+.art-pipeline .step .node{width:11px;height:11px;border-radius:50%;flex:0 0 auto;
+                          background:var(--white);box-shadow:inset 0 0 0 2.5px var(--line)}
+.art-pipeline .step.last .node{background:var(--lime);box-shadow:none}
+/* the rail joining the steps: drawn on each node, so it cannot outrun the list */
+.art-pipeline .step:not(.last) .node::after{content:"";position:absolute;left:9px;top:15px;
+                                            width:1.5px;height:46px;background:var(--line)}
+.art-pipeline .step .node{position:relative}
+.art-pipeline .what{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0}
+.art-pipeline .what b{font-size:11px;font-weight:600;letter-spacing:.09em;
+                      text-transform:uppercase;color:#8A8A8A}
+.art-pipeline .art{display:block;height:22px;border-radius:5px}
+.art-pipeline .sketch{background:repeating-linear-gradient(90deg,#E4E4E4 0 7px,transparent 7px 13px);
+                      width:72%}
+.art-pipeline .comp{background:linear-gradient(90deg,#E9F5FF,#DCE4EA);width:86%}
+.art-pipeline .code{background:var(--ink-4);width:64%}
+.art-pipeline .live{background:rgba(159,196,1,.28);width:92%}
+
+/* 6. One support thread, one person answering. */
+.art-support{background:var(--surface-2);padding:16px;display:flex;flex-direction:column;gap:14px}
+.art-support .hdr{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+.art-support .hdr .av{width:26px;height:26px;border-radius:50%;background:var(--blue);flex:0 0 auto}
+.art-support .hdr .who{height:7px;width:88px;border-radius:4px;background:#CBCBCB}
+.art-support .hdr .on{width:8px;height:8px;border-radius:50%;background:var(--lime);
+                      margin-left:auto}
+.art-support .msgs{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;
+                   justify-content:flex-end}
+.art-support .bub{width:70%;border-radius:14px;padding:11px 12px;
+                  display:flex;flex-direction:column;gap:6px}
+/* the bubbles need a width of their own: their contents are bars with no
+   intrinsic width, so a shrink-to-fit bubble collapses to its padding */
+.art-support .w-a{width:66%}
+.art-support .w-b{width:78%}
+.art-support .w-c{width:46%}
+.art-support .bub i{display:block;height:6px;border-radius:3px;background:#D2D2D2}
+.art-support .bub i.s{width:52%}
+.art-support .bub.in{align-self:flex-start;background:var(--white);border-bottom-left-radius:5px}
+.art-support .bub.out{align-self:flex-end;background:var(--blue);border-bottom-right-radius:5px}
+.art-support .bub.out i{background:rgba(255,255,255,.75)}
+.art-support .typing{align-self:flex-start;display:flex;gap:5px;background:var(--white);
+                     border-radius:14px;border-bottom-left-radius:5px;padding:10px 12px}
+.art-support .typing i{width:6px;height:6px;border-radius:50%;background:#C6C6C6}
+
+/* short box: tighten the two scenes that fill their frame at full height */
+@container (max-height: 330px){
+  .art-support{gap:10px;padding:13px}
+  .art-support .msgs{gap:8px}
+  .art-support .msgs .bub:first-child{display:none}
+  .art-support .bub{padding:9px 10px;gap:5px}
+  .art-support .hdr .av{width:22px;height:22px}
+  .art-tools{gap:9px;padding:11px}
+  .art-tools .tool{padding:8px 9px;gap:6px}
+  .art-tools .env svg{width:28px;height:28px}
+  .art-pipeline{padding:15px 14px}
+  .art-pipeline .art{height:18px}
+  .art-pipeline .step:not(.last) .node::after{height:34px}
+  .art-gallery{gap:9px;padding:11px}
+  .art-setup .win-body{padding:11px;gap:9px}
+  .art-custom .code,.art-custom .out{padding:11px}
+}
 
 /* ---------- vision ---------- */
 .vision{display:grid;grid-template-columns:456px 684px;gap:0;align-items:start;max-width:1140px;margin-left:30px}
@@ -940,6 +1041,7 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
   .svcx-sec{grid-template-columns:1fr;gap:0}
   .svcx-panel{grid-template-columns:1fr;padding:32px 22px}
   .svcx-panel .stats{margin-left:0}
+  .svcx-panel .art-slot{margin-left:0}
   .rail>*{flex-basis:270px}
   .rail{margin-inline:-16px;padding-inline:16px}
   .theme-cta{padding:32px 22px;flex-wrap:wrap}
