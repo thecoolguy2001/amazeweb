@@ -6,7 +6,7 @@ a hand-coded replacement for the original Framer site.
 ## Layout
 
     build/content.py   all site copy, transcribed from the published site
-    build/build.py     generates the 21 pages into the repo root
+    build/build.py     generates the 27 pages into the repo root
     assets/            css, fonts, images, js
     index.html         generated — do not edit by hand
     services/ templates/ support/ themes/   generated

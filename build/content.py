@@ -196,7 +196,7 @@ THEMES = [
          overview="The home page is a photograph with the sections cut out and scattered across it. Every page after it is a sheet of paper pulled up over that photograph, with a tab saying where you are.",
          who="Multi-disciplinary creatives, students and freelancers whose work does not fit one category and should not be made to.",
          does="Five bodies of work kept apart, a front page that is a choice rather than a summary, and a piece-by-piece reader.",
-         includes="A cut-out home page, about with the collage and the contact box, and five section pages — design, marketing, modeling, productions and awards — each with a lightbox you can arrow through.",
+         includes="A cut-out home page, an about page with the photo collage, the social box and the contact table, five section pages — design, marketing, modeling, productions and awards — and a page of its own for every one of the thirty-three pieces.",
          rebuilt=True),
     dict(slug="showcase", name="Showcase", kicker="Portfolio Site",
          sub="A portfolio template that puts selected work, proof, and a clear contact path in one polished narrative.",
