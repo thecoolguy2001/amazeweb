@@ -546,6 +546,8 @@ def page_theme(t):
             kind, lead = f"Built for {client}", CLIENT_LEAD.format(client=client)
         elif t.get("real"):
             kind, lead = REAL_KIND, REAL_LEAD
+        elif t.get("rebuilt"):
+            kind, lead = REBUILT_KIND, REBUILT_LEAD
         else:
             kind, lead = "Our own build", EXAMPLE_LEAD
         buy_section = (f'<section class="theme-buy example">'
@@ -614,7 +616,15 @@ def page_theme(t):
 <a class="btn btn-light" href="{cta_href}">{cta_label}</a>
 </section>
 {faq_block()}"""
-    return shell(f'{t["name"]} | AmazeWeb {"Example Build" if example else "Template"}',
+    # "Example Build" is only true of the invented ones. A site built for a
+    # real client is not an example of anything, so the tab says what it is.
+    if not example:
+        _kind_t = "Template"
+    elif t.get("client") or t.get("real") or t.get("rebuilt"):
+        _kind_t = "Client Build"
+    else:
+        _kind_t = "Example Build"
+    return shell(f'{t["name"]} | AmazeWeb {_kind_t}',
                  t["sub"], body, cls="theme")
 
 

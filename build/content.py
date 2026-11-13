@@ -184,6 +184,20 @@ THEMES = [
          does="Credibility first, services second, and a contact point that is never more than one scroll away.",
          includes="A single page: the positioning, who the firm is, three services, and a contact section with the map, the address and a form.",
          real=True),
+    dict(slug="nocturne", name="Nocturne", kicker="Streetwear Store",
+         sub="A storefront with a film running behind it, so the product is lit by the thing it was named after.",
+         overview="One black-and-white reel plays fixed behind every page and the shop floats on top of it with no panel in between. It is the whole brand argument, made before a word is read.",
+         who="Labels and small brands whose product only makes sense inside a mood, and who would rather show it than describe it.",
+         does="Atmosphere first, then a conventional Shopify path: collection, product, cart, with nothing clever in the way of buying.",
+         includes="Home, a filterable collection in four groups, a product page with colour and size and sold-out sizes per colour, a working cart, about and contact.",
+         rebuilt=True),
+    dict(slug="collage", name="Collage", kicker="Creative Portfolio",
+         sub="A personal portfolio for someone who does five things, with a front page that makes you pick one.",
+         overview="The home page is a photograph with the sections cut out and scattered across it. Every page after it is a sheet of paper pulled up over that photograph, with a tab saying where you are.",
+         who="Multi-disciplinary creatives, students and freelancers whose work does not fit one category and should not be made to.",
+         does="Five bodies of work kept apart, a front page that is a choice rather than a summary, and a piece-by-piece reader.",
+         includes="A cut-out home page, about with the collage and the contact box, and five section pages — design, marketing, modeling, productions and awards — each with a lightbox you can arrow through.",
+         rebuilt=True),
     dict(slug="showcase", name="Showcase", kicker="Portfolio Site",
          sub="A portfolio template that puts selected work, proof, and a clear contact path in one polished narrative.",
          overview="Showcase is for work-led brands that need a calm, credible place to make the work count.",
@@ -325,6 +339,8 @@ BUILT = {
     "chapter":          "/demo/chapter/",
     "uplink":           "/demo/uplink/",
     "skyward":          "/demo/skyward/",
+    "nocturne":         "/demo/nocturne/",
+    "collage":          "/demo/collage/",
 }
 for _t in THEMES:
     if _t["slug"] in BUILT:
@@ -419,6 +435,18 @@ REAL_LEAD = ("A real business site we designed and built. What you are clicking 
              "copy kept here as a record of the work, so its forms, phone numbers and checkout "
              "links do nothing. Yours would be built the same way, around your business.")
 REAL_KIND = "A site we built"
+
+# A fourth kind. These two were built for real clients, but the client's own
+# site is not ours to republish and we no longer hold the code, so the demo is
+# a rebuild from what we kept: the layout, the structure and the behaviour we
+# shipped, with an invented business in place of the real one. Calling that a
+# "copy" would be false and calling it "our own build" would be false, so it
+# gets a line that is neither.
+REBUILT_LEAD = ("A site we designed and built for a client, rebuilt here. The original is not "
+                "ours to republish, so the layout, the structure and the way it behaves are the "
+                "ones we shipped, while the business, the words and the pictures in it are "
+                "invented. Yours would be built the same way, around your business.")
+REBUILT_KIND = "A site we built, rebuilt here"
 
 for _t in THEMES:
     if _t["slug"] in CLIENT_BUILDS:

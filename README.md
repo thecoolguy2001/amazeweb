@@ -15,8 +15,8 @@ a hand-coded replacement for the original Framer site.
 
     python3 build/build.py
 
-Writes 21 pages: `/`, `/templates`, `/services` (+ `/setup`, `/custom`, `/tools`),
-`/support`, and 14 `/themes/<slug>` pages. Everything outside `build/` and
+Writes 27 pages: `/`, `/templates`, `/services` (+ `/setup`, `/custom`, `/tools`),
+`/support`, and 16 `/themes/<slug>` pages. Everything outside `build/` and
 `assets/` is generated output and is overwritten on every run.
 
 ## Design values
